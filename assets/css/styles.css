@@ -477,40 +477,37 @@ button{
     background-color: var(--first-color);
 }
 .skills__html{
-    width: 90%;
-}
-.skills__css{
-    width: 70%;
-}
-.skills__js{
-    width: 30%;
-}
-.skills__react{
-    width: 0%;
-}
-.skills__gam{
-    width: 90%;
-}
-.skills__analytics{
     width: 50%;
 }
-.skills__adsense{
+.skills__css{
+    width: 50%;
+}
+.skills__js{
+    width: 20%;
+}
+.skills__angular{
+    width: 20%;
+}
+.skills__illustrator{
+    width: 90%;
+}
+.skills__photoshop{
+    width: 50%;
+}
+.skills__premiere{
+    width: 50%;
+}
+.skills__word{
+    width: 90%;
+}
+.skills__excel{
+    width: 60%;
+}
+.skills__power{
     width: 70%;
-}
-.skills__ads{
-    width: 10%;
-}
-.skills__wordpress{
-    width: 40%;
-}
-.skills__shopify{
-    width: 80%;
 }
 .skills__spark{
-    width: 70%;
-}
-.skills__tbd{
-    width: 0%;
+    width: 40%;
 }
 .skills__close .skills__list{
     height: 0;
