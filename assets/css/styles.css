@@ -497,6 +497,12 @@ button{
 .skills__premiere{
     width: 50%;
 }
+.skills__figma{
+    width: 70%;
+}
+.skills__spark{
+    width: 70%;
+}
 .skills__word{
     width: 90%;
 }
