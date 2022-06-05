@@ -51,6 +51,28 @@ const skillsContent = document.getElementsByClassName('skills__content'),
    skillsHeader.forEach((el) =>{
        el.addEventListener('click', toggleSkills)
    })
+
+/*==================== ACCORDION BLOG ====================*/
+const blogContent = document.getElementsByClassName('blog__content'),
+blogHeader = document.querySelectorAll('.blog__header')
+function toggleBlog(){
+
+let itemClass = this.parentNode.className
+for (i = 0 ; i < blogContent.length; i++){
+   blogContent[i].className = 'blog__content blog__close'
+}
+if (itemClass === 'blog__content blog__close'){
+
+   this.parentNode.className = 'blog__content blog__open'
+   
+}
+
+}
+
+blogHeader.forEach((el) =>{
+el.addEventListener('click', toggleBlog)
+})
+
 /*==================== QUALIFICATION TABS ====================*/
   const tabs = document.querySelectorAll('[data-target]'),
         tabContents = document.querySelectorAll('[data-content]')
