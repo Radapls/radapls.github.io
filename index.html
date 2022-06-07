@@ -22,38 +22,38 @@
         <!--==================== HEADER ====================-->
         <header class="header" id="header">
             <nav class="nav container">
-                    <a href="#" class="nav__logo"> <img class="MarcaHead" src="/assets/img/JFR.png">  Juan Felipe Rada</a>
+                    <a href="#" class="nav__logo"> <img class="MarcaHead" src="/assets/img/JFR.png">Juan Felipe Rada</a>
                 
                 <div class="nav__menu" id="nav-menu">
                     <ul class="nav__list grid">
                         <li class="nav__item">
-                        <a href="#Home" class="nav__link active-link">
-                            <i class="uil uil-estate nav__icon"></i>Home
+                        <a href="#Home" class="nav__link active-link" data-i18n-key="home">
+                            <i class="uil uil-estate nav__icon"></i>
                         </a> 
                         </li>
                         <li class="nav__item">
-                            <a href="#About" class="nav__link">
-                                <i class="uil uil-user nav__icon"></i>About
+                            <a href="#About" class="nav__link" data-i18n-key="about">
+                                <i class="uil uil-user nav__icon"></i>
                             </a> 
                         </li>
                         <li class="nav__item">
-                            <a href="#Skills" class="nav__link">
-                                <i class="uil uil-file-check-alt nav__icon"></i>Skills
+                            <a href="#Skills" class="nav__link" data-i18n-key="skills">
+                                <i class="uil uil-file-check-alt nav__icon"></i>
                             </a> 
                         </li>
                         <li class="nav__item">
-                            <a href="#Portafolio" class="nav__link">
-                                <i class="uil uil-scenery nav__icon"></i>Portafolio
+                            <a href="#Portafolio" class="nav__link" data-i18n-key="portfolio">
+                                <i class="uil uil-scenery nav__icon"></i>
                             </a> 
                         </li>
                         <li class="nav__item">
-                            <a href="blog.html" class="nav__link">
-                                <i class="uil uil-scenery nav__icon"></i>Blog
+                            <a href="blog.html" class="nav__link" data-i18n-key="blog">
+                                <i class="uil uil-scenery nav__icon"></i>
                             </a> 
                         </li>
                         <li class="nav__item">
-                            <a href="#Contact" class="nav__link">
-                                <i class="uil uil-message nav__icon"></i>Contact Me
+                            <a href="#Contact" class="nav__link" data-i18n-key="head_contact">
+                                <i class="uil uil-message nav__icon"></i>
                             </a> 
                         </li>
                     </ul>
@@ -67,6 +67,14 @@
                         <i class="uil uil-apps"></i> 
                     </div>
                 </div>
+
+                <nav class="nav__translate">
+                <select data-i18n-switcher class="locale-switcher">
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                  </select>
+                </nav>
+
             </nav>
         </header>
 
@@ -105,11 +113,11 @@
                             </svg>  
                         </div>
                         <div class="home__data">
-                            <h1 class="home__title">Hi I'am Juan Felipe</h1>
-                            <h3 class="home__subtitle">Political Scientist | Frontend Developer</h3>
-                            <p class="home__description">Creating things and experiences one line at a time</p>
-                            <a href="#Contact" class="button button--flex">
-                                Contact Me <i class="uil uil-message nav__icon button__icon"></i>
+                            <h1 class="home__title" data-i18n-key="title"></h1>
+                            <h3 class="home__subtitle" data-i18n-key="subtitle"></h3>
+                            <p class="home__description" data-i18n-key="description"></p>
+                            <a href="#Contact" class="button button--flex" data-i18n-key="contact">
+                            <i class="uil uil-message nav__icon button__icon"></i>
                             </a>
                         </div>
                     </div>
@@ -125,15 +133,14 @@
 
             <!--==================== ABOUT ====================-->
             <section class="about section" id="About">
-                <h2 class="section__title">About Me</h2>   
-                <span class="section__subtitle">My introduction</span>
+                <h2 class="section__title" data-i18n-key="about_me"></h2>   
+                <span class="section__subtitle" data-i18n-key="about_me.subtitle"></span>
 
                 <div class="about__container container grid">
                   <img src="assets/img/juan.jpg" alt="" class="about__img">  
                   <div class="about__data">
-                      <p class="about__description">
-                        Hello! My name is Juan Felipe Rada, I studied Political Science and after the pandemic I decided to turn my life around, I currently work as a Frontend Developer, and I have always had a fascination for creating.
-I believe that life is not static and as time changes, that is why I am always thinking about creating new things, discovering new areas, I am passionate about learning.<div class="about__info">
+                      <p class="about__description" data-i18n-key="about_me.description">
+                        <div class="about__info">
                             <div>
                                 <span class="about__info-title">04+</span>
                                 <span class="about__info-name">Years <br> experience</span>
@@ -632,3 +639,5 @@ I believe that life is not static and as time changes, that is why I am always t
         <script src="assets/js/main.js"></script>
     </body>
 </html>
+        <!--==================== i18n JS ====================-->
+        <script src="assets/js/scripts.js"></script>

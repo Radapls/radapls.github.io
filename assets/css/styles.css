@@ -249,6 +249,14 @@ button{
     color: var(--first-color-alt);
 }
 
+.nav__translate, .locale-switcher{
+    font-family: 'Poppins';
+    border-radius: 5px;
+    background-color: var(--first-color);
+    font-size: var(--small-font-size);
+    color: var(--title-color);
+    font-weight: var(--font-medium);
+}
 
 /* show menu */
 .show-menu{
