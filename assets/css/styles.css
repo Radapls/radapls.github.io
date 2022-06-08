@@ -536,14 +536,17 @@ button{
 }
 /*==================== BLOG ====================*/
 
-.blog__content{
-    grid-template-columns: .5fr 3fr;
-    align-items: center;
-    margin: 0 300px 0 300px;
-}
 .blog__container{
+    gap: 1rem;
     row-gap: 5rem;
 }
+.blog__social{
+    display: grid;
+    grid-template-columns: max-content;
+    row-gap: 1rem;
+    transform: translate(-6rem, -8rem);
+}
+
 .blog__header{
     display: flex;
     align-items: center;
@@ -585,69 +588,6 @@ button{
 
 .blog__data{
     grid-column: 1/3;
-}
-
-.blog__bar,
-.blog__percentage{
-    height: 5px;
-    border-radius: .25rem;
-}
-.blog__bar{
-    background-color: var(--first-color-lighter);
-}
-.blog__percentage{
-    display: block;
-    background-color: var(--first-color);
-}
-.blog__html{
-    width: 50%;
-}
-.blog__css{
-    width: 50%;
-}
-.blog__js{
-    width: 20%;
-}
-.blog__angular{
-    width: 20%;
-}
-.blog__illustrator{
-    width: 90%;
-}
-.blog__photoshop{
-    width: 50%;
-}
-.blog__premiere{
-    width: 50%;
-}
-.blog__figma{
-    width: 70%;
-}
-.blog__spark{
-    width: 70%;
-}
-.blog__word{
-    width: 90%;
-}
-.blog__excel{
-    width: 60%;
-}
-.blog__power{
-    width: 70%;
-}
-.blog__spark{
-    width: 40%;
-}
-.blog__close .blog__list{
-    height: 0;
-    overflow: hidden;
-}
-.blog__open .blog__list{
-   height: max-content; 
-   margin-bottom: var(--mb-2-5);
-}
-.blog__open .blog__arrow{
-    transform: rotate(-180deg);
 }
 /*==================== QUALIFICATION ====================*/
 .qualification__tabs{
@@ -971,6 +911,7 @@ button{
 .footer__social{
     font-size: 1.25rem;
     margin-right: var(--mb-1-5);
+    align-items: center;
 }
 .footer__social:hover{
     color: var(--first-color-lighter);
