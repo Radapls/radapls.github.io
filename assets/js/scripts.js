@@ -16,11 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
 bindLocaleSwitcher(defaultLocale)
 ;
 
-// Compatibility with i18n JSON
-i18next.init({
-  compatibilityJSON: 'v3'
-});
-
 // Whenever the user selects a new locale, we
 // load the locale's translations and update
 // the page
