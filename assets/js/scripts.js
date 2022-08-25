@@ -5,7 +5,7 @@ const defaultLocale = "en";
 let locale;
 
 // Gets filled with active locale translations
-let translations = {};
+let translations = []
 
 // When the page content is ready...
 document.addEventListener("DOMContentLoaded", () => {
@@ -16,11 +16,16 @@ document.addEventListener("DOMContentLoaded", () => {
 bindLocaleSwitcher(defaultLocale)
 ;
 
+// Compatibility with i18n JSON
+i18next.init({
+  compatibilityJSON: 'v3'
+});
+
 // Whenever the user selects a new locale, we
 // load the locale's translations and update
 // the page
 function bindLocaleSwitcher(firstValue) {
-    const switcher = document.querySelector("[data-i18n-switcher]");
+    const switcher = document.querySelector("[i18n-switcher]");
     switcher.value = firstValue;
     switcher.onchange = (e) => {
       // Set the locale to the selected option[value]
@@ -54,7 +59,7 @@ async function fetchTranslationsFor(newLocale) {
 // to its data-i18n-key
 function translatePage() {
   document
-    .querySelectorAll("[data-i18n-key]")
+    .querySelectorAll("[i18n]")
     .forEach(translateElement);
 }
 
@@ -62,7 +67,7 @@ function translatePage() {
 // with the translation in the active locale,
 // corresponding to the element's data-i18n-key
 function translateElement(element) {
-    const key = element.getAttribute("data-i18n-key");
+    const key = element.getAttribute("i18n");
     const translation = translations[key];
     element.innerText = translation;
   }

@@ -19,7 +19,7 @@
      "skills-description": "Meu nível técnico",
      "skill1": "Desenvolvimento Web",
      "skill1-time": "6 Meses",
-     "skill2": "Design",
+     "skill2": "Disenho",
      "skill2-time": "2 anos",
      "qualification": "Qualificação",
      "qualification-sub": "Minha jornada pessoal",
@@ -36,5 +36,18 @@
      "q-work-5": "Pesquisador Social",
      "q-work-6": "Instituto de Estudos Interculturais",
      "q-work-7": "Desenvolvedor Estagiário",
-     "q-work-8": "Wiboo Company"
+     "q-work-8": "Wiboo Company",
+     "html":"Competência profissional básica",
+     "css": "Competência profissional básica",
+     "JavaScript": "Competência básica",
+     "TypeScript": "Competência profissional básica",
+     "angular": "Competência profissional básica",
+     "illustrator": "Competência profissional intermediária",
+     "photoshop": "Competência profissional intermediária",
+     "premiere": "Competência profissional intermediária",
+     "figma": "Competência profissional intermediária",
+     "sparkAR": "Competência profissional intermediária",
+     "palavra": "Competência Profissional Avançada",
+     "excel": "Proficiência intermediária profissional",
+     "power-point": "Competência profissional avançada"
 }

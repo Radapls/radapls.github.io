@@ -36,5 +36,19 @@
     "q-work-5": "Investigador Social",
     "q-work-6": "Instituto de Estudios Interculturales",
     "q-work-7": "Desarrollador en prácticas",
-    "q-work-8": "Wiboo Company"
+    "q-work-8": "Wiboo Company",
+    "html": "Competencia básica profesional",
+    "css": "Competencia básica profesional",
+    "JavaScript": "Competencia básica",
+    "TypeScript": "Competencia básica profesional",
+    "angular": "Competencia básica profesional",
+    "illustrator": "Competencia intermedia profesional",
+    "photoshop": "Competencia intermedia profesional",
+    "premiere": "Competencia intermedia profesional",
+    "figma": "Competencia intermedia profesional",
+    "sparkAR": "Competencia intermedia profesional",
+    "word": "Competencia profesional avanzada",
+    "excel": "Competencia intermedia profesional",
+    "power-point": "Competencia profesional avanzada"
 }
+

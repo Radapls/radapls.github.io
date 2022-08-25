@@ -36,5 +36,18 @@
     "q-work-5": "Junior Social Reasercher",
     "q-work-6": "Institute of Intercultural Studies",
     "q-work-7": "Trainee Developer",
-    "q-work-8": "Wiboo Company"
+    "q-work-8": "Wiboo Company",
+    "html":"Basic professional competence",
+    "css": "Basic professional competence",
+    "JavaScript": "Basic competence",
+    "TypeScript": "Basic professional competence",
+    "angular": "Basic professional competence",
+    "illustrator": "intermediate proficiency",
+    "photoshop": "intermediate proficiency",
+    "premiere": "intermediate proficiency",
+    "figma": "intermediate proficiency",
+    "sparkAR": "intermediate proficiency",
+    "word": "Advanced Professional Competence",
+    "excel": "Professional intermediate proficiency",
+    "power-point": "Advanced professional competence"
 }
