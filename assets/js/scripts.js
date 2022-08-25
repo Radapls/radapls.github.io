@@ -5,7 +5,7 @@ const defaultLocale = "en";
 let locale;
 
 // Gets filled with active locale translations
-let translations = []
+let translations = {}
 
 // When the page content is ready...
 document.addEventListener("DOMContentLoaded", () => {
