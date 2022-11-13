@@ -18,7 +18,7 @@
     "about-cv": "Download CV",
     "skills-description": "My tecnical level",
     "skill1": "Web Development",
-    "skill1-time": "6 Months",
+    "skill1-time": "1 year",
     "skill2": "Design",
     "skill2-time": "2 years",
     "qualification": "Qualification",
@@ -49,5 +49,18 @@
     "sparkAR": "intermediate proficiency",
     "word": "Advanced Professional Competence",
     "excel": "Professional intermediate proficiency",
-    "power-point": "Advanced professional competence"
+    "power-point": "Advanced professional competence",
+    "see-more":"See more",
+     "hobbies-title": "Project Library",
+     "hobbies-subtitle": "Some things I've done",
+     "h1-title": "Pottery",
+     "h2-title": "Sewing",
+     "portfolio-title": "Portfolio",
+     "portfolio-subtitle": "Some recent works",
+     "p1-title": "Instagram Filters",
+     "p1-subtitle": "Augmented reality effects for Meta platforms (Instagram and Facebook)",
+     "p2-title": "Pokedex",
+     "p2-subtitle": "Pokedex project created with Angular 12 and PokeApi",
+     "p3-title": "Encyclopedia of Countries",
+     "p3-subtitle": "Project of the countries of the world as a Wiki created with Angular 14 and CountryRestApi"
 }

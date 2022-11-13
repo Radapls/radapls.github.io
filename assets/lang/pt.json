@@ -18,7 +18,7 @@
      "about-cv": "Baixar CV",
      "skills-description": "Meu nível técnico",
      "skill1": "Desenvolvimento Web",
-     "skill1-time": "6 Meses",
+     "skill1-time": "1 ano",
      "skill2": "Disenho",
      "skill2-time": "2 anos",
      "qualification": "Qualificação",
@@ -49,5 +49,18 @@
      "sparkAR": "Competência profissional intermediária",
      "palavra": "Competência Profissional Avançada",
      "excel": "Proficiência intermediária profissional",
-     "power-point": "Competência profissional avançada"
+     "power-point": "Competência profissional avançada",
+     "ver-mais":"Ver mais",
+     "hobbies-title": "Biblioteca de Projetos",
+     "hobbies-subtitle": "Algumas coisas que eu já fiz",
+     "h1-title": "Cerâmica",
+     "h2-title": "Costura",
+     "portfolio-title": "Portfólio",
+     "portfolio-subtitle": "Alguns trabalhos recentes",
+     "p1-title": "Filtros do Instagram",
+     "p1-subtitle": "Efeitos de realidade aumentada para plataformas Meta (Instagram e Facebook)",
+     "p2-title": "Pokédex",
+     "p2-subtitle": "Projeto Pokedex criado com Angular 12 e PokeApi",
+     "p3-title": "Enciclopédia de Países",
+     "p3-subtitle": "Projeto dos países do mundo como um Wiki criado com Angular 14 e CountryRestApi"
 }
