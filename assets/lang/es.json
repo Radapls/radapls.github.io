@@ -62,6 +62,7 @@
     "p2-title": "Pokedex",
     "p2-subtitle": "Proyecto Pokedex creado con Angular 12 y PokeApi",
     "p3-title": "Enciclopedia de Paises",
-    "p3-subtitle": "Proyecto de los paises del mundo a modo de Wiki creado con Angular 14 y CountryRestApi"
+    "p3-subtitle": "Proyecto de los paises del mundo a modo de Wiki creado con Angular 14 y CountryRestApi",
+    "p4-title": "Truek App",
+    "p4-subtitle": "Radar para encontrar desarrolladores y compartir experiencias, creado con React, React Native, NodeJs y Expo"
 }
-

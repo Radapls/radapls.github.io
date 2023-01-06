@@ -83,7 +83,7 @@ body.dark-theme{
 
 /*========== Button Dark/Light ==========*/
 .nav__btns{
-   display: flex; 
+   display: flex;
    align-items: center;
 }
 .change-theme{
@@ -104,14 +104,14 @@ body.dark-theme{
 
 html{
     scroll-behavior: smooth;
-    
+
 }
 body {
     margin: 0 0 var(--header-height) 0;
     font-family: var(--body-font);
     font-size: var(--normal-font-size);
     background-color: var(--body-color);
-    color:var(--text-color); 
+    color:var(--text-color);
 }
 
 h1,h2,h3,h4{
@@ -171,7 +171,7 @@ button{
 /*==================== NAV ====================*/
 .nav{
     max-width: 968;
-    height: var(--header-height);
+    height: 5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -345,8 +345,8 @@ button{
     padding: 1rem;
     border-radius: .5rem;
     font-weight: var(--font-medium);
-    
-    
+
+
 }
 .button:hover{
     background-color: var(--first-color-alt);
@@ -456,8 +456,8 @@ button{
     color: var(--text-color-light);
 }
 .skills__arrow{
-  margin-left: auto; 
-  transition: .4s; 
+  margin-left: auto;
+  transition: .4s;
 }
 .skills__list{
     row-gap: 1.5rem;
@@ -476,7 +476,7 @@ button{
 .skills__number
 {
     font-size: var(--small-font-size);
-    font-weight: var(--font-medium);  
+    font-weight: var(--font-medium);
 }
 
 .skills__bar,
@@ -485,7 +485,7 @@ button{
     overflow: hidden;
 }
 .skills__open .skills__list{
-   height: max-content; 
+   height: max-content;
    margin-bottom: var(--mb-2-5);
 }
 .skills__open .skills__arrow{
@@ -526,8 +526,8 @@ button{
     color: var(--first-color);
 }
 .blog__arrow{
-  margin-left: auto; 
-  transition: .4s; 
+  margin-left: auto;
+  transition: .4s;
 }
 .blog__list{
     row-gap: 1.5rem;
@@ -630,7 +630,7 @@ button{
 .services__title{
   font-size: var(--h3-font-size);
   margin-bottom: var(--mb-1);
-  font-weight: var(--font-medium);  
+  font-weight: var(--font-medium);
 }
 .services__button{
     cursor: pointer;
@@ -651,7 +651,7 @@ button{
     justify-content: center;
     padding: 0 1rem;
     z-index: var(--z-modal);
-     opacity: 0; 
+     opacity: 0;
     visibility: hidden;
     transition: .3s;
 }
@@ -687,12 +687,12 @@ button{
 /* Active Modal */
 .active-modal{
   opacity: 1;
-  visibility: visible;  
+  visibility: visible;
 }
 
 /*==================== PORTFOLIO ====================*/
 .portafolio__container{
-    overflow: initial;   
+    overflow: initial;
 }
 .portafolio__img{
     width: 265px;
@@ -1022,7 +1022,7 @@ button{
     .header,
     .main,
     .footer__container{
-      padding: 0 1rem;  
+      padding: 0 1rem;
     }
     .nav{
         height:  calc(var(--header-height) + 1.5rem);
@@ -1038,7 +1038,7 @@ button{
         column-gap: 2rem;
     }
     .nav__menu{
-        margin-left: auto;
+        margin-left: 0;
     }
     .change-theme{
         margin: 0;
@@ -1121,7 +1121,7 @@ button{
         grid-template-columns: repeat(3,1fr);
     }
     .footer__bg{
-       padding: 3rem 0 3.5rem; 
+       padding: 3rem 0 3.5rem;
     }
     .footer__links{
         flex-direction: row;
@@ -1159,7 +1159,7 @@ button{
         font-size: 3.5rem;
     }
     .swiper-button-prev{
-      left: -3.5rem;  
+      left: -3.5rem;
     }
     .swiper-button-next{
         right: -3.5rem;
@@ -1173,5 +1173,5 @@ button{
     .contact__inputs{
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
 }
