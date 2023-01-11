@@ -64,5 +64,22 @@
     "p3-title": "Enciclopedia de Paises",
     "p3-subtitle": "Proyecto de los paises del mundo a modo de Wiki creado con Angular 14 y CountryRestApi",
     "p4-title": "Truek App",
-    "p4-subtitle": "Radar para encontrar desarrolladores y compartir experiencias, creado con React, React Native, NodeJs y Expo"
+    "p4-subtitle": "Radar para encontrar desarrolladores y compartir experiencias, creado con React, React Native, NodeJs y Expo",
+    "np-title": "¿Tienes un proyecto en mente?",
+    "np-subtitle": "¡Contactame!",
+    "np-btn": "Contactame",
+    "c-title":"Datos de contacto",
+    "c-subtitle":"Hablemos",
+    "c-wa-title":"¡Escribeme!",
+    "c-wa-description":"(+55) 12 93618-0526",
+    "c-email-title":"Email",
+    "c-email-description":"radapls8@gmail.com",
+    "c-location-title":"Ubicación actual",
+    "c-location-description":"Brasil - SP - São José dos Campos",
+    "f-name": "Nombre",
+    "f-email": "Correo electronico",
+    "f-project": "Asunto",
+    "f-msg": "Mensaje",
+    "btn": "Enviar mensaje",
+    "copyright": "Radapls. Todos los derechos reservados"
 }
