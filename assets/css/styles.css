@@ -700,6 +700,12 @@ button{
     justify-self: center;
     object-fit: cover;
 }
+.portafolio__img2{
+    height: 265px;
+    border-radius: .5rem;
+    justify-self: center;
+    object-fit: fill;
+}
 .portafolio__title{
     font-size: var(--h3-font-size);
     margin-bottom:var(--mb-0-5);
