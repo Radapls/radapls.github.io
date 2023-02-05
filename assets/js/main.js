@@ -43,7 +43,7 @@ const skillsContent = document.getElementsByClassName('skills__content'),
         if (itemClass === 'skills__content skills__close'){
 
             this.parentNode.className = 'skills__content skills__open'
-            
+
         }
 
     }
@@ -64,7 +64,7 @@ for (i = 0 ; i < blogContent.length; i++){
 if (itemClass === 'blog__content blog__close'){
 
    this.parentNode.className = 'blog__content blog__open'
-   
+
 }
 
 }
@@ -109,7 +109,7 @@ const modalViews = document.querySelectorAll('.services__modal'),
             modal(i)
         })
     })
-    
+
     modalCloses.forEach((modalClose) => {
         modalClose.addEventListener('click', () =>{
             modalViews.forEach((modalView) =>{
@@ -118,19 +118,19 @@ const modalViews = document.querySelectorAll('.services__modal'),
         })
     })
 /*==================== PORTFOLIO SWIPER  ====================*/
-let swiperPortafolio = new Swiper('.portafolio__container', {
-    cssMode: true,
-    loop: true,
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    
-    });
+// let swiperPortafolio = new Swiper('.portafolio__container', {
+//     cssMode: true,
+//     loop: true,
+//     navigation: {
+//       nextEl: '.swiper-button-next',
+//       prevEl: '.swiper-button-prev',
+//     },
+//     pagination: {
+//       el: '.swiper-pagination',
+//       clickable: true,
+//     },
+
+//     });
 
 /*==================== TESTIMONIAL ====================*/
 let swiperTestimonial = new Swiper('.testimonial__container', {
@@ -143,7 +143,7 @@ let swiperTestimonial = new Swiper('.testimonial__container', {
       clickable: true,
       dynamicBullets: true,
     },
-    
+
     breackpoints:{
         568:{
             slidesPerView: 2,
@@ -172,7 +172,7 @@ let swiperTestimonial = new Swiper('.testimonial__container', {
 // }
 // window.addEventListener('scroll', scrollActive)
 
-/*==================== CHANGE BACKGROUND HEADER ====================*/ 
+/*==================== CHANGE BACKGROUND HEADER ====================*/
 function scrollHeader(){
     const nav = document.getElementById('header')
     // When the scroll is greater than 200 viewport height, add the scroll-header class to the header tag
@@ -180,7 +180,7 @@ function scrollHeader(){
 }
 window.addEventListener('scroll', scrollHeader)
 
-/*==================== SHOW SCROLL UP ====================*/ 
+/*==================== SHOW SCROLL UP ====================*/
 function scrollUp(){
     const scrollUp = document.getElementById('scroll-up');
     // When the scroll is higher than 560 viewport height, add the show-scroll class to the a tag with the scroll-top class
@@ -188,7 +188,7 @@ function scrollUp(){
 }
 window.addEventListener('scroll', scrollUp)
 
-/*==================== DARK LIGHT THEME ====================*/ 
+/*==================== DARK LIGHT THEME ====================*/
 const themeButton = document.getElementById('theme-button')
 const darkTheme = 'dark-theme'
 const iconTheme = 'uil-sun'

@@ -694,54 +694,21 @@ button{
 .portafolio__container{
     overflow: initial;
 }
-.portafolio__img{
-    width: 265px;
-    border-radius: .5rem;
-    justify-self: center;
-    object-fit: cover;
-}
-.portafolio__img2{
-    height: 265px;
-    border-radius: .5rem;
-    justify-self: center;
-    object-fit: fill;
-}
 .portafolio__title{
     font-size: var(--h3-font-size);
     margin-bottom:var(--mb-0-5);
+    color: var(--body-color);
+    font-size: var(--h3-font-size);
+    text-shadow: 2px 2px 20px rgb(0,0,0,0.5);
+    line-height: 1.4;
 }
 .portafolio__description{
     margin-bottom: var(--mb-0-75);
-}
-.portafolio__button:hover .button__icon{
-    transform: translateX(.25rem);
+    color: var(--body-color);
+    font-size: var(--normal-font-size);
+    margin-bottom: 8px;
 }
 
-.swiper-button-prev::after,
-.swiper-button-next::after{
-    content: '';
-}
-.swiper-portafolio-icon{
-    font-size: 2rem;
-    color: var(--first-color);
-}
-.swiper-button-prev{
-    left: -.5rem;
-}
-.swiper-button-next{
-    right: -.5rem;
-}
-.swiper-container-horizontal > .swiper-pagination-bullets{
-    bottom: -2.5rem;
-}
-.swiper-pagination-bullet-active{
-    background-color: var(--first-color);
-}
-.swiper-button-prev,
-.swiper-button-next,
-.swiper-pagination-bullet{
-    outline: none;
-}
 /*==================== PROJECT IN MIND ====================*/
 .project{
     text-align: center;
@@ -981,6 +948,9 @@ button{
     .testimonial__description{
         text-align: center;
     }
+    .card-grid{
+        grid-template-columns: repeat(1, 1fr);
+      }
 }
 /* For medium devices */
 @media screen and (min-width: 568px){
@@ -1005,6 +975,9 @@ button{
         grid-template-columns: .6fr;
         justify-content: center;
     }
+    .card-grid{
+        grid-template-columns: repeat(2, 1fr);
+      }
 }
 
 @media screen and (min-width: 768px){
@@ -1140,6 +1113,9 @@ button{
         margin-top: 4.5rem;
         color: #FFF;
     }
+    .card-grid{
+        grid-template-columns: repeat(2, 1fr);
+      }
 }
 
 /* For large devices */
@@ -1179,20 +1155,19 @@ button{
     .contact__inputs{
         grid-template-columns: repeat(2, 1fr);
     }
+    .card-grid{
+        grid-template-columns: repeat(3, 1fr);
+      }
 
 }
 
+
 .card {
-    --border-radius: 0.75rem;
-    --primary-color: #7257fa;
-    --secondary-color: #3c3852;
-    --body-font:'Poppins', sans-serif;
     width: 300px;
     height: 300px;
     padding: 1rem;
     cursor: pointer;
-    border-radius: var(--border-radius);
-    background: #f1f1f3;
+    border-radius: .5rem;;
     box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 3%);
     position: relative;
   }
@@ -1217,24 +1192,6 @@ button{
     font-size: 0.8rem;
   }
 
-  .card .card__arrow {
-    position: absolute;
-    background: var(--primary-color);
-    padding: 0.4rem;
-    border-top-left-radius: var(--border-radius);
-    border-bottom-right-radius: var(--border-radius);
-    bottom: 0;
-    right: 0;
-    transition: 0.2s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .card svg {
-    transition: 0.2s;
-  }
-
   /* hover */
   .card:hover .card__title {
     color: var(--primary-color);
@@ -1249,35 +1206,15 @@ button{
     transform: translateX(3px);
   }
 
-  .hero-section{
-    align-items: center;
-    display: flex;
-    min-height: 100%;
-    justify-content: center;
-    padding: 64px 24px;
-  }
 
   .card-grid{
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
     grid-column-gap: 24px;
     grid-row-gap: 24px;
     max-width: 1200px;
     width: 100%;
     justify-content: center;
     justify-items: center;
-  }
-
-  @media(min-width: 540px){
-    .card-grid{
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media(min-width: 960px){
-    .card-grid{
-      grid-template-columns: repeat(3, 1fr);
-    }
   }
 
   .card{
@@ -1323,18 +1260,4 @@ button{
     padding: 24px;
     position: absolute;
     top: 0;
-  }
-
-  .card__category{
-    color: var(--body-color);
-    font-size: 0.9rem;
-    margin-bottom: 8px;
-  }
-
-  .card__heading{
-    color: var(--body-color);
-    font-size: 1.9rem;
-    text-shadow: 2px 2px 20px rgba(0,0,0,0.2);
-    line-height: 1.4;
-    word-spacing: 100vw;
   }
