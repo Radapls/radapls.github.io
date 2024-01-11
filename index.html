@@ -30,7 +30,7 @@
     <!--==================== HEADER ====================-->
     <header class="header" id="header">
         <nav class="nav container">
-            <a href="#" class="nav__logo"> <img class="MarcaHead" src="/assets/img/JFR.png"
+            <a href="#" class="nav__logo"> <img class="MarcaHead" src="/assets/img/JFR.png" draggable="false"
                     alt="Logo Juan Felipe Rada"></a>
 
             <div class="nav__menu" id="nav-menu">
@@ -145,7 +145,7 @@
             <span class="section__subtitle" i18n="about_me.subtitle"></span>
 
             <div class="about__container container grid">
-                <img src="assets/img/juan.jpg" alt="" class="about__img">
+                <img src="assets/img/juan.jpg" alt="" class="about__img" draggable="false">
                 <div class="about__data">
                     <p class="about__description" i18n="about_me.description">
                     <div class="about__info">
@@ -521,7 +521,7 @@
                             <i class="uil uil-times services__modal-close"></i>
 
                             <ul class="services__modal-services grid">
-                                <img src="/assets/img/pottery.webp" alt="Pottery">
+                                <img src="/assets/img/pottery.webp" alt="Pottery" draggable="false">
                             </ul>
                         </div>
                     </div>
@@ -542,7 +542,7 @@
                             <i class="uil uil-times services__modal-close"></i>
 
                             <ul class="services__modal-services grid">
-                                <img src="/assets/img/Sewing.webp" alt="sewing">
+                                <img src="/assets/img/Sewing.webp" alt="sewing" draggable="false">
 
                             </ul>
                         </div>
@@ -639,7 +639,7 @@
                         <a href="https://wa.me/message/LSVUN45EBMK5B1" class="button button--flex button--white"
                             i18n="np-btn"></a>
                     </div>
-                    <img src="assets/img/new-project.png" alt="project" class="project__img">
+                    <img src="assets/img/new-project.png" alt="project" class="project__img" draggable="false">
                 </div>
             </div>
 
@@ -658,27 +658,21 @@
                     <div class="contact__information">
                         <i class="uil uil-whatsapp contact__icon"></i>
 
-                        <div>
-                            <h3 class="contact__title" i18n="c-wa-title"></h3>
-                            <span class="contact__subtitle"> <a href="https://wa.me/message/LSVUN45EBMK5B1"
-                                    i18n="c-wa-description"></a></span>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <a href="https://wa.me/message/LSVUN45EBMK5B1">
+                                <h3 class="contact__title" i18n="c-wa-title"></h3>
+                            </a>
                         </div>
                     </div>
 
                     <div class="contact__information">
-                        <i class="uil uil-envelope contact__icon "></i>
+                        <i class="uil uil-envelope contact__icon"></i>
 
                         <div>
                             <h3 class="contact__title" i18n="c-email-title"></h3>
-                            <span class="contact__subtitle" i18n="c-email-description"></span>
-                        </div>
-                    </div>
-
-                    <div class="contact__information">
-                        <i class="uil uil-map-marker contact__icon"></i>
-                        <div>
-                            <h3 class="contact__title" i18n="c-location-title"></h3>
-                            <span class="contact__subtitle" i18n="c-location-description"></span>
+                            <a href="mailto:radapls8@gmail.com?Subject=Trabajemos%20juntos">
+                                <span class="contact__subtitle" i18n="c-email-description"></span>
+                            </a>
                         </div>
                     </div>
 
@@ -726,7 +720,7 @@
         <div class="footer__container container grid">
             <div>
                 <h3 class="footer__title">
-                    <img class="MarcaFoot" src="/assets/img/JFR.png" alt="Logo Juan Felipe Rada">
+                    <img class="MarcaFoot" src="/assets/img/JFR.png" alt="Logo Juan Felipe Rada" draggable="false">
                     Juan Felipe Rada
                 </h3>
                 <span class="footer__subtitle"></span>
