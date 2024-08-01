@@ -1,17 +1,26 @@
 {
-  "extends": "astro/tsconfigs/strict",
-  "compilerOptions": {
-    "plugins": [
-      {
-        "name": "@astrojs/ts-plugin"
-      },
-    ],
-    "baseUrl": ".",
-    "paths": {
-        "@components/*": ["src/components/*"],
-        "@sections/*": ["src/sections/*"],
-        "@layouts/*": ["src/layouts/*"],
-        "@data/*": ["src/data/*"],
-      }
-  }
+    "extends": "astro/tsconfigs/strict",
+    "compilerOptions": {
+        "strictPropertyInitialization": false,
+        "plugins": [
+            {
+                "name": "@astrojs/ts-plugin"
+            },
+        ],
+        "baseUrl": ".",
+        "paths": {
+            "@components/*": [
+                "src/components/*"
+            ],
+            "@sections/*": [
+                "src/sections/*"
+            ],
+            "@layouts/*": [
+                "src/layouts/*"
+            ],
+            "@data/*": [
+                "src/data/*"
+            ],
+        }
+    }
 }
