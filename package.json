@@ -5,7 +5,8 @@
     "scripts": {
         "start": "astro dev",
         "preview": "astro check && astro build && astro preview",
-        "astro": "astro"
+        "astro": "astro",
+        "clean": "-rf dist"
     },
     "dependencies": {
         "@astrojs/check": "^0.9.1",

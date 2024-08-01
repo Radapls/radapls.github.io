@@ -37,7 +37,7 @@ async function setLocale(newLocale) {
 
 // Fetches translations JSON object for the given locale
 async function fetchTranslationsFor(newLocale) {
-  const response = await fetch(`./src/lang/${newLocale}.json`);
+  const response = await fetch(`/lang/${newLocale}.json`);
   if (!response.ok) {
     console.error(`Could not load translations for locale: ${newLocale}`);
     return {};

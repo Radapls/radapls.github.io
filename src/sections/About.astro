@@ -1,5 +1,6 @@
 ---
-
+import ProfilePic from "@assets/img/juan.webp";
+import CurriculumVitae from "@assets/documents/CV_Juan_Felipe_Rada.pdf";
 ---
 
 <!--==================== ABOUT ====================-->
@@ -9,7 +10,7 @@
 
     <div class="about__container container grid">
         <img
-            src="./src/assets/img/juan.webp"
+            src={ProfilePic.src}
             alt="Profile pic"
             class="about__img"
             draggable="false"
@@ -35,8 +36,9 @@
                 </div>
                 <div class="about__buttons">
                     <a
+                        rel="nofollow"
                         type="file"
-                        href="./src/assets/documents/CV_Juan_Felipe_Rada.pdf"
+                        href={CurriculumVitae}
                         class="button button--flex"
                     >
                         <p i18n="about-cv"></p>

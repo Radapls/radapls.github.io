@@ -1,4 +1,6 @@
 ---
+import Logo from "@assets/img/JFR.webp";
+
 interface Props {
     variant?: "radapls" | "wibx";
 }
@@ -12,7 +14,7 @@ const { variant } = Astro.props;
             <div class="footer__container">
                 <div class="footer__brand-container">
                     <img
-                        src="./src/assets/img/JFR.webp"
+                        src={Logo.src}
                         alt="Logo Juan Felipe Rada"
                         draggable="false"
                         class="footer_radapls-brand"
@@ -25,7 +27,7 @@ const { variant } = Astro.props;
         <footer class="footer__bg">
             <div class="footer__container">
                 <img
-                    src="./src/assets/img/JFR.webp"
+                    src={Logo.src}
                     alt="Logo Juan Felipe Rada"
                     draggable="false"
                     class="footer_radapls-brand"

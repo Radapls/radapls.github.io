@@ -1,4 +1,5 @@
 ---
+import Logo from '@assets/img/JFR.webp';
 interface Props {
     variant?: "radapls" | "wibx";
 }
@@ -13,7 +14,7 @@ const { variant } = Astro.props;
                 <a href="#" class="nav__logo">
                     <img
                         class="MarcaHead"
-                        src="./src/assets/img/JFR.webp"
+                        src={Logo.src}
                         draggable="false"
                         alt="Logo Juan Felipe Rada"
                     />

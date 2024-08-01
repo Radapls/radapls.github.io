@@ -3,6 +3,8 @@ import Footer from "@components/Footer.astro";
 import Header from "@components/Header.astro";
 import { siteConfig } from "@data/siteConfig";
 
+
+import Logo from "@assets/img/JFR.webp";
 interface Props {
     title: string;
     variant?: "radapls" | "wibx";
@@ -28,7 +30,7 @@ const {
         <meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
-        <link rel="icon" href="./src/assets/img/JFR.webp" type="image/x-icon" />
+        <link rel="icon" href={Logo.src} type="image/x-icon" />
         <!--==================== UNICONS ====================-->
         <link
             rel="stylesheet"
@@ -1272,7 +1274,7 @@ const {
     </body>
 
     <!--==================== MAIN JS ====================-->
-    <script src="../scripts/main.js"></script>
+    <script  src="../scripts/main.js"></script>
     <!--==================== i18n JS ====================-->
-    <script src="../scripts/i18n.js"></script>
+    <script  src="../scripts/i18n.js"></script>
 </html>
