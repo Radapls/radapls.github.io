@@ -1,0 +1,174 @@
+---
+interface Props {
+    variant?: "radapls" | "wibx";
+}
+
+const { variant } = Astro.props;
+---
+
+{
+    variant === "radapls" ? (
+        <header class="header" id="header">
+            <nav class="nav container">
+                <a href="#" class="nav__logo">
+                    <img
+                        class="MarcaHead"
+                        src="./src/assets/img/JFR.webp"
+                        draggable="false"
+                        alt="Logo Juan Felipe Rada"
+                    />
+                </a>
+
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list grid">
+                        <li class="nav__item">
+                            <a href="#About" class="nav__link">
+                                <i class="uil uil-user nav__icon" />
+                                <p i18n="about" />
+                            </a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#Skills" class="nav__link">
+                                <i class="uil uil-file-check-alt nav__icon" />
+                                <p i18n="skills" />
+                            </a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#Portafolio" class="nav__link">
+                                <i class="uil uil-scenery nav__icon" />
+                                <p i18n="portfolio" />
+                            </a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#Contact" class="nav__link">
+                                <i class="uil uil-message nav__icon" />
+                                <p i18n="head_contact" />
+                            </a>
+                        </li>
+                    </ul>
+                    <i class="uil uil-times nav__close" id="nav-close" />
+                </div>
+                <div class="nav__btns">
+                    <i class="uil uil-moon change-theme" id="theme-button" />
+
+                    <div class="nav__toggle" id="nav-toggle">
+                        <i class="uil uil-apps" />
+                    </div>
+                </div>
+
+                <select
+                    id="lang"
+                    i18n-switcher
+                    class="locale-switcher"
+                    aria-label="lang"
+                >
+                    <option value="en">🇺🇸 English</option>
+                    <option value="es">🇨🇴 Español</option>
+                    <option value="pt">🇧🇷 Português</option>
+                </select>
+            </nav>
+        </header>
+    ) : (
+        <header class="header wibx-bg-color" id="header">
+            <nav class="nav container">
+                <div class="wibx">
+                    <a href="https://wibx.io/" class="nav__logo">
+                        <img
+                            src="https://assets.coingecko.com/coins/images/11009/large/wibx_new_logo.png"
+                            draggable="false"
+                            alt="Wibx Company"
+                            style="width: 35px;"
+                        />
+                    </a>
+                    X
+                    <a href="/">
+                        <img
+                            src="./src/assets/img/JFR.webp"
+                            draggable="false"
+                            alt="Logo Juan Felipe Rada"
+                        />
+                    </a>
+                </div>
+                {/* <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list grid">
+                        <li class="nav__item">
+                            <a href="#Home" class="nav__link active-link">
+                                <i class="uil uil-estate nav__icon" />
+                                <p i18n="home" />
+                            </a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#About" class="nav__link">
+                                <i class="uil uil-user nav__icon" />
+                                <p i18n="about" />
+                            </a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#Skills" class="nav__link">
+                                <i class="uil uil-file-check-alt nav__icon" />
+                                <p i18n="skills" />
+                            </a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#Portafolio" class="nav__link">
+                                <i class="uil uil-scenery nav__icon" />
+                                <p i18n="portfolio" />
+                            </a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#Contact" class="nav__link">
+                                <i class="uil uil-message nav__icon" />
+                                <p i18n="head_contact" />
+                            </a>
+                        </li>
+                    </ul>
+                    <i class="uil uil-times nav__close" id="nav-close" />
+                </div> */}
+                <select
+                    id="lang"
+                    i18n-switcher
+                    class="locale-switcher"
+                    aria-label="lang"
+                >
+                    <option value="en">🇺🇸 English</option>
+                    <option value="es">🇨🇴 Español</option>
+                    <option value="pt">🇧🇷 Português</option>
+                </select>
+            </nav>
+        </header>
+    )
+}
+
+<style>
+    /*==================== NAV ====================*/
+
+    .locale-switcher {
+        font-family: "Poppins";
+        border-radius: 4px; /* Bordes redondeados */
+        font-size: var(--small-font-size);
+        font-weight: var(--font-medium);
+        height: 30px;
+        padding: 0 15px;
+        border: none; /* Quitar bordes por defecto */
+    }
+
+    /* show menu */
+    .show-menu {
+        bottom: 0;
+    }
+
+    /* Active link */
+    .active-link {
+        color: var(--first-color);
+    }
+
+    .wibx {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .wibx-bg-color {
+        background-color: #60258c;
+    }
+</style>
