@@ -1,0 +1,46 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Slider from "@components/Slider.astro";
+import TechList from "@components/TechList.astro";
+import { wibxPhotos } from "@data/slider";
+---
+
+<Layout title="JFRA / Wibx" variant="wibx" withFooter={false}>
+    <section class="section" id="wibx">
+        <h2 class="section__title" i18n="wibx.title"></h2>
+        <div class="wibx__container container grid">
+            <p class="wibx__content" i18n="wibx.content1"></p>
+            <p class="wibx__content" i18n="wibx.content2"></p>
+            <p class="wibx__content" i18n="wibx.content3"></p>
+            <p class="wibx__content" i18n="wibx.content4"></p>
+
+            <h3 i18n="wibx.subtitle"></h3>
+            <ul>
+                <li class="wibx__content" i18n="wibx.resp-1"></li>
+                <li class="wibx__content" i18n="wibx.resp-2"></li>
+                <li class="wibx__content" i18n="wibx.resp-3"></li>
+                <li class="wibx__content" i18n="wibx.resp-4"></li>
+                <li class="wibx__content" i18n="wibx.resp-5"></li>
+            </ul>
+
+            <h3 i18n="wibx.stack"></h3>
+            <TechList company="wibx" />
+            <Slider format="image" data={wibxPhotos} type="wibx" />
+        </div>
+    </section>
+</Layout>
+
+<style>
+    .wibx__container {
+        padding: 0.75rem 1rem 0.25rem;
+    }
+
+    p.wibx__content {
+        text-align: start;
+        text-wrap: pretty;
+    }
+
+    ul {
+        list-style-type: disc;
+    }
+</style>

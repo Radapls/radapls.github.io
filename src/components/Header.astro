@@ -1,5 +1,5 @@
 ---
-import Logo from '@assets/img/JFR.webp';
+import Logo from "@assets/img/JFR.webp";
 interface Props {
     variant?: "radapls" | "wibx";
 }
@@ -70,23 +70,40 @@ const { variant } = Astro.props;
             </nav>
         </header>
     ) : (
-        <header class="header wibx-bg-color" id="header">
+        <header class="header" id="header">
             <nav class="nav container">
                 <div class="wibx">
-                    <a href="https://wibx.io/" class="nav__logo">
-                        <img
-                            src="https://assets.coingecko.com/coins/images/11009/large/wibx_new_logo.png"
-                            draggable="false"
-                            alt="Wibx Company"
-                            style="width: 35px;"
-                        />
-                    </a>
-                    X
                     <a href="/">
                         <img
                             src="./src/assets/img/JFR.webp"
                             draggable="false"
                             alt="Logo Juan Felipe Rada"
+                            class="MarcaHead"
+                        />
+                    </a>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="48"
+                        viewBox="0 0 20 48"
+                    >
+                        <g>
+                            <path
+                                fill="none"
+                                stroke="rgb(172,185,200)"
+                                stroke-linecap="square"
+                                stroke-linejoin="miter"
+                                stroke-width="1"
+                                d="M10 2.35231505v50"
+                            />
+                        </g>
+                    </svg>
+                    <a href="https://wibx.io/" class="nav__logo">
+                        <img
+                            src="https://assets.coingecko.com/coins/images/11009/large/wibx_new_logo.png"
+                            draggable="false"
+                            alt="Wibx Company"
+                            style="width: 40px;"
                         />
                     </a>
                 </div>
@@ -166,10 +183,20 @@ const { variant } = Astro.props;
     .wibx {
         display: flex;
         align-items: center;
-        gap: 1rem;
+        gap: 0.25rem;
     }
 
-    .wibx-bg-color {
-        background-color: #60258c;
+    .wibx > a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .wibx > a > .MarcaHead {
+        padding: 0;
+    }
+
+    .wibx > svg {
+        height: 30px;
     }
 </style>

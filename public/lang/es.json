@@ -100,5 +100,19 @@
     "f-project": "Asunto",
     "f-msg": "Mensaje",
     "btn": "Enviar mensaje",
-    "copyright": "Radapls. Todos los derechos reservados"
+    "copyright": "Radapls. Todos los derechos reservados",
+    "wibx": {
+        "title": "Mi experiencia en Wiboo Company",
+        "content1": "Mi experiencia en Wibx fue un giro de ciento ochenta grados. Fue la primera empresa a la que llegué después de hacer mi transición de carrera. En Wibx, aprendí muchísimo, no solo sobre tecnología, sino también sobre relaciones, vivir en un nuevo país, aprender un nuevo idioma y, por supuesto, programar en esta década.",
+        "content2": "Wibx para mí fue un espacio de co-creación. Nunca hubo un 'no' para intentar algo nuevo. Desde filtros con Realidad Aumentada, pasando por el diseño de sistemas, hasta el backoffice administrativo, la refactorización de la aplicación y varias, por no decir muchas, landing pages.",
+        "content3": "Mi experiencia como desarrollador frontend se basó en entender el funcionamiento de Angular como framework y en optimizar su desarrollo para trabajar con TypeScript y SCSS como preprocesador de CSS. Fue un gran desafío, especialmente porque no estaba familiarizado con frameworks y tenía más experiencia con HTML, CSS y JavaScript. Este reto fue de gran escalabilidad, más aún cuando venía de un área completamente ajena.",
+        "content4": "Sin embargo, creo que la proximidad a conceptos tan complejos como el estado reactivo, la asincronía, la gestión del estado y el clean code para la arquitectura hicieron de ese camino una experiencia amena. Siempre estuve acompañado del trabajo en equipo, que considero crucial al inicio de la carrera como programador. Si bien la curiosidad inherente es grande, el poder tener un enfoque guiado por un grupo siempre será grato.",
+        "subtitle": "Entre mis principales responsabilidades estuvieron:",
+        "resp-1": "La creación de nuevas funcionalidades, así como el mantenimiento del código base para el backoffice (Business) y la aplicación (Wibx App).",
+        "resp-2": "Trabajo conjunto con el equipo de diseño para la entrega eficiente de nuevas funcionalidades al core del negocio.",
+        "resp-3": "Gestión de peticiones HTTPS con APIs RESTful para los diferentes módulos de integración.",
+        "resp-4": "Refactorización modular del negocio (WBSC).",
+        "resp-5": "Creación de landing pages en alineamiento con el equipo de marketing para el lanzamiento de estrategias y campañas.",
+        "stack": "Principales herramientas:"
+    }
 }

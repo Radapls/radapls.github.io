@@ -1,0 +1,64 @@
+---
+interface Props {
+    timeline: {
+        title: string;
+        description: string[];
+    }[];
+}
+
+const { timeline } = Astro.props;
+---
+
+<div class="timeline-container">
+    {
+        timeline.map((item) => (
+            <div class="timeline-item" id="timeline-item">
+                <div class="timeline-content">
+                    <span class="date">{item.title}</span>
+                    {item.description.map((parragrap) => (
+                        <p>{parragrap}</p>
+                    ))}
+                </div>
+            </div>
+        ))
+    }
+</div>
+
+<style>
+    .timeline-container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+        max-width: 1440px;
+    }
+
+    .timeline-item {
+        padding: 0.5rem;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition:
+            transform 0.3s,
+            box-shadow 0.3s; /* Added transition */
+        cursor: pointer; /* Add cursor to indicate clickable item */
+    }
+
+    .timeline-item:hover {
+        transform: translateY(-5px); /* Slight upward movement on hover */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+    }
+
+    .timeline-content {
+    }
+
+    .date {
+        font-weight: bold;
+        color: #44ff8f;
+    }
+
+    p {
+        margin: 0;
+    }
+</style>
