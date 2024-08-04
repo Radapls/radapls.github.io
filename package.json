@@ -7,7 +7,7 @@
         "build": "astro check && astro build",
         "preview": "astro check && astro build && astro preview",
         "astro": "astro",
-        "clean": "-rf dist"
+        "clean": "rimraf dist"
     },
     "dependencies": {
         "@astrojs/check": "^0.9.1",
@@ -22,5 +22,8 @@
     "author": {
         "name": "Juan Felipe Rada",
         "email": "radapls8@gmail.com"
+    },
+    "devDependencies": {
+        "rimraf": "^6.0.1"
     }
 }

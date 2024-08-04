@@ -75,10 +75,10 @@ const { variant } = Astro.props;
                 <div class="wibx">
                     <a href="/">
                         <img
-                            src="./src/assets/img/JFR.webp"
+                            class="MarcaHead"
+                            src={Logo.src}
                             draggable="false"
                             alt="Logo Juan Felipe Rada"
-                            class="MarcaHead"
                         />
                     </a>
                     <svg
@@ -107,41 +107,6 @@ const { variant } = Astro.props;
                         />
                     </a>
                 </div>
-                {/* <div class="nav__menu" id="nav-menu">
-                    <ul class="nav__list grid">
-                        <li class="nav__item">
-                            <a href="#Home" class="nav__link active-link">
-                                <i class="uil uil-estate nav__icon" />
-                                <p i18n="home" />
-                            </a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="#About" class="nav__link">
-                                <i class="uil uil-user nav__icon" />
-                                <p i18n="about" />
-                            </a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="#Skills" class="nav__link">
-                                <i class="uil uil-file-check-alt nav__icon" />
-                                <p i18n="skills" />
-                            </a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="#Portafolio" class="nav__link">
-                                <i class="uil uil-scenery nav__icon" />
-                                <p i18n="portfolio" />
-                            </a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="#Contact" class="nav__link">
-                                <i class="uil uil-message nav__icon" />
-                                <p i18n="head_contact" />
-                            </a>
-                        </li>
-                    </ul>
-                    <i class="uil uil-times nav__close" id="nav-close" />
-                </div> */}
                 <select
                     id="lang"
                     i18n-switcher

@@ -211,7 +211,7 @@ import Javeriana from "@assets/img/brands/javeriana.svg";
                         <span class="qualification__line"></span>
                     </div>
                 </div>
-                <!--==================== QUALIFICATION  ====================-->
+                <!--==================== NT  ====================-->
                 <div class="qualification__data">
                     <div></div>
                     <div>
@@ -240,7 +240,7 @@ import Javeriana from "@assets/img/brands/javeriana.svg";
                     </div>
                 </div>
 
-                <!--==================== QUALIFICATION 4 ====================-->
+                <!--==================== BirdiRx ====================-->
                 <div class="qualification__data">
                     <div>
                         <img
@@ -267,6 +267,34 @@ import Javeriana from "@assets/img/brands/javeriana.svg";
                         <span class="qualification__line"></span>
                     </div>
                 </div>
+
+                <!--==================== Next?  ====================-->
+                <div class="qualification__data">
+                    <div></div>
+                    <div>
+                        <span class="qualification__rounder"></span>
+                        <span class="qualification__line"></span>
+                    </div>
+                    <div>
+                        <img
+                            src="https://wwwspennarecom.cdn.triggerfish.cloud/uploads/2014/02/Your-Logo-Here-Black-2.jpg"
+                            draggable="false"
+                            alt="Your logo here"
+                            class="brand-icon"
+                        />
+                        <h3
+                            class="qualification__title"
+                            i18n="experience.work.q-work"
+                        >
+                        </h3>
+                        <a href="#Contact" i18n="contact" style="font-size: 90%;">
+                        </a>
+                        <div class="qualification__calendar">
+                            <i class="uil uil-calendar-alt"></i>
+                            Present - Future
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -278,4 +306,30 @@ import Javeriana from "@assets/img/brands/javeriana.svg";
         border-radius: 8px;
         box-shadow: 0px 0px 2px 0px gray;
     }
+
+    .blur {
+
+    }
 </style>
+
+<script is:inline>
+    /*==================== QUALIFICATION TABS ====================*/
+    const tabs = document.querySelectorAll("[data-target]"),
+        tabContents = document.querySelectorAll("[data-content]");
+
+    tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+            const target = document.querySelector(tab.dataset.target);
+
+            tabContents.forEach((tabContent) => {
+                tabContent.classList.remove("qualification__active");
+            });
+            target.classList.add("qualification__active");
+
+            tabs.forEach((tab) => {
+                tab.classList.remove("qualification__active");
+            });
+            tab.classList.add("qualification__active");
+        });
+    });
+</script>
