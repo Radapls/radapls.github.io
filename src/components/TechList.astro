@@ -26,12 +26,32 @@ const filteredTechStack = filterTechStack(company);
 ---
 
 <ul class="tech-list">
-    {filteredTechStack.map((tech) => <li>{tech.title}</li>)}
+    {
+        filteredTechStack.map((tech) => (
+            <li>
+                <Icon icon={tech.id as keyof typeof iconPaths} size="30" />
+                {tech.title}
+            </li>
+        ))
+    }
 </ul>
 
 <style>
+    .tech-list {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @media screen and (min-width: 568px) {
+        .tech-list {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
 
-    ul {
+    .tech-list > li {
         list-style-type: disc;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
     }
 </style>
