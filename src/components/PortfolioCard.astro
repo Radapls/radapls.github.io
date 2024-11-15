@@ -1,0 +1,191 @@
+---
+interface Props {
+    link: string;
+    bgImage: string;
+    title: string;
+    description: string;
+}
+
+const {
+    link,
+    bgImage,
+    title,
+    description,
+} =
+    Astro.props;
+---
+
+<a
+    class="card"
+    href=`${link}`
+>
+    <div
+        class="card__background"
+        style={{
+            backgroundImage: `url(${bgImage})`,
+        }}
+    >
+    </div>
+    <div
+        class="card__content"
+    >
+        <h3
+            class="portafolio__title"
+            i18n={title}
+        >
+        </h3>
+        <p
+            class="portafolio__description"
+            i18n={description}
+        >
+        </p>
+    </div>
+</a>
+
+<style
+>
+    .portafolio__container {
+        overflow: initial;
+    }
+    .portafolio__title {
+        opacity: 0;
+        transition: opacity
+            500ms
+            ease-in-out;
+        font-size: var(
+            --h3-font-size
+        );
+        margin-bottom: var(
+            --mb-0-5
+        );
+        color: var(
+            --body-color
+        );
+        font-size: var(
+            --h3-font-size
+        );
+        line-height: 1.4;
+    }
+    .portafolio__description {
+        opacity: 0;
+        transition: opacity
+            500ms
+            ease-in;
+        margin-bottom: var(
+            --mb-0-75
+        );
+        color: var(
+            --body-color
+        );
+        font-size: var(
+            --normal-font-size
+        );
+        margin-bottom: 8px;
+    }
+
+    .card {
+        width: 250px;
+        height: 250px;
+        padding: 1rem;
+        cursor: pointer;
+        border-radius: 0.25rem;
+        position: relative;
+    }
+
+    .card
+        > *
+        + * {
+        margin-top: 1.1em;
+    }
+    /* hover */
+    .card:hover
+        .portafolio__title {
+        opacity: 1;
+    }
+
+    .card:hover
+        .portafolio__description {
+        opacity: 1;
+    }
+
+    .card-grid {
+        display: grid;
+        grid-column-gap: 24px;
+        grid-row-gap: 24px;
+        max-width: 1200px;
+        width: 100%;
+        justify-content: center;
+        justify-items: center;
+    }
+
+    .card {
+        list-style: none;
+        position: relative;
+    }
+
+    .card:before {
+        content: '';
+        display: block;
+        padding-bottom: 150%;
+        width: 100%;
+    }
+
+    .card__background {
+        background-size: cover;
+        background-position: center;
+        border-radius: 0.25rem;
+        bottom: 0;
+        filter: brightness(
+                0.7
+            )
+            saturate(
+                1.2
+            )
+            contrast(
+                0.85
+            )
+            ;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transform-origin: center;
+
+        transition:
+            filter
+                200ms
+                linear,
+            transform
+                200ms
+                linear;
+    }
+
+    .card:hover
+        .card__background {
+        transform: scale(
+                1.05
+            )
+            translateZ(
+                0
+            );
+        filter: brightness(
+                0.75
+            )
+            saturate(
+                1.2
+            )
+            contrast(
+                0.5
+            )
+           ;
+    }
+
+
+
+    .card__content {
+        left: 0;
+        padding: 24px;
+        position: absolute;
+        top: 0;
+    }
+</style>

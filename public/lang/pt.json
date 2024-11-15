@@ -88,6 +88,12 @@
     "p8-subtitle": "CRM criado com Vite, React e Tailwindcss",
     "p9-title": "Miusiq Remix",
     "p9-subtitle": "Comércio eletrônico de instrumentos criados com Remix Run, React e CSS",
+    "projects": {
+        "space-invaders": {
+            "title": "Space Inviders",
+            "description": "Jogo com os commits de teu repositorio favorito."
+        }
+    },
     "np-title": "Você tem um projeto em mente?",
     "np-subtitle": "Fale comigo!",
     "np-btn": "Contato",
