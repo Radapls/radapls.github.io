@@ -2,14 +2,14 @@
 import {
     TechStack,
     companyStacks,
-    type CompanyStack,
     type Stack,
 } from "@data/techList";
 import Icon from "./Icon.astro";
 import type { iconPaths } from "@data/iconPaths";
+import type { BrandType } from 'src/types/variants';
 
 interface Props {
-    company: "wibx" | "nt" | "birdi";
+    company: BrandType;
 }
 
 const { company } = Astro.props as Props;
@@ -19,7 +19,7 @@ const filterTechStack = (company: string): Stack[] => {
     if (!stack) {
         throw new Error(`Company stack for ${company} not found`);
     }
-    return TechStack.filter((tech) => stack.includes(tech.id as CompanyStack));
+    return TechStack.filter((tech) => stack.includes(tech.id));
 };
 
 const filteredTechStack = filterTechStack(company);

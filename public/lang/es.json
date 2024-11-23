@@ -64,10 +64,12 @@
     "excel": "Competencia intermedia profesional",
     "power-point": "Competencia profesional avanzada",
     "see-more": "Ver más",
-    "hobbies-title": "Libreria de proyectos",
-    "hobbies-subtitle": "Algunas cosas que he hecho",
-    "h1-title": "Alfarerería",
-    "h2-title": "Costura",
+    "hobbies": {
+        "title": "Mis Pasatiempos",
+        "subitle": "¡Algunas cosas fuera del trabajo!",
+        "potery": "Cerámica",
+        "sewing": "Costura"
+    },
     "portfolio-title": "Portafolio",
     "portfolio-subtitle": "Algunos trabajos recientes",
     "p1-title": "Filtros de Instagram",

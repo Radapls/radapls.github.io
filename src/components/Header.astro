@@ -1,7 +1,11 @@
 ---
 import Logo from "@assets/img/JFR.webp";
+import type { BrandType } from "src/types/variants";
+
+import Birdi from "@assets/img/brands/birdi.png";
+
 interface Props {
-    variant?: "radapls" | "wibx";
+    variant?: BrandType;
 }
 
 const { variant } = Astro.props;
@@ -98,25 +102,45 @@ const { variant } = Astro.props;
                             />
                         </g>
                     </svg>
-                    <a href="https://wibx.io/" class="nav__logo">
-                        <img
-                            src="https://assets.coingecko.com/coins/images/11009/large/wibx_new_logo.png"
-                            draggable="false"
-                            alt="Wibx Company"
-                            style="width: 40px;"
-                        />
-                    </a>
+                    {variant === "wibx" ? (
+                        <a href="https://wibx.io/" class="nav__logo">
+                            <img
+                                src="https://assets.coingecko.com/coins/images/11009/large/wibx_new_logo.png"
+                                draggable="false"
+                                alt="Wibx Company"
+                                style="width: 40px;"
+                            />
+                        </a>
+                    ) : (
+                        <a href="https://www.birdirx.com/" class="nav__logo">
+                            <img
+                                src={Birdi.src}
+                                draggable="false"
+                                alt="BirdiRx"
+                                style="width: 40px;"
+                            />
+                        </a>
+                    )}
                 </div>
-                <select
-                    id="lang"
-                    i18n-switcher
-                    class="locale-switcher"
-                    aria-label="lang"
-                >
-                    <option value="en">🇺🇸 English</option>
-                    <option value="es">🇨🇴 Español</option>
-                    <option value="pt">🇧🇷 Português</option>
-                </select>
+                <div style="display: flex; align-items: center; justify-content: space-between; gap: 1rem">
+                    <div class="nav__btns">
+                        <i
+                            class="uil uil-moon change-theme"
+                            id="theme-button"
+                        />
+                    </div>
+
+                    <select
+                        id="lang"
+                        i18n-switcher
+                        class="locale-switcher"
+                        aria-label="lang"
+                    >
+                        <option value="en">🇺🇸 English</option>
+                        <option value="es">🇨🇴 Español</option>
+                        <option value="pt">🇧🇷 Português</option>
+                    </select>
+                </div>
             </nav>
         </header>
     )
