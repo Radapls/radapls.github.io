@@ -28,32 +28,6 @@ import WibxCoin from '@assets/gifs/wbx-token.gif';
                     class="wibx-coin"
                     draggable="false"
                 />
-                <audio
-                    id="audio"
-                    preload="metadata"
-                    src="audio/sound_wibx.mp3"
-                >
-                </audio>
-                <div
-                    class="tooltip-container"
-                >
-                    <span
-                        class="hand"
-                        >👈🏻
-                    </span>
-                    <span
-                        class="hand-2"
-                        >👆🏻
-                    </span>
-
-                    <span
-                        class="tooltip"
-                    >
-                        Click
-                        the
-                        coin!
-                    </span>
-                </div>
             </div>
             <h2
                 class="section__title"
@@ -158,7 +132,6 @@ import WibxCoin from '@assets/gifs/wbx-token.gif';
             width: 300px;
         }
 
-        /* Styles for larger screens */
         @media screen and (min-width: 1024px) {
             .wibx-coin-container
                 .tooltip-container {
@@ -173,7 +146,7 @@ import WibxCoin from '@assets/gifs/wbx-token.gif';
                 animation: point
                     3s
                     ease-in-out
-                    infinite; /* Enable animation */
+                    infinite;
             }
 
             .wibx-coin-container
@@ -257,27 +230,4 @@ import WibxCoin from '@assets/gifs/wbx-token.gif';
             }
         }
     </style>
-
-    <script
-        is:inline
-    >
-        var audio =
-            document.getElementById(
-                'audio',
-            );
-        var img =
-            document.getElementById(
-                'img',
-            );
-
-        function play() {
-            audio.play();
-        }
-
-        img.addEventListener(
-            'click',
-            play,
-        );
-
-    </script>
 </Layout>
