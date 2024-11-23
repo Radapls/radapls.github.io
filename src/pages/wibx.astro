@@ -3,11 +3,22 @@ import Layout from "@layouts/Layout.astro";
 import Slider from "@components/Slider.astro";
 import TechList from "@components/TechList.astro";
 import { wibxPhotos } from "@data/slider";
+import WibxCoin from "@assets/gifs/wbx-token.gif";
 ---
 
 <Layout title="JFRA / Wibx" variant="wibx" withFooter={false}>
     <section class="section" id="wibx">
         <div class="wibx__container container grid">
+            <div class="wibx-coin-container">
+                <img
+                    id="img"
+                    src={WibxCoin.src}
+                    alt="Wibx Coin"
+                    class="wibx-coin"
+                    draggable="false"
+                />
+                <audio id="audio" preload="auto" src="sound_wibx.mpeg"></audio>
+            </div>
             <h2 class="section__title" i18n="wibx.title"></h2>
             <p class="wibx__content" i18n="wibx.content1"></p>
             <p class="wibx__content" i18n="wibx.content2"></p>
@@ -28,19 +39,42 @@ import { wibxPhotos } from "@data/slider";
             <Slider format="image" data={wibxPhotos} type="wibx" />
         </div>
     </section>
+
+    <style>
+        .wibx__container {
+            padding: 0.75rem 1rem 0.25rem;
+        }
+
+        .wibx-coin-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .wibx-coin-container > img {
+            min-width: 100px;
+            width: 300px;
+        }
+
+        p.wibx__content {
+            text-align: start;
+            text-wrap: pretty;
+        }
+
+        ul {
+            list-style-type: disc;
+        }
+    </style>
+
+    <script is:inline>
+        var audio = document.getElementById("audio");
+        var img = document.getElementById("img");
+
+        function play() {
+            audio.play();
+        }
+
+        img.addEventListener("click", play);
+    </script>
 </Layout>
-
-<style>
-    .wibx__container {
-        padding: 0.75rem 1rem 0.25rem;
-    }
-
-    p.wibx__content {
-        text-align: start;
-        text-wrap: pretty;
-    }
-
-    ul {
-        list-style-type: disc;
-    }
-</style>

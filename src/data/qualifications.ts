@@ -1,7 +1,7 @@
 // Image imports
-import Alcaldia from "@assets/img/brands/alcaldia-cali.png";
-import IEI from "@assets/img/brands/iei.jpg";
-import MOE from "@assets/img/brands/moe.png";
+import Alcaldia from "@assets/img/brands/alcaldia-cali.webp";
+import IEI from "@assets/img/brands/iei.png";
+import MOE from "@assets/img/brands/moe.webp";
 import Wibx from "@assets/img/brands/wibx.webp";
 import NT from "@assets/img/brands/nt.png";
 import Birdi from "@assets/img/brands/birdi.png";

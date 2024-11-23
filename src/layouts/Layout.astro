@@ -4,9 +4,10 @@ import Header from "@components/Header.astro";
 import { siteConfig } from "@data/siteConfig";
 
 import Logo from "@assets/img/JFR.webp";
+import type { BrandType } from "src/types/variants";
 interface Props {
     title: string;
-    variant?: "radapls" | "wibx";
+    variant?: BrandType;
     description?: string;
     keywords?: string[];
     permalink?: string;
@@ -82,13 +83,14 @@ const {
                 --h1-font-size: 1.5rem;
                 --h2-font-size: 1.25rem;
                 --h3-font-size: 1.125rem;
-                --normal-font-size: 0.938rem;
-                --small-font-size: 0.813rem;
+                --normal-font-size: 1rem;
+                --small-font-size: 0.875rem;
                 --smaller-font-size: 0.75rem;
 
                 /*========== Font weight ==========*/
                 --font-medium: 500;
                 --font-semi-bold: 600;
+                --font-bold: 800;
 
                 /*========== Margenes Bottom ==========*/
                 /* .25rem = 4px, .5rem = 8px, .75rem = 12px ... */
@@ -127,7 +129,7 @@ const {
                 --title-color: hsl(var(--hue-color), 8%, 95%);
                 --text-color: hsl(var(--hue-color), 8%, 75%);
                 --input-color: hsl(var(--hue-color), 29%, 16%);
-                --body-color: hsl(var(--hue-color), 28%, 12%);
+                --body-color: hsl(var(--hue-color), 58%, 12%);
                 --container-color: hsl(var(--hue-color), 29%, 16%);
                 --scroll-bar-color: hsl(var(--hue-color), 12%, 48%);
                 --scroll-thumb-color: hsl(var(--hue-color), 12%, 36%);
@@ -745,7 +747,6 @@ const {
 
             /*==================== PORTFOLIO ====================*/
 
-
             /*==================== PROJECT IN MIND ====================*/
             .project {
                 text-align: center;
@@ -769,7 +770,7 @@ const {
                 width: 232px;
                 justify-self: center;
             }
-        
+
             /*==================== FOOTER ====================*/
             .footer {
                 padding-top: 2rem;
@@ -913,9 +914,6 @@ const {
                 .testimonial__description {
                     text-align: center;
                 }
-                .card-grid {
-                    grid-template-columns: repeat(1, 1fr);
-                }
             }
             /* For medium devices */
             @media screen and (min-width: 568px) {
@@ -938,11 +936,7 @@ const {
                 .wibx__container,
                 .qualification__sections {
                     display: grid;
-                    grid-template-columns: 0.6fr;
                     justify-content: center;
-                }
-                .card-grid {
-                    grid-template-columns: repeat(2, 1fr);
                 }
             }
 
@@ -1079,9 +1073,6 @@ const {
                     margin-top: 4.5rem;
                     color: #fff;
                 }
-                .card-grid {
-                    grid-template-columns: repeat(2, 1fr);
-                }
             }
 
             /* For large devices */
@@ -1109,11 +1100,7 @@ const {
                 .contact__inputs {
                     grid-template-columns: repeat(2, 1fr);
                 }
-                .card-grid {
-                    grid-template-columns: repeat(3, 1fr);
-                }
             }
-
 
             .scroll-lock {
                 overflow-y: hidden;
@@ -1125,9 +1112,8 @@ const {
             <i class="uil uil-arrow-up scrollup__icon"></i>
         </a>
     </body>
-
-    </html>
-    <!--==================== MAIN JS ====================-->
-    <script src="../scripts/main.js"></script>
-    <!--==================== i18n JS ====================-->
-    <script src="../scripts/i18n.js"></script>
+</html>
+<!--==================== MAIN JS ====================-->
+<script src="../scripts/main.js"></script>
+<!--==================== i18n JS ====================-->
+<script src="../scripts/i18n.js"></script>

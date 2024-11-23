@@ -64,30 +64,32 @@
     "excel": "Proficiência intermediária profissional",
     "power-point": "Competência profissional avançada",
     "see-more": "Ver mais",
-    "hobbies-title": "Biblioteca de Projetos",
-    "hobbies-subtitle": "Algumas coisas que eu já fiz",
-    "h1-title": "Cerâmica",
-    "h2-title": "Costura",
+    "hobbies": {
+        "title": "Meus Hobbies",
+        "subitle": "Algumas coisas fora do trabalho!",
+        "potery": "Cerâmica",
+        "sewing": "Costura"
+    },
     "portfolio-title": "Portfólio",
     "portfolio-subtitle": "Alguns trabalhos recentes",
-    "p1-title": "Filtros do Instagram",
-    "p1-subtitle": "Efeitos de realidade aumentada para plataformas Meta (Instagram e Facebook)",
-    "p2-title": "Pokédex",
-    "p2-subtitle": "Projeto Pokedex criado com Angular 12 e PokeApi",
-    "p3-title": "Enciclopédia de Países",
-    "p3-subtitle": "Projeto dos países do mundo como um Wiki criado com Angular 14 e CountryRestApi",
-    "p4-title": "Truek App",
-    "p4-subtitle": "Radar para encontrar desenvolvedores e compartilhar experiências, construído com React, React Native, NodeJs e Expo",
-    "p5-title": "A casa nostra",
-    "p5-subtitle": "Uma agência imobiliária para a casa dos seus sonhos, construída com React, Firebase e Tailwindcss",
-    "p6-title": "Biblioteca CSS",
-    "p6-subtitle": "Biblioteca de componentes nativos com HTML e CSS",
-    "p7-title": "Controle de gastos",
-    "p7-subtitle": "Controle de gastos criados com React y Vite",
-    "p8-title": "CRM de citações",
-    "p8-subtitle": "CRM criado com Vite, React e Tailwindcss",
-    "p9-title": "Miusiq Remix",
-    "p9-subtitle": "Comércio eletrônico de instrumentos criados com Remix Run, React e CSS",
+    "projects": {
+        "project-1": {
+            "title": "Pokedex",
+            "subtitle": "Projeto Pokedex criado com Angular 12 e PokeApi"
+        },
+        "project-2": {
+            "title": "A Casa Nostra",
+            "subtitle": "Uma agência imobiliária para a casa dos seus sonhos, construída com React, Firebase e TailwindCSS"
+        },
+        "project-3": {
+            "title": "Enciclopédia de Países",
+            "subtitle": "Projeto dos países do mundo em estilo Wiki, criado com Angular 14 e CountryRestApi"
+        },
+        "project-4": {
+            "title": "Calendário de Vida",
+            "subtitle": "Sua vida em um calendário. Quanto tempo resta? React e Vite"
+        }
+    },
     "np-title": "Você tem um projeto em mente?",
     "np-subtitle": "Fale comigo!",
     "np-btn": "Contato",

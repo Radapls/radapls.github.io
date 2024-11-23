@@ -1,24 +1,22 @@
 ---
-import Sewing from '@assets/img/Sewing.webp'
-import Pottery from '@assets/img/pottery.webp'
-
-
+import Sewing from "@assets/img/Sewing.webp";
+import Pottery from "@assets/img/pottery.webp";
 ---
 
 <!--==================== HOBBIES ====================-->
 <section class="services section" id="Services">
-    <h2 class="section__title" i18n="hobbies-title"></h2>
-    <span class="section__subtitle" i18n="hobbies-subtitle"></span>
+    <h2 class="section__title" i18n="hobbies.title"></h2>
+    <span class="section__subtitle" i18n="hobbies.subtitle"></span>
 
     <div class="services__container container grid">
         <!--==================== HOBBY 1====================-->
         <div class="services__content">
             <div>
                 <i class="uil uil-wall services__icon"></i>
-                <h3 class="services__title" i18n="h1-title"></h3>
+                <h3 class="services__title" i18n="hobbies.potery"></h3>
             </div>
             <span
-                class="button button--flex button--small button--link services__button"
+                class="button--flex button--small button--link services__button"
                 i18n="see-more"
             >
                 <i class="uil uil-arrow-right button__icon"></i>
@@ -42,11 +40,11 @@ import Pottery from '@assets/img/pottery.webp'
         <!--==================== HOBBY 2====================-->
         <div class="services__content">
             <div>
-                <i class="uil uil-arrow services__icon"></i>
-                <h3 class="services__title" i18n="h2-title">Sewing</h3>
+                <i class="uil uil-palette services__icon"></i>
+                <h3 class="services__title" i18n="hobbies.sewing"></h3>
             </div>
             <span
-                class="button button--flex button--small button--link services__button"
+                class="button--flex button--small button--link services__button"
                 i18n="see-more"
             >
                 <i class="uil uil-arrow-right button__icon"></i>
@@ -58,14 +56,35 @@ import Pottery from '@assets/img/pottery.webp'
                     <i class="uil uil-times services__modal-close"></i>
 
                     <ul class="services__modal-services grid">
-                        <img
-                            src={Sewing.src}
-                            alt="sewing"
-                            draggable="false"
-                        />
+                        <img src={Sewing.src} alt="sewing" draggable="false" />
                     </ul>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<script is:inline>
+    /*==================== SERVICES MODAL ====================*/
+    const modalViews = document.querySelectorAll(".services__modal"),
+        modalBtns = document.querySelectorAll(".services__button"),
+        modalCloses = document.querySelectorAll(".services__modal-close");
+
+    let modal = function (modalClick) {
+        modalViews[modalClick].classList.add("active-modal");
+    };
+
+    modalBtns.forEach((modalBtn, i) => {
+        modalBtn.addEventListener("click", () => {
+            modal(i);
+        });
+    });
+
+    modalCloses.forEach((modalClose) => {
+        modalClose.addEventListener("click", () => {
+            modalViews.forEach((modalView) => {
+                modalView.classList.remove("active-modal");
+            });
+        });
+    });
+</script>
