@@ -131,7 +131,20 @@ import PortfolioCard from '@components/PortfolioCard.astro';
         grid-row-gap: 24px;
         max-width: 1200px;
         width: 100%;
+        grid-template-columns: 1fr 1fr 1fr;
         justify-content: center;
         justify-items: center;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .card-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    @media screen and (max-width: 568px) {
+        .card-grid {
+            grid-template-columns: 1fr;
+        }
     }
 </style>

@@ -55,17 +55,20 @@ export const TechStack: Stack[] = [
         icon: 'gatsby'
     },
     {
-        id: 'Drupal',
+        id: 'drupal',
         title: 'Drupal',
         icon: 'Drupal'
     },
+    {
+        id: 'rxjs',
+        title: 'RXJS',
+        icon: 'rxjs'
+    },
 ];
 
-type WibxStack = 'angular' | 'typescript' | 'scss' | 'ngrx' | 'html' | 'nativescript';
 
-
-export type CompanyStack = WibxStack;
-
-export const companyStacks: { [ key: string ]: CompanyStack[] } = {
+export const companyStacks: { [ key: string ]: string[] } = {
     wibx: [ 'angular', 'typescript', 'scss', 'ngrx', 'html', 'nativescript' ],
+    birdi: [ 'react', 'scss', 'typescript', 'gatsby', 'rxjs', 'drupal' ],
+
 };

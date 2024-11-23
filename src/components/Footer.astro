@@ -1,8 +1,9 @@
 ---
 import Logo from "@assets/img/JFR.webp";
+import type { BrandType } from 'src/types/variants';
 
 interface Props {
-    variant?: "radapls" | "wibx";
+    variant?: BrandType;
 }
 
 const { variant } = Astro.props;

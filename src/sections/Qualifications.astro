@@ -1,13 +1,14 @@
 ---
-import Alcaldia from "@assets/img/brands/alcaldia-cali.png";
-import IEI from "@assets/img/brands/iei.jpg";
-import MOE from "@assets/img/brands/moe.png";
+import Alcaldia from "@assets/img/brands/alcaldia-cali.webp";
+import IEI from "@assets/img/brands/iei.png";
+import MOE from "@assets/img/brands/moe.webp";
 
 import Wibx from "@assets/img/brands/wibx.webp";
 import NT from "@assets/img/brands/nt.png";
 import Birdi from "@assets/img/brands/birdi.png";
 import Icesi from "@assets/img/brands/icesi.jpg";
 import Javeriana from "@assets/img/brands/javeriana.svg";
+import Logo from "@assets/img/brands/logo.png";
 ---
 
 <!--==================== QUALIFICATION ====================-->
@@ -242,26 +243,29 @@ import Javeriana from "@assets/img/brands/javeriana.svg";
 
                 <!--==================== BirdiRx ====================-->
                 <div class="qualification__data">
-                    <div>
-                        <img
-                            src={Birdi.src}
-                            draggable="false"
-                            alt="BirdiRx"
-                            class="brand-icon"
-                        />
-                        <h3
-                            class="qualification__title"
-                            i18n="experience.work.q-work-11"
-                        >
-                        </h3>
-                        <span
-                            class="qualification__subtitle"
-                            i18n="experience.work.q-work-12"></span>
-                        <div class="qualification__calendar">
-                            <i class="uil uil-calendar-alt"></i>
-                            Jan 2022 - Present
+                    <a href="/birdi">
+                        <div>
+                            <img
+                                src={Birdi.src}
+                                draggable="false"
+                                alt="BirdiRx"
+                                class="brand-icon"
+                            />
+                            <h3
+                                class="qualification__title"
+                                i18n="experience.work.q-work-11"
+                            >
+                            </h3>
+                            <span
+                                class="qualification__subtitle"
+                                i18n="experience.work.q-work-12"></span>
+                            <div class="qualification__calendar">
+                                <i class="uil uil-calendar-alt"></i>
+                                Jan 2022 - Present
+                            </div>
                         </div>
-                    </div>
+                    </a>
+
                     <div>
                         <span class="qualification__rounder"></span>
                         <span class="qualification__line"></span>
@@ -277,7 +281,7 @@ import Javeriana from "@assets/img/brands/javeriana.svg";
                     </div>
                     <div>
                         <img
-                            src="https://wwwspennarecom.cdn.triggerfish.cloud/uploads/2014/02/Your-Logo-Here-Black-2.jpg"
+                            src={Logo.src}
                             draggable="false"
                             alt="Your logo here"
                             class="brand-icon"
@@ -287,7 +291,11 @@ import Javeriana from "@assets/img/brands/javeriana.svg";
                             i18n="experience.work.q-work"
                         >
                         </h3>
-                        <a href="#Contact" i18n="contact" style="font-size: 90%;">
+                        <a
+                            href="#Contact"
+                            i18n="contact"
+                            style="font-size: 90%;"
+                        >
                         </a>
                         <div class="qualification__calendar">
                             <i class="uil uil-calendar-alt"></i>
@@ -302,13 +310,11 @@ import Javeriana from "@assets/img/brands/javeriana.svg";
 
 <style>
     .brand-icon {
-        width: 35px;
-        border-radius: 8px;
-        box-shadow: 0px 0px 2px 0px gray;
+        height: 35px;
+        filter: drop-shadow(0px 0px 0.5px gray);
     }
 
     .blur {
-
     }
 </style>
 
