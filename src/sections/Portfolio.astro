@@ -1,148 +1,150 @@
 ---
-import { portfolioCards } from "@data/portfolio";
+import Pokedex from '@assets/img/pokedex.webp';
+import World from '@assets/img/world.webp';
+import Radar from '@assets/img/radar.webp';
+import CasaNostra from '@assets/img/casa-nostra.webp';
+import Music from '@assets/img/music.webp';
+import Abacus from '@assets/img/abacus.webp';
+import Calendar from '@assets/img/calendar.webp';
+import SpaceInvaders from '@assets/img/space-invaders.webp';
+
+import PortfolioCard from '@components/PortfolioCard.astro';
 ---
 
 <!--==================== PORTFOLIO ====================-->
-<section class="portfolio section" id="Portafolio">
-    <h2 class="section__title" i18n="portfolio-title"></h2>
-    <span class="section__subtitle" i18n="portfolio-subtitle"></span>
-    <div class="portafolio__container container">
-        <div class="portfolio-card-grid">
-            {
-                portfolioCards.map((card: any) => (
-                    <div class="flip-card">
-                        <div class="flip-card-inner">
-                            <div
-                                class="flip-card-front"
-                                style={{
-                                    backgroundImage: `url(${card.image})`,
-                                    backgroundSize: "cover",
-                                }}
-                            />
-                            <div class="flip-card-back">
-                                <p class="flip-card-title" i18n={card.title} />
-                                <p
-                                    class="flip-card-description"
-                                    i18n={card.description}
-                                />
-                                <a href={card.link}>Link</a>
-                            </div>
-                        </div>
-                    </div>
-                ))
-            }
+<section
+    class="portfolio section"
+    id="Portafolio"
+>
+    <h2
+        class="section__title"
+        i18n="portfolio-title"
+    >
+    </h2>
+    <span
+        class="section__subtitle"
+        i18n="portfolio-subtitle"
+    >
+    </span>
+    <div
+        class="portafolio__container container"
+    >
+        <div
+            class="card-grid"
+        >
+            <PortfolioCard
+                bgImage={CasaNostra.src}
+                title="p5-title"
+                description="p5-subtitle"
+                link="https://a-casa-nostra.vercel.app/"
+            />
+            <PortfolioCard
+                bgImage={Pokedex.src}
+                title="p2-title"
+                description="p2-subtitle"
+                link="https://radapls.github.io/Pokedex/"
+            />
+            <PortfolioCard
+                bgImage={World.src}
+                title="p3-title"
+                description="p3-subtitle"
+                link="https://radapls.github.io/country-stats/"
+            />
+            <PortfolioCard
+                bgImage={Abacus.src}
+                title="p7-title"
+                description="p7-subtitle"
+                link="https://expenses-control-radapls.netlify.app/"
+            />
+            <PortfolioCard
+                bgImage={SpaceInvaders.src}
+                title="projects.space-invaders.title"
+                description="projects.space-invaders.description"
+                link="https://radapls.github.io/space-invaders/"
+            />
+            <PortfolioCard
+                bgImage={Calendar.src}
+                title="p8-title"
+                description="p8-subtitle"
+                link="https://patient-monitoring-radapls.netlify.app/"
+            />
+            <PortfolioCard
+                bgImage={Music.src}
+                title="p9-title"
+                description="p9-subtitle"
+                link="https://github.com/Radapls/miusiq-remix/"
+            />
+            <PortfolioCard
+                bgImage={Radar.src}
+                title="p4-title"
+                description="p4-subtitle"
+                link="https://github.com/Radapls/truek-app"
+            />
         </div>
     </div>
 </section>
 
-<style>
+<style
+>
     .portafolio__container {
         overflow: initial;
     }
     .portafolio__title {
-        font-size: var(--h4-font-size);
-        color: var(--body-color);
+        opacity: 0;
+        transition: opacity
+            500ms
+            ease-in-out;
+        font-size: var(
+            --h3-font-size
+        );
+        margin-bottom: var(
+            --mb-0-5
+        );
+        color: var(
+            --body-color
+        );
+        font-size: var(
+            --h3-font-size
+        );
+        line-height: 1.4;
     }
     .portafolio__description {
-        color: var(--body-color);
-        font-size: var(--small-font-size);
+        opacity: 0;
+        transition: opacity
+            500ms
+            ease-in;
+        margin-bottom: var(
+            --mb-0-75
+        );
+        color: var(
+            --body-color
+        );
+        font-size: var(
+            --normal-font-size
+        );
+        margin-bottom: 8px;
     }
 
-    .flip-card-title {
-        font-weight: var(--font-semi-bold);
-        font-size: var(--h3-font-size);
-    }
-
-    .flip-card-description {
-        font-weight: var(--font-medium);
-        font-size: var(--small-font-size);
-    }
-
-    .portfolio-card-grid {
+    .card-grid {
         display: grid;
         grid-column-gap: 24px;
         grid-row-gap: 24px;
         max-width: 1200px;
         width: 100%;
+        grid-template-columns: 1fr 1fr 1fr;
         justify-content: center;
         justify-items: center;
     }
 
-    .flip-card {
-        background-color: transparent;
-        width: 250px;
-        height: 250px;
-        perspective: 1000px;
-        cursor: pointer;
-    }
-
-    .flip-card-inner {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        text-align: center;
-        transition: transform 0.8s;
-        transform-style: preserve-3d;
-    }
-
-    .flip-card-front,
-    .flip-card-back {
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-        position: absolute;
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        height: 100%;
-        backface-visibility: hidden;
-        border-radius: 0.5rem;
-        padding: 1rem;
-    }
-
-    .flip-card-front {
-    }
-
-    .flip-card-back {
-        gap: 0.5rem;
-        transform: rotateY(180deg);
-    }
-
-    .flipped {
-        transform: rotateY(180deg);
-    }
-
-    @media screen and (min-width: 320px) {
-        .portfolio-card-grid {
-            grid-template-columns: repeat(1, 1fr);
+    @media screen and (max-width: 1024px) {
+        .card-grid {
+            grid-template-columns: 1fr 1fr;
         }
     }
 
-    @media screen and (min-width: 375px) {
-        .portfolio-card-grid {
-            grid-template-columns: repeat(1, 1fr);
-        }
-    }
-
-    @media screen and (min-width: 425px) {
-        .portfolio-card-grid {
-            grid-template-columns: repeat(1, 1fr);
-        }
-    }
-
-    @media screen and (min-width: 768px) {
-        .portfolio-card-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-
-    @media screen and (min-width: 1024px) {
-        .portfolio-card-grid {
-            grid-template-columns: repeat(3, 1fr);
-        }
-    }
-
-    @media screen and (min-width: 1440px) {
-        .portfolio-card-grid {
-            grid-template-columns: repeat(4, 1fr);
+    @media screen and (max-width: 568px) {
+        .card-grid {
+            grid-template-columns: 1fr;
         }
     }
 </style>

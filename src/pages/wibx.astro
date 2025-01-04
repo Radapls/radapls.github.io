@@ -1,15 +1,26 @@
 ---
-import Layout from "@layouts/Layout.astro";
-import Slider from "@components/Slider.astro";
-import TechList from "@components/TechList.astro";
-import { wibxPhotos } from "@data/slider";
-import WibxCoin from "@assets/gifs/wbx-token.gif";
+import Layout from '@layouts/Layout.astro';
+import Slider from '@components/Slider.astro';
+import TechList from '@components/TechList.astro';
+import { wibxPhotos } from '@data/slider';
+import WibxCoin from '@assets/gifs/wbx-token.gif';
 ---
 
-<Layout title="JFRA / Wibx" variant="wibx" withFooter={false}>
-    <section class="section" id="wibx">
-        <div class="wibx__container container grid">
-            <div class="wibx-coin-container">
+<Layout
+    title="JFRA | Wibx"
+    variant="wibx"
+    withFooter={false}
+>
+    <section
+        class="section"
+        id="wibx"
+    >
+        <div
+            class="wibx__container container grid"
+        >
+            <div
+                class="wibx-coin-container"
+            >
                 <img
                     id="img"
                     src={WibxCoin.src}
@@ -17,32 +28,87 @@ import WibxCoin from "@assets/gifs/wbx-token.gif";
                     class="wibx-coin"
                     draggable="false"
                 />
-                <audio id="audio" preload="auto" src="sound_wibx.mpeg"></audio>
             </div>
-            <h2 class="section__title" i18n="wibx.title"></h2>
-            <p class="wibx__content" i18n="wibx.content1"></p>
-            <p class="wibx__content" i18n="wibx.content2"></p>
-            <p class="wibx__content" i18n="wibx.content3"></p>
-            <p class="wibx__content" i18n="wibx.content4"></p>
+            <h2
+                class="section__title"
+                i18n="wibx.title"
+            >
+            </h2>
+            <p
+                class="wibx__content"
+                i18n="wibx.content1"
+            >
+            </p>
+            <p
+                class="wibx__content"
+                i18n="wibx.content2"
+            >
+            </p>
+            <p
+                class="wibx__content"
+                i18n="wibx.content3"
+            >
+            </p>
+            <p
+                class="wibx__content"
+                i18n="wibx.content4"
+            >
+            </p>
 
-            <h3 i18n="wibx.subtitle"></h3>
-            <ul>
-                <li class="wibx__content" i18n="wibx.resp-1"></li>
-                <li class="wibx__content" i18n="wibx.resp-2"></li>
-                <li class="wibx__content" i18n="wibx.resp-3"></li>
-                <li class="wibx__content" i18n="wibx.resp-4"></li>
-                <li class="wibx__content" i18n="wibx.resp-5"></li>
+            <h3
+                i18n="wibx.subtitle"
+            >
+            </h3>
+            <ul
+            >
+                <li
+                    class="wibx__content"
+                    i18n="wibx.resp-1"
+                >
+                </li>
+                <li
+                    class="wibx__content"
+                    i18n="wibx.resp-2"
+                >
+                </li>
+                <li
+                    class="wibx__content"
+                    i18n="wibx.resp-3"
+                >
+                </li>
+                <li
+                    class="wibx__content"
+                    i18n="wibx.resp-4"
+                >
+                </li>
+                <li
+                    class="wibx__content"
+                    i18n="wibx.resp-5"
+                >
+                </li>
             </ul>
 
-            <h3 i18n="wibx.stack"></h3>
-            <TechList company="wibx" />
-            <Slider format="image" data={wibxPhotos} type="wibx" />
+            <h3
+                i18n="wibx.stack"
+            >
+            </h3>
+            <TechList
+                company="wibx"
+            />
+            <Slider
+                format="image"
+                data={wibxPhotos}
+                type="wibx"
+            />
         </div>
     </section>
 
-    <style>
+    <style
+    >
         .wibx__container {
-            padding: 0.75rem 1rem 0.25rem;
+            padding: 0.75rem
+                1rem
+                0.25rem;
         }
 
         .wibx-coin-container {
@@ -52,9 +118,87 @@ import WibxCoin from "@assets/gifs/wbx-token.gif";
             cursor: pointer;
         }
 
-        .wibx-coin-container > img {
+        @media screen and (max-width: 1023px) {
+            .wibx-coin-container {
+                display: flex;
+                flex-direction: column;
+                cursor: pointer;
+            }
+        }
+
+        .wibx-coin-container
+            > img {
             min-width: 100px;
             width: 300px;
+        }
+
+        @media screen and (min-width: 1024px) {
+            .wibx-coin-container
+                .tooltip-container {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                position: absolute;
+                right: calc(
+                    10%
+                );
+                pointer-events: none;
+                animation: point
+                    3s
+                    ease-in-out
+                    infinite;
+            }
+
+            .wibx-coin-container
+                .tooltip-container
+                > .hand {
+                font-size: 50px;
+                text-align: center;
+            }
+
+            .wibx-coin-container
+                .tooltip-container
+                > .hand-2 {
+                display: none;
+            }
+
+            .wibx-coin-container
+                .tooltip-container
+                .tooltip {
+                font-weight: 500;
+                font-size: 20px;
+            }
+        }
+
+        @media screen and (max-width: 1023px) {
+            .wibx-coin-container
+                .tooltip-container {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                pointer-events: none;
+                animation: none;
+            }
+
+            .wibx-coin-container
+                .tooltip-container
+                > .hand {
+                display: none;
+            }
+
+            .wibx-coin-container
+                .tooltip-container
+                > .hand-2 {
+                display: block;
+                font-size: 30px;
+            }
+
+            .wibx-coin-container
+                .tooltip-container
+                .tooltip {
+                font-weight: 500;
+                font-size: 20px;
+            }
         }
 
         p.wibx__content {
@@ -65,16 +209,25 @@ import WibxCoin from "@assets/gifs/wbx-token.gif";
         ul {
             list-style-type: disc;
         }
-    </style>
 
-    <script is:inline>
-        var audio = document.getElementById("audio");
-        var img = document.getElementById("img");
+        @keyframes point {
+            0% {
+                transform: translateX(
+                    0
+                );
+            }
 
-        function play() {
-            audio.play();
+            50% {
+                transform: translateX(
+                    -50%
+                );
+            }
+
+            100% {
+                transform: translateX(
+                    0
+                );
+            }
         }
-
-        img.addEventListener("click", play);
-    </script>
+    </style>
 </Layout>

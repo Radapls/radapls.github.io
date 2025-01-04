@@ -3,11 +3,24 @@ import Layout from "@layouts/Layout.astro";
 import Slider from "@components/Slider.astro";
 import TechList from "@components/TechList.astro";
 import { birdiPhotos } from "@data/slider";
+import BirdiGif from '@assets/gifs/birdi.gif';
+
 ---
 
-<Layout title="JFRA / BirdiRx" variant="birdi" withFooter={false}>
+<Layout title="JFRA | BirdiRx" variant="birdi" withFooter={false}>
     <section class="section" id="birdi">
         <div class="birdi__container container grid">
+            <div
+            class="birdi-container"
+        >
+            <img
+                id="img"
+                src={BirdiGif.src}
+                alt="Wibx Coin"
+                class="wibx-coin"
+                draggable="false"
+            />
+        </div>
             <h2 class="section__title" i18n="wibx.title"></h2>
             <p class="birdi__content" i18n="wibx.content1"></p>
             <p class="birdi__content" i18n="wibx.content2"></p>

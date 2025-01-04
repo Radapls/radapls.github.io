@@ -72,22 +72,28 @@
     },
     "portfolio-title": "Portfolio",
     "portfolio-subtitle": "Some recent works",
+    "p1-title": "Instagram Filters",
+    "p1-subtitle": "Augmented reality effects for Meta platforms (Instagram and Facebook)",
+    "p2-title": "Pokedex",
+    "p2-subtitle": "Pokedex project created with Angular 12 and PokeApi",
+    "p3-title": "Encyclopedia of Countries",
+    "p3-subtitle": "Project of the countries of the world as a Wiki created with Angular 14 and CountryRestApi",
+    "p4-title": "Truek App",
+    "p4-subtitle": "Radar to find developers and share experiences, built with React, React Native, NodeJs and Expo",
+    "p5-title": "A casa nostra",
+    "p5-subtitle": "A real estate agency for the home of your dreams, built with React, Firebase and Tailwindcss",
+    "p6-title": "CSS Library",
+    "p6-subtitle": "Native component library with HTML and CSS",
+    "p7-title": "Control de gastos",
+    "p7-subtitle": "Control de gastos creados con React y Vite",
+    "p8-title": "CRM de citas",
+    "p8-subtitle": "CRM creado con Vite, React y Tailwindcss",
+    "p9-title": "Miusiq Remix",
+    "p9-subtitle": "Ecommerce of instruments created with Remix Run, React and CSS",
     "projects": {
-        "project-1": {
-            "title": "Pokedex",
-            "subtitle": "Pokedex project created with Angular 12 and PokeApi"
-        },
-        "project-2": {
-            "title": "A Casa Nostra",
-            "subtitle": "A real estate agency for your dream home, built with React, Firebase, and TailwindCSS"
-        },
-        "project-3": {
-            "title": "Encyclopedia of Countries",
-            "subtitle": "A project of the countries of the world in a Wiki style, created with Angular 14 and CountryRestApi"
-        },
-        "project-4": {
-            "title": "Life Calendar",
-            "subtitle": "Your life in a calendar. How much time is left? React and Vite"
+        "space-invaders": {
+            "title": "Space Inviders",
+            "description": "Game of commits out of your favorite repository."
         }
     },
     "np-title": "Have a new project in mind?",
