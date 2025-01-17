@@ -4,9 +4,8 @@ import Slider from "@components/Slider.astro";
 import TechList from "@components/TechList.astro";
 import { wibxPhotos } from "@data/slider";
 import WibxCoin from "@assets/gifs/wbx-token.gif";
-import { LOCALES } from "src/i18n";
 
-import { useTranslations, type Lang } from "src/i18n";
+import { LOCALES, useTranslations, type Lang } from "src/i18n";
 
 const t = useTranslations(Astro.currentLocale as Lang);
 

@@ -90,7 +90,15 @@ const t = useTranslations(Astro.currentLocale as Lang);
           <div class="skills__data">
             <div class="skills__titles">
               <p class="skills__name">TypeScript</p>
-              <span class="skills__number" i18n="TypeScript"></span>
+              <span class="skills__number" i18n="TypeScript">
+                {
+                  t({
+                    en: "Intermediate proficiency",
+                    es: "Competencia intermedia profesional",
+                    "pt-br": "Competência profissional intermediária",
+                  })
+                }
+              </span>
             </div>
           </div>
 

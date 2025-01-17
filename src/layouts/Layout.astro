@@ -3,7 +3,6 @@ import Footer from "@components/Footer.astro";
 import Header from "@components/Header.astro";
 import { SITE_CONFIG } from "src/consts";
 
-import Logo from "@assets/img/JFR.webp";
 import type { BrandType } from "src/types/variants";
 import { getLocalePaths, LOCALES, type Lang } from "src/i18n";
 
@@ -51,7 +50,11 @@ const locale = Astro.currentLocale as Lang;
       ))
     }
     <!--==================== UNICONS ====================-->
-    <link rel="icon" href={Logo.src} type="image/x-icon" />
+    <link rel="icon" type="image/x-icon" href="/favicon.svg" />
+    <link rel="icon" sizes="192x192" href="/android-chrome-192x192.png" />
+    <link rel="icon" sizes="512x512" href="/android-chrome-512x512.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
     <link
       rel="stylesheet"
       href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
@@ -63,9 +66,8 @@ const locale = Astro.currentLocale as Lang;
 
     <link
       rel="stylesheet"
+      media="print" onload={`this.media='all'`}
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
-      media="print"
-      onload={`this.media='all'`}
     />
 
     <title>{title}</title>
