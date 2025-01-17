@@ -45,6 +45,26 @@ const t = useTranslations(Astro.currentLocale as Lang);
           })
         }
       </p>
+
+      <p class="about__description">
+        {
+          t({
+            en: "Sometimes I write",
+            es: "Algunas veces escribo",
+            "pt-br": "Às vezes escrevo",
+          })
+        }
+        <a class="about__description" href="/blog">
+          {
+            t({
+              en: "here",
+              es: "aquí",
+              "pt-br": "aqui",
+            })
+          }
+        </a>
+      </p>
+      
       <div class="about__info">
         <div>
           <span class="about__info-title">04+</span>
