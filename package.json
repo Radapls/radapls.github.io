@@ -2,7 +2,7 @@
     "name": "radapls",
     "type": "module",
     "version": "2.0.0",
-    "homepage": "https://Radapls.github.com",
+    "homepage": "https://radapls.github.io",
     "engines": {
 		"node": ">=20"
 	},

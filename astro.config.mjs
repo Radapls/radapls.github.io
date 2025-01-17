@@ -5,7 +5,7 @@ const isProd = import.meta.env.PROD;
 const isDev = import.meta.env.DEV;
 const SERVER_PORT = 8888;
 const LOCALHOST_URL = `http://localhost:${SERVER_PORT}/`;
-const PROD_URL = 'https://Radapls.github.com';
+const PROD_URL = 'https://radapls.github.io';
 
 let BASE_URL;
 if (isProd)
