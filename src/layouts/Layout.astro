@@ -16,6 +16,8 @@ interface Props {
   permalink?: string;
   withHeader?: boolean;
   withFooter?: boolean;
+  noLinks?: boolean;
+
 }
 
 const {
@@ -25,6 +27,7 @@ const {
   keywords = SITE_CONFIG.keywords,
   withFooter = true,
   withHeader = true,
+  noLinks
 } = Astro.props;
 
 const locale = Astro.currentLocale as Lang;
@@ -73,7 +76,7 @@ const locale = Astro.currentLocale as Lang;
     <title>{title}</title>
   </head>
   <body>
-    {withHeader && <Header {variant} />}
+    {withHeader && <Header {variant} noLinks={noLinks}/>}
 
     <!--==================== MAIN ====================-->
     <main class="main">
