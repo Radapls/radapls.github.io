@@ -1,3 +1,5 @@
+import mdx from '@astrojs/mdx';
+import sitemap from '@astrojs/sitemap';
 import { defineConfig } from 'astro/config';
 
 const isProd = import.meta.env.PROD;
@@ -27,5 +29,14 @@ export default defineConfig({
     },
     prefetch: {
         prefetchAll: true
-    }
+    },
+    integrations: [mdx(), sitemap()],
+    i18n: {
+        defaultLocale: 'en',
+        locales: ['en', 'es', 'pt-br'],
+        routing: {
+          prefixDefaultLocale: true,
+          redirectToDefaultLocale: false,
+        },
+      },
 });
