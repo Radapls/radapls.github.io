@@ -1,4 +1,3 @@
-import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { defineConfig } from 'astro/config';
 
@@ -30,7 +29,7 @@ export default defineConfig({
     prefetch: {
         prefetchAll: true
     },
-    integrations: [mdx(), sitemap()],
+    integrations: [sitemap()],
     i18n: {
         defaultLocale: 'en',
         locales: ['en', 'es', 'pt-br'],
