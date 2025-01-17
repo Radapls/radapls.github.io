@@ -1,51 +1,107 @@
 ---
 import ProfilePic from "@assets/img/juan.webp";
 import CurriculumVitae from "@assets/documents/CV_Juan_Felipe_Rada.pdf";
+import { useTranslations, type Lang } from "src/i18n";
+
+const t = useTranslations(Astro.currentLocale as Lang);
+
 ---
 
 <!--==================== ABOUT ====================-->
 <section class="about section" id="About">
-    <h2 class="section__title" i18n="about_me"></h2>
-    <span class="section__subtitle" i18n="about_me.subtitle"></span>
+  <h2 class="section__title">
+    {
+      t({
+        en: "About Me",
+        es: "Acerca de mí",
+        "pt-br": "Sobre mim",
+      })
+    }
+  </h2>
+  <span class="section__subtitle">
+    {
+      t({
+        en: "My introduction",
+        es: "Mi instroducción",
+        "pt-br": "Minha apresentação",
+      })
+    }
+  </span>
 
-    <div class="about__container container grid">
-        <img
-            src={ProfilePic.src}
-            alt="Profile pic"
-            class="about__img"
-            draggable="false"
-        />
-        <div class="about__data">
-            <p class="about__description" i18n="about_me.description">
-                <div class="about__info">
-                    <div>
-                        <span class="about__info-title">04+</span>
-                        <span class="about__info-name" i18n="about-info1"
-                        ></span>
-                    </div>
-                    <div>
-                        <span class="about__info-title">12+</span>
-                        <span class="about__info-name" i18n="about-info2"
-                        ></span>
-                    </div>
-                    <div>
-                        <span class="about__info-title">04+</span>
-                        <span class="about__info-name" i18n="about-info3"
-                        ></span>
-                    </div>
-                </div>
-                <div class="about__buttons">
-                    <a
-                        rel="nofollow"
-                        type="file"
-                        href={CurriculumVitae}
-                        class="button button--flex"
-                    >
-                        <p i18n="about-cv"></p>
-                        <i class="uil uil-download-alt button__icon"></i>
-                    </a>
-                </div>
-            </p>
+  <div class="about__container container grid">
+    <img
+      src={ProfilePic.src}
+      alt="Profile pic"
+      class="about__img"
+      draggable="false"
+    />
+    <div class="about__data">
+      <p class="about__description">
+        {
+          t({
+            en: "Hello everyone around here, my name is Juan Felipe Rada. I enjoy creating new things beyond possibilities; I consider myself curious and inquisitive about life. That's why you'll always see me exploring something new. I invite you to learn a bit about my journey.",
+            es: "¡Saludos a todos por aquí! Soy Juan Felipe Rada. Disfruto creando cosas nuevas más allá de las posibilidades, me considero inquieto y curioso acerca de la vida. Por eso, siempre me verás investigando algo nuevo. Te invito a conocer un poco de mi trayecto.",
+            "pt-br": "Olá a todos por aqui, meu nome é Juan Felipe Rada. Eu gosto de criar coisas novas além das possibilidades; me considero inquieto e curioso sobre a vida. Por isso, você sempre me verá investigando algo novo. Convido você a conhecer um pouco da minha jornada.",
+          })
+        }
+      </p>
+      <div class="about__info">
+        <div>
+          <span class="about__info-title">04+</span>
+          <span class="about__info-name">
+            {
+              t({
+                en: "Years of experience",
+                es: "Años de experiencia",
+                "pt-br": "Anos de experiência",
+              })
+            }
+          </span>
         </div>
+        <div>
+          <span class="about__info-title">12+</span>
+          <span class="about__info-name">
+            {
+              t({
+                en: "Completed projects",
+                es: "Proyectos completados",
+                "pt-br": "Projetos concluídos",
+              })
+            }
+          </span>
+        </div>
+        <div>
+          <span class="about__info-title">04+</span>
+          <span class="about__info-name">
+            {
+              t({
+                en: "Companies worked",
+                es: "Empresas trabajadas",
+                "pt-br": "Empresas trabalhadas",
+              })
+            }
+          </span>
+        </div>
+      </div>
+      <div class="about__buttons">
+        <a
+          rel="nofollow"
+          type="file"
+          href={CurriculumVitae}
+          class="button button--flex"
+        >
+          <p>
+            {
+              t({
+                en: "Download CV",
+                es: "Descargar CV",
+                "pt-br": "Baixar CV",
+              })
+            }
+          </p>
+          <i class="uil uil-download-alt button__icon"></i>
+        </a>
+      </div>
     </div>
+  </div>
 </section>
