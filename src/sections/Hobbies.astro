@@ -1,90 +1,128 @@
 ---
 import Sewing from "@assets/img/Sewing.webp";
 import Pottery from "@assets/img/pottery.webp";
+
+import { useTranslations, type Lang } from "src/i18n";
+
+const t = useTranslations(Astro.currentLocale as Lang);
 ---
 
 <!--==================== HOBBIES ====================-->
 <section class="services section" id="Services">
-    <h2 class="section__title" i18n="hobbies.title"></h2>
-    <span class="section__subtitle" i18n="hobbies.subtitle"></span>
+  <h2 class="section__title">
+    👨🏼‍🎨
+    {
+      t({
+        en: "Hobbies",
+        es: "Pasatiempos",
+        "pt-br": "Passatempos",
+      })
+    }
+  </h2>
+  <span class="section__subtitle">
+    {
+      t({
+        en: "Some things outside work!",
+        es: "¡Algunas cosas fuera del trabajo!",
+        "pt-br": "Algumas coisas fora do trabalho!",
+      })
+    }
+  </span>
+  <div class="services__container container grid">
+    <!--==================== HOBBY 1====================-->
+    <div class="services__content">
+      <div>
+        <i class="uil uil-wall services__icon"></i>
+        <h3 class="services__title">
+          {
+            t({
+              en: "Pottery",
+              es: "Cerámica",
+              "pt-br": "Cerâmica",
+            })
+          }
+        </h3>
+      </div>
+      <span class="button--flex button--small button--link services__button">
+        {
+          t({
+            en: "See more",
+            es: "Ver mas",
+            "pt-br": "Ver mais",
+          })
+        }
+      </span>
 
-    <div class="services__container container grid">
-        <!--==================== HOBBY 1====================-->
-        <div class="services__content">
-            <div>
-                <i class="uil uil-wall services__icon"></i>
-                <h3 class="services__title" i18n="hobbies.potery"></h3>
-            </div>
-            <span
-                class="button--flex button--small button--link services__button"
-                i18n="see-more"
-            >
-                <i class="uil uil-arrow-right button__icon"></i>
-            </span>
+      <div class="services__modal">
+        <div class="services__modal-content">
+          <h4 class="services__modal-title"></h4>
+          <i class="uil uil-times services__modal-close"></i>
 
-            <div class="services__modal">
-                <div class="services__modal-content">
-                    <h4 class="services__modal-title"></h4>
-                    <i class="uil uil-times services__modal-close"></i>
-
-                    <ul class="services__modal-services grid">
-                        <img
-                            src={Pottery.src}
-                            alt="Pottery"
-                            draggable="false"
-                        />
-                    </ul>
-                </div>
-            </div>
+          <ul class="services__modal-services grid">
+            <img src={Pottery.src} alt="Pottery" draggable="false" />
+          </ul>
         </div>
-        <!--==================== HOBBY 2====================-->
-        <div class="services__content">
-            <div>
-                <i class="uil uil-palette services__icon"></i>
-                <h3 class="services__title" i18n="hobbies.sewing"></h3>
-            </div>
-            <span
-                class="button--flex button--small button--link services__button"
-                i18n="see-more"
-            >
-                <i class="uil uil-arrow-right button__icon"></i>
-            </span>
-
-            <div class="services__modal">
-                <div class="services__modal-content">
-                    <h4 class="services__modal-title"></h4>
-                    <i class="uil uil-times services__modal-close"></i>
-
-                    <ul class="services__modal-services grid">
-                        <img src={Sewing.src} alt="sewing" draggable="false" />
-                    </ul>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+    <!--==================== HOBBY 2====================-->
+    <div class="services__content">
+      <div>
+        <i class="uil uil-palette services__icon"></i>
+        <h3 class="services__title">
+          {
+            t({
+              en: "Sewing",
+              es: "Costura",
+              "pt-br": "Costura",
+            })
+          }
+        </h3>
+      </div>
+      <span class="button--flex button--small button--link services__button">
+        {
+          t({
+            en: "See more",
+            es: "Ver mas",
+            "pt-br": "Ver mais",
+          })
+        }
+      </span>
+
+      <div class="services__modal">
+        <div class="services__modal-content">
+          <h4 class="services__modal-title"></h4>
+          <i class="uil uil-times services__modal-close"></i>
+
+          <ul class="services__modal-services grid">
+            <img src={Sewing.src} alt="sewing" draggable="false" />
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <script is:inline>
-    /*==================== SERVICES MODAL ====================*/
-    const modalViews = document.querySelectorAll(".services__modal"),
-        modalBtns = document.querySelectorAll(".services__button"),
-        modalCloses = document.querySelectorAll(".services__modal-close");
+  /*==================== SERVICES MODAL ====================*/
+  const modalViews = document.querySelectorAll(".services__modal"),
+    modalBtns = document.querySelectorAll(".services__button"),
+    modalCloses = document.querySelectorAll(".services__modal-close");
 
-    let modal = function (modalClick) {
-        modalViews[modalClick].classList.add("active-modal");
-    };
+  let modal = function (modalClick) {
+    modalViews[modalClick].classList.add("active-modal");
+  };
 
-    modalBtns.forEach((modalBtn, i) => {
-        modalBtn.addEventListener("click", () => {
-            modal(i);
-        });
+  modalBtns.forEach((modalBtn, i) => {
+    modalBtn.addEventListener("click", () => {
+      modal(i);
     });
+  });
 
-    modalCloses.forEach((modalClose) => {
-        modalClose.addEventListener("click", () => {
-            modalViews.forEach((modalView) => {
-                modalView.classList.remove("active-modal");
-            });
-        });
+  modalCloses.forEach((modalClose) => {
+    modalClose.addEventListener("click", () => {
+      modalViews.forEach((modalView) => {
+        modalView.classList.remove("active-modal");
+      });
     });
+  });
 </script>

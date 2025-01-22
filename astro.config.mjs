@@ -1,10 +1,12 @@
+import sitemap from '@astrojs/sitemap';
+import mdx from '@astrojs/mdx';
 import { defineConfig } from 'astro/config';
 
 const isProd = import.meta.env.PROD;
 const isDev = import.meta.env.DEV;
 const SERVER_PORT = 8888;
 const LOCALHOST_URL = `http://localhost:${SERVER_PORT}/`;
-const PROD_URL = 'https://radapls.github.com';
+const PROD_URL = 'https://radapls.github.io';
 
 let BASE_URL;
 if (isProd)
@@ -27,5 +29,14 @@ export default defineConfig({
     },
     prefetch: {
         prefetchAll: true
-    }
+    },
+    integrations: [sitemap(), mdx()],
+    i18n: {
+        defaultLocale: 'en',
+        locales: ['en', 'es', 'pt-br'],
+        routing: {
+          prefixDefaultLocale: true,
+          redirectToDefaultLocale: false,
+        },
+      },
 });
