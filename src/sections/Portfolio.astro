@@ -1,12 +1,10 @@
 ---
 import Pokedex from "@assets/img/pokedex.webp";
 import World from "@assets/img/world.webp";
-import Radar from "@assets/img/radar.webp";
 import CasaNostra from "@assets/img/casa-nostra.webp";
-import Music from "@assets/img/music.webp";
-import Abacus from "@assets/img/abacus.webp";
-import Calendar from "@assets/img/calendar.webp";
 import SpaceInvaders from "@assets/img/space-invaders.webp";
+import Cunctae from "@assets/img/c.svg";
+
 
 import PortfolioCard from "@components/PortfolioCard.astro";
 
@@ -38,6 +36,20 @@ const t = useTranslations(Astro.currentLocale as Lang);
   </span>
   <div class="portafolio__container container">
     <div class="card-grid">
+      <PortfolioCard
+      bgImage={Cunctae.src}
+      title={t({
+        en: "Cunctum UI",
+        es: "Cunctum UI",
+        "pt-br": "Cunctum UI",
+      })}
+      description={t({
+        en: "An Open Source Design system for Cunctae.com",
+        es: "Un sistema de diseño de código abierto para Cunctae.com",
+        "pt-br": "Um sistema de design de código aberto para Cunctae.com",
+      })}
+      link="https://cunctae.github.io/cunctum-ui/?path=/docs/introduction--docs"
+    />
       <PortfolioCard
         bgImage={CasaNostra.src}
         title={t({
@@ -83,20 +95,6 @@ const t = useTranslations(Astro.currentLocale as Lang);
         link="https://radapls.github.io/country-stats/"
       />
       <PortfolioCard
-        bgImage={Abacus.src}
-        title={t({
-          en: "Expense Control",
-          es: "Control de gastos",
-          "pt-br": "Controle de gastos",
-        })}
-        description={t({
-          en: "Expense control project created with React and Vite",
-          es: "Control de gastos creado con React y Vite",
-          "pt-br": "Controle de gastos criados com React y Vite",
-        })}
-        link="https://expenses-control-radapls.netlify.app/"
-      />
-      <PortfolioCard
         bgImage={SpaceInvaders.src}
         title={t({
           en: "Space Invaders",
@@ -109,50 +107,6 @@ const t = useTranslations(Astro.currentLocale as Lang);
           "pt-br": "Projeto Space Invaders criado com JavaScript e HTML Canvas",
         })}
         link="https://radapls.github.io/space-invaders/"
-      />
-      <PortfolioCard
-        bgImage={Calendar.src}
-        title={t({
-          en: "Appointment CRM",
-          es: "CRM de citas",
-          "pt-br": "CRM de citações",
-        })}
-        description={t({
-          en: "Appointment CRM created with Vite, React, and Tailwindcss",
-          es: "CRM creado con Vite, React y Tailwindcss",
-          "pt-br": "CRM criado com Vite, React e Tailwindcss",
-        })}
-        link="https://patient-monitoring-radapls.netlify.app/"
-      />
-      <PortfolioCard
-        bgImage={Music.src}
-        title={t({
-          en: "Miusiq Remix",
-          es: "Miusiq Remix",
-          "pt-br": "Miusiq Remix",
-        })}
-        description={t({
-          en: "Ecommerce of instruments created with Remix Run, React, and CSS",
-          es: "Ecommerce de instrumentos creado con Remix Run, React y CSS",
-          "pt-br":
-            "Comércio eletrônico de instrumentos criados com Remix Run, React e CSS",
-        })}
-        link="https://github.com/Radapls/miusiq-remix/"
-      />
-      <PortfolioCard
-        bgImage={Radar.src}
-        title={t({
-          en: "Truek App",
-          es: "Truek App",
-          "pt-br": "Truek App",
-        })}
-        description={t({
-          en: "Radar to find developers and share experiences, built with React, React Native, NodeJs, and Expo",
-          es: "Radar para encontrar desarrolladores y compartir experiencias, creado con React, React Native, NodeJs y Expo",
-          "pt-br":
-            "Radar para encontrar desenvolvedores e compartilhar experiências, construído com React, React Native, NodeJs e Expo",
-        })}
-        link="https://github.com/Radapls/truek-app"
       />
     </div>
   </div>
