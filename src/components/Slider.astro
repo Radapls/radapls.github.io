@@ -1,17 +1,18 @@
 ---
+type PageProperties = "wibx" | "birdi";
 interface ImageProps {
-    format: "image";
-    data: string[];
-    type: 'wibx';
+  format: "image";
+  data: string[];
+  type: PageProperties;
 }
 
 interface VideoProps {
-    format: "video";
-    data: {
-        video: string;
-        link: string;
-    }[];
-    type: 'wibx';
+  format: "video";
+  data: {
+    video: string;
+    link: string;
+  }[];
+  type: PageProperties;
 }
 
 type Props = ImageProps | VideoProps;
@@ -19,219 +20,212 @@ const { format, data, type }: Props = Astro.props;
 ---
 
 <section class={`slider-container ${type}`}>
-    {
-        format === "image" ? (
-            <div class="slider">
-                {data.map((slide, i) => (
-                    <a name={`slide_${i + 1}`}>
-                        <img draggable="false" src={slide} />
-                    </a>
-                ))}
-            </div>
-        ) : (
-            <div class="slider">
-                {data.map((slide, i) => (
-                    <a name={`slide_${i + 1}`}>
-                        <video
-                            width="180"
-                            height="280"
-                            src={slide.video}
-                            autoplay
-                            loop
-                            muted
-                            style={{ objectFit: "cover" }}
-                        />
-                    </a>
-                ))}
-            </div>
-        )
-    }
+  {
+    format === "image" ? (
+      <div class="slider">
+        {data.map((slide, i) => (
+          <a name={`slide_${i + 1}`}>
+            <img draggable="false" src={slide} />
+          </a>
+        ))}
+      </div>
+    ) : (
+      <div class="slider">
+        {data.map((slide, i) => (
+          <a name={`slide_${i + 1}`}>
+            <video
+              width="180"
+              height="280"
+              src={slide.video}
+              autoplay
+              loop
+              muted
+              style={{ objectFit: "cover" }}
+            />
+          </a>
+        ))}
+      </div>
+    )
+  }
 
-    <ul class="markers">
-        {
-            data.map((_slide, i) => (
-                <li>
-                    <a href={`#slide_${i + 1}`} />
-                </li>
-            ))
-        }
-    </ul>
+  <ul class="markers">
+    {
+      data.map((_slide, i) => (
+        <li>
+          <a href={`#slide_${i + 1}`} />
+        </li>
+      ))
+    }
+  </ul>
 </section>
 
 <style>
-    :root {
-        --marker-color-wibx: gray;
-        --marker-active-color-wibx: #00efa5;
-        --marker-color-anotherType: blue;
-        --marker-active-color-anotherType: green;
+  .slider-container {
+    timeline-scope: --carousel;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .slider {
+    scroll-timeline: --carousel x;
+    display: flex;
+    flex-direction: row;
+    border-radius: 4px;
+    width: 100%;
+    aspect-ratio: 16/9;
+
+    scroll-snap-type: x mandatory;
+    overscroll-behavior: contain;
+    scroll-behavior: smooth;
+
+    overflow-x: hidden;
+    overflow-y: hidden;
+
+    box-shadow: 0px 0px 50px 10px rgba(255, 255, 255, 0.1);
+    cursor: grab;
+  }
+
+  .slider:active {
+    cursor: grabbing;
+  }
+
+  .markers a {
+    display: block;
+    width: 0.75rem;
+    aspect-ratio: 1;
+    background: var(--marker-color);
+    opacity: 0.7;
+    border-radius: 50%;
+
+    animation: activate linear;
+    animation-timeline: --carousel;
+    animation-range: calc((var(--i) - 1) * 25%) calc(var(--i) * 25% + 1px);
+    position: relative;
+  }
+
+  .markers a::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .markers a.active::before {
+    opacity: 1;
+    border: solid var(--marker-active-color) 1px;
+  }
+
+  @keyframes activate {
+    0%,
+    100% {
+      background: var(--marker-active-color);
+      opacity: 1;
     }
+  }
 
-    .slider-container {
-        timeline-scope: --carousel;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+  .slider a {
+    flex: 0 0 100%;
+    width: 100%;
+    scroll-snap-align: center;
+  }
 
-    .slider {
-        scroll-timeline: --carousel x;
-        display: flex;
-        flex-direction: row;
-        border-radius: 4px;
-        width: 100%;
-        aspect-ratio: 16/9;
+  .slider img {
+    object-fit: cover;
+    width: 100%;
+  }
 
-        scroll-snap-type: x mandatory;
-        overscroll-behavior: contain;
-        scroll-behavior: smooth;
+  .slider a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-        overflow-x: hidden;
-        overflow-y: hidden;
+  .markers {
+    display: flex;
+    flex-direction: row;
+    gap: 0.25em;
+    list-style: none;
+    font-size: 2em;
+    margin-top: 1em;
+  }
 
-        box-shadow: 0px 0px 50px 10px rgba(255, 255, 255, 0.1);
-        cursor: grab;
-    }
+  .slider-container.wibx .markers a {
+    --marker-color: var(--marker-color-wibx);
+    --marker-active-color: var(--marker-active-color-wibx);
+  }
 
-    .slider:active {
-        cursor: grabbing;
-    }
-
-    .markers a {
-        display: block;
-        width: 0.75rem;
-        aspect-ratio: 1;
-        background: var(--marker-color);
-        opacity: 0.7;
-        border-radius: 50%;
-
-        animation: activate linear;
-        animation-timeline: --carousel;
-        animation-range: calc((var(--i) - 1) * 25%) calc(var(--i) * 25% + 1px);
-        position: relative;
-    }
-
-    .markers a::before {
-        content: "";
-        display: block;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 1rem;
-        height: 1rem;
-        border-radius: 50%;
-        transform: translate(-50%, -50%);
-        opacity: 0;
-        transition: opacity 0.3s;
-    }
-
-    .markers a.active::before {
-        opacity: 1;
-        border: solid var(--marker-active-color) 1px;
-    }
-
-    @keyframes activate {
-        0%,
-        100% {
-            background: var(--marker-active-color);
-            opacity: 1;
-        }
-    }
-
-    .slider a {
-        flex: 0 0 100%;
-        width: 100%;
-        scroll-snap-align: center;
-    }
-
-    .slider img {
-        object-fit: cover;
-        width: 100%;
-    }
-
-    .slider a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .markers {
-        display: flex;
-        flex-direction: row;
-        gap: 0.25em;
-        list-style: none;
-        font-size: 2em;
-        margin-top: 1em;
-    }
-
-    .slider-container.wibx .markers a {
-        --marker-color: var(--marker-color-wibx);
-        --marker-active-color: var(--marker-active-color-wibx);
-    }
-
-    .slider-container.anotherType .markers a {
-        --marker-color: var(--marker-color-anotherType);
-        --marker-active-color: var(--marker-active-color-anotherType);
-    }
+  .slider-container.birdi .markers a {
+    --marker-color: var(--marker-color-birdi);
+    --marker-active-color: var(--marker-active-color-birdi);
+  }
 </style>
 
 <script is:inline>
-    document.addEventListener("DOMContentLoaded", () => {
-        const markers = document.querySelectorAll(".markers li a");
-        markers.forEach((marker, index) => {
-            marker.style.setProperty("--i", index + 1);
-        });
-
-        const slider = document.querySelector(".slider");
-        const updateActiveMarker = () => {
-            const scrollLeft = slider.scrollLeft;
-            const sliderWidth = slider.clientWidth;
-            const activeIndex = Math.round(scrollLeft / sliderWidth);
-            markers.forEach((marker, index) => {
-                if (index === activeIndex) {
-                    marker.classList.add("active");
-                } else {
-                    marker.classList.remove("active");
-                }
-            });
-        };
-
-        slider.addEventListener("scroll", updateActiveMarker);
-        updateActiveMarker();
+  document.addEventListener("DOMContentLoaded", () => {
+    const markers = document.querySelectorAll(".markers li a");
+    markers.forEach((marker, index) => {
+      marker.style.setProperty("--i", index + 1);
     });
 
     const slider = document.querySelector(".slider");
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-
-    const startDragging = (e) => {
-        isDown = true;
-        slider.classList.add("active");
-        startX = (e.pageX || e.touches[0].pageX) - slider.offsetLeft;
-        scrollLeft = slider.scrollLeft;
+    const updateActiveMarker = () => {
+      const scrollLeft = slider.scrollLeft;
+      const sliderWidth = slider.clientWidth;
+      const activeIndex = Math.round(scrollLeft / sliderWidth);
+      markers.forEach((marker, index) => {
+        if (index === activeIndex) {
+          marker.classList.add("active");
+        } else {
+          marker.classList.remove("active");
+        }
+      });
     };
 
-    const stopDragging = () => {
-        isDown = false;
-        slider.classList.remove("active");
-    };
+    slider.addEventListener("scroll", updateActiveMarker);
+    updateActiveMarker();
+  });
 
-    const moveSlider = (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = (e.pageX || e.touches[0].pageX) - slider.offsetLeft;
-        const walk = (x - startX) * 2;
-        slider.scrollLeft = scrollLeft - walk;
-    };
+  const slider = document.querySelector(".slider");
+  let isDown = false;
+  let startX;
+  let scrollLeft;
 
-    slider.addEventListener("mousedown", startDragging);
-    slider.addEventListener("touchstart", startDragging);
+  const startDragging = (e) => {
+    isDown = true;
+    slider.classList.add("active");
+    startX = (e.pageX || e.touches[0].pageX) - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+  };
 
-    slider.addEventListener("mouseleave", stopDragging);
-    slider.addEventListener("mouseup", stopDragging);
-    slider.addEventListener("touchend", stopDragging);
-    slider.addEventListener("touchcancel", stopDragging);
+  const stopDragging = () => {
+    isDown = false;
+    slider.classList.remove("active");
+  };
 
-    slider.addEventListener("mousemove", moveSlider);
-    slider.addEventListener("touchmove", moveSlider);
+  const moveSlider = (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = (e.pageX || e.touches[0].pageX) - slider.offsetLeft;
+    const walk = (x - startX) * 2;
+    slider.scrollLeft = scrollLeft - walk;
+  };
+
+  slider.addEventListener("mousedown", startDragging);
+  slider.addEventListener("touchstart", startDragging);
+
+  slider.addEventListener("mouseleave", stopDragging);
+  slider.addEventListener("mouseup", stopDragging);
+  slider.addEventListener("touchend", stopDragging);
+  slider.addEventListener("touchcancel", stopDragging);
+
+  slider.addEventListener("mousemove", moveSlider);
+  slider.addEventListener("touchmove", moveSlider);
 </script>
