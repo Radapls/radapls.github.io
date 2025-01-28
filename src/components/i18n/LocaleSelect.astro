@@ -4,9 +4,19 @@
 import { getLocalePaths, LOCALES } from "../../i18n";
 ---
 
-<label>
-
-  <select data-languageSelect>
+<div class="language-select-container">
+  <label for="language-select" >
+  </label>
+  <select
+    id="language-select"
+    name="language-select"
+    data-languageSelect
+    aria-label={Astro.currentLocale === "es"
+      ? "Cambiar idioma del sitio"
+      : Astro.currentLocale === "pt-br"
+        ? "Alterar idioma do site"
+        : "Change site language"}
+  >
     {
       getLocalePaths(Astro.url).map(({ path, lang }) => (
         <option
@@ -18,10 +28,8 @@ import { getLocalePaths, LOCALES } from "../../i18n";
         />
       ))
     }
-
   </select>
-</label>
-
+</div>
 
 <script is:inline>
   const selects = document.querySelectorAll("[data-languageSelect]");
@@ -36,7 +44,6 @@ import { getLocalePaths, LOCALES } from "../../i18n";
 </script>
 
 <style>
-
   select {
     font-family: "Poppins";
     border-radius: 4px; /* Bordes redondeados */

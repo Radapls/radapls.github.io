@@ -14,30 +14,26 @@ const t = useTranslations(Astro.currentLocale as Lang);
 ---
 
 <!--==================== PORTFOLIO ====================-->
-<section class="portfolio section" id="Portafolio">
-  <h2 class="section__title">
-    📚
-    {
-      t({
-        en: "Portfolio",
-        es: "Portafolio",
-        "pt-br": "Portfólio",
-      })
-    }
+<section class="portfolio section" id="Portafolio" aria-labelledby="portfolio-title">
+  <h2 class="section__title" id="portfolio-title">
+    <span aria-hidden="true">📚</span>
+    {t({
+      en: "Portfolio",
+      es: "Portafolio",
+      "pt-br": "Portfólio",
+    })}
   </h2>
-  <span class="section__subtitle">
-    {
-      t({
-        en: "Some recent work",
-        es: "Algunos trabajos recientes",
-        "pt-br": "Alguns trabalhos recentes",
-      })
-    }
+  <span class="section__subtitle" aria-roledescription="doc-subtitle">
+    {t({
+      en: "Some recent work",
+      es: "Algunos trabajos recientes",
+      "pt-br": "Alguns trabalhos recentes",
+    })}
   </span>
   <div class="portafolio__container container">
     <div class="card-grid">
       <PortfolioCard
-      bgImage={Cunctae.src}
+      bgImage={Cunctae}
       title={t({
         en: "Cunctum UI",
         es: "Cunctum UI",
@@ -51,7 +47,7 @@ const t = useTranslations(Astro.currentLocale as Lang);
       link="https://cunctae.github.io/cunctum-ui/?path=/docs/introduction--docs"
     />
       <PortfolioCard
-        bgImage={CasaNostra.src}
+        bgImage={CasaNostra}
         title={t({
           en: "A casa nostra",
           es: "A casa nostra",
@@ -66,7 +62,7 @@ const t = useTranslations(Astro.currentLocale as Lang);
         link="https://a-casa-nostra.vercel.app/"
       />
       <PortfolioCard
-        bgImage={Pokedex.src}
+        bgImage={Pokedex}
         title={t({
           en: "Pokedex",
           es: "Pokedex",
@@ -75,12 +71,12 @@ const t = useTranslations(Astro.currentLocale as Lang);
         description={t({
           en: "Pokedex project created with Angular 12 and PokeApi",
           es: "Proyecto Pokedex creado con Angular 12 y PokeApi",
-          "pt-br": "Projeto Pokedex criado com Angular 12 e PokeApi",
+          "pt-br": "Projeto Pokedex criado con Angular 12 e PokeApi",
         })}
         link="https://radapls.github.io/Pokedex/"
       />
       <PortfolioCard
-        bgImage={World.src}
+        bgImage={World}
         title={t({
           en: "Encyclopedia of Countries",
           es: "Enciclopedia de Países",
@@ -95,7 +91,7 @@ const t = useTranslations(Astro.currentLocale as Lang);
         link="https://radapls.github.io/country-stats/"
       />
       <PortfolioCard
-        bgImage={SpaceInvaders.src}
+        bgImage={SpaceInvaders}
         title={t({
           en: "Space Invaders",
           es: "Space Invaders",

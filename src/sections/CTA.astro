@@ -1,5 +1,6 @@
 ---
 import Project from '@assets/img/new-project.webp'
+import { Image } from 'astro:assets';
 import { useTranslations, type Lang } from "src/i18n";
 
 const t = useTranslations(Astro.currentLocale as Lang);
@@ -30,7 +31,7 @@ const t = useTranslations(Astro.currentLocale as Lang);
                 </p>
                 <a
                     href="https://wa.me/message/LSVUN45EBMK5B1"
-                    class="button button--flex button--white"
+                    class="button button--white"
                     >
                     {
                         t({
@@ -41,11 +42,13 @@ const t = useTranslations(Astro.currentLocale as Lang);
                       }
                 </a>
             </div>
-            <img
-                src={Project.src}
+            <Image
+                src={Project}
                 alt="project"
                 class="project__img"
                 draggable="false"
+                width={232}
+                height={200}
             />
         </div>
     </div>

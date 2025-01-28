@@ -2,9 +2,9 @@
 import ProfilePic from "@assets/img/juan.webp";
 import CurriculumVitae from "@assets/documents/CV_Juan_Felipe_Rada.pdf";
 import { useTranslations, type Lang } from "src/i18n";
+import { Image } from "astro:assets";
 
 const t = useTranslations(Astro.currentLocale as Lang);
-
 ---
 
 <!--==================== ABOUT ====================-->
@@ -25,15 +25,19 @@ const t = useTranslations(Astro.currentLocale as Lang);
         es: "Mi instroducción",
         "pt-br": "Minha apresentação",
       })
-    }
+    }w
   </span>
 
   <div class="about__container container grid">
-    <img
-      src={ProfilePic.src}
-      alt="Profile pic"
+    <Image
+      src={ProfilePic}
+      alt="Profile picture of Juan Felipe Rada"
       class="about__img"
+      width={325}
+      height={325}
       draggable="false"
+      loading={"eager"}
+      decoding="async"
     />
     <div class="about__data">
       <p class="about__description">
@@ -41,7 +45,8 @@ const t = useTranslations(Astro.currentLocale as Lang);
           t({
             en: "Hello everyone around here, my name is Juan Felipe Rada. I enjoy creating new things beyond possibilities; I consider myself curious and inquisitive about life. That's why you'll always see me exploring something new. I invite you to learn a bit about my journey.",
             es: "¡Saludos a todos por aquí! Soy Juan Felipe Rada. Disfruto creando cosas nuevas más allá de las posibilidades, me considero inquieto y curioso acerca de la vida. Por eso, siempre me verás investigando algo nuevo. Te invito a conocer un poco de mi trayecto.",
-            "pt-br": "Olá a todos por aqui, meu nome é Juan Felipe Rada. Eu gosto de criar coisas novas além das possibilidades; me considero inquieto e curioso sobre a vida. Por isso, você sempre me verá investigando algo novo. Convido você a conhecer um pouco da minha jornada.",
+            "pt-br":
+              "Olá a todos por aqui, meu nome é Juan Felipe Rada. Eu gosto de criar coisas novas além das possibilidades; me considero inquieto e curioso sobre a vida. Por isso, você sempre me verá investigando algo novo. Convido você a conhecer um pouco da minha jornada.",
           })
         }
       </p>
@@ -54,17 +59,26 @@ const t = useTranslations(Astro.currentLocale as Lang);
             "pt-br": "Às vezes escrevo",
           })
         }
-        <a class="about__description" href="/blog">
+        <a
+          class="about__description__link"
+          href="/blog"
+          role="link"
+          aria-roledescription={t({
+            en: "Personal blog link",
+            es: "Enlace al blog personal",
+            "pt-br": "Link blog pessoal",
+          })}
+        >
           {
             t({
-              en: "here",
-              es: "aquí",
-              "pt-br": "aqui",
+              en: "on my personal blog",
+              es: "en mi blog personal",
+              "pt-br": "no meu blog pessoal",
             })
           }
         </a>
       </p>
-      
+
       <div class="about__info">
         <div>
           <span class="about__info-title">04+</span>
@@ -125,3 +139,23 @@ const t = useTranslations(Astro.currentLocale as Lang);
     </div>
   </div>
 </section>
+
+<style>
+  .about__description__link {
+    text-decoration: underline;
+    color: var(--first-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  .about__description__link:hover,
+  .about__description__link:focus {
+    color: var(--first-color-alt);
+    text-decoration-thickness: 2px;
+  }
+
+  .about__description__link:focus-visible {
+    outline: 2px solid var(--first-color);
+    outline-offset: 2px;
+  }
+</style>
