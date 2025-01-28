@@ -11,6 +11,7 @@ import Javeriana from "@assets/img/brands/javeriana.svg";
 import Logo from "@assets/img/brands/logo.png";
 
 import { useTranslations, type Lang } from "src/i18n";
+import { Image } from "astro:assets";
 
 const t = useTranslations(Astro.currentLocale as Lang);
 ---
@@ -74,11 +75,13 @@ const t = useTranslations(Astro.currentLocale as Lang);
         <!--==================== QUALIFICATION 1 ====================-->
         <div class="qualification__data">
           <div>
-            <img
-              src={Javeriana.src}
+            <Image
+              src={Javeriana}
               draggable="false"
               alt="Pontificia Universidad Javeriana"
               class="brand-icon"
+              height={35}
+              width={35}
             />
             <h3 class="qualification__title">
               {
@@ -110,11 +113,13 @@ const t = useTranslations(Astro.currentLocale as Lang);
             <span class="qualification__line"></span>
           </div>
           <div>
-            <img
-              src={Icesi.src}
+            <Image
+              src={Icesi}
               draggable="false"
               alt="Universidad ICESI"
               class="brand-icon"
+              height={35}
+              width={35}
             />
             <h3 class="qualification__title">
               {
@@ -147,11 +152,13 @@ const t = useTranslations(Astro.currentLocale as Lang);
             <span class="qualification__line"></span>
           </div>
           <div>
-            <img
-              src={MOE.src}
+            <Image
+              src={MOE}
               draggable="false"
               alt="MOE | Misión de Observación Electoral"
               class="brand-icon"
+              height={35}
+              width={35}
             />
             <h3 class="qualification__title">
               {
@@ -180,11 +187,13 @@ const t = useTranslations(Astro.currentLocale as Lang);
         <!--==================== QUALIFICATION 2 ====================-->
         <div class="qualification__data">
           <div>
-            <img
-              src={Alcaldia.src}
+            <Image
+              src={Alcaldia}
               draggable="false"
               alt="Alcaldia de Cali"
               class="brand-icon"
+              height={35}
+              width={25}
             />
             <h3 class="qualification__title">
               {
@@ -221,11 +230,13 @@ const t = useTranslations(Astro.currentLocale as Lang);
           </div>
 
           <div>
-            <img
-              src={IEI.src}
+            <Image
+              src={IEI}
               draggable="false"
               alt="IEI | Instituto de Estudios Interculturales"
               class="brand-icon"
+              height={35}
+              width={35}
             />
             <h3 class="qualification__title">
               {
@@ -255,11 +266,12 @@ const t = useTranslations(Astro.currentLocale as Lang);
         <div class="qualification__data">
           <div>
             <a href="/wibx">
-              <img
-                src={Wibx.src}
+              <Image
+                src={Wibx}
                 draggable="false"
                 alt="Wibx Company"
-                width="35px"
+                height={35}
+                width={35}
               />
               <h3 class="qualification__title">
                 {
@@ -290,11 +302,13 @@ const t = useTranslations(Astro.currentLocale as Lang);
             <span class="qualification__line"></span>
           </div>
           <div>
-            <img
-              src={Birdi.src}
+            <Image
+              src={Birdi}
               draggable="false"
               alt="BirdiRx"
               class="brand-icon"
+              height={35}
+              width={35}
             />
             <h3 class="qualification__title">
               {
@@ -323,11 +337,13 @@ const t = useTranslations(Astro.currentLocale as Lang);
         <!--==================== BirdiRx ====================-->
         <div class="qualification__data">
           <div>
-            <img
-              src={NT.src}
+            <Image
+              src={NT}
               draggable="false"
               alt="NT Consult"
               class="brand-icon"
+              height={35}
+              width={35}
             />
             <h3 class="qualification__title">
               {
@@ -365,11 +381,13 @@ const t = useTranslations(Astro.currentLocale as Lang);
             <span class="qualification__line"></span>
           </div>
           <div>
-            <img
-              src={Logo.src}
+            <Image
+              src={Logo}
               draggable="false"
               alt="Your logo here"
               class="brand-icon"
+              height={35}
+              width={35}
             />
             <h3 class="qualification__title">
               {

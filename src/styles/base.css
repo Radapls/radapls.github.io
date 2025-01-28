@@ -9,32 +9,32 @@
   --hue-color: 270; /*Purple 250 - Green 142 - Blue 230 - Pink 340*/
 
   /* Light Theme */
-  --first-color: hsl(var(--hue-color), 80%, 60%); /* Strong accent */
+  --first-color: hsl(var(--hue-color), 85%, 45%); /* Strong accent with better contrast */
   --first-color-second: hsl(
     var(--hue-color),
-    70%,
-    50%
+    75%,
+    40%
   ); /* Complementary accent */
-  --first-color-alt: hsl(var(--hue-color), 60%, 45%); /* Subtle accent */
+  --first-color-alt: hsl(var(--hue-color), 70%, 35%); /* Subtle accent */
   --first-color-lighter: hsl(
     var(--hue-color),
-    90%,
-    85%
+    85%,
+    80%
   ); /* Background highlight */
 
   --title-color: hsl(
     var(--hue-color),
-    10%,
-    12%
+    15%,
+    10%
   ); /* Darker text for better readability */
-  --text-color: hsl(var(--hue-color), 10%, 38%); /* Standard text color */
-  --text-color-light: hsl(var(--hue-color), 10%, 55%); /* Secondary text */
+  --text-color: hsl(var(--hue-color), 15%, 25%); /* Standard text color with higher contrast */
+  --text-color-light: hsl(var(--hue-color), 15%, 45%); /* Secondary text with improved contrast */
 
   --input-color: hsl(var(--hue-color), 70%, 96%); /* Input backgrounds */
   --body-color: hsl(var(--hue-color), 60%, 98%); /* Background */
   --container-color: #ffffff; /* Pure white container for contrast */
-  --scroll-bar-color: hsl(var(--hue-color), 15%, 85%); /* Scroll bar */
-  --scroll-thumb-color: hsl(var(--hue-color), 15%, 70%); /* Thumb for scroll */
+  --scroll-bar-color: hsl(var(--hue-color), 20%, 75%); /* Scroll bar with better visibility */
+  --scroll-thumb-color: hsl(var(--hue-color), 25%, 60%); /* Thumb for scroll with improved contrast */
   /*========== Font and typography ==========*/
   --body-font: "Poppins", sans-serif;
 
@@ -86,26 +86,26 @@
 body.dark-theme {
   --first-color: hsl(
     var(--hue-color),
-    70%,
-    55%
-  ); /* Adjusted for dark mode contrast */
-  --first-color-second: hsl(var(--hue-color), 50%, 40%);
-  --first-color-alt: hsl(var(--hue-color), 50%, 30%);
-  --first-color-lighter: hsl(var(--hue-color), 85%, 70%); /* Softer highlight */
+    85%,
+    65%
+  ); /* Enhanced contrast for dark mode */
+  --first-color-second: hsl(var(--hue-color), 75%, 55%);
+  --first-color-alt: hsl(var(--hue-color), 70%, 45%);
+  --first-color-lighter: hsl(var(--hue-color), 90%, 75%); /* Brighter highlight for dark mode */
 
-  --title-color: hsl(var(--hue-color), 15%, 90%); /* Bright text */
-  --text-color: hsl(var(--hue-color), 10%, 65%); /* Standard text */
-  --text-color-light: hsl(var(--hue-color), 10%, 75%); /* Secondary text */
+  --title-color: hsl(var(--hue-color), 20%, 95%); /* Bright text with improved contrast */
+  --text-color: hsl(var(--hue-color), 15%, 85%); /* Standard text with better visibility */
+  --text-color-light: hsl(var(--hue-color), 15%, 75%); /* Secondary text with sufficient contrast */
 
   --input-color: hsl(var(--hue-color), 25%, 18%); /* Dark input background */
-  --body-color: hsl(var(--hue-color), 10%, 8%); /* Background */
+  --body-color: hsl(var(--hue-color), 15%, 10%); /* Slightly lighter background for better contrast */
   --container-color: hsl(
     var(--hue-color),
-    15%,
-    12%
-  ); /* Slightly lighter container */
-  --scroll-bar-color: hsl(var(--hue-color), 10%, 35%);
-  --scroll-thumb-color: hsl(var(--hue-color), 10%, 25%);
+    20%,
+    15%
+  ); /* Container with improved contrast */
+  --scroll-bar-color: hsl(var(--hue-color), 20%, 45%); /* More visible scroll bar */
+  --scroll-thumb-color: hsl(var(--hue-color), 25%, 35%); /* Enhanced scroll thumb visibility */
 }
 
 /*========== Button Dark/Light ==========*/
@@ -396,6 +396,7 @@ button {
 .button--flex {
   display: inline-flex;
   align-items: center;
+  color: #fff;
 }
 .button__small {
   padding: 0.75rem 1rem;

@@ -54,7 +54,7 @@ const t = useTranslations(Astro.currentLocale as Lang);
             "pt-br": "Às vezes escrevo",
           })
         }
-        <a class="about__description" href="/blog">
+        <a class="about__description__link" href="/blog">
           {
             t({
               en: "here",
@@ -125,3 +125,23 @@ const t = useTranslations(Astro.currentLocale as Lang);
     </div>
   </div>
 </section>
+
+<style>
+  .about__description__link {
+    text-decoration: underline;
+    color: var(--first-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  .about__description__link:hover,
+  .about__description__link:focus {
+    color: var(--first-color-alt);
+    text-decoration-thickness: 2px;
+  }
+
+  .about__description__link:focus-visible {
+    outline: 2px solid var(--first-color);
+    outline-offset: 2px;
+  }
+</style>

@@ -85,8 +85,8 @@ const locale = Astro.currentLocale as Lang;
     {withFooter && <Footer {variant} />}
 
     <!--==================== SCROLL TOP ====================-->
-    <a href="#" class="scrollup" id="scroll-up">
-      <i class="uil uil-arrow-up scrollup__icon"></i>
+    <a href="#" class="scrollup" id="scroll-up" aria-label="Scroll to top" role="button">
+      <i class="uil uil-arrow-up scrollup__icon" aria-hidden="true"></i>
     </a>
   </body>
 </html>

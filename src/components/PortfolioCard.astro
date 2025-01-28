@@ -1,7 +1,9 @@
 ---
+import { Image } from 'astro:assets';
+
 interface Props {
   link: string;
-  bgImage: string;
+  bgImage: any;
   title: string;
   description: string;
 }
@@ -9,17 +11,17 @@ interface Props {
 const { link, bgImage, title, description } = Astro.props;
 ---
 
-<a class="card" href=`${link}`>
-  <img class="card__image" src={bgImage} alt={title} />
+<a class="card" href=`${link}` target="_blank" rel="noopener noreferrer" >
+  <Image class="card__image" src={bgImage} alt={title} loading="lazy" width={75} height={75} />
   <div class="card__content">
-    <h3 class="card__title">
+    <h3 class="card__title" id={`title-${title}`}>
       {title}
     </h3>
     <p class="card__description">
       {description}
     </p>
   </div>
-  <button>
+  <button role="button" aria-label={`Open ${title} project`}>
     <svg
       id="Arrow.7"
       xmlns="http://www.w3.org/2000/svg"
