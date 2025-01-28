@@ -1,44 +1,9 @@
-/*==================== GOOGLE FONTS ====================*/
 
-/*==================== VARIABLES CSS ====================*/
 :root {
   --header-height: 3rem;
-
-  /*========== Colors ==========*/
-  /* Base Hue Colors */
-  --hue-color: 270; /*Purple 250 - Green 142 - Blue 230 - Pink 340*/
-
-  /* Light Theme */
-  --first-color: hsl(var(--hue-color), 85%, 45%); /* Strong accent with better contrast */
-  --first-color-second: hsl(
-    var(--hue-color),
-    75%,
-    40%
-  ); /* Complementary accent */
-  --first-color-alt: hsl(var(--hue-color), 70%, 35%); /* Subtle accent */
-  --first-color-lighter: hsl(
-    var(--hue-color),
-    85%,
-    80%
-  ); /* Background highlight */
-
-  --title-color: hsl(
-    var(--hue-color),
-    15%,
-    10%
-  ); /* Darker text for better readability */
-  --text-color: hsl(var(--hue-color), 15%, 25%); /* Standard text color with higher contrast */
-  --text-color-light: hsl(var(--hue-color), 15%, 45%); /* Secondary text with improved contrast */
-
-  --input-color: hsl(var(--hue-color), 70%, 96%); /* Input backgrounds */
-  --body-color: hsl(var(--hue-color), 60%, 98%); /* Background */
-  --container-color: #ffffff; /* Pure white container for contrast */
-  --scroll-bar-color: hsl(var(--hue-color), 20%, 75%); /* Scroll bar with better visibility */
-  --scroll-thumb-color: hsl(var(--hue-color), 25%, 60%); /* Thumb for scroll with improved contrast */
-  /*========== Font and typography ==========*/
+ 
   --body-font: "Poppins", sans-serif;
 
-  /* .5rem = 8px, 1rem = 16px, 1.5rem = 24px ... */
   --big-font-size: 2rem;
   --h1-font-size: 1.5rem;
   --h2-font-size: 1.25rem;
@@ -47,13 +12,10 @@
   --small-font-size: 0.875rem;
   --smaller-font-size: 0.75rem;
 
-  /*========== Font weight ==========*/
-  --font-medium: 500;
+  --font-medium: 400;
   --font-semi-bold: 600;
   --font-bold: 800;
 
-  /*========== Margenes Bottom ==========*/
-  /* .25rem = 4px, .5rem = 8px, .75rem = 12px ... */
   --mb-0-25: 0.25rem;
   --mb-0-5: 0.5rem;
   --mb-0-75: 0.75rem;
@@ -63,7 +25,6 @@
   --mb-2-5: 2.5rem;
   --mb-3: 3rem;
 
-  /*========== z index ==========*/
   --z-tooltip: 10;
   --z-fixed: 100;
   --z-modal: 1000;
@@ -82,31 +43,6 @@
   }
 }
 
-/* Dark Theme */
-body.dark-theme {
-  --first-color: hsl(
-    var(--hue-color),
-    85%,
-    65%
-  ); /* Enhanced contrast for dark mode */
-  --first-color-second: hsl(var(--hue-color), 75%, 55%);
-  --first-color-alt: hsl(var(--hue-color), 70%, 45%);
-  --first-color-lighter: hsl(var(--hue-color), 90%, 75%); /* Brighter highlight for dark mode */
-
-  --title-color: hsl(var(--hue-color), 20%, 95%); /* Bright text with improved contrast */
-  --text-color: hsl(var(--hue-color), 15%, 85%); /* Standard text with better visibility */
-  --text-color-light: hsl(var(--hue-color), 15%, 75%); /* Secondary text with sufficient contrast */
-
-  --input-color: hsl(var(--hue-color), 25%, 18%); /* Dark input background */
-  --body-color: hsl(var(--hue-color), 15%, 10%); /* Slightly lighter background for better contrast */
-  --container-color: hsl(
-    var(--hue-color),
-    20%,
-    15%
-  ); /* Container with improved contrast */
-  --scroll-bar-color: hsl(var(--hue-color), 20%, 45%); /* More visible scroll bar */
-  --scroll-thumb-color: hsl(var(--hue-color), 25%, 35%); /* Enhanced scroll thumb visibility */
-}
 
 /*========== Button Dark/Light ==========*/
 .nav__btns {
@@ -305,9 +241,11 @@ button {
   gap: 1rem;
 }
 .home__content {
-  grid-template-columns: 0.5fr 3fr;
+  display: grid;
+  grid-template-columns: 1fr;
   padding-top: 3.5rem;
   align-items: center;
+  grid-auto-flow: dense
 }
 .home__social {
   display: grid;
@@ -865,7 +803,8 @@ button {
     column-gap: 0;
   }
   .home__content {
-    grid-template-columns: 25fr 3fr;
+    grid-template-columns: 1fr;
+    grid-auto-flow: dense
   }
   .home__blob {
     width: 180px;
@@ -1015,9 +954,7 @@ button {
   .services__content {
     padding: 6rem 0 2rem 2.5rem;
   }
-  .services__modal-content {
-    width: 450px;
-  }
+
   .portafolio__img {
     width: 320px;
   }

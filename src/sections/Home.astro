@@ -33,9 +33,11 @@ const t = useTranslations(Astro.currentLocale as Lang);
         class="illustration-image floating"
         alt="Ilustracion digitial Juan Felipe Rada"
         src={Illustration}
-        width={350}
-        height={350}
+        width={1252}
+        height={1248}
         draggable={false}
+        loading={'eager'}
+        decoding="async"
       />
 
       <div class="home__data">

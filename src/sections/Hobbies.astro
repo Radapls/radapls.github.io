@@ -1,6 +1,7 @@
 ---
 import Sewing from "@assets/img/Sewing.webp";
 import Pottery from "@assets/img/pottery.webp";
+import { Image } from "astro:assets";
 
 import { useTranslations, type Lang } from "src/i18n";
 
@@ -59,7 +60,7 @@ const t = useTranslations(Astro.currentLocale as Lang);
           <i class="uil uil-times services__modal-close"></i>
 
           <ul class="services__modal-services grid">
-            <img src={Pottery.src} alt="Pottery" draggable="false" />
+            <Image src={Pottery} alt="Pottery" draggable="false" width={640} height={559}/>
           </ul>
         </div>
       </div>
@@ -94,7 +95,7 @@ const t = useTranslations(Astro.currentLocale as Lang);
           <i class="uil uil-times services__modal-close"></i>
 
           <ul class="services__modal-services grid">
-            <img src={Sewing.src} alt="sewing" draggable="false" />
+            <Image src={Sewing} alt="Pottery" draggable="false" width={1080} height={566}/>
           </ul>
         </div>
       </div>

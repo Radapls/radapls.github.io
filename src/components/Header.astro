@@ -6,6 +6,7 @@ import Birdi from "@assets/img/brands/birdi.png";
 import LocaleSelect from "./i18n/LocaleSelect.astro";
 
 import { useTranslations, type Lang } from "src/i18n";
+import { Image } from "astro:assets";
 
 const t = useTranslations(Astro.currentLocale as Lang);
 
@@ -22,74 +23,79 @@ const { variant, noLinks = false } = Astro.props;
     <header class="header" id="header">
       <nav class="nav container">
         <a href="/" class="nav__logo">
-          <img
+          <Image
             class="MarcaHead"
-            src={Logo.src}
+            src={Logo}
             draggable="false"
             alt="Logo Juan Felipe Rada"
+            width={45}
+            height={45}
           />
         </a>
 
-    { !noLinks &&   <div class="nav__menu" id="nav-menu">
-          <ul class="nav__list grid">
-            <li class="nav__item">
-              <a href="#About" class="nav__link">
-                <i class="uil uil-user nav__icon" />
-                <p>
-                  {t({
-                    en: "About",
-                    es: "Acerca",
-                    "pt-br": "Acerca",
-                  })}
-                </p>
-              </a>
-            </li>
-            <li class="nav__item">
-              <a href="#Skills" class="nav__link">
-                <i class="uil uil-file-check-alt nav__icon" />
-                <p>
-                  {t({
-                    en: "Skills",
-                    es: "Habilidades",
-                    "pt-br": "Habilidades",
-                  })}
-                </p>
-              </a>
-            </li>
-            <li class="nav__item">
-              <a href="#Portafolio" class="nav__link">
-                <i class="uil uil-scenery nav__icon" />
-                <p>
-                  {t({
-                    en: "Portfolio",
-                    es: "Portafolio",
-                    "pt-br": "Portfólio",
-                  })}
-                </p>
-              </a>
-            </li>
-            <li class="nav__item">
-              <a href="#Contact" class="nav__link">
-                <i class="uil uil-message nav__icon" />
-                <p>
-                  {t({
-                    en: "Contact Me",
-                    es: "Contacto",
-                    "pt-br": "Contato",
-                  })}
-                </p>
-              </a>
-            </li>
-          </ul>
-          <i class="uil uil-times nav__close" id="nav-close" />
-        </div>}
+        {!noLinks && (
+          <div class="nav__menu" id="nav-menu">
+            <ul class="nav__list grid">
+              <li class="nav__item">
+                <a href="#About" class="nav__link">
+                  <i class="uil uil-user nav__icon" />
+                  <p>
+                    {t({
+                      en: "About",
+                      es: "Acerca",
+                      "pt-br": "Acerca",
+                    })}
+                  </p>
+                </a>
+              </li>
+              <li class="nav__item">
+                <a href="#Skills" class="nav__link">
+                  <i class="uil uil-file-check-alt nav__icon" />
+                  <p>
+                    {t({
+                      en: "Skills",
+                      es: "Habilidades",
+                      "pt-br": "Habilidades",
+                    })}
+                  </p>
+                </a>
+              </li>
+              <li class="nav__item">
+                <a href="#Portafolio" class="nav__link">
+                  <i class="uil uil-scenery nav__icon" />
+                  <p>
+                    {t({
+                      en: "Portfolio",
+                      es: "Portafolio",
+                      "pt-br": "Portfólio",
+                    })}
+                  </p>
+                </a>
+              </li>
+              <li class="nav__item">
+                <a href="#Contact" class="nav__link">
+                  <i class="uil uil-message nav__icon" />
+                  <p>
+                    {t({
+                      en: "Contact Me",
+                      es: "Contacto",
+                      "pt-br": "Contato",
+                    })}
+                  </p>
+                </a>
+              </li>
+            </ul>
+            <i class="uil uil-times nav__close" id="nav-close" />
+          </div>
+        )}
         <div class="nav__btns">
           <i class="uil uil-moon change-theme" id="theme-button" />
 
-          { !noLinks &&  <div class="nav__toggle" id="nav-toggle">
-            <i class="uil uil-apps" />
-          </div>
-          }
+          {!noLinks && (
+            <div class="nav__toggle" id="nav-toggle">
+              <i class="uil uil-apps" />
+            </div>
+          )}
         </div>
 
         <LocaleSelect />
@@ -100,11 +106,13 @@ const { variant, noLinks = false } = Astro.props;
       <nav class="nav container">
         <div class="wibx">
           <a href="/">
-            <img
+            <Image
               class="MarcaHead"
-              src={Logo.src}
+              src={Logo}
               draggable="false"
               alt="Logo Juan Felipe Rada"
+              width={40}
+              height={40}
             />
           </a>
           <svg
@@ -126,20 +134,22 @@ const { variant, noLinks = false } = Astro.props;
           </svg>
           {variant === "wibx" ? (
             <a href="https://wibx.io/" class="nav__logo">
-              <img
+              <Image
                 src="https://assets.coingecko.com/coins/images/11009/large/wibx_new_logo.png"
                 draggable="false"
                 alt="Wibx Company"
-                style="width: 40px;"
+                width={40}
+                height={40}
               />
             </a>
           ) : (
             <a href="https://www.birdirx.com/" class="nav__logo">
-              <img
-                src={Birdi.src}
+              <Image
+                src={Birdi}
                 draggable="false"
                 alt="BirdiRx"
-                style="width: 40px;"
+                width={40}
+                height={40}
               />
             </a>
           )}

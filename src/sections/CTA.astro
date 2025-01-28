@@ -1,5 +1,6 @@
 ---
 import Project from '@assets/img/new-project.webp'
+import { Image } from 'astro:assets';
 import { useTranslations, type Lang } from "src/i18n";
 
 const t = useTranslations(Astro.currentLocale as Lang);
@@ -41,11 +42,13 @@ const t = useTranslations(Astro.currentLocale as Lang);
                       }
                 </a>
             </div>
-            <img
-                src={Project.src}
+            <Image
+                src={Project}
                 alt="project"
                 class="project__img"
                 draggable="false"
+                width={232}
+                height={200}
             />
         </div>
     </div>

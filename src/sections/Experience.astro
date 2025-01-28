@@ -388,8 +388,8 @@ const t = useTranslations(Astro.currentLocale as Lang);
               draggable="false"
               alt="Your logo here"
               class="brand-icon"
-              height={35}
               width={50}
+              height={32}
             />
             <h3 class="qualification__title">
               {
@@ -400,7 +400,7 @@ const t = useTranslations(Astro.currentLocale as Lang);
                 })
               }
             </h3>
-            <a href="#Contact">
+            <a href="#Contact" class="qualification__subtitle">
               {
                 t({
                   en: "Contact Me",
