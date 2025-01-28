@@ -54,12 +54,18 @@ const t = useTranslations(Astro.currentLocale as Lang);
             "pt-br": "Às vezes escrevo",
           })
         }
-        <a class="about__description__link" href="/blog">
+        <a class="about__description__link" href="/blog" role="link" aria-roledescription= {
+          t({
+            en: "Personal blog link",
+            es: "Enlace al blog personal",
+            "pt-br": "Link blog pessoal",
+          })
+        }>
           {
             t({
-              en: "here",
-              es: "aquí",
-              "pt-br": "aqui",
+              en: "on my personal blog",
+              es: "en mi blog personal",
+              "pt-br": "no meu blog pessoal",
             })
           }
         </a>
