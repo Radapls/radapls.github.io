@@ -2,6 +2,7 @@
 import ProfilePic from "@assets/img/juan.webp";
 import CurriculumVitae from "@assets/documents/CV_Juan_Felipe_Rada.pdf";
 import { useTranslations, type Lang } from "src/i18n";
+import { Image } from "astro:assets";
 
 const t = useTranslations(Astro.currentLocale as Lang);
 
@@ -29,10 +30,12 @@ const t = useTranslations(Astro.currentLocale as Lang);
   </span>
 
   <div class="about__container container grid">
-    <img
-      src={ProfilePic.src}
-      alt="Profile pic"
+    <Image
+      src={ProfilePic}
+      alt="Profile picture of Juan Felipe Rada"
       class="about__img"
+      width={525}
+      height={525}
       draggable="false"
     />
     <div class="about__data">

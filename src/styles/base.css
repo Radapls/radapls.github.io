@@ -351,6 +351,8 @@ button {
 }
 .home__scroll-button {
   color: var(--first-color);
+  display: inline-flex;
+  align-items: center;
   transition: 0.3s;
 }
 .home__scroll-button:hover {
@@ -436,7 +438,6 @@ button {
 
 /*==================== ABOUT ====================*/
 .about__img {
-  width: 200px;
   border-radius: 0.5rem;
   justify-self: center;
   align-self: center;
@@ -910,10 +911,7 @@ button {
   .home__data {
     grid-column: initial;
   }
-  .home__img {
-    order: 1;
-    justify-self: center;
-  }
+
   .about__container,
   .skills__container,
   .portafolio__content,
@@ -988,9 +986,7 @@ button {
   .about__container {
     column-gap: 5rem;
   }
-  .about__img {
-    width: 350px;
-  }
+
   .about__description {
     text-align: initial;
   }
