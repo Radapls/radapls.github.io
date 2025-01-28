@@ -597,6 +597,7 @@ button {
   font-size: var(--h3-font-size);
   font-weight: var(--font-medium);
   cursor: pointer;
+  color: var(--text-color)
 }
 .qualification__button:hover {
   color: var(--first-color);
