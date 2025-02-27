@@ -5,12 +5,13 @@ interface Props {
   title: string;
   description?: string;
   frontmatter?: undefined;
+  noLinks?: boolean;
 }
 
-const { title, description } = Astro.props.frontmatter || Astro.props;
+const { title, description, noLinks } = Astro.props.frontmatter || Astro.props;
 ---
 
-<Base {title} {description}>
+<Base {title} {description} noLinks={noLinks}>
   <article class="section container">
     <slot />
   </article>

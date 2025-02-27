@@ -5,27 +5,32 @@ import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 
 const locale = Astro.currentLocale as Lang;
-const t = useTranslations(locale);
 
 const posts = (await getCollection("blog"))
   .filter((post) => post.id.split("/")[0] === locale)
   .sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
 
-const title = t({
-  es: "Juan Felipe Rada | Blog",
-  en: "Juan Felipe Rada | Blog",
-  "pt-br": "Juan Felipe Rada | Blog",
-});
+const title = "Juan Felipe Rada | Blog";
 
 export const getStaticPaths = () =>
   Object.keys(LOCALES).map((lang) => ({
     params: { lang },
   }));
+
+const t = useTranslations(Astro.currentLocale as Lang);
 ---
 
 <Layout {title} noLinks>
   <section class="section container">
-    <h2 class="section__title">Some post of the past</h2>
+    <h2 class="section__title">
+      {
+        t({
+          es: "Algunas publicaciones del pasado",
+          en: "Some post of the past",
+          "pt-br": "Alguns postagens do passado",
+        })
+      }
+    </h2>
 
     <ul class="blog-list">
       {
