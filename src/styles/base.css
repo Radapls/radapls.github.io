@@ -1,7 +1,7 @@
 
 :root {
   --header-height: 3rem;
- 
+
   --body-font: "Poppins", sans-serif;
 
   --big-font-size: 2rem;
@@ -54,6 +54,7 @@
   color: var(--title-color);
   margin-right: var(--mb-1);
   cursor: pointer;
+  transition: 0.2s;
 }
 .change-theme:hover {
   color: var(--first-color);
@@ -149,6 +150,7 @@ button {
 .MarcaHead {
   width: 40px;
   padding: 5px;
+  filter: drop-shadow(0 0 10px white);
 }
 
 .nav__logo {
@@ -193,6 +195,7 @@ button {
   font-size: var(--small-font-size);
   color: var(--title-color);
   font-weight: var(--font-medium);
+  transition: 0.2s;
 }
 .nav__link:hover {
   color: var(--first-color);
@@ -207,6 +210,7 @@ button {
   font-size: 1.5rem;
   cursor: pointer;
   color: var(--first-color);
+  transition: 0.2s;
 }
 .nav__close:hover {
   color: var(--first-color-alt);
@@ -255,6 +259,7 @@ button {
 .home__social-icon {
   font-size: 1.25rem;
   color: var(--first-color);
+  transition: 0.2s;
 }
 .home__social-icon:hover {
   color: var(--first-color-alt);
@@ -408,20 +413,25 @@ button {
   justify-content: center;
 }
 /*==================== SKILLS ====================*/
-.skills__container {
-  row-gap: 0;
-}
 .skills__header {
   display: flex;
   align-items: center;
   margin-bottom: var(--mb-2-5);
   cursor: pointer;
 }
+
 .skills__icon,
 .skills__arrow {
   font-size: 2rem;
   color: var(--first-color);
 }
+
+.skills__icon:hover,
+.skills__arrow:hover {
+  font-size: 2rem;
+  color: var(--title-color);
+}
+
 .skills__icon {
   margin-right: var(--mb-0-75);
 }
@@ -852,7 +862,6 @@ button {
   }
 
   .about__container,
-  .skills__container,
   .portafolio__content,
   .project__container,
   .contact__container,

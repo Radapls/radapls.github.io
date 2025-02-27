@@ -21,7 +21,7 @@ const description = post.data.description;
 
 ---
 
-<Layout {title} {description}>
+<Layout {title} {description} noLinks >
   {
     post.data.cover && (
       <Image src={post.data.cover} alt={post.data.title} class="cover" />
