@@ -1,0 +1,15 @@
+---
+interface Props {
+    tabTarget: string;
+    icon: string;
+    description: string;
+    isActive?: boolean;
+}
+
+const {tabTarget, icon, description, isActive} = Astro.props;
+
+---
+<div class=`qualification__button button--flex ${isActive ? 'qualification__active' : ''}` data-target={tabTarget}>
+    <i class=`uil ${icon} qualification__icon`></i>
+    <p>{description}</p>
+</div>
