@@ -1,22 +1,12 @@
 ---
-import Alcaldia from "@assets/img/brands/alcaldia-cali.webp";
-import IEI from "@assets/img/brands/iei.png";
-import MOE from "@assets/img/brands/moe.webp";
-
-import Wibx from "@assets/img/brands/wibx.webp";
-import NT from "@assets/img/brands/nt.png";
-import Birdi from "@assets/img/brands/birdi.png";
-import Icesi from "@assets/img/brands/icesi.jpg";
-import Javeriana from "@assets/img/brands/javeriana.svg";
-import Logo from "@assets/img/brands/logo.png";
-
 import { useTranslations, type Lang } from "src/i18n";
-import { Image } from "astro:assets";
-
 const t = useTranslations(Astro.currentLocale as Lang);
+
+import ExperienceTabs from "@components/Experience/ExperienceTabs.astro";
+import { experienceTabs, educationData, workData } from "@data/experienceData";
+import ExperienceContent from "@components/Experience/ExperienceContent.astro";
 ---
 
-<!--==================== QUALIFICATION ====================-->
 <section class="qualification section">
   <h2 class="section__title">
     📈
@@ -40,387 +30,69 @@ const t = useTranslations(Astro.currentLocale as Lang);
 
   <div class="qualification__container container">
     <div class="qualification__tabs">
-      <div class="qualification__button button--flex" data-target="#education">
-        <i class="uil uil-graduation-cap qualification__icon"></i>
-        <p>
-          {
-            t({
-              en: "Education",
-              es: "Educación",
-              "pt-br": "Educação",
-            })
-          }
-        </p>
-      </div>
-      <div
-        class="qualification__button button--flex qualification__active"
-        data-target="#work"
-      >
-        <i class="uil uil-briefcase-alt qualification__icon"></i>
-        <p>
-          {
-            t({
-              en: "Work",
-              es: "Trabajo",
-              "pt-br": "Trabalho",
-            })
-          }
-        </p>
-      </div>
+      {experienceTabs.map((tab, i) =>
+        <ExperienceTabs
+          tabTarget={tab.tabTarget}
+          icon={tab.icon}
+          isActive={i === 0}
+          description={t({
+              en:tab.description.en,
+              es: tab.description.es,
+              "pt-br": tab.description["pt-br"],
+            })}
+        />)
+      }
     </div>
 
     <div class="qualification__sections">
-      <!--==================== QUALIFICATION CONTENT 1 ====================-->
       <div class="qualification__content" data-content id="education">
-        <!--==================== QUALIFICATION 1 ====================-->
-        <div class="qualification__data">
-          <div>
-            <Image
-              src={Javeriana}
-              draggable="false"
-              alt="Pontificia Universidad Javeriana"
-              class="brand-icon"
-              height={35}
-              width={35}
-            />
-            <h3 class="qualification__title">
-              {
-                t({
-                  en: "Political Science",
-                  es: "Ciencia Política",
-                  "pt-br": "Ciência Política",
-                })
-              }
-            </h3>
-            <span class="qualification__subtitle"
-              >Pontificia Universidad Javeriana Cali</span
-            >
-            <div class="qualification__calendar">
-              <i class="uil uil-calendar-alt"></i>
-              2014 - 2019
-            </div>
-          </div>
-          <div>
-            <span class="qualification__rounder"></span>
-            <span class="qualification__line"></span>
-          </div>
-        </div>
-        <!--==================== QUALIFICATION 2 ====================-->
-        <div class="qualification__data">
-          <div></div>
-          <div>
-            <span class="qualification__rounder"></span>
-            <span class="qualification__line"></span>
-          </div>
-          <div>
-            <Image
-              src={Icesi}
-              draggable="false"
-              alt="Universidad ICESI"
-              class="brand-icon"
-              height={35}
-              width={35}
-            />
-            <h3 class="qualification__title">
-              {
-                t({
-                  en: "Master in Digital Business Strategy",
-                  es: "Maestria en Estrategia Digital de Negocios",
-                  "pt-br": "Mestrado em Estratégia de Negócios Digitais",
-                })
-              }
-            </h3>
-            <span class="qualification__subtitle"> Universidad ICESI </span>
-            <div class="qualification__calendar">
-              <i class="uil uil-calendar-alt"></i>
-              2021 - 2022
-            </div>
-          </div>
-        </div>
+        {educationData.map((item, i) =>
+          <ExperienceContent
+          image={{
+              src: item.image.src,
+              alt: item.image.alt,
+              height: item.image.height,
+              width: item.image.width
+            }}
+          title={t({
+                    en: item.lang.en,
+                    es: item.lang.es,
+                    "pt-br": item.lang["pt-br"]
+                  })}
+          organization={item.organization}
+          relativeTime={t({
+                    en: item.relativeTime.en,
+                    es: item.relativeTime.es,
+                    "pt-br": item.relativeTime["pt-br"]
+                  })}
+          isEven={i % 2 === 0}
+          />
+      )}
       </div>
-      <!--==================== QUALIFICATION CONTENT 2 ====================-->
-      <div
-        class="qualification__content qualification__active"
-        data-content
-        id="work"
-      >
-        <!--==================== QUALIFICATION 1 ====================-->
-        <div class="qualification__data">
-          <div></div>
-          <div>
-            <span class="qualification__rounder"></span>
-            <span class="qualification__line"></span>
-          </div>
-          <div>
-            <Image
-              src={MOE}
-              draggable="false"
-              alt="MOE | Misión de Observación Electoral"
-              class="brand-icon"
-              height={35}
-              width={35}
-            />
-            <h3 class="qualification__title">
-              {
-                t({
-                  en: "Research Assistant",
-                  es: "Asistente de investigación",
-                  "pt-br": "Assistente de Pesquisa",
-                })
-              }
-            </h3>
-            <span class="qualification__subtitle"
-              >Misión de Observación Electoral (MOE)</span
-            >
-            <div class="qualification__calendar">
-              <i class="uil uil-calendar-alt"></i>
-              {
-                t({
-                  en: "Jan 2018 - Jul 2018",
-                  es: "Ene 2018 - Jul 2018",
-                  "pt-br": "Jan 2018 - Jul 2018",
-                })
-              }
-            </div>
-          </div>
-        </div>
-        <!--==================== QUALIFICATION 2 ====================-->
-        <div class="qualification__data">
-          <div>
-            <Image
-              src={Alcaldia}
-              draggable="false"
-              alt="Alcaldia de Cali"
-              class="brand-icon"
-              height={35}
-              width={25}
-            />
-            <h3 class="qualification__title">
-              {
-                t({
-                  en: "Delivery Unit Member",
-                  es: "Enlace de seguimiento estratégico",
-                  "pt-br": "Ligação de Monitoramento Estratégico",
-                })
-              }
-            </h3>
-            <span class="qualification__subtitle"> Alcaldia de Cali </span>
-            <div class="qualification__calendar">
-              <i class="uil uil-calendar-alt"></i>
-              {
-                t({
-                  en: "Mar 2019 - Dec 2019",
-                  es: "Mar 2019 - Dic 2019",
-                  "pt-br": "Mar 2019 - Dez 2019",
-                })
-              }
-            </div>
-          </div>
-          <div>
-            <span class="qualification__rounder"></span>
-            <span class="qualification__line"></span>
-          </div>
-        </div>
-        <!--==================== QUALIFICATION 3 ====================-->
-        <div class="qualification__data">
-          <div></div>
-          <div>
-            <span class="qualification__rounder"></span>
-            <span class="qualification__line"></span>
-          </div>
-
-          <div>
-            <Image
-              src={IEI}
-              draggable="false"
-              alt="IEI | Instituto de Estudios Interculturales"
-              class="brand-icon"
-              height={35}
-              width={35}
-            />
-            <h3 class="qualification__title">
-              {
-                t({
-                  en: "Social Researcher",
-                  es: "Investigador Social",
-                  "pt-br": "Pesquisador Social",
-                })
-              }
-            </h3>
-            <span class="qualification__subtitle">
-              Instituto de Estudios Interculturales
-            </span>
-            <div class="qualification__calendar">
-              <i class="uil uil-calendar-alt"></i>
-              {
-                t({
-                  en: "Jun 2020 - Dec 2021",
-                  es: "Jun 2020 - Dic 2021",
-                  "pt-br": "Jun 2020 - Dez 2021",
-                })
-              }
-            </div>
-          </div>
-        </div>
-        <!--==================== QUALIFICATION 4 ====================-->
-        <div class="qualification__data">
-          <div>
-            <a href="/wibx">
-              <Image
-                src={Wibx}
-                draggable="false"
-                alt="Wibx Company"
-                height={35}
-                width={35}
-              />
-              <h3 class="qualification__title">
-                {
-                  t({
-                    en: "FrontEnd Developer",
-                    es: "Desarrollador FrontEnd",
-                    "pt-br": "Desenvolvedor Frontend",
-                  })
-                }
-              </h3>
-              <span class="qualification__subtitle"> Wibx Company </span>
-              <div class="qualification__calendar">
-                <i class="uil uil-calendar-alt"></i>
-                2022 - 2024
-              </div>
-            </a>
-          </div>
-          <div>
-            <span class="qualification__rounder"></span>
-            <span class="qualification__line"></span>
-          </div>
-        </div>
-        <!--==================== NT  ====================-->
-        <div class="qualification__data">
-          <div></div>
-          <div>
-            <span class="qualification__rounder"></span>
-            <span class="qualification__line"></span>
-          </div>
-          <div>
-            <Image
-              src={Birdi}
-              draggable="false"
-              alt="BirdiRx"
-              class="brand-icon"
-              height={35}
-              width={35}
-            />
-            <h3 class="qualification__title">
-              {
-                t({
-                  en: "FrontEnd Developer",
-                  es: "Desarrollador FrontEnd",
-                  "pt-br": "Desenvolvedor Frontend",
-                })
-              }
-            </h3>
-            <a href="/birdi">
-              <span class="qualification__subtitle"> BirdiRx </span>
-            </a>
-
-            <div class="qualification__calendar">
-              <i class="uil uil-calendar-alt"></i>
-              {
-                t({
-                  en: "May 2023 - Jan 2025",
-                  es: "May 2023 - Ene 2025",
-                  "pt-br": "Mai 2023 - Jan 2025",
-                })
-              }
-            </div>
-          </div>
-        </div>
-
-        <!--==================== BirdiRx ====================-->
-        <div class="qualification__data">
-          <div>
-            <Image
-              src={NT}
-              draggable="false"
-              alt="NT Consult"
-              class="brand-icon"
-              height={35}
-              width={35}
-            />
-            <h3 class="qualification__title">
-              {
-                t({
-                  en: "FrontEnd Developer",
-                  es: "Desarrollador FrontEnd",
-                  "pt-br": "Desenvolvedor Frontend",
-                })
-              }
-            </h3>
-            <span class="qualification__subtitle"> NT Consult</span>
-            <div class="qualification__calendar">
-              <i class="uil uil-calendar-alt"></i>
-              {
-                t({
-                  en: "Jan 2023 - Present",
-                  es: "Ene 2023 - Presente",
-                  "pt-br": "Jan 2023 - Presente",
-                })
-              }
-            </div>
-          </div>
-
-          <div>
-            <span class="qualification__rounder"></span>
-            <span class="qualification__line"></span>
-          </div>
-        </div>
-
-        <!--==================== Next?  ====================-->
-        <div class="qualification__data">
-          <div></div>
-          <div>
-            <span class="qualification__rounder"></span>
-            <span class="qualification__line"></span>
-          </div>
-          <div>
-            <Image
-              src={Logo}
-              draggable="false"
-              alt="Your logo here"
-              class="brand-icon"
-              width={50}
-              height={32}
-            />
-            <h3 class="qualification__title">
-              {
-                t({
-                  en: "Want to be the next?",
-                  es: "¿Quieres ser el próximo?",
-                  "pt-br": "Quer ser o próximo?",
-                })
-              }
-            </h3>
-            <a href="#Contact" class="qualification__subtitle">
-              {
-                t({
-                  en: "Contact Me",
-                  es: "Contáctame",
-                  "pt-br": "Contato",
-                })
-              }
-            </a>
-            <div class="qualification__calendar">
-              <i class="uil uil-calendar-alt"></i>
-              {
-                t({
-                  en: "Future?",
-                  es: "¿Futuro?",
-                  "pt-br": "Futuro?",
-                })
-              }
-            </div>
-          </div>
-        </div>
+      <div class="qualification__content qualification__active" data-content id="work">
+        {workData.map((item, i) =>
+          <ExperienceContent
+            image={{
+              alt: item.image.alt,
+              height: item.image.height,
+              width: item.image.width,
+              src: item.image.src
+            }}
+            title={t({
+              en:item.lang.en,
+                es: item.lang.es,
+                "pt-br": item.lang["pt-br"],
+            })}
+            organization={item.organization}
+            relativeTime={t({
+                en:item.relativeTime.en,
+                es: item.relativeTime.es,
+                "pt-br": item.relativeTime["pt-br"],
+              })}
+            isEven={i % 2 !== 0}
+            link={item.link}
+          />
+        )}
       </div>
     </div>
   </div>
@@ -435,7 +107,6 @@ const t = useTranslations(Astro.currentLocale as Lang);
 </style>
 
 <script is:inline>
-  /*==================== QUALIFICATION TABS ====================*/
   const tabs = document.querySelectorAll("[data-target]"),
     tabContents = document.querySelectorAll("[data-content]");
 

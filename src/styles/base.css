@@ -582,10 +582,10 @@ button {
 }
 .qualification__line {
   display: block;
-  width: 1px;
+  width: 2px;
   height: 100%;
   background-color: var(--first-color);
-  transform: translate(6px, -7px);
+  transform: translate(6px, -8px);
 }
 .qualification [data-content] {
   display: none;
