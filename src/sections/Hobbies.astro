@@ -1,8 +1,8 @@
 ---
 import Sewing from "@assets/img/Sewing.webp";
 import Pottery from "@assets/img/pottery.webp";
-import { Image } from "astro:assets";
-
+import Poetry from "@assets/img/sans-serifa.png";
+import HobbyCard from "@components/Hobby/HobbyCard.astro";
 import { useTranslations, type Lang } from "src/i18n";
 
 const t = useTranslations(Astro.currentLocale as Lang);
@@ -30,100 +30,42 @@ const t = useTranslations(Astro.currentLocale as Lang);
     }
   </span>
   <div class="services__container container grid">
-    <!--==================== HOBBY 1====================-->
-    <div class="services__content">
-      <div>
-        <i class="uil uil-wall services__icon"></i>
-        <h3 class="services__title">
-          {
-            t({
-              en: "Pottery",
-              es: "Cerámica",
-              "pt-br": "Cerâmica",
-            })
-          }
-        </h3>
-      </div>
-      <span class="button--flex button--small button--link services__button">
-        {
-          t({
-            en: "See more",
-            es: "Ver mas",
-            "pt-br": "Ver mais",
-          })
-        }
-      </span>
 
-      <div class="services__modal">
-        <div class="services__modal-content">
-          <h4 class="services__modal-title"></h4>
-          <i class="uil uil-times services__modal-close"></i>
+    <HobbyCard
+      title={
+        t({
+          en: "Pottery",
+          es: "Cerámica",
+          "pt-br": "Cerâmica",
+        })
+      }
+      image={Pottery}
+      alt="Pottery Project"
+    />
 
-          <ul class="services__modal-services grid">
-            <Image src={Pottery} alt="Pottery" draggable="false" width={640} height={559}/>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <!--==================== HOBBY 2====================-->
-    <div class="services__content">
-      <div>
-        <i class="uil uil-palette services__icon"></i>
-        <h3 class="services__title">
-          {
-            t({
-              en: "Sewing",
-              es: "Costura",
-              "pt-br": "Costura",
-            })
-          }
-        </h3>
-      </div>
-      <span class="button--flex button--small button--link services__button">
-        {
-          t({
-            en: "See more",
-            es: "Ver mas",
-            "pt-br": "Ver mais",
-          })
-        }
-      </span>
+    <HobbyCard
+      title={
+        t({
+          en: "Sewing",
+          es: "Costura",
+          "pt-br": "Costura",
+        })
+      }
+      image={Sewing}
+      alt="Sewing Project"
+    />
 
-      <div class="services__modal">
-        <div class="services__modal-content">
-          <h4 class="services__modal-title"></h4>
-          <i class="uil uil-times services__modal-close"></i>
-
-          <ul class="services__modal-services grid">
-            <Image src={Sewing} alt="Pottery" draggable="false" width={1080} height={566}/>
-          </ul>
-        </div>
-      </div>
-    </div>
+    <HobbyCard
+      title={
+        t({
+          en: "Poetry",
+          es: "Poesía",
+          "pt-br": "Poesia",
+        })
+      }
+      image={Poetry}
+      alt="Poetry Project"
+    />
   </div>
 </section>
 
-<script is:inline>
-  /*==================== SERVICES MODAL ====================*/
-  const modalViews = document.querySelectorAll(".services__modal"),
-    modalBtns = document.querySelectorAll(".services__button"),
-    modalCloses = document.querySelectorAll(".services__modal-close");
-
-  let modal = function (modalClick) {
-    modalViews[modalClick].classList.add("active-modal");
-  };
-
-  modalBtns.forEach((modalBtn, i) => {
-    modalBtn.addEventListener("click", () => {
-      modal(i);
-    });
-  });
-
-  modalCloses.forEach((modalClose) => {
-    modalClose.addEventListener("click", () => {
-      modalViews.forEach((modalView) => {
-        modalView.classList.remove("active-modal");
-      });
-    });
-  });
-</script>

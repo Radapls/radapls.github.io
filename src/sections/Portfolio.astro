@@ -147,17 +147,3 @@ const t = useTranslations(Astro.currentLocale as Lang);
     }
   }
 </style>
-
-<script is:inline>
-    document.addEventListener("DOMContentLoaded", function () {
-        const flipCards = document.querySelectorAll(".flip-card");
-
-        flipCards.forEach(function (flipCard) {
-            flipCard.addEventListener("click", function () {
-                this.querySelector(".flip-card-inner").classList.toggle(
-                    "flipped"
-                );
-            });
-        });
-    });
-</script>
