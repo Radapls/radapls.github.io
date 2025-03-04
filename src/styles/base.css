@@ -89,6 +89,7 @@ ul {
 }
 a {
   text-decoration: none;
+  cursor: pointer;
 }
 img {
   max-width: 100%;
@@ -764,14 +765,17 @@ button {
 /*========== SCROLL UP ==========*/
 .scrollup {
   position: fixed;
-  right: 1rem;
+  right: 2rem;
   bottom: -20%;
   background-color: var(--first-color);
   opacity: 0.8;
-  padding: 0 0.3rem;
+  padding: 0.3rem;
   border-radius: 0.4rem;
   z-index: var(--z-tooltip);
   transition: 0.4s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .scrollup:hover {
   background-color: var(--first-color-alt);
@@ -779,6 +783,7 @@ button {
 .scrollup__icon {
   font-size: 1.5rem;
   color: #fff;
+  rotate: 315deg;
 }
 
 /* Show scroll */
