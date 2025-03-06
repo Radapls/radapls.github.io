@@ -1,75 +1,73 @@
 ---
-import { LOCALES, useTranslations, type Lang } from "src/i18n";
-import Layout from "@layouts/Layout.astro";
-import { Image } from "astro:assets";
-import { getCollection } from "astro:content";
+import { LOCALES, useTranslations, type Lang } from 'src/i18n';
+import Layout from '@layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
 
 const locale = Astro.currentLocale as Lang;
 
-const posts = (await getCollection("blog"))
-  .filter((post) => post.id.split("/")[0] === locale)
-  .sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
+const posts = (await getCollection('blog'))
+	.filter((post) => post.id.split('/')[0] === locale)
+	.sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
 
-const title = "Juan Felipe Rada | Blog";
+const title = 'Juan Felipe Rada | Blog';
 
 export const getStaticPaths = () =>
-  Object.keys(LOCALES).map((lang) => ({
-    params: { lang },
-  }));
+	Object.keys(LOCALES).map((lang) => ({
+		params: { lang },
+	}));
 
 const t = useTranslations(Astro.currentLocale as Lang);
 ---
 
 <Layout {title} noLinks>
-  <section class="section container">
-    <h2 class="section__title">
-      {
-        t({
-          es: "Algunas publicaciones del pasado",
-          en: "Some post of the past",
-          "pt-br": "Alguns postagens do passado",
-        })
-      }
-    </h2>
+	<section class="section container">
+		<h2 class="section__title">
+			{
+				t({
+					es: 'Algunas publicaciones del pasado',
+					en: 'Some post of the past',
+					'pt-br': 'Alguns postagens do passado',
+				})
+			}
+		</h2>
 
-    <ul class="blog-list">
-      {
-        posts.map((post) => {
-          const [, ...id] = post.id.split("/");
-          return (
-            <li>
-              <a href={`/${locale}/blog/${id.join("/")}/`}>
-                {post.data.cover && (
-                  <Image src={post.data.cover} alt={post.data.title} />
-                )}
-                <h3>{post.data.title}</h3>
-              </a>
-            </li>
-          );
-        })
-      }
-    </ul>
-  </section>
+		<ul class="blog-list">
+			{
+				posts.map((post) => {
+					const [, ...id] = post.id.split('/');
+					return (
+						<li>
+							<a href={`/${locale}/blog/${id.join('/')}/`}>
+								{post.data.cover && <Image src={post.data.cover} alt={post.data.title} />}
+								<h3>{post.data.title}</h3>
+							</a>
+						</li>
+					);
+				})
+			}
+		</ul>
+	</section>
 </Layout>
 
 <style>
-  h2 {
-    margin-bottom: 2rem;
-  }
+	h2 {
+		margin-bottom: 2rem;
+	}
 
-  .blog-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-  }
+	.blog-list {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 2rem;
+	}
 
-  @media screen and (max-width: 568px) {
-    .blog-list {
-      grid-template-columns: 1fr;
-    }
-  }
+	@media screen and (max-width: 568px) {
+		.blog-list {
+			grid-template-columns: 1fr;
+		}
+	}
 
-  img {
-    border-radius: 0.5rem;
-  }
+	img {
+		border-radius: 0.5rem;
+	}
 </style>

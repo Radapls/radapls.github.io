@@ -1,128 +1,133 @@
 ---
-import { useTranslations, type Lang } from "src/i18n";
+import { useTranslations, type Lang } from 'src/i18n';
 const t = useTranslations(Astro.currentLocale as Lang);
 
-import ExperienceTabs from "@components/Experience/ExperienceTabs.astro";
-import { experienceTabs, educationData, workData } from "@data/experienceData";
-import ExperienceContent from "@components/Experience/ExperienceContent.astro";
+import ExperienceTabs from '@components/Experience/ExperienceTabs.astro';
+import { experienceTabs, educationData, workData } from '@data/experienceData';
+import ExperienceContent from '@components/Experience/ExperienceContent.astro';
 ---
 
 <section class="qualification section">
-  <h2 class="section__title">
-    📈
-    {
-      t({
-        en: "Experience",
-        es: "Experiencia",
-        "pt-br": "Experiência",
-      })
-    }
-  </h2>
-  <span class="section__subtitle">
-    {
-      t({
-        en: "My Personal Journey",
-        es: "Mi viaje personal",
-        "pt-br": "Minha Jornada Pessoal",
-      })
-    }
-  </span>
+	<h2 class="section__title">
+		📈
+		{
+			t({
+				en: 'Experience',
+				es: 'Experiencia',
+				'pt-br': 'Experiência',
+			})
+		}
+	</h2>
+	<span class="section__subtitle">
+		{
+			t({
+				en: 'My Personal Journey',
+				es: 'Mi viaje personal',
+				'pt-br': 'Minha Jornada Pessoal',
+			})
+		}
+	</span>
 
-  <div class="qualification__container container">
-    <div class="qualification__tabs">
-      {experienceTabs.map((tab, i) =>
-        <ExperienceTabs
-          tabTarget={tab.tabTarget}
-          icon={tab.icon}
-          isActive={i === 0}
-          description={t({
-              en:tab.description.en,
-              es: tab.description.es,
-              "pt-br": tab.description["pt-br"],
-            })}
-        />)
-      }
-    </div>
+	<div class="qualification__container container">
+		<div class="qualification__tabs">
+			{
+				experienceTabs.map((tab, i) => (
+					<ExperienceTabs
+						tabTarget={tab.tabTarget}
+						icon={tab.icon}
+						isActive={i === 0}
+						description={t({
+							en: tab.description.en,
+							es: tab.description.es,
+							'pt-br': tab.description['pt-br'],
+						})}
+					/>
+				))
+			}
+		</div>
 
-    <div class="qualification__sections">
-      <div class="qualification__content" data-content id="education">
-        {educationData.map((item, i) =>
-          <ExperienceContent
-          image={{
-              src: item.image.src,
-              alt: item.image.alt,
-              height: item.image.height,
-              width: item.image.width
-            }}
-          title={t({
-                    en: item.lang.en,
-                    es: item.lang.es,
-                    "pt-br": item.lang["pt-br"]
-                  })}
-          organization={item.organization}
-          relativeTime={t({
-                    en: item.relativeTime.en,
-                    es: item.relativeTime.es,
-                    "pt-br": item.relativeTime["pt-br"]
-                  })}
-          isEven={i % 2 === 0}
-          />
-      )}
-      </div>
-      <div class="qualification__content qualification__active" data-content id="work">
-        {workData.map((item, i) =>
-          <ExperienceContent
-            image={{
-              alt: item.image.alt,
-              height: item.image.height,
-              width: item.image.width,
-              src: item.image.src
-            }}
-            title={t({
-              en:item.lang.en,
-                es: item.lang.es,
-                "pt-br": item.lang["pt-br"],
-            })}
-            organization={item.organization}
-            relativeTime={t({
-                en:item.relativeTime.en,
-                es: item.relativeTime.es,
-                "pt-br": item.relativeTime["pt-br"],
-              })}
-            isEven={i % 2 !== 0}
-            link={item.link}
-          />
-        )}
-      </div>
-    </div>
-  </div>
+		<div class="qualification__sections">
+			<div class="qualification__content" data-content id="education">
+				{
+					educationData.map((item, i) => (
+						<ExperienceContent
+							image={{
+								src: item.image.src,
+								alt: item.image.alt,
+								height: item.image.height,
+								width: item.image.width,
+							}}
+							title={t({
+								en: item.lang.en,
+								es: item.lang.es,
+								'pt-br': item.lang['pt-br'],
+							})}
+							organization={item.organization}
+							relativeTime={t({
+								en: item.relativeTime.en,
+								es: item.relativeTime.es,
+								'pt-br': item.relativeTime['pt-br'],
+							})}
+							isEven={i % 2 === 0}
+						/>
+					))
+				}
+			</div>
+			<div class="qualification__content qualification__active" data-content id="work">
+				{
+					workData.map((item, i) => (
+						<ExperienceContent
+							image={{
+								alt: item.image.alt,
+								height: item.image.height,
+								width: item.image.width,
+								src: item.image.src,
+							}}
+							title={t({
+								en: item.lang.en,
+								es: item.lang.es,
+								'pt-br': item.lang['pt-br'],
+							})}
+							organization={item.organization}
+							relativeTime={t({
+								en: item.relativeTime.en,
+								es: item.relativeTime.es,
+								'pt-br': item.relativeTime['pt-br'],
+							})}
+							isEven={i % 2 !== 0}
+							link={item.link}
+						/>
+					))
+				}
+			</div>
+		</div>
+	</div>
 </section>
 
 <style>
-  .brand-icon {
-    height: 35px;
-    filter: drop-shadow(0px 0px 0.5px gray);
-  }
-
+	.brand-icon {
+		height: 35px;
+		filter: drop-shadow(0px 0px 0.5px gray);
+	}
 </style>
 
 <script is:inline>
-  const tabs = document.querySelectorAll("[data-target]"),
-    tabContents = document.querySelectorAll("[data-content]");
+	const tabs = document.querySelectorAll('[data-target]'),
+		tabContents = document.querySelectorAll('[data-content]');
 
-  tabs.forEach((tab) => {
-    tab.addEventListener("click", () => {
-      const target = document.querySelector(tab.dataset.target);
+	tabs.forEach((tab) => {
+		tab.addEventListener('click', () => {
+			const target = document.querySelector(tab.dataset.target);
 
-      tabContents.forEach((tabContent) => {
-        tabContent.classList.remove("qualification__active");
-      });
-      target.classList.add("qualification__active");
+			tabContents.forEach((tabContent) => {
+				tabContent.classList.remove('qualification__active');
+			});
+			target.classList.add('qualification__active');
 
-      tabs.forEach((tab) => {
-        tab.classList.remove("qualification__active");
-      });
-      tab.classList.add("qualification__active");
-    });
-  });
+			tabs.forEach((tab) => {
+				tab.classList.remove('qualification__active');
+			});
+			tab.classList.add('qualification__active');
+		});
+	});
 </script>

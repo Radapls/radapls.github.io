@@ -1,32 +1,32 @@
 ---
-import Footer from "@components/Footer.astro";
-import Header from "@components/Header.astro";
-import { SITE_CONFIG } from "src/consts";
+import Footer from '@components/Footer.astro';
+import Header from '@components/Header.astro';
+import { SITE_CONFIG } from 'src/consts';
 
-import type { BrandType } from "src/types/variants";
-import { getLocalePaths, LOCALES, type Lang } from "src/i18n";
+import type { BrandType } from 'src/types/variants';
+import { getLocalePaths, LOCALES, type Lang } from 'src/i18n';
 
-import "@styles/global.css";
+import '@styles/global.css';
 
 interface Props {
-  title: string;
-  variant?: BrandType;
-  description?: string;
-  keywords?: string[];
-  permalink?: string;
-  withHeader?: boolean;
-  withFooter?: boolean;
-  noLinks?: boolean;
+	title: string;
+	variant?: BrandType;
+	description?: string;
+	keywords?: string[];
+	permalink?: string;
+	withHeader?: boolean;
+	withFooter?: boolean;
+	noLinks?: boolean;
 }
 
 const {
-  title,
-  variant = "radapls",
-  description = SITE_CONFIG.description,
-  keywords = SITE_CONFIG.keywords,
-  withFooter = true,
-  withHeader = true,
-  noLinks,
+	title,
+	variant = 'radapls',
+	description = SITE_CONFIG.description,
+	keywords = SITE_CONFIG.keywords,
+	withFooter = true,
+	withHeader = true,
+	noLinks,
 } = Astro.props;
 
 const locale = Astro.currentLocale as Lang;
@@ -34,107 +34,101 @@ const locale = Astro.currentLocale as Lang;
 
 <!doctype html>
 <html lang={LOCALES[locale].lang || locale} dir={LOCALES[locale].dir || null}>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content={description} />
-    <meta name="keywords" content={keywords.join(", ")} />
-    <meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="sitemap" href="/sitemap-index.xml" />
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="keywords" content={keywords.join(', ')} />
+		<meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="sitemap" href="/sitemap-index.xml" />
 
-    {
-      getLocalePaths(Astro.url).map((props) => (
-        <link
-          rel="alternate"
-          hreflang={LOCALES[props.lang].lang || props.lang}
-          href={Astro.site?.origin + props.path}
-        />
-      ))
-    }
-    <!--==================== UNICONS ====================-->
-    <link rel="icon" type="image/x-icon" href="/favicon.svg" />
-    <link rel="icon" sizes="192x192" href="/android-chrome-192x192.png" />
-    <link rel="icon" sizes="512x512" href="/android-chrome-512x512.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		{
+			getLocalePaths(Astro.url).map((props) => (
+				<link
+					rel="alternate"
+					hreflang={LOCALES[props.lang].lang || props.lang}
+					href={Astro.site?.origin + props.path}
+				/>
+			))
+		}
+		<!--==================== UNICONS ====================-->
+		<link rel="icon" type="image/x-icon" href="/favicon.svg" />
+		<link rel="icon" sizes="192x192" href="/android-chrome-192x192.png" />
+		<link rel="icon" sizes="512x512" href="/android-chrome-512x512.png" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <link
-      rel="stylesheet"
-      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
-      type="text/css"
-    />
+		<link
+			rel="stylesheet"
+			href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+			type="text/css"
+		/>
 
-    <link
-      rel="stylesheet"
-      media="print"
-      onload={`this.media='all'`}
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
-    />
+		<link
+			rel="stylesheet"
+			media="print"
+			onload={`this.media='all'`}
+			href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+		/>
 
-    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+		/>
+		<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
 
-    <title>{title}</title>
-  </head>
-  <body>
-    {withHeader && <Header {variant} noLinks={noLinks} />}
+		<title>{title}</title>
+	</head>
+	<body>
+		{withHeader && <Header {variant} noLinks={noLinks} />}
 
-    <!--==================== MAIN ====================-->
-    <main class="main">
-      <slot />
-    </main>
-    {withFooter && <Footer {variant} />}
+		<!--==================== MAIN ====================-->
+		<main class="main">
+			<slot />
+		</main>
+		{withFooter && <Footer {variant} />}
 
-    <!--==================== SCROLL TOP ====================-->
+		<!--==================== SCROLL TOP ====================-->
 
-    <a
-      href="#"
-      class="scrollup"
-      id="scroll-up"
-      aria-label="Scroll to top"
-      role="button"
-    >
-    <svg
-      id="Arrow.7"
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 18.256 18.256"
-      style="transition:.3s"
-      class="scrollup__icon"
-    >
-      <g id="Group_7" data-name="Group 7" transform="translate(5.363 5.325)">
-        <path
-          id="Path_10"
-          data-name="Path 10"
-          d="M14.581,7.05,7.05,14.581"
-          transform="translate(-7.05 -7.012)"
-          fill="none"
-          stroke="var(--container-color)"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="1.5"></path>
-        <path
-          id="Path_11"
-          data-name="Path 11"
-          d="M10,7l5.287.037.038,5.287"
-          transform="translate(-7.756 -7)"
-          fill="none"
-          stroke="var(--container-color)"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="1.5"></path>
-      </g>
-      <path
-        id="Path_12"
-        data-name="Path 12"
-        d="M0,0H18.256V18.256H0Z"
-        fill="none"></path>
-    </svg>
-    </a>
-  </body>
+		<a href="#" class="scrollup" id="scroll-up" aria-label="Scroll to top" role="button">
+			<svg
+				id="Arrow.7"
+				xmlns="http://www.w3.org/2000/svg"
+				width="24"
+				height="24"
+				viewBox="0 0 18.256 18.256"
+				style="transition:.3s"
+				class="scrollup__icon"
+			>
+				<g id="Group_7" data-name="Group 7" transform="translate(5.363 5.325)">
+					<path
+						id="Path_10"
+						data-name="Path 10"
+						d="M14.581,7.05,7.05,14.581"
+						transform="translate(-7.05 -7.012)"
+						fill="none"
+						stroke="var(--container-color)"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="1.5"></path>
+					<path
+						id="Path_11"
+						data-name="Path 11"
+						d="M10,7l5.287.037.038,5.287"
+						transform="translate(-7.756 -7)"
+						fill="none"
+						stroke="var(--container-color)"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="1.5"></path>
+				</g>
+				<path id="Path_12" data-name="Path 12" d="M0,0H18.256V18.256H0Z" fill="none"></path>
+			</svg>
+		</a>
+	</body>
 </html>
 <!--==================== MAIN JS ====================-->
 <script src="../scripts/main.js"></script>

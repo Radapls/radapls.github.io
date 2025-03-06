@@ -1,200 +1,189 @@
 ---
-import Logo from "@assets/img/JFR.webp";
-import type { BrandType } from "src/types/variants";
+import Logo from '@assets/img/JFR.webp';
+import type { BrandType } from 'src/types/variants';
 
-import Birdi from "@assets/img/brands/birdi.png";
-import LocaleSelect from "./i18n/LocaleSelect.astro";
+import Birdi from '@assets/img/brands/birdi.png';
+import LocaleSelect from './i18n/LocaleSelect.astro';
 
-import { useTranslations, type Lang } from "src/i18n";
-import { Image } from "astro:assets";
+import { useTranslations, type Lang } from 'src/i18n';
+import { Image } from 'astro:assets';
 
 const t = useTranslations(Astro.currentLocale as Lang);
 
 interface Props {
-  variant?: BrandType;
-  noLinks?: boolean;
+	variant?: BrandType;
+	noLinks?: boolean;
 }
 
 const { variant, noLinks = false } = Astro.props;
 ---
 
 {
-  variant === "radapls" ? (
-    <header class="header" id="header">
-      <nav class="nav container">
-        <a href="/" class="nav__logo">
-          <Image
-            class="MarcaHead"
-            src={Logo}
-            draggable="false"
-            alt="Logo Juan Felipe Rada"
-            width={45}
-            height={45}
-          />
-        </a>
+	variant === 'radapls' ? (
+		<header class="header" id="header">
+			<nav class="nav container">
+				<a href="/" class="nav__logo">
+					<Image
+						class="MarcaHead"
+						src={Logo}
+						draggable="false"
+						alt="Logo Juan Felipe Rada"
+						width={45}
+						height={45}
+					/>
+				</a>
 
-        {!noLinks && (
-          <div class="nav__menu" id="nav-menu">
-            <ul class="nav__list grid">
-              <li class="nav__item">
-                <a href="#About" class="nav__link">
-                  <i class="uil uil-user nav__icon" />
-                  <p>
-                    {t({
-                      en: "About",
-                      es: "Acerca",
-                      "pt-br": "Acerca",
-                    })}
-                  </p>
-                </a>
-              </li>
-              <li class="nav__item">
-                <a href="#Skills" class="nav__link">
-                  <i class="uil uil-file-check-alt nav__icon" />
-                  <p>
-                    {t({
-                      en: "Skills",
-                      es: "Habilidades",
-                      "pt-br": "Habilidades",
-                    })}
-                  </p>
-                </a>
-              </li>
-              <li class="nav__item">
-                <a href="#Portafolio" class="nav__link">
-                  <i class="uil uil-scenery nav__icon" />
-                  <p>
-                    {t({
-                      en: "Portfolio",
-                      es: "Portafolio",
-                      "pt-br": "Portfólio",
-                    })}
-                  </p>
-                </a>
-              </li>
-              <li class="nav__item">
-                <a href="#Contact" class="nav__link">
-                  <i class="uil uil-message nav__icon" />
-                  <p>
-                    {t({
-                      en: "Contact Me",
-                      es: "Contacto",
-                      "pt-br": "Contato",
-                    })}
-                  </p>
-                </a>
-              </li>
-            </ul>
-            <i class="uil uil-times nav__close" id="nav-close" />
-          </div>
-        )}
-        <div class="nav__btns">
-          <i class="uil uil-moon change-theme" id="theme-button" />
+				{!noLinks && (
+					<div class="nav__menu" id="nav-menu">
+						<ul class="nav__list grid">
+							<li class="nav__item">
+								<a href="#About" class="nav__link">
+									<i class="uil uil-user nav__icon" />
+									<p>
+										{t({
+											en: 'About',
+											es: 'Acerca',
+											'pt-br': 'Acerca',
+										})}
+									</p>
+								</a>
+							</li>
+							<li class="nav__item">
+								<a href="#Skills" class="nav__link">
+									<i class="uil uil-file-check-alt nav__icon" />
+									<p>
+										{t({
+											en: 'Skills',
+											es: 'Habilidades',
+											'pt-br': 'Habilidades',
+										})}
+									</p>
+								</a>
+							</li>
+							<li class="nav__item">
+								<a href="#Portafolio" class="nav__link">
+									<i class="uil uil-scenery nav__icon" />
+									<p>
+										{t({
+											en: 'Portfolio',
+											es: 'Portafolio',
+											'pt-br': 'Portfólio',
+										})}
+									</p>
+								</a>
+							</li>
+							<li class="nav__item">
+								<a href="#Contact" class="nav__link">
+									<i class="uil uil-message nav__icon" />
+									<p>
+										{t({
+											en: 'Contact Me',
+											es: 'Contacto',
+											'pt-br': 'Contato',
+										})}
+									</p>
+								</a>
+							</li>
+						</ul>
+						<i class="uil uil-times nav__close" id="nav-close" />
+					</div>
+				)}
+				<div class="nav__btns">
+					<i class="uil uil-moon change-theme" id="theme-button" />
 
-          {!noLinks && (
-            <div class="nav__toggle" id="nav-toggle">
-              <i class="uil uil-apps" />
-            </div>
-          )}
-        </div>
+					{!noLinks && (
+						<div class="nav__toggle" id="nav-toggle">
+							<i class="uil uil-apps" />
+						</div>
+					)}
+				</div>
 
-        <LocaleSelect />
-      </nav>
-    </header>
-  ) : (
-    <header class="header" id="header">
-      <nav class="nav container">
-        <div class="wibx">
-          <a href="/">
-            <Image
-              class="MarcaHead"
-              src={Logo}
-              draggable="false"
-              alt="Logo Juan Felipe Rada"
-              width={40}
-              height={40}
-            />
-          </a>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="48"
-            viewBox="0 0 20 48"
-          >
-            <g>
-              <path
-                fill="none"
-                stroke="rgb(172,185,200)"
-                stroke-linecap="square"
-                stroke-linejoin="miter"
-                stroke-width="1"
-                d="M10 2.35231505v50"
-              />
-            </g>
-          </svg>
-          {variant === "wibx" ? (
-            <a href="https://wibx.io/" class="nav__logo">
-              <Image
-                src="https://assets.coingecko.com/coins/images/11009/large/wibx_new_logo.png"
-                draggable="false"
-                alt="Wibx Company"
-                width={40}
-                height={40}
-              />
-            </a>
-          ) : (
-            <a href="https://www.birdirx.com/" class="nav__logo">
-              <Image
-                src={Birdi}
-                draggable="false"
-                alt="BirdiRx"
-                width={40}
-                height={40}
-              />
-            </a>
-          )}
-        </div>
-        <div style="display: flex; align-items: center; justify-content: space-between; gap: 1rem">
-          <div class="nav__btns">
-            <i class="uil uil-moon change-theme" id="theme-button" />
-          </div>
+				<LocaleSelect />
+			</nav>
+		</header>
+	) : (
+		<header class="header" id="header">
+			<nav class="nav container">
+				<div class="wibx">
+					<a href="/">
+						<Image
+							class="MarcaHead"
+							src={Logo}
+							draggable="false"
+							alt="Logo Juan Felipe Rada"
+							width={40}
+							height={40}
+						/>
+					</a>
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="48" viewBox="0 0 20 48">
+						<g>
+							<path
+								fill="none"
+								stroke="rgb(172,185,200)"
+								stroke-linecap="square"
+								stroke-linejoin="miter"
+								stroke-width="1"
+								d="M10 2.35231505v50"
+							/>
+						</g>
+					</svg>
+					{variant === 'wibx' ? (
+						<a href="https://wibx.io/" class="nav__logo">
+							<Image
+								src="https://assets.coingecko.com/coins/images/11009/large/wibx_new_logo.png"
+								draggable="false"
+								alt="Wibx Company"
+								width={40}
+								height={40}
+							/>
+						</a>
+					) : (
+						<a href="https://www.birdirx.com/" class="nav__logo">
+							<Image src={Birdi} draggable="false" alt="BirdiRx" width={40} height={40} />
+						</a>
+					)}
+				</div>
+				<div style="display: flex; align-items: center; justify-content: space-between; gap: 1rem">
+					<div class="nav__btns">
+						<i class="uil uil-moon change-theme" id="theme-button" />
+					</div>
 
-          <LocaleSelect />
-        </div>
-      </nav>
-    </header>
-  )
+					<LocaleSelect />
+				</div>
+			</nav>
+		</header>
+	)
 }
 
 <style>
-  /*==================== NAV ====================*/
-  /* show menu */
-  .show-menu {
-    bottom: 0;
-  }
+	/*==================== NAV ====================*/
+	/* show menu */
+	.show-menu {
+		bottom: 0;
+	}
 
-  /* Active link */
-  .active-link {
-    color: var(--first-color);
-  }
+	/* Active link */
+	.active-link {
+		color: var(--first-color);
+	}
 
-  .wibx {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-  }
+	.wibx {
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+	}
 
-  .wibx > a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+	.wibx > a {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
 
-  .wibx > a > .MarcaHead {
-    padding: 0;
-  }
+	.wibx > a > .MarcaHead {
+		padding: 0;
+	}
 
-  .wibx > svg {
-    height: 30px;
-  }
+	.wibx > svg {
+		height: 30px;
+	}
 </style>

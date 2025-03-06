@@ -1,84 +1,80 @@
 ---
-import { SkillIcons } from "@data/skillIcons";
-import { useTranslations, type Lang } from "src/i18n";
+import { SkillIcons } from '@data/skillIcons';
+import { useTranslations, type Lang } from 'src/i18n';
 
 const t = useTranslations(Astro.currentLocale as Lang);
 ---
 
 <!--==================== SKILLS ====================-->
 <section class="skills section" id="Skills">
-  <h2 class="section__title">
-    🥷🏼
-    {
-      t({
-        en: "Skills",
-        es: "Habilidades",
-        "pt-br": "Habilidades",
-      })
-    }
-  </h2>
-  <span class="section__subtitle">
-    {
-      t({
-        en: "Tools and technologies I have worked with",
-        es: "Herramientas y tecnologias con las que he trabajado",
-        "pt-br": "Ferramentas e tecnologias com as quais trabalhei",
-      })
-    }
-  </span>
+	<h2 class="section__title">
+		🥷🏼
+		{
+			t({
+				en: 'Skills',
+				es: 'Habilidades',
+				'pt-br': 'Habilidades',
+			})
+		}
+	</h2>
+	<span class="section__subtitle">
+		{
+			t({
+				en: 'Tools and technologies I have worked with',
+				es: 'Herramientas y tecnologias con las que he trabajado',
+				'pt-br': 'Ferramentas e tecnologias com as quais trabalhei',
+			})
+		}
+	</span>
 
-  <div class="skills__container container">
-    {
-      SkillIcons.map((item) =>
-      <div class="skl-card">
-        <a href={item.link} target="_blank">
-        <i class={item.icon}></i>
-        </a>
-      </div>
-      )
-    }
-  </div>
+	<div class="skills__container container">
+		{
+			SkillIcons.map((item) => (
+				<div class="skl-card">
+					<a href={item.link} target="_blank">
+						<i class={item.icon} />
+					</a>
+				</div>
+			))
+		}
+	</div>
 </section>
 
-
 <style>
+	.skills__container {
+		display: grid;
+		grid-template-columns: repeat(5, 1fr);
+		gap: 0.5rem;
+	}
 
+	.skl-card {
+		background-color: var(--container-color);
+		border-radius: 0.5rem;
+		padding: 1rem;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+		font-size: 50px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		color: var(--first-color-second);
+	}
 
-.skills__container {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-   gap: 0.5rem;
-}
+	.skl-card:hover a {
+		all: unset;
+		color: var(--first-color-lighter);
+		transition: 0.2s;
+	}
 
-.skl-card {
-  background-color: var(--container-color);
-  border-radius: 0.5rem;
-  padding: 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-  font-size: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: var(--first-color-second);
-}
+	@media screen and (max-width: 768px) {
+		.skills__container {
+			grid-template-columns: repeat(4, 1fr);
+		}
+	}
 
-.skl-card:hover a {
-  all: unset;
-  color: var(--first-color-lighter);
-  transition: 0.2s;
-}
-
-@media screen and (max-width: 768px) {
-  .skills__container {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-@media screen and (max-width: 568px) {
-  .skills__container {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
+	@media screen and (max-width: 568px) {
+		.skills__container {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
 </style>

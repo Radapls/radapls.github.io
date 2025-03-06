@@ -1,71 +1,63 @@
 ---
-import Sewing from "@assets/img/Sewing.webp";
-import Pottery from "@assets/img/pottery.webp";
-import Poetry from "@assets/img/sans-serifa.png";
-import HobbyCard from "@components/Hobby/HobbyCard.astro";
-import { useTranslations, type Lang } from "src/i18n";
+import Sewing from '@assets/img/Sewing.webp';
+import Pottery from '@assets/img/pottery.webp';
+import Poetry from '@assets/img/sans-serifa.png';
+import HobbyCard from '@components/Hobby/HobbyCard.astro';
+import { useTranslations, type Lang } from 'src/i18n';
 
 const t = useTranslations(Astro.currentLocale as Lang);
 ---
 
 <!--==================== HOBBIES ====================-->
 <section class="services section" id="Services">
-  <h2 class="section__title">
-    👨🏼‍🎨
-    {
-      t({
-        en: "Hobbies",
-        es: "Pasatiempos",
-        "pt-br": "Passatempos",
-      })
-    }
-  </h2>
-  <span class="section__subtitle">
-    {
-      t({
-        en: "Some things outside work!",
-        es: "¡Algunas cosas fuera del trabajo!",
-        "pt-br": "Algumas coisas fora do trabalho!",
-      })
-    }
-  </span>
-  <div class="services__container container grid">
+	<h2 class="section__title">
+		👨🏼‍🎨
+		{
+			t({
+				en: 'Hobbies',
+				es: 'Pasatiempos',
+				'pt-br': 'Passatempos',
+			})
+		}
+	</h2>
+	<span class="section__subtitle">
+		{
+			t({
+				en: 'Some things outside work!',
+				es: '¡Algunas cosas fuera del trabajo!',
+				'pt-br': 'Algumas coisas fora do trabalho!',
+			})
+		}
+	</span>
+	<div class="services__container container grid">
+		<HobbyCard
+			title={t({
+				en: 'Pottery',
+				es: 'Cerámica',
+				'pt-br': 'Cerâmica',
+			})}
+			image={Pottery}
+			alt="Pottery Project"
+		/>
 
-    <HobbyCard
-      title={
-        t({
-          en: "Pottery",
-          es: "Cerámica",
-          "pt-br": "Cerâmica",
-        })
-      }
-      image={Pottery}
-      alt="Pottery Project"
-    />
+		<HobbyCard
+			title={t({
+				en: 'Sewing',
+				es: 'Costura',
+				'pt-br': 'Costura',
+			})}
+			image={Sewing}
+			alt="Sewing Project"
+		/>
 
-    <HobbyCard
-      title={
-        t({
-          en: "Sewing",
-          es: "Costura",
-          "pt-br": "Costura",
-        })
-      }
-      image={Sewing}
-      alt="Sewing Project"
-    />
-
-    <HobbyCard
-      title={
-        t({
-          en: "Poetry",
-          es: "Poesía",
-          "pt-br": "Poesia",
-        })
-      }
-      image={Poetry}
-      alt="Poetry Project"
-    />
-  </div>
+		<HobbyCard
+			title={t({
+				en: 'Poetry',
+				es: 'Poesía',
+				'pt-br': 'Poesia',
+			})}
+			image={Poetry}
+			alt="Poetry Project"
+		/>
+	</div>
 </section>
-

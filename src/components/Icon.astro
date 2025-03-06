@@ -1,33 +1,31 @@
 ---
-import type { HTMLAttributes } from "astro/types";
-import { iconPaths } from "@data/iconPaths.ts";
+import type { HTMLAttributes } from 'astro/types';
+import { iconPaths } from '@data/iconPaths.ts';
 
 interface Props {
-    icon: keyof typeof iconPaths;
-    size?: string;
+	icon: keyof typeof iconPaths;
+	size?: string;
 }
 
 const { icon, size } = Astro.props;
 const iconPath = iconPaths[icon];
 
-const attrs: HTMLAttributes<"svg"> = {};
-
-
+const attrs: HTMLAttributes<'svg'> = {};
 ---
 
 <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={size}
-    height={size}
-    viewBox="0 0 256 256"
-    aria-hidden="true"
-    {...attrs}
+	xmlns="http://www.w3.org/2000/svg"
+	width={size}
+	height={size}
+	viewBox="0 0 256 256"
+	aria-hidden="true"
+	{...attrs}
 >
-    <g set:html={iconPath} />
+	<g set:html={iconPath} />
 </svg>
 
 <style>
-    svg {
-        vertical-align: middle;
-    }
+	svg {
+		vertical-align: middle;
+	}
 </style>

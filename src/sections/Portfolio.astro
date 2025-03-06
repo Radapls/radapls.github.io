@@ -1,149 +1,152 @@
 ---
-import Pokedex from "@assets/img/pokedex.webp";
-import World from "@assets/img/world.webp";
-import CasaNostra from "@assets/img/casa-nostra.webp";
-import SpaceInvaders from "@assets/img/space-invaders.webp";
-import Cunctae from "@assets/img/c.svg";
+import Pokedex from '@assets/img/pokedex.webp';
+import World from '@assets/img/world.webp';
+import CasaNostra from '@assets/img/casa-nostra.webp';
+import SpaceInvaders from '@assets/img/space-invaders.webp';
+import Cunctae from '@assets/img/c.svg';
 
+import PortfolioCard from '@components/PortfolioCard.astro';
 
-import PortfolioCard from "@components/PortfolioCard.astro";
-
-import { useTranslations, type Lang } from "src/i18n";
+import { useTranslations, type Lang } from 'src/i18n';
 
 const t = useTranslations(Astro.currentLocale as Lang);
 ---
 
 <!--==================== PORTFOLIO ====================-->
 <section class="portfolio section" id="Portafolio" aria-labelledby="portfolio-title">
-  <h2 class="section__title" id="portfolio-title">
-    <span aria-hidden="true">📚</span>
-    {t({
-      en: "Portfolio",
-      es: "Portafolio",
-      "pt-br": "Portfólio",
-    })}
-  </h2>
-  <span class="section__subtitle" aria-roledescription="doc-subtitle">
-    {t({
-      en: "Some recent work",
-      es: "Algunos trabajos recientes",
-      "pt-br": "Alguns trabalhos recentes",
-    })}
-  </span>
-  <div class="portafolio__container container">
-    <div class="card-grid">
-      <PortfolioCard
-      bgImage={Cunctae}
-      title={t({
-        en: "Cunctum UI",
-        es: "Cunctum UI",
-        "pt-br": "Cunctum UI",
-      })}
-      description={t({
-        en: "An Open Source Design system for Cunctae.com",
-        es: "Un sistema de diseño de código abierto para Cunctae.com",
-        "pt-br": "Um sistema de design de código aberto para Cunctae.com",
-      })}
-      link="https://cunctae.github.io/cunctum-ui/?path=/docs/introduction--docs"
-    />
-      <PortfolioCard
-        bgImage={CasaNostra}
-        title={t({
-          en: "A casa nostra",
-          es: "A casa nostra",
-          "pt-br": "A casa nostra",
-        })}
-        description={t({
-          en: "A real estate agency for the home of your dreams, built with React, Firebase and Tailwindcss",
-          es: "Una agencia inmobiliaria para la casa de tus sueños, construida con React, Firebase y Tailwindcss",
-          "pt-br":
-            "Uma agência imobiliária para a casa dos seus sonhos, construída com React, Firebase e Tailwindcss",
-        })}
-        link="https://a-casa-nostra.vercel.app/"
-      />
-      <PortfolioCard
-        bgImage={Pokedex}
-        title={t({
-          en: "Pokedex",
-          es: "Pokedex",
-          "pt-br": "Pokédex",
-        })}
-        description={t({
-          en: "Pokedex project created with Angular 12 and PokeApi",
-          es: "Proyecto Pokedex creado con Angular 12 y PokeApi",
-          "pt-br": "Projeto Pokedex criado con Angular 12 e PokeApi",
-        })}
-        link="https://radapls.github.io/Pokedex/"
-      />
-      <PortfolioCard
-        bgImage={World}
-        title={t({
-          en: "Encyclopedia of Countries",
-          es: "Enciclopedia de Países",
-          "pt-br": "Enciclopédia de Países",
-        })}
-        description={t({
-          en: "Project of the countries of the world as a Wiki created with Angular 14 and CountryRestApi",
-          es: "Proyecto de los países del mundo a modo de Wiki creado con Angular 14 y CountryRestApi",
-          "pt-br":
-            "Projeto dos países do mundo como um Wiki criado com Angular 14 e CountryRestApi",
-        })}
-        link="https://radapls.github.io/country-stats/"
-      />
-      <PortfolioCard
-        bgImage={SpaceInvaders}
-        title={t({
-          en: "Space Invaders",
-          es: "Space Invaders",
-          "pt-br": "Space Invaders",
-        })}
-        description={t({
-          en: "Space Invaders project created with JavaScript and HTML Canvas",
-          es: "Proyecto Space Invaders creado con JavaScript y HTML Canvas",
-          "pt-br": "Projeto Space Invaders criado com JavaScript e HTML Canvas",
-        })}
-        link="https://radapls.github.io/space-invaders/"
-      />
-    </div>
-  </div>
+	<h2 class="section__title" id="portfolio-title">
+		<span aria-hidden="true">📚</span>
+		{
+			t({
+				en: 'Portfolio',
+				es: 'Portafolio',
+				'pt-br': 'Portfólio',
+			})
+		}
+	</h2>
+	<span class="section__subtitle" aria-roledescription="doc-subtitle">
+		{
+			t({
+				en: 'Some recent work',
+				es: 'Algunos trabajos recientes',
+				'pt-br': 'Alguns trabalhos recentes',
+			})
+		}
+	</span>
+	<div class="portafolio__container container">
+		<div class="card-grid">
+			<PortfolioCard
+				bgImage={Cunctae}
+				title={t({
+					en: 'Cunctum UI',
+					es: 'Cunctum UI',
+					'pt-br': 'Cunctum UI',
+				})}
+				description={t({
+					en: 'An Open Source Design system for Cunctae.com',
+					es: 'Un sistema de diseño de código abierto para Cunctae.com',
+					'pt-br': 'Um sistema de design de código aberto para Cunctae.com',
+				})}
+				link="https://cunctae.github.io/cunctum-ui/?path=/docs/introduction--docs"
+			/>
+			<PortfolioCard
+				bgImage={CasaNostra}
+				title={t({
+					en: 'A casa nostra',
+					es: 'A casa nostra',
+					'pt-br': 'A casa nostra',
+				})}
+				description={t({
+					en: 'A real estate agency for the home of your dreams, built with React, Firebase and Tailwindcss',
+					es: 'Una agencia inmobiliaria para la casa de tus sueños, construida con React, Firebase y Tailwindcss',
+					'pt-br':
+						'Uma agência imobiliária para a casa dos seus sonhos, construída com React, Firebase e Tailwindcss',
+				})}
+				link="https://a-casa-nostra.vercel.app/"
+			/>
+			<PortfolioCard
+				bgImage={Pokedex}
+				title={t({
+					en: 'Pokedex',
+					es: 'Pokedex',
+					'pt-br': 'Pokédex',
+				})}
+				description={t({
+					en: 'Pokedex project created with Angular 12 and PokeApi',
+					es: 'Proyecto Pokedex creado con Angular 12 y PokeApi',
+					'pt-br': 'Projeto Pokedex criado con Angular 12 e PokeApi',
+				})}
+				link="https://radapls.github.io/Pokedex/"
+			/>
+			<PortfolioCard
+				bgImage={World}
+				title={t({
+					en: 'Encyclopedia of Countries',
+					es: 'Enciclopedia de Países',
+					'pt-br': 'Enciclopédia de Países',
+				})}
+				description={t({
+					en: 'Project of the countries of the world as a Wiki created with Angular 14 and CountryRestApi',
+					es: 'Proyecto de los países del mundo a modo de Wiki creado con Angular 14 y CountryRestApi',
+					'pt-br':
+						'Projeto dos países do mundo como um Wiki criado com Angular 14 e CountryRestApi',
+				})}
+				link="https://radapls.github.io/country-stats/"
+			/>
+			<PortfolioCard
+				bgImage={SpaceInvaders}
+				title={t({
+					en: 'Space Invaders',
+					es: 'Space Invaders',
+					'pt-br': 'Space Invaders',
+				})}
+				description={t({
+					en: 'Space Invaders project created with JavaScript and HTML Canvas',
+					es: 'Proyecto Space Invaders creado con JavaScript y HTML Canvas',
+					'pt-br': 'Projeto Space Invaders criado com JavaScript e HTML Canvas',
+				})}
+				link="https://radapls.github.io/space-invaders/"
+			/>
+		</div>
+	</div>
 </section>
 
 <style>
-  .portafolio__container {
-    overflow: initial;
-  }
-  .portafolio__title {
-    opacity: 0;
-    transition: opacity 500ms ease-in-out;
-    font-size: var(--h3-font-size);
-    margin-bottom: var(--mb-0-5);
-    color: var(--body-color);
-    font-size: var(--h3-font-size);
-    line-height: 1.4;
-  }
-  .portafolio__description {
-    opacity: 0;
-    transition: opacity 500ms ease-in;
-    margin-bottom: var(--mb-0-75);
-    color: var(--body-color);
-    font-size: var(--normal-font-size);
-    margin-bottom: 8px;
-  }
+	.portafolio__container {
+		overflow: initial;
+	}
+	.portafolio__title {
+		opacity: 0;
+		transition: opacity 500ms ease-in-out;
+		font-size: var(--h3-font-size);
+		margin-bottom: var(--mb-0-5);
+		color: var(--body-color);
+		font-size: var(--h3-font-size);
+		line-height: 1.4;
+	}
+	.portafolio__description {
+		opacity: 0;
+		transition: opacity 500ms ease-in;
+		margin-bottom: var(--mb-0-75);
+		color: var(--body-color);
+		font-size: var(--normal-font-size);
+		margin-bottom: 8px;
+	}
 
-  .card-grid {
-    display: grid;
-    grid-column-gap: 24px;
-    grid-row-gap: 24px;
-    max-width: 1200px;
-    width: 100%;
-    grid-template-columns: 1fr 1fr;
-    justify-content: center;
-    justify-items: center;
-  }
+	.card-grid {
+		display: grid;
+		grid-column-gap: 24px;
+		grid-row-gap: 24px;
+		max-width: 1200px;
+		width: 100%;
+		grid-template-columns: 1fr 1fr;
+		justify-content: center;
+		justify-items: center;
+	}
 
-  @media screen and (max-width: 768px) {
-    .card-grid {
-      grid-template-columns: 1fr;
-    }
-  }
+	@media screen and (max-width: 768px) {
+		.card-grid {
+			grid-template-columns: 1fr;
+		}
+	}
 </style>

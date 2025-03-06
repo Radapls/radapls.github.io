@@ -1,1 +1,1 @@
-export type BrandType = "radapls" | "wibx" | "birdi" | "nt";
+export type BrandType = 'radapls' | 'wibx' | 'birdi' | 'nt';

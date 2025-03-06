@@ -1,57 +1,53 @@
 ---
-import {
-    TechStack,
-    companyStacks,
-    type Stack,
-} from "@data/techList";
-import Icon from "./Icon.astro";
-import type { iconPaths } from "@data/iconPaths";
+import { TechStack, companyStacks, type Stack } from '@data/techList';
+import Icon from './Icon.astro';
+import type { iconPaths } from '@data/iconPaths';
 import type { BrandType } from 'src/types/variants';
 
 interface Props {
-    company: BrandType;
+	company: BrandType;
 }
 
 const { company } = Astro.props as Props;
 
 const filterTechStack = (company: string): Stack[] => {
-    const stack = companyStacks[company];
-    if (!stack) {
-        throw new Error(`Company stack for ${company} not found`);
-    }
-    return TechStack.filter((tech) => stack.includes(tech.id));
+	const stack = companyStacks[company];
+	if (!stack) {
+		throw new Error(`Company stack for ${company} not found`);
+	}
+	return TechStack.filter((tech) => stack.includes(tech.id));
 };
 
 const filteredTechStack = filterTechStack(company);
 ---
 
 <ul class="tech-list">
-    {
-        filteredTechStack.map((tech) => (
-            <li>
-                <Icon icon={tech.id as keyof typeof iconPaths} size="30" />
-                {tech.title}
-            </li>
-        ))
-    }
+	{
+		filteredTechStack.map((tech) => (
+			<li>
+				<Icon icon={tech.id as keyof typeof iconPaths} size="30" />
+				{tech.title}
+			</li>
+		))
+	}
 </ul>
 
 <style>
-    .tech-list {
-        display: grid;
-        gap: 1rem;
-        grid-template-columns: repeat(2, 1fr);
-    }
-    @media screen and (min-width: 568px) {
-        .tech-list {
-            grid-template-columns: repeat(3, 1fr);
-        }
-    }
+	.tech-list {
+		display: grid;
+		gap: 1rem;
+		grid-template-columns: repeat(2, 1fr);
+	}
+	@media screen and (min-width: 568px) {
+		.tech-list {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
 
-    .tech-list > li {
-        list-style-type: disc;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
+	.tech-list > li {
+		list-style-type: disc;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
 </style>
