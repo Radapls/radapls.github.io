@@ -1,36 +1,39 @@
 {
-    "name": "radapls",
-    "type": "module",
-    "version": "2.0.0",
-    "homepage": "https://radapls.github.io",
-    "engines": {
-        "node": ">=20"
-    },
-    "scripts": {
-        "start": "astro dev",
-        "build": "astro check && astro build",
-        "preview": "astro check && astro build && astro preview",
-        "astro": "astro",
-        "clean": "rimraf dist"
-    },
-    "dependencies": {
-        "@astrojs/check": "^0.9.4",
-        "@astrojs/mdx": "^4.1.0",
-        "@astrojs/rss": "^4.0.11",
-        "@astrojs/sitemap": "^3.2.1",
-        "@astrojs/ts-plugin": "^1.10.4",
-        "astro": "^5.4.2",
-        "typescript": "^5.5.4"
-    },
-    "bugs": {
-        "url": "https://github.com/Radapls/radapls.github.io/issues",
-        "email": "radapls8@gmail.com"
-    },
-    "author": {
-        "name": "Juan Felipe Rada",
-        "email": "radapls8@gmail.com"
-    },
-    "devDependencies": {
-        "rimraf": "^6.0.1"
-    }
+	"name": "radapls",
+	"type": "module",
+	"version": "2.0.0",
+	"homepage": "https://radapls.github.io",
+	"engines": {
+		"node": ">=20"
+	},
+	"scripts": {
+		"start": "astro dev",
+		"build": "astro check && astro build",
+		"preview": "astro check && astro build && astro preview",
+		"astro": "astro",
+		"clean": "rimraf dist",
+		"pretty": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json,astro}\""
+	},
+	"dependencies": {
+		"@astrojs/check": "^0.9.4",
+		"@astrojs/mdx": "^4.1.0",
+		"@astrojs/rss": "^4.0.11",
+		"@astrojs/sitemap": "^3.2.1",
+		"@astrojs/ts-plugin": "^1.10.4",
+		"astro": "^5.4.2",
+		"typescript": "^5.5.4"
+	},
+	"bugs": {
+		"url": "https://github.com/Radapls/radapls.github.io/issues",
+		"email": "radapls8@gmail.com"
+	},
+	"author": {
+		"name": "Juan Felipe Rada",
+		"email": "radapls8@gmail.com"
+	},
+	"devDependencies": {
+		"prettier": "^3.5.3",
+		"prettier-plugin-astro": "^0.14.1",
+		"rimraf": "^6.0.1"
+	}
 }
