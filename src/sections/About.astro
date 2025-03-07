@@ -23,7 +23,7 @@ const t = useTranslations(Astro.currentLocale as Lang);
 		{
 			t({
 				en: 'My introduction',
-				es: 'Mi instroducción',
+				es: 'Mi introducción',
 				'pt-br': 'Minha apresentação',
 			})
 		}
@@ -44,10 +44,10 @@ const t = useTranslations(Astro.currentLocale as Lang);
 			<p class="about__description">
 				{
 					t({
-						en: "Hello everyone around here, my name is Juan Felipe Rada. I enjoy creating new things beyond possibilities; I consider myself curious and inquisitive about life. That's why you'll always see me exploring something new. I invite you to learn a bit about my journey.",
-						es: '¡Saludos a todos por aquí! Soy Juan Felipe Rada. Disfruto creando cosas nuevas más allá de las posibilidades, me considero inquieto y curioso acerca de la vida. Por eso, siempre me verás investigando algo nuevo. Te invito a conocer un poco de mi trayecto.',
+						en: "Hello everyone! I'm Juan Felipe Rada. I'm passionate about exploring new ideas and constantly learning. I'm always looking for new ways to create and innovate, driven by my curiosity. I'd love to share a bit of my journey with you.",
+						es: '¡Hola a todos! Soy Juan Felipe Rada. Me apasiona explorar nuevas ideas y aprender constantemente. Siempre estoy en busca de nuevas formas de crear e innovar, guiado por mi curiosidad. Me encantaría compartir con ustedes un poco de mi camino.',
 						'pt-br':
-							'Olá a todos por aqui, meu nome é Juan Felipe Rada. Eu gosto de criar coisas novas além das possibilidades; me considero inquieto e curioso sobre a vida. Por isso, você sempre me verá investigando algo novo. Convido você a conhecer um pouco da minha jornada.',
+							'Olá a todos! Sou Juan Felipe Rada. Sou apaixonado por explorar novas ideias e aprender constantemente. Estou sempre em busca de novas formas de criar e inovar, guiado pela minha curiosidade. Adoraria compartilhar um pouco da minha trajetória com vocês.',
 					})
 				}
 			</p>
@@ -61,6 +61,7 @@ const t = useTranslations(Astro.currentLocale as Lang);
 					})
 				}
 				<a
+					data-astro-reload
 					class="about__description__link"
 					href="/blog"
 					role="link"

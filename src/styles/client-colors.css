@@ -1,6 +1,6 @@
 :root {
-    --marker-color-wibx: gray;
-    --marker-active-color-wibx: #00efa5;
-    --marker-color-birdi: #03a4dc;
-    --marker-active-color-birdi: #9caaba;
-  }
+	--marker-active-color-wibx: gray;
+	--marker-color-wibx: #00efa5;
+	--marker-active-color-birdi: #9caaba;
+	--marker-color-birdi: #03a4dc;
+}

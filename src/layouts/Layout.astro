@@ -7,6 +7,7 @@ import type { BrandType } from 'src/types/variants';
 import { getLocalePaths, LOCALES, type Lang } from 'src/i18n';
 
 import '@styles/global.css';
+import { ClientRouter } from 'astro:transitions';
 
 interface Props {
 	title: string;
@@ -81,6 +82,7 @@ const locale = Astro.currentLocale as Lang;
 		<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
 
 		<title>{title}</title>
+		<ClientRouter />
 	</head>
 	<body>
 		{withHeader && <Header {variant} noLinks={noLinks} />}
@@ -93,7 +95,7 @@ const locale = Astro.currentLocale as Lang;
 
 		<!--==================== SCROLL TOP ====================-->
 
-		<a href="#" class="scrollup" id="scroll-up" aria-label="Scroll to top" role="button">
+		<a href="#" class="scrollup" id="scroll-up" aria-label="Scroll to top" role="button" data-astro-reload>
 			<svg
 				id="Arrow.7"
 				xmlns="http://www.w3.org/2000/svg"

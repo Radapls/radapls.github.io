@@ -34,7 +34,7 @@ const { image, title, organization, relativeTime, isEven, link } = Astro.props;
 					/>
 					<h3 class="qualification__title">{title}</h3>
 					{link ? (
-						<a href={link}>
+						<a href={link} data-astro-reload>
 							<span class="qualification__subtitle">{organization}</span>
 						</a>
 					) : (
@@ -83,3 +83,9 @@ const { image, title, organization, relativeTime, isEven, link } = Astro.props;
 		)
 	}
 </div>
+
+<style>
+	a {
+		color: var(--first-color-second);
+	}
+</style>

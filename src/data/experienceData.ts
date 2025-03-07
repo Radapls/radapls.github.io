@@ -1,14 +1,14 @@
-import Javeriana from '@assets/img/brands/javeriana.svg';
-import Icesi from '@assets/img/brands/icesi.jpg';
+import Javeriana from '@assets/img/brands/javeriana.webp';
+import Icesi from '@assets/img/brands/icesi.webp';
 
 import Alcaldia from '@assets/img/brands/alcaldia-cali.webp';
-import IEI from '@assets/img/brands/iei.png';
+import IEI from '@assets/img/brands/iei.webp';
 import MOE from '@assets/img/brands/moe.webp';
 import Wibx from '@assets/img/brands/wibx.webp';
-import NT from '@assets/img/brands/nt.png';
-import Birdi from '@assets/img/brands/birdi.png';
+import NT from '@assets/img/brands/nt.webp';
+import Birdi from '@assets/img/brands/birdi.webp';
 
-import Logo from '@assets/img/brands/logo.png';
+import Logo from '@assets/img/brands/logo.webp';
 
 export const experienceTabs = [
 	{

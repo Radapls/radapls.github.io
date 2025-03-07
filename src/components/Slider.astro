@@ -50,9 +50,9 @@ const { format, data, type }: Props = Astro.props;
 
 	<ul class="markers">
 		{
-			data.map((_slide, i) => (
+			data.map((_slide) => (
 				<li>
-					<a href={`#slide_${i + 1}`} />
+					<a />
 				</li>
 			))
 		}
@@ -158,13 +158,13 @@ const { format, data, type }: Props = Astro.props;
 	}
 
 	.slider-container.wibx .markers a {
-		--marker-color: var(--marker-color-wibx);
-		--marker-active-color: var(--marker-active-color-wibx);
+		--marker-color: var(--marker-active-color-wibx);
+		--marker-active-color: var(--marker-color-wibx);
 	}
 
 	.slider-container.birdi .markers a {
-		--marker-color: var(--marker-color-birdi);
-		--marker-active-color: var(--marker-active-color-birdi);
+		--marker-color: var(--marker-active-color-birdi);
+		--marker-active-color: var(--marker-color-birdi);
 	}
 </style>
 

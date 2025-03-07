@@ -389,6 +389,7 @@ button {
 .about__description {
   text-align: center;
   margin-bottom: var(--mb-2-5);
+  text-wrap-style: balance;
 }
 .about__info {
   display: flex;
@@ -482,61 +483,7 @@ button {
 .skills__open .skills__arrow {
   transform: rotate(-180deg);
 }
-/*==================== BLOG ====================*/
 
-.blog__container {
-  gap: 1rem;
-  row-gap: 5rem;
-}
-.blog__social {
-  display: grid;
-  grid-template-columns: max-content;
-  row-gap: 1rem;
-  transform: translate(-6rem, -8rem);
-}
-
-.blog__header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-  cursor: pointer;
-}
-.blog__icon,
-.blog__arrow {
-  font-size: 2rem;
-  color: var(--first-color);
-}
-.blog__icon {
-  margin-right: var(--mb-0-75);
-}
-.blog__title {
-  font-size: var(--h1-font-size);
-}
-.blog__subtitle {
-  font-size: var(--medium-font-size);
-  color: var(--first-color);
-}
-.blog__arrow {
-  margin-left: auto;
-  transition: 0.4s;
-}
-.blog__list {
-  row-gap: 1.5rem;
-  padding-left: 2.7rem;
-}
-.blog__titles {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: var(--mb-0-5);
-}
-.blog__name {
-  font-size: var(--normal-font-size);
-  font-weight: var(--font-medium);
-}
-
-.blog__data {
-  grid-column: 1/3;
-}
 /*==================== QUALIFICATION ====================*/
 .qualification__tabs {
   display: flex;
