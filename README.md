@@ -2,7 +2,7 @@
 
 A modern and responsive portfolio website built with Astro, showcasing my work as a software developer. The site features multiple language support (English, Spanish, and Portuguese), a contact form, and sections highlighting my skills and projects.
 
-![Portfolio Preview](https://github.com/radapls/portfolio/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+![Portfolio Preview](https://github.com/Radapls/radapls.github.io/blob/main/public/portfolio-preview.png)
 
 ## 🚀 Features
 
