@@ -18,6 +18,9 @@ jobs:
               uses: actions/checkout@v4
             - name: Install, build, and upload your site
               uses: withastro/action@v2
+            - name: Create .nojekyll to bypass Jekyll on GitHub Pages
+              run: |
+                echo "" >.nojekyll
     deploy:
         needs: build
         runs-on: ubuntu-latest
