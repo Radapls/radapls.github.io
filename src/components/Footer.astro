@@ -11,25 +11,42 @@ interface Props {
 <footer class="footer__bg">
 	<div class="footer__container">
 		<div class="footer__brand-container">
-			<Image src={Logo} alt="Logo Juan Felipe Rada" draggable="false" height={75} width={75} />
-			<h3 class="footer__title">Juan Felipe Rada</h3>
+			<Image
+				class="brand-image"
+				src={Logo}
+				alt="Logo Juan Felipe Rada"
+				draggable="false"
+				height={75}
+				width={75}
+			/>
+			<h6 class="footer__title">Juan Felipe Rada</h6>
 		</div>
 	</div>
 </footer>
 
 <style>
-	.footer {
-		padding-top: 2rem;
-	}
 	.footer__container {
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		gap: 3rem;
 	}
+
 	.footer__bg {
-		background-color: var(--first-color);
 		padding: 3rem 0;
+		position: relative;
+	}
+	.footer__bg::before {
+		background-color: var(--first-color);
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		filter: opacity(0.8);
+		z-index: -1;
+		box-shadow:  0 0 4px var(--text-color);
 	}
 
 	.footer__title {
@@ -37,42 +54,12 @@ interface Props {
 		margin-bottom: var(--mb-0-25);
 		display: flex;
 		flex-direction: row;
+		color: var(--text-color);
 	}
 
 	.footer__brand-container {
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
-	}
-
-	.footer__subtitle {
-		font-size: var(--small-font-size);
-	}
-	.footer__links {
-		display: flex;
-		row-gap: 1.5rem;
-	}
-	.footer__links:hover {
-		color: var(--first-color-lighter);
-	}
-	.footer__social {
-		font-size: 1.25rem;
-		margin-right: var(--mb-1-5);
-		align-items: center;
-	}
-	.footer__social:hover {
-		color: var(--first-color-lighter);
-	}
-	.footer__copy {
-		font-size: var(--smaller-font-size);
-		text-align: center;
-		color: var(--text-color-light);
-		margin-top: var(--mb-3);
-	}
-	.footer__title,
-	.footer__subtitle,
-	.footer__link,
-	.footer__social {
-		color: #fff;
 	}
 </style>

@@ -238,7 +238,7 @@ button {
 }
 /* Change background header */
 .scroll-header {
-  box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 -1px 4px var(--text-color);
 }
 
 /*==================== HOME ====================*/
@@ -655,60 +655,6 @@ button {
   justify-self: center;
 }
 
-/*==================== FOOTER ====================*/
-.footer {
-  padding-top: 2rem;
-}
-.footer__container {
-  row-gap: 3.5rem;
-}
-.footer__bg {
-  background-color: var(--first-color);
-  padding: 2rem 0 3rem;
-}
-.footer__title {
-  font-size: var(--h2-font-size);
-  margin-bottom: var(--mb-0-25);
-  display: flex;
-  flex-direction: row;
-}
-
-.MarcaFoot {
-  width: 50%;
-  height: 50%;
-}
-
-.footer__subtitle {
-  font-size: var(--small-font-size);
-}
-.footer__links {
-  display: flex;
-  flex-direction: column;
-  row-gap: 1.5rem;
-}
-.footer__links:hover {
-  color: var(--first-color-lighter);
-}
-.footer__social {
-  font-size: 1.25rem;
-  margin-right: var(--mb-1-5);
-  align-items: center;
-}
-.footer__social:hover {
-  color: var(--first-color-lighter);
-}
-.footer__copy {
-  font-size: var(--smaller-font-size);
-  text-align: center;
-  color: var(--text-color-light);
-  margin-top: var(--mb-3);
-}
-.footer__title,
-.footer__subtitle,
-.footer__link,
-.footer__social {
-  color: #fff;
-}
 /*========== SCROLL UP ==========*/
 .scrollup {
   position: fixed;
@@ -937,23 +883,6 @@ button {
   }
   .project__data {
     padding-top: 0.8rem;
-  }
-  .footer__container {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .footer__bg {
-    padding: 3rem 0 3.5rem;
-  }
-  .footer__links {
-    flex-direction: row;
-    column-gap: 2rem;
-  }
-  .footer__socials {
-    justify-self: flex-end;
-  }
-  .footer__copy {
-    margin-top: 4.5rem;
-    color: #fff;
   }
 }
 
