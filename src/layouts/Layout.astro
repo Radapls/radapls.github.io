@@ -95,7 +95,14 @@ const locale = Astro.currentLocale as Lang;
 
 		<!--==================== SCROLL TOP ====================-->
 
-		<a href="#" class="scrollup" id="scroll-up" aria-label="Scroll to top" role="button" data-astro-reload>
+		<a
+			href="#"
+			class="scrollup"
+			id="scroll-up"
+			aria-label="Scroll to top"
+			role="button"
+			data-astro-reload
+		>
 			<svg
 				id="Arrow.7"
 				xmlns="http://www.w3.org/2000/svg"
@@ -134,3 +141,16 @@ const locale = Astro.currentLocale as Lang;
 </html>
 <!--==================== MAIN JS ====================-->
 <script src="../scripts/main.js"></script>
+
+<script>
+window.addEventListener('scroll', () => {
+	const scrollUp = document.getElementById('scroll-up') as HTMLAnchorElement | null;
+	if (!scrollUp) return;
+
+	if (window.scrollY >= 560) {
+		scrollUp.classList.add('show-scroll');
+	} else {
+		scrollUp.classList.remove('show-scroll');
+	}
+});
+</script>
