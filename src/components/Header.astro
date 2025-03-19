@@ -37,7 +37,7 @@ const { variant, noLinks = false } = Astro.props;
 					<div class="nav__menu" id="nav-menu">
 						<ul class="nav__list grid">
 							<li class="nav__item">
-								<a href="#About" class="nav__link">
+								<a href="#About" class="nav__link" data-astro-reload>
 									<i class="uil uil-user nav__icon" />
 									<p>
 										{t({
@@ -49,7 +49,7 @@ const { variant, noLinks = false } = Astro.props;
 								</a>
 							</li>
 							<li class="nav__item">
-								<a href="#Skills" class="nav__link">
+								<a href="#Skills" class="nav__link" data-astro-reload>
 									<i class="uil uil-file-check-alt nav__icon" />
 									<p>
 										{t({
@@ -61,7 +61,7 @@ const { variant, noLinks = false } = Astro.props;
 								</a>
 							</li>
 							<li class="nav__item">
-								<a href="#Portfolio" class="nav__link">
+								<a href="#Portfolio" class="nav__link" data-astro-reload>
 									<i class="uil uil-scenery nav__icon" />
 									<p>
 										{t({
@@ -73,7 +73,7 @@ const { variant, noLinks = false } = Astro.props;
 								</a>
 							</li>
 							<li class="nav__item">
-								<a href="#Contact" class="nav__link">
+								<a href="#Contact" class="nav__link" data-astro-reload>
 									<i class="uil uil-message nav__icon" />
 									<p>
 										{t({
