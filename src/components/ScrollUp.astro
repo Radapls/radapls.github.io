@@ -1,0 +1,83 @@
+---
+
+---
+
+<div class="scrollup" id="scroll-up" aria-label="Scroll to top" role="button">
+	<svg
+		xmlns="http://www.w3.org/2000/svg"
+		width="24"
+		height="24"
+		viewBox="0 0 18.256 18.256"
+		style="transition:.3s"
+		class="scrollup__icon"
+	>
+		<g transform="translate(5.363 5.325)">
+			<path
+				d="M14.581,7.05,7.05,14.581"
+				transform="translate(-7.05 -7.012)"
+				fill="none"
+				stroke="var(--container-color)"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				stroke-width="1.5"></path>
+			<path
+				d="M10,7l5.287.037.038,5.287"
+				transform="translate(-7.756 -7)"
+				fill="none"
+				stroke="var(--container-color)"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				stroke-width="1.5"></path>
+		</g>
+		<path d="M0,0H18.256V18.256H0Z" fill="none"></path>
+	</svg>
+</div>
+
+<script>
+	window.addEventListener('scroll', () => {
+		const scrollUp = document.getElementById('scroll-up') as HTMLElement | null;
+		if (!scrollUp) return;
+
+		window.addEventListener('click', () => {
+			window.scrollTo({ top: 0 });
+		});
+
+		if (window.scrollY >= 560) {
+			scrollUp.classList.add('show-scroll');
+		} else {
+			scrollUp.classList.remove('show-scroll');
+		}
+	});
+</script>
+
+<style>
+	.scrollup {
+		position: fixed;
+		right: 2rem;
+		bottom: -20%;
+		background-color: var(--first-color);
+		opacity: 0.8;
+		padding: 0.5rem;
+		border-radius: 0.5rem;
+		z-index: var(--z-tooltip);
+		transition: 0.4s;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+        cursor: pointer;
+	}
+
+	.scrollup:hover {
+		background-color: var(--first-color-alt);
+	}
+
+	.scrollup__icon {
+		font-size: 1.5rem;
+		color: var(--container-color);
+		rotate: 315deg;
+	}
+
+	.show-scroll {
+		bottom: 5rem;
+	}
+</style>
