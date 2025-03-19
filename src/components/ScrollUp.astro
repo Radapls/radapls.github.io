@@ -35,10 +35,10 @@
 
 <script>
 	window.addEventListener('scroll', () => {
-		const scrollUp = document.getElementById('scroll-up') as HTMLElement | null;
+		const scrollUp = document.getElementById('scroll-up') as HTMLDivElement | null;
 		if (!scrollUp) return;
 
-		window.addEventListener('click', () => {
+		scrollUp.addEventListener('click', () => {
 			window.scrollTo({ top: 0 });
 		});
 
