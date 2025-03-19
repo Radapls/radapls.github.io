@@ -22,7 +22,7 @@ const { variant, noLinks = false } = Astro.props;
 	variant === 'radapls' ? (
 		<header class="header" id="header">
 			<nav class="nav container">
-				<a href="/" class="nav__logo">
+				<a href="/" class="nav__logo" data-astro-reload>
 					<Image
 						class="MarcaHead"
 						src={Logo}
@@ -163,14 +163,21 @@ const { variant, noLinks = false } = Astro.props;
 	)
 }
 
+<script>
+	/*==================== CHANGE BACKGROUND HEADER ====================*/
+function scrollHeader() {
+	const nav = document.getElementById('header') as HTMLElement || null;
+	if (window.scrollY >= 80) nav.classList.add('scroll-header');
+	else nav.classList.remove('scroll-header');
+}
+window.addEventListener('scroll', scrollHeader);
+</script>
+
 <style>
-	/*==================== NAV ====================*/
-	/* show menu */
 	.show-menu {
 		bottom: 0;
 	}
 
-	/* Active link */
 	.active-link {
 		color: var(--first-color);
 	}
