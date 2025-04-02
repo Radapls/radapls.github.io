@@ -3,6 +3,8 @@ import Pokedex from '@assets/img/pokedex.webp';
 import World from '@assets/img/world.webp';
 import CasaNostra from '@assets/img/casa-nostra.webp';
 import SpaceInvaders from '@assets/img/space-invaders.webp';
+import Roulette from '@assets/img/roulette.webp';
+
 import Cunctae from '@assets/img/c.svg';
 
 import PortfolioCard from '@components/PortfolioCard.astro';
@@ -35,6 +37,20 @@ const t = useTranslations(Astro.currentLocale as Lang);
 	</span>
 	<div class="portafolio__container container">
 		<div class="card-grid">
+			<PortfolioCard
+				bgImage={Roulette}
+				title={t({
+					en: 'Roulette Runner',
+					es: 'Ruleta de corredores',
+					'pt-br': 'Roleta de corrida',
+				})}
+				description={t({
+					en: 'Win your next run distance!. Project in Monkey C for Garmin Devices',
+					es: 'Gana tu proxima distancia de carrera!. Projecto es Monkey C para dispositivos Garmin',
+					'pt-br': 'Ganhe sua proxima distancia de carreira!. Projeto em Monkey C para dispositivos Garmin',
+				})}
+				link="https://github.com/Radapls/roulette"
+			/>
 			<PortfolioCard
 				bgImage={Cunctae}
 				title={t({
