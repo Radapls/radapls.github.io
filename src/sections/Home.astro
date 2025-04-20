@@ -1,5 +1,6 @@
 ---
 import Illustration from '@assets/img/illustration.webp';
+import Flag from '@components/Flag.astro';
 import { Image } from 'astro:assets';
 import { LINKEDIN, GITHUB } from 'src/consts';
 import { useTranslations, type Lang } from 'src/i18n';
@@ -55,9 +56,9 @@ const t = useTranslations(Astro.currentLocale as Lang);
 				<h3 class="home__subtitle">
 					{
 						t({
-							en: 'FrontEnd Developer',
-							es: 'Desarrollador Frontend',
-							'pt-br': 'Desenvolvedor Frontend',
+							en: 'Software, Politics, Art',
+							es: 'Software, Política, Arte',
+							'pt-br': 'Software, Política, Arte',
 						})
 					}
 				</h3>
@@ -65,7 +66,7 @@ const t = useTranslations(Astro.currentLocale as Lang);
 					{
 						t({
 							en: 'Creating things and experiences one line at a time',
-							es: 'Creando cosas y experiencias, una línea a la vez',
+							es: '"No se puede juzgar el pasado, con la sabiduria del presente"',
 							'pt-br': 'Criando coisas e experiências, uma linha de cada vez',
 						})
 					}
@@ -81,6 +82,7 @@ const t = useTranslations(Astro.currentLocale as Lang);
 				</a>
 			</div>
 		</div>
+		<Flag /> 
 		<div class="home__scroll">
 			<a href="#About" class="home__scroll-button">
 				<i class="uil uil-mouse home__scroll-mouse"></i>
@@ -97,6 +99,7 @@ const t = useTranslations(Astro.currentLocale as Lang);
 			</a>
 		</div>
 	</div>
+
 </section>
 
 <style>

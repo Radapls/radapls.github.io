@@ -2,6 +2,9 @@
 import Logo from '@assets/img/JFR.webp';
 import { Image } from 'astro:assets';
 import type { BrandType } from 'src/types/variants';
+import { useTranslations, type Lang } from 'src/i18n';
+
+const t = useTranslations(Astro.currentLocale as Lang);
 
 interface Props {
 	variant?: BrandType;
@@ -16,12 +19,38 @@ interface Props {
 				src={Logo}
 				alt="Logo Juan Felipe Rada"
 				draggable="false"
-				height={75}
-				width={75}
+				height={30}
+				width={30}
 			/>
-			<h6 class="footer__title">Juan Felipe Rada</h6>
+			<h6 class="footer__title">
+				<span>
+					&copy; {new Date().getFullYear() + ' '}
+				</span>
+				Juan Felipe Rada
+			</h6>
 		</div>
 	</div>
+	<p class="licenses">
+		{
+			t({
+				en: 'Posts:',
+				es: 'Publicaciones:',
+				'pt-br': 'Publicações:',
+			})
+		}
+		<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA</a> |
+		{
+			t({
+				en: 'Source code:',
+				es: 'Código fuente:',
+				'pt-br': 'Código fonte:',
+			})
+		}
+		<a
+			href="https://github.com/Radapls/radapls.github.io/blob/main/LICENSE">
+			AGPL-3.0
+		</a>
+	</p>
 </footer>
 
 <style>
@@ -37,7 +66,6 @@ interface Props {
 		position: relative;
 	}
 	.footer__bg::before {
-		background-color: var(--first-color);
 		content: '';
 		position: absolute;
 		left: 0;
@@ -46,20 +74,26 @@ interface Props {
 		height: 100%;
 		filter: opacity(0.8);
 		z-index: -1;
-		box-shadow:  0 0 4px var(--text-color);
+		box-shadow: 0 0 1px var(--text-color);
 	}
 
 	.footer__title {
-		font-size: var(--h2-font-size);
-		margin-bottom: var(--mb-0-25);
-		display: flex;
-		flex-direction: row;
+		font-size: var(--normal-font-size);
+		display: inline;
 		color: var(--text-color);
+	}
+	span {
+		font-weight: var(--font-medium);
 	}
 
 	.footer__brand-container {
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
+	}
+
+	.licenses {
+		text-align: center;
+		font-size: var(--small-font-size);
 	}
 </style>

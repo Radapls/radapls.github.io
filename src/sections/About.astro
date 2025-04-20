@@ -13,41 +13,23 @@ const t = useTranslations(Astro.currentLocale as Lang);
 	<h2 class="section__title">
 		{
 			t({
-				en: 'About Me',
+				en: 'About me',
 				es: 'Acerca de mí',
 				'pt-br': 'Sobre mim',
 			})
 		}
 	</h2>
-	<span class="section__subtitle">
-		{
-			t({
-				en: 'My introduction',
-				es: 'Mi introducción',
-				'pt-br': 'Minha apresentação',
-			})
-		}
-	</span>
+	<span class="section__subtitle"></span>
 
 	<div class="about__container container grid">
-		<Image
-			src={ProfilePic}
-			alt="Profile picture of Juan Felipe Rada"
-			class="about__img"
-			width={325}
-			height={325}
-			draggable="false"
-			loading={'eager'}
-			decoding="async"
-		/>
 		<div class="about__data">
 			<p class="about__description">
 				{
 					t({
-						en: "Hello everyone! I'm Juan Felipe Rada. I'm passionate about exploring new ideas and constantly learning. I'm always looking for new ways to create and innovate, driven by my curiosity. I'd love to share a bit of my journey with you.",
-						es: '¡Hola a todos! Soy Juan Felipe Rada. Me apasiona explorar nuevas ideas y aprender constantemente. Siempre estoy en busca de nuevas formas de crear e innovar, guiado por mi curiosidad. Me encantaría compartir con ustedes un poco de mi camino.',
+						en: "My name is Juan Felipe Rada, currently working as a Frontend developer focusing on backoffice platforms, whitelabel implementations and content static sites.",
+						es: 'Mi nombre es Juan Felipe Rada, actualmente trabajo como desarrollador Frontend con enfoque en paneles administrativos en linea, implementaciónes whitelabel y paginas de contenido estático.',
 						'pt-br':
-							'Olá a todos! Sou Juan Felipe Rada. Sou apaixonado por explorar novas ideias e aprender constantemente. Estou sempre em busca de novas formas de criar e inovar, guiado pela minha curiosidade. Adoraria compartilhar um pouco da minha trajetória com vocês.',
+							'Olá meu nome é Juan Felipe Rada, atualmente trabalho como desenvolvedor Frontend enfocado em plataformas backoffice, implementações whitelabel e paginas de conteúdo estático.'
 					})
 				}
 			</p>
@@ -81,44 +63,6 @@ const t = useTranslations(Astro.currentLocale as Lang);
 				</a>
 			</p>
 
-			<div class="about__info">
-				<div>
-					<span class="about__info-title">04+</span>
-					<span class="about__info-name">
-						{
-							t({
-								en: 'Years of experience',
-								es: 'Años de experiencia',
-								'pt-br': 'Anos de experiência',
-							})
-						}
-					</span>
-				</div>
-				<div>
-					<span class="about__info-title">12+</span>
-					<span class="about__info-name">
-						{
-							t({
-								en: 'Completed projects',
-								es: 'Proyectos completados',
-								'pt-br': 'Projetos concluídos',
-							})
-						}
-					</span>
-				</div>
-				<div>
-					<span class="about__info-title">04+</span>
-					<span class="about__info-name">
-						{
-							t({
-								en: 'Companies worked',
-								es: 'Empresas trabajadas',
-								'pt-br': 'Empresas trabalhadas',
-							})
-						}
-					</span>
-				</div>
-			</div>
 			<div class="about__buttons">
 				<a rel="nofollow" type="file" href={CurriculumVitae} class="button button--flex">
 					<p>
@@ -145,9 +89,8 @@ const t = useTranslations(Astro.currentLocale as Lang);
 		align-self: center;
 	}
 	.about__description {
-		text-align: center;
+		text-align: left;
 		margin-bottom: var(--mb-2-5);
-		text-wrap-style: balance;
 	}
 	.about__info {
 		display: flex;
