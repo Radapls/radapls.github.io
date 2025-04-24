@@ -87,15 +87,10 @@ const locale = Astro.currentLocale as Lang;
 	</head>
 	<body>
 		{withHeader && <Header {variant} noLinks={noLinks} />}
-
-		<!--==================== MAIN ====================-->
 		<main class="main">
 			<slot />
 		</main>
 		{withFooter && <Footer {variant} />}
-
-		<!--==================== SCROLL TOP ====================-->
-
 		<ScrollUp>
 	</body>
 </html>

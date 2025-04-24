@@ -1,9 +1,10 @@
 ---
 import { LOCALES, useTranslations, type Lang } from 'src/i18n';
 import Layout from '@layouts/Layout.astro';
+import EmptyState from '@components/Blog/EmptyState.astro';
+
 import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
-
 const locale = Astro.currentLocale as Lang;
 
 const posts = (await getCollection('blog'))
@@ -32,21 +33,25 @@ const t = useTranslations(Astro.currentLocale as Lang);
 			}
 		</h2>
 
-		<ul class="blog-list">
-			{
-				posts.map((post) => {
-					const [, ...id] = post.id.split('/');
-					return (
-						<li>
-							<a href={`/${locale}/blog/${id.join('/')}/`} data-astro-reload>
-								{post.data.cover && <Image src={post.data.cover} alt={post.data.title} />}
-								<h3>{post.data.title}</h3>
-							</a>
-						</li>
-					);
-				})
-			}
-		</ul>
+		{
+			posts.length !== 0 ? (
+				<ul class="blog-list">
+					{posts.map((post) => {
+						const [, ...id] = post.id.split('/');
+						return (
+							<li>
+								<a href={`/${locale}/blog/${id.join('/')}/`} data-astro-reload>
+									{post.data.cover && <Image src={post.data.cover} alt={post.data.title} />}
+									<h3>{post.data.title}</h3>
+								</a>
+							</li>
+						);
+					})}
+				</ul>
+			) : (
+				<EmptyState />
+			)
+		}
 	</section>
 </Layout>
 
@@ -70,6 +75,7 @@ const t = useTranslations(Astro.currentLocale as Lang);
 	img {
 		border-radius: 0.5rem;
 		object-fit: cover;
-		aspect-ratio: 1/ 1;
+		aspect-ratio: auto;
+		max-height: 200px;
 	}
 </style>
