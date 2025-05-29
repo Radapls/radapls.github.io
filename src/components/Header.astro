@@ -24,12 +24,12 @@ const { variant, noLinks = false } = Astro.props;
 			<nav class="nav container">
 				<a href="/" class="nav__logo" data-astro-reload>
 					<Image
-						class="MarcaHead"
+						class="radapls-brand"
 						src={Logo}
 						draggable="false"
 						alt="Logo Juan Felipe Rada"
-						width={45}
-						height={45}
+						width={40}
+						height={40}
 					/>
 				</a>
 
@@ -110,18 +110,18 @@ const { variant, noLinks = false } = Astro.props;
 	) : (
 		<header class="header" id="header">
 			<nav class="nav container">
-				<div class="wibx">
+				<div class="co-brand">
 					<a href="/">
 						<Image
-							class="MarcaHead"
+							class="radapls-brand"
 							src={Logo}
 							draggable="false"
 							alt="Logo Juan Felipe Rada"
-							width={40}
-							height={40}
+							width={35}
+							height={35}
 						/>
 					</a>
-					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="48" viewBox="0 0 20 48">
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="40" viewBox="0 0 20 48">
 						<g>
 							<path
 								fill="none"
@@ -139,13 +139,13 @@ const { variant, noLinks = false } = Astro.props;
 								src="https://assets.coingecko.com/coins/images/11009/large/wibx_new_logo.png"
 								draggable="false"
 								alt="Wibx Company"
-								width={40}
-								height={40}
+								width={35}
+								height={35}
 							/>
 						</a>
 					) : (
 						<a href="https://www.birdirx.com/" class="nav__logo">
-							<Image src={Birdi} draggable="false" alt="BirdiRx" width={40} height={40} />
+							<Image src={Birdi} draggable="false" alt="BirdiRx" width={35} height={35} />
 						</a>
 					)}
 				</div>
@@ -240,23 +240,16 @@ const { variant, noLinks = false } = Astro.props;
 		color: var(--first-color);
 	}
 
-	.wibx {
-		display: flex;
-		align-items: center;
-		gap: 0.25rem;
+	.radapls-brand {
+		width: 35px;
+		display: grid;
+		place-content: center;
 	}
 
-	.wibx > a {
+	.co-brand
+	{
 		display: flex;
 		align-items: center;
 		justify-content: center;
-	}
-
-	.wibx > a > .MarcaHead {
-		padding: 0;
-	}
-
-	.wibx > svg {
-		height: 30px;
 	}
 </style>
