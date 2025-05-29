@@ -167,7 +167,7 @@ export const workData = [
 			es: 'May 2023 - Ene 2025',
 			'pt-br': 'Mai 2023 - Jan 2025',
 		},
-		link: '/birdi',
+		link: '/experience/birdi',
 	},
 	{
 		image: {
@@ -187,7 +187,7 @@ export const workData = [
 			es: 'Ene 2022 - Presente',
 			'pt-br': 'Jan 2022 - Presente',
 		},
-		link: '/wibx',
+		link: '/experience/wibx',
 	},
 	{
 		image: {
