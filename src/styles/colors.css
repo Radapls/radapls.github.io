@@ -16,7 +16,7 @@
   --scroll-thumb-color: hsl(var(--hue-color), 25%, 60%);
 }
 
-body.dark-theme {
+body.dark{
   --first-color: hsl(var(--hue-color), 85%, 65%);
   --first-color-second: hsl(var(--hue-color), 75%, 55%);
   --first-color-alt: hsl(var(--hue-color), 70%, 45%);

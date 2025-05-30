@@ -46,6 +46,7 @@
 .nav__btns {
 	display: flex;
 	align-items: center;
+	gap: 0.25rem;
 }
 .change-theme {
 	font-size: 1.25rem;
@@ -206,7 +207,6 @@ button {
 	font-size: var(--small-font-size);
 	color: var(--title-color);
 	font-weight: var(--font-medium);
-	transition: 0.2s;
 }
 .nav__link:hover {
 	color: var(--first-color);
@@ -217,7 +217,7 @@ button {
 .nav__close {
 	position: absolute;
 	right: 1.3rem;
-	bottom: 0.5rem;
+	bottom: 1.5rem;
 	font-size: 1.5rem;
 	cursor: pointer;
 	color: var(--first-color);
