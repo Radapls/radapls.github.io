@@ -46,10 +46,7 @@ interface Props {
 				'pt-br': 'Código fonte:',
 			})
 		}
-		<a
-			href="https://github.com/Radapls/radapls.github.io/blob/main/LICENSE">
-			AGPL-3.0
-		</a>
+		<a href="https://github.com/Radapls/radapls.github.io/blob/main/LICENSE"> AGPL-3.0 </a>
 	</p>
 </footer>
 
@@ -84,5 +81,9 @@ interface Props {
 	.licenses {
 		text-align: center;
 		font-size: var(--small-font-size);
+	}
+
+	:global(.dark) .brand-image {
+		filter: grayscale(1) contrast(0.5) brightness(3.5);
 	}
 </style>
