@@ -17,8 +17,32 @@ jobs:
         uses: actions/checkout@v4
       - name: Install, build, and upload your site
         uses: withastro/action@v3
-  deploy:
+  test:
     needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Start the local server
+        run: npm run preview &
+        env:
+          NODE_ENV: test
+
+      - name: Run Cypress tests
+        uses: cypress-io/github-action@v6
+        with:
+          start: npm run preview
+          wait-on: 'http://localhost:8888'
+          wait-on-timeout: 60
+        env:
+          CYPRESS_baseUrl: http://localhost:8888
+
+  deploy:
+    needs: [build, test]
     runs-on: ubuntu-latest
     environment:
       name: github-pages
