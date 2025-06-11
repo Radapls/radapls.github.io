@@ -46,7 +46,7 @@ export const getStaticPaths = () =>
 						const [, ...id] = post.id.split('/');
 						return (
 							<li>
-								<a href={`/${locale}/experience/${id.join('/')}/`} data-astro-reload>
+								<a href={`/${locale}/experience/${id.join('/')}/`}>
 									{post.data.gif && <Image src={post.data.gif} alt={post.data.title} />}
 									<h3>{post.data.title}</h3>
 								</a>

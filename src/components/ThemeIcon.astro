@@ -21,6 +21,18 @@
 </style>
 
 <script is:inline>
+    const applyThemeFromLocalStorage = () => {
+    const theme =
+      (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) ||
+      'light';
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  };
+
+
   const theme = (() => {
     const localStorageTheme = localStorage?.getItem("theme") ?? '';
     if (['dark', 'light'].includes(localStorageTheme)) {
@@ -49,4 +61,29 @@
   }
 
   document.getElementById("themeToggle")?.addEventListener("click", handleToggleClick);
+
+
+   const setupThemeToggleButton = () => {
+    const toggleButton = document.getElementById("themeToggle");
+    if (toggleButton) {
+      toggleButton.removeEventListener('click', handleToggleClick); // Prevent duplicate listeners
+      toggleButton.addEventListener('click', handleToggleClick);
+    }
+  };
+
+  // For View Transitions: Apply theme *immediately* after new DOM is swapped.
+  document.addEventListener('astro:after-swap', applyThemeFromLocalStorage);
+
+  // For initial load and re-attaching button listener after page transitions:
+  if (document.readyState === 'loading') {
+    // Ensures button listener is attached after initial DOM is ready.
+    // Theme is already applied by the inline script in <head> of BaseLayout.astro for initial paint.
+    document.addEventListener('DOMContentLoaded', setupThemeToggleButton);
+  } else {
+    setupThemeToggleButton(); // If script loads after DOMContentLoaded.
+  }
+  // astro:page-load is for scripts that need to run after the page is fully loaded and painted.
+  // Good for re-attaching listeners to elements that might have been re-rendered.
+  document.addEventListener('astro:page-load', setupThemeToggleButton);
+
 </script>

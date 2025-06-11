@@ -40,7 +40,7 @@ const t = useTranslations(Astro.currentLocale as Lang);
 						const [, ...id] = post.id.split('/');
 						return (
 							<li>
-								<a href={`/${locale}/blog/${id.join('/')}/`} data-astro-reload>
+								<a href={`/${locale}/blog/${id.join('/')}/`}>
 									{post.data.cover && <Image src={post.data.cover} alt={post.data.title} />}
 									<h3>{post.data.title}</h3>
 								</a>

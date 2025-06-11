@@ -4,12 +4,15 @@ import type { BrandType } from 'src/types/variants';
 
 import Birdi from '@assets/img/brands/birdi.webp';
 import LocaleSelect from './i18n/LocaleSelect.astro';
-
-import { useTranslations, type Lang } from 'src/i18n';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { DEFAULT_LOCALE, useTranslations, type Lang } from 'src/i18n';
 import { Image } from 'astro:assets';
 import ThemeIcon from './ThemeIcon.astro';
 
 const t = useTranslations(Astro.currentLocale as Lang);
+
+const currentLocale =
+  (Astro.currentLocale as Lang | undefined) ?? DEFAULT_LOCALE;
 
 interface Props {
 	variant?: BrandType;
@@ -23,7 +26,7 @@ const { variant, noLinks = false } = Astro.props;
 	variant === 'radapls' ? (
 		<header class="header" id="header">
 			<nav class="nav container">
-				<a href="/" class="nav__logo" data-astro-reload>
+				<a href={getRelativeLocaleUrl(currentLocale, '/')} class="nav__logo">
 					<Image
 						class="radapls-brand"
 						src={Logo}
@@ -38,7 +41,7 @@ const { variant, noLinks = false } = Astro.props;
 					<div class="nav__menu" id="nav-menu">
 						<ul class="nav__list grid">
 							<li class="nav__item">
-								<a href="#About" class="nav__link" data-astro-reload>
+								<a href="#About" class="nav__link">
 									<svg
 										class="nav__icon"
 										width="20"
@@ -64,7 +67,7 @@ const { variant, noLinks = false } = Astro.props;
 								</a>
 							</li>
 							<li class="nav__item">
-								<a href="#Skills" class="nav__link" data-astro-reload>
+								<a href="#Skills" class="nav__link">
 									<svg
 										class="nav__icon"
 										width="20"
@@ -90,7 +93,7 @@ const { variant, noLinks = false } = Astro.props;
 								</a>
 							</li>
 							<li class="nav__item">
-								<a href="#Portfolio" class="nav__link" data-astro-reload>
+								<a href="#Portfolio" class="nav__link">
 									<svg
 										class="nav__icon"
 										width="20"
@@ -116,7 +119,7 @@ const { variant, noLinks = false } = Astro.props;
 								</a>
 							</li>
 							<li class="nav__item">
-								<a href="#Contact" class="nav__link" data-astro-reload>
+								<a href="#Contact" class="nav__link">
 									<svg
 										class="nav__icon"
 										width="20"
@@ -142,7 +145,7 @@ const { variant, noLinks = false } = Astro.props;
 								</a>
 							</li>
 							<li class="nav__item">
-								<a href="/blog" class="nav__link" data-astro-reload>
+								<a href={getRelativeLocaleUrl(currentLocale, 'blog')}class="nav__link">
 									<svg
 										class="nav__icon"
 										width="20"
@@ -210,7 +213,7 @@ const { variant, noLinks = false } = Astro.props;
 		<header class="header" id="header">
 			<nav class="nav container">
 				<div class="co-brand">
-					<a href="/">
+					<a href={getRelativeLocaleUrl(currentLocale, '/')}>
 						<Image
 							class="radapls-brand"
 							src={Logo}
