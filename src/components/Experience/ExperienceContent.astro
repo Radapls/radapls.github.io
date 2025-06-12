@@ -18,8 +18,7 @@ interface Props {
 	link?: string;
 }
 
-const currentLocale =
-  (Astro.currentLocale as Lang | undefined) ?? DEFAULT_LOCALE;
+const currentLocale = (Astro.currentLocale as Lang | undefined) ?? DEFAULT_LOCALE;
 
 const { image, title, organization, relativeTime, isEven, link } = Astro.props;
 ---
@@ -73,7 +72,7 @@ const { image, title, organization, relativeTime, isEven, link } = Astro.props;
 					/>
 					<h3 class="qualification__title">{title}</h3>
 					{link ? (
-						<a  href={getRelativeLocaleUrl(currentLocale, link)}>
+						<a href={getRelativeLocaleUrl(currentLocale, link)}>
 							<span class="qualification__subtitle">{organization}</span>
 						</a>
 					) : (

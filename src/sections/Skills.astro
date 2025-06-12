@@ -31,7 +31,7 @@ const t = useTranslations(Astro.currentLocale as Lang);
 		{
 			SkillIcons.map((item) => (
 				<div class="skl-card">
-					<a href={item.link} target="_blank">
+					<a href={item.link} target="_blank" aria-label={`${item.icon} logo`}>
 						<i class={item.icon} />
 					</a>
 				</div>

@@ -23,5 +23,4 @@ const experience = defineCollection({
 		}),
 });
 
-
 export const collections = { blog, experience };

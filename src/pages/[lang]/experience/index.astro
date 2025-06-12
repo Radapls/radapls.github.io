@@ -9,34 +9,32 @@ import EmptyState from '@components/Blog/EmptyState.astro';
 const locale = Astro.currentLocale as Lang;
 const t = useTranslations(locale);
 
-const posts = (await getCollection('experience'))
-	.filter((post) => post.id.split('/')[0] === locale)
+const posts = (await getCollection('experience')).filter(
+	(post) => post.id.split('/')[0] === locale,
+);
 
 const title = `Juan Felipe Rada | ${t({
-
 	es: 'Experiencia',
 	en: 'Experience',
 	'pt-br': 'Experiência',
-}
-)}`;
+})}`;
 
 export const getStaticPaths = () =>
 	Object.keys(LOCALES).map((lang) => ({
 		params: { lang },
 	}));
-
 ---
 
 <Layout {title} noLinks>
 	<section class="section container">
 		<h2 class="section__title">
-		{
-			t({
-				en: 'My experience',
-				es: 'My experiencia',
-				'pt-br': 'Minha experiência',
-			})
-		}
+			{
+				t({
+					en: 'My experience',
+					es: 'My experiencia',
+					'pt-br': 'Minha experiência',
+				})
+			}
 		</h2>
 
 		{

@@ -1,7 +1,7 @@
 describe('The home page', () => {
-  it('successfully loads', () => {
-    cy.visit('/');
-  });
+	it('successfully loads', () => {
+		cy.visit('/');
+	});
 });
 
 // describe('Contact form functionality', () => {

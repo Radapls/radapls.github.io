@@ -115,8 +115,14 @@ const t = useTranslations(Astro.currentLocale as Lang);
 						})
 					}
 				</label>
-				<textarea id="message" name="message" cols="0" rows="7" class="contact__input" required
-				></textarea>
+				<textarea
+					id="message"
+					name="message"
+					cols="0"
+					rows="7"
+					class="contact__input"
+					required
+					wrap="soft"></textarea>
 			</div>
 
 			<input type="hidden" name="_next" value="https://radapls.github.io/thanks" />
