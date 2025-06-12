@@ -1,6 +1,4 @@
 ---
-// Select UI to switch between locales.
-
 import { getLocalePaths, LOCALES } from '../../i18n';
 ---
 
@@ -31,15 +29,24 @@ import { getLocalePaths, LOCALES } from '../../i18n';
 </div>
 
 <script is:inline>
-	const selects = document.querySelectorAll('[data-languageSelect]');
-
-	selects.forEach((select) => {
-		select.addEventListener('change', (event) => {
-			// used for 404 page
-			localStorage.selectedLang = event.target?.selectedOptions[0].dataset.lang;
-			location.href = event.target?.value;
+	const setupLanguageSelect = () => {
+		const selects = document.querySelectorAll('[data-languageSelect]');
+		selects.forEach((select) => {
+			select.addEventListener('change', (event) => {
+				const lang = event.target?.selectedOptions[0]?.dataset.lang;
+				const url = event.target?.value;
+				if (lang && url) {
+					localStorage.setItem('selectedLang', lang);
+					location.href = url;
+				}
+			});
 		});
-	});
+	};
+
+	setupLanguageSelect();
+
+	// Re-run on Astro view transitions
+	document.addEventListener('astro:after-swap', setupLanguageSelect);
 </script>
 
 <style>
