@@ -17,10 +17,10 @@ This is my personal portfolio website built with Astro, showcasing my work as a 
 ## 🛠️ Tech Stack
 
 - [Astro](https://astro.build)
-- CSS3
 - [TypeScript](https://www.typescriptlang.org/)
 - [MDX](https://mdxjs.com/)
 - [Cypress](https://www.cypress.io/)
+- [CSS3](https://developer.mozilla.org/es/docs/Web/CSS)
 
 ## 🏗️ Project Structure
 
@@ -28,16 +28,12 @@ This is my personal portfolio website built with Astro, showcasing my work as a 
 /
 ├── src
 │   ├── assets               # Astro-managed assets (e.g., blog post images if optimized by Astro)
-│   │   ├── documents 
-│   │   ├── gifs
-│   │   ├── img
-│   │   └── videos
 │   ├── components           # Base components
-│   │   └── i18n
+│   │   └── i18n             # Locale components
 │   ├── data                 # All the global variables must be here
-│   ├── layouts
+│   ├── layouts              # Portfolio layouts
 │   ├── pages                # Astro pages and routes (e.g., index.astro, about.astro)
-│   │   └── [lang]
+│   │   └── [lang]           # Translated Pages
 │   ├── scripts              # Global scripts
 │   ├── sections             # Reusable sections
 │   ├── styles               # Global styles
