@@ -7,6 +7,7 @@ import MOE from '@assets/img/brands/moe.webp';
 import Wibx from '@assets/img/brands/wibx.webp';
 import NT from '@assets/img/brands/nt.webp';
 import Birdi from '@assets/img/brands/birdi.webp';
+import Ericsson from '@assets/img/brands/ericsson.webp';
 
 import Logo from '@assets/img/brands/logo.webp';
 
@@ -183,11 +184,30 @@ export const workData = [
 		},
 		organization: 'Wibx Company',
 		relativeTime: {
-			en: 'Jan 2022 - Present',
-			es: 'Ene 2022 - Presente',
-			'pt-br': 'Jan 2022 - Presente',
+			en: 'Jan 2022 - Oct 2025',
+			es: 'Ene 2022 - Oct 2025',
+			'pt-br': 'Jan 2022 - Out 2025',
 		},
 		link: '/experience/wibx',
+	},
+	{
+		image: {
+			src: Ericsson,
+			alt: 'Ericsson Logo',
+			height: 35,
+			width: 35,
+		},
+		lang: {
+			en: 'UX/UI Developer',
+			es: 'Desarrollador UX/UI',
+			'pt-br': 'Desenvolvedor UX/UI',
+		},
+		organization: 'Ericsson',
+		relativeTime: {
+			en: 'Oct 2025 - Present',
+			es: 'Oct 2025 - Presente',
+			'pt-br': 'Out 2025 - Presente',
+		}
 	},
 	{
 		image: {
