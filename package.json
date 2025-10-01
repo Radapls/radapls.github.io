@@ -16,12 +16,12 @@
 		"test:e2e": "cypress run"
 	},
 	"dependencies": {
-		"@astrojs/check": "^0.9.4",
-		"@astrojs/mdx": "^4.3.5",
-		"@astrojs/rss": "^4.0.12",
-		"@astrojs/sitemap": "^3.6.0",
-		"@astrojs/ts-plugin": "^1.10.4",
-		"astro": "^5.13.8",
+		"@astrojs/check": "0.9.4",
+		"@astrojs/mdx": "4.3.6",
+		"@astrojs/rss": "4.0.12",
+		"@astrojs/sitemap": "3.6.0",
+		"@astrojs/ts-plugin": "1.10.4",
+		"astro": "5.14.1",
 		"typescript": "^5.5.4"
 	},
 	"bugs": {
@@ -33,9 +33,10 @@
 		"email": "radapls8@gmail.com"
 	},
 	"devDependencies": {
-		"cypress": "^14.4.1",
-		"prettier": "^3.5.3",
-		"prettier-plugin-astro": "^0.14.1",
-		"rimraf": "^6.0.1"
+		"@types/node": "24.6.1",
+		"cypress": "14.4.1",
+		"prettier": "3.5.3",
+		"prettier-plugin-astro": "0.14.1",
+		"rimraf": "6.0.1"
 	}
 }
