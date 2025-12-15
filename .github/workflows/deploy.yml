@@ -17,6 +17,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Install, build, and upload your site
         uses: withastro/action@v3
+        with:
+          package-manager: pnpm@latest
   test:
     needs: build
     runs-on: ubuntu-latest
@@ -24,18 +26,23 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
+
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Start the local server
-        run: npm run preview &
+        run: pnpm run preview &
         env:
           NODE_ENV: test
 
       - name: Run Cypress tests
         uses: cypress-io/github-action@v6
         with:
-          start: npm run preview
+          start: pnpm run preview
           wait-on: 'http://localhost:8888'
           wait-on-timeout: 60
         env:
