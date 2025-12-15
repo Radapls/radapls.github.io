@@ -207,7 +207,7 @@ export const workData = [
 			en: 'Oct 2025 - Present',
 			es: 'Oct 2025 - Presente',
 			'pt-br': 'Out 2025 - Presente',
-		}
+		},
 	},
 	{
 		image: {
