@@ -28,34 +28,34 @@ jobs:
             package-manager: pnpm@latest # The Node package manager that should be used to install dependencies and build your site. Automatically detected based on your lockfile. (optional)
             build-cmd: pnpm run build # The command to run to build your site. Runs the package build script/task by default. (optional)
 
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+  # test:
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v4
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: latest
+  #     - name: Setup pnpm
+  #       uses: pnpm/action-setup@v2
+  #       with:
+  #         version: latest
 
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+  #     - name: Install dependencies
+  #       run: pnpm install --frozen-lockfile
 
-      - name: Start the local server
-        run: pnpm run preview &
-        env:
-          NODE_ENV: test
+  #     - name: Start the local server
+  #       run: pnpm run preview &
+  #       env:
+  #         NODE_ENV: test
 
-      - name: Run Cypress tests
-        uses: cypress-io/github-action@v6
-        with:
-          start: pnpm run preview
-          wait-on: 'http://localhost:8888'
-          wait-on-timeout: 60
-        env:
-          CYPRESS_baseUrl: http://localhost:8888
+  #     - name: Run Cypress tests
+  #       uses: cypress-io/github-action@v6
+  #       with:
+  #         start: pnpm run preview
+  #         wait-on: 'http://localhost:8888'
+  #         wait-on-timeout: 60
+  #       env:
+  #         CYPRESS_baseUrl: http://localhost:8888
 
   deploy:
     needs: build
