@@ -86,3 +86,45 @@ const locale = Astro.currentLocale as Lang;
 		<ScrollUp />
 	</body>
 </html>
+
+<script>
+	import gsap from 'gsap';
+	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+	gsap.registerPlugin(ScrollTrigger);
+
+	function initScrollAnimations() {
+		ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+
+		gsap.utils.toArray('.section').forEach((section: any, index: number) => {
+			gsap.from(section, {
+				opacity: 0,
+				y: 150,
+				duration: 1,
+				ease: 'power2.out',
+				scrollTrigger: {
+					trigger: section,
+					start: 'top 75%',
+					end: 'top 25%',
+					toggleActions: 'play none none none',
+				},
+			});
+		});
+
+		gsap.utils.toArray('.section__title').forEach((title: any) => {
+			gsap.from(title, {
+				opacity: 0,
+				scale: 0.5,
+				duration: 0.8,
+				ease: 'back.out(1.7)',
+				scrollTrigger: {
+					trigger: title,
+					start: 'top 80%',
+					toggleActions: 'play none none none',
+				},
+			});
+		});
+	}
+
+	document.addEventListener('astro:page-load', initScrollAnimations);
+</script>
