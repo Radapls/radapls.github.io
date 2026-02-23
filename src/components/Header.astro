@@ -3,6 +3,7 @@ import Logo from '@assets/img/JFR.webp';
 import type { BrandType } from 'src/types/variants';
 
 import Birdi from '@assets/img/brands/birdi.webp';
+import Wibx from '@assets/img/brands/wibx.webp';
 import LocaleSelect from './i18n/LocaleSelect.astro';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import { DEFAULT_LOCALE, useTranslations, type Lang } from 'src/i18n';
@@ -238,7 +239,7 @@ const { variant, noLinks = false } = Astro.props;
 					{variant === 'wibx' ? (
 						<a href="https://wibx.io/" class="nav__logo">
 							<Image
-								src="https://assets.coingecko.com/coins/images/11009/large/wibx_new_logo.png"
+								src={Wibx}
 								draggable="false"
 								alt="Wibx Company"
 								width={35}

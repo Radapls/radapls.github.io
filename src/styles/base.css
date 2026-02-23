@@ -302,6 +302,7 @@ button {
 }
 .home__description {
 	margin-bottom: var(--mb-2);
+	font-style: italic;
 }
 .home__scroll {
 	display: none;

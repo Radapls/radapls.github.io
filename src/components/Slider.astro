@@ -97,11 +97,12 @@ const { format, data, type }: Props = Astro.props;
 		background: var(--marker-color);
 		opacity: 0.7;
 		border-radius: 50%;
-
-		animation: activate linear;
-		animation-timeline: --carousel;
-		animation-range: calc((var(--i) - 1) * 25%) calc(var(--i) * 25% + 1px);
 		position: relative;
+	}
+
+	.markers a.active {
+		background: var(--marker-active-color);
+		opacity: 1;
 	}
 
 	.markers a::before {
@@ -121,14 +122,6 @@ const { format, data, type }: Props = Astro.props;
 	.markers a.active::before {
 		opacity: 1;
 		border: solid var(--marker-active-color) 1px;
-	}
-
-	@keyframes activate {
-		0%,
-		100% {
-			background: var(--marker-active-color);
-			opacity: 1;
-		}
 	}
 
 	.slider a {
@@ -169,63 +162,67 @@ const { format, data, type }: Props = Astro.props;
 </style>
 
 <script is:inline>
-	document.addEventListener('DOMContentLoaded', () => {
-		const markers = document.querySelectorAll('.markers li a');
-		markers.forEach((marker, index) => {
-			marker.style.setProperty('--i', index + 1);
-		});
-
-		const slider = document.querySelector('.slider');
-		const updateActiveMarker = () => {
-			const scrollLeft = slider.scrollLeft;
-			const sliderWidth = slider.clientWidth;
-			const activeIndex = Math.round(scrollLeft / sliderWidth);
+	document.addEventListener('astro:page-load', () => {
+		const sliderContainers = document.querySelectorAll('.slider-container');
+		
+		sliderContainers.forEach((container) => {
+			const slider = container.querySelector('.slider');
+			const markers = container.querySelectorAll('.markers li a');
+			
 			markers.forEach((marker, index) => {
-				if (index === activeIndex) {
-					marker.classList.add('active');
-				} else {
-					marker.classList.remove('active');
-				}
+				marker.style.setProperty('--i', index + 1);
 			});
-		};
 
-		slider.addEventListener('scroll', updateActiveMarker);
-		updateActiveMarker();
+			const updateActiveMarker = () => {
+				const scrollLeft = slider.scrollLeft;
+				const sliderWidth = slider.clientWidth;
+				const activeIndex = Math.round(scrollLeft / sliderWidth);
+				markers.forEach((marker, index) => {
+					if (index === activeIndex) {
+						marker.classList.add('active');
+					} else {
+						marker.classList.remove('active');
+					}
+				});
+			};
+
+			slider.addEventListener('scroll', updateActiveMarker);
+			updateActiveMarker();
+
+			let isDown = false;
+			let startX;
+			let scrollLeft;
+
+			const startDragging = (e) => {
+				isDown = true;
+				slider.classList.add('active');
+				startX = (e.pageX || e.touches[0].pageX) - slider.offsetLeft;
+				scrollLeft = slider.scrollLeft;
+			};
+
+			const stopDragging = () => {
+				isDown = false;
+				slider.classList.remove('active');
+			};
+
+			const moveSlider = (e) => {
+				if (!isDown) return;
+				e.preventDefault();
+				const x = (e.pageX || e.touches[0].pageX) - slider.offsetLeft;
+				const walk = (x - startX) * 2;
+				slider.scrollLeft = scrollLeft - walk;
+			};
+
+			slider.addEventListener('mousedown', startDragging);
+			slider.addEventListener('touchstart', startDragging);
+
+			slider.addEventListener('mouseleave', stopDragging);
+			slider.addEventListener('mouseup', stopDragging);
+			slider.addEventListener('touchend', stopDragging);
+			slider.addEventListener('touchcancel', stopDragging);
+
+			slider.addEventListener('mousemove', moveSlider);
+			slider.addEventListener('touchmove', moveSlider);
+		});
 	});
-
-	const slider = document.querySelector('.slider');
-	let isDown = false;
-	let startX;
-	let scrollLeft;
-
-	const startDragging = (e) => {
-		isDown = true;
-		slider.classList.add('active');
-		startX = (e.pageX || e.touches[0].pageX) - slider.offsetLeft;
-		scrollLeft = slider.scrollLeft;
-	};
-
-	const stopDragging = () => {
-		isDown = false;
-		slider.classList.remove('active');
-	};
-
-	const moveSlider = (e) => {
-		if (!isDown) return;
-		e.preventDefault();
-		const x = (e.pageX || e.touches[0].pageX) - slider.offsetLeft;
-		const walk = (x - startX) * 2;
-		slider.scrollLeft = scrollLeft - walk;
-	};
-
-	slider.addEventListener('mousedown', startDragging);
-	slider.addEventListener('touchstart', startDragging);
-
-	slider.addEventListener('mouseleave', stopDragging);
-	slider.addEventListener('mouseup', stopDragging);
-	slider.addEventListener('touchend', stopDragging);
-	slider.addEventListener('touchcancel', stopDragging);
-
-	slider.addEventListener('mousemove', moveSlider);
-	slider.addEventListener('touchmove', moveSlider);
 </script>
