@@ -19,8 +19,8 @@ export const portfolioCards = [
 	{
 		image: World.src,
 		link: 'https://radapls.github.io/country-stats/',
-		title: 'projects.project-3.title',
-		description: 'projects.project-3.subtitle',
+		title: 'Country Wiki',
+		description: 'A country encyclopedia built with Angular 21',
 	},
 	{
 		image: Calendar.src,

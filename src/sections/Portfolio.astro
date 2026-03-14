@@ -95,6 +95,20 @@ const t = useTranslations(Astro.currentLocale as Lang);
 				})}
 				link="https://radapls.github.io/space-invaders/"
 			/>
+			<PortfolioCard
+				bgImage={World}
+				title={t({
+					en: 'Country Wiki',
+					es: 'Wiki de Países',
+					'pt-br': 'Wiki de Países',
+				})}
+				description={t({
+					en: 'A country encyclopedia built with Angular 21, explore stats and details of every country',
+					es: 'Una enciclopedia de países construida con Angular 21, explora estadísticas y detalles de cada país',
+					'pt-br': 'Uma enciclopédia de países construída com Angular 21, explore estatísticas e detalhes de cada país',
+				})}
+				link="https://radapls.github.io/country-stats/"
+			/>
 		</div>
 	</div>
 </section>

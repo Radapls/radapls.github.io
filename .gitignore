@@ -25,3 +25,8 @@ pnpm-debug.log*
 
 # vscode folder
 .vscode/
+
+# Gen AI tools
+.kiro
+.claude
+.amazonq
