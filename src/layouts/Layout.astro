@@ -61,6 +61,7 @@ const locale = Astro.currentLocale as Lang;
 
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
 
 		<link
 			rel="stylesheet"
@@ -68,12 +69,23 @@ const locale = Astro.currentLocale as Lang;
 			onload={`this.media='all'`}
 			href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
 		/>
+		<noscript>
+			<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" />
+		</noscript>
 
 		<link
 			rel="stylesheet"
 			type="text/css"
+			media="print"
+			onload={`this.media='all'`}
 			href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
 		/>
+		<style is:inline>
+			@font-face {
+				font-family: 'devicon';
+				font-display: swap;
+			}
+		</style>
 		<title>{title}</title>
 		<ClientRouter />
 	</head>
@@ -88,12 +100,11 @@ const locale = Astro.currentLocale as Lang;
 </html>
 
 <script>
-	import gsap from 'gsap';
-	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+	async function initScrollAnimations() {
+		const { default: gsap } = await import('gsap');
+		const { ScrollTrigger } = await import('gsap/ScrollTrigger');
+		gsap.registerPlugin(ScrollTrigger);
 
-	gsap.registerPlugin(ScrollTrigger);
-
-	function initScrollAnimations() {
 		ScrollTrigger.getAll().forEach(trigger => trigger.kill());
 
 		gsap.utils.toArray('.section').forEach((section: any, index: number) => {
@@ -127,4 +138,21 @@ const locale = Astro.currentLocale as Lang;
 	}
 
 	document.addEventListener('astro:page-load', initScrollAnimations);
+
+	// Preserve scroll position on language switch
+	let savedScroll: number | null = null;
+	document.addEventListener('astro:before-preparation', (e: any) => {
+		const from = new URL(e.from);
+		const to = new URL(e.to);
+		const stripLang = (p: string) => p.replace(/^\/(en|es|pt-br)/, '');
+		if (stripLang(from.pathname) === stripLang(to.pathname)) {
+			savedScroll = window.scrollY;
+		}
+	});
+	document.addEventListener('astro:after-swap', () => {
+		if (savedScroll !== null) {
+			window.scrollTo(0, savedScroll);
+			savedScroll = null;
+		}
+	});
 </script>
