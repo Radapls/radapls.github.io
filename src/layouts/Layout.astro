@@ -5,6 +5,7 @@ import { SITE_CONFIG } from 'src/consts';
 
 import type { BrandType } from 'src/types/variants';
 import { getLocalePaths, LOCALES, type Lang } from 'src/i18n';
+import LatestPostBanner from '@components/LatestPostBanner.astro';
 
 import '@styles/global.css';
 import { ClientRouter } from 'astro:transitions';
@@ -18,6 +19,7 @@ interface Props {
 	permalink?: string;
 	withHeader?: boolean;
 	withFooter?: boolean;
+	withBanner?: boolean;
 	noLinks?: boolean;
 }
 
@@ -28,6 +30,7 @@ const {
 	keywords = SITE_CONFIG.keywords,
 	withFooter = true,
 	withHeader = true,
+	withBanner = false,
 	noLinks,
 } = Astro.props;
 
@@ -90,8 +93,9 @@ const locale = Astro.currentLocale as Lang;
 		<ClientRouter />
 	</head>
 	<body>
+		{withBanner && <LatestPostBanner />}
 		{withHeader && <Header {variant} noLinks={noLinks} />}
-		<main class="main">
+		<main class="main" transition:animate="fade">
 			<slot />
 		</main>
 		{withFooter && <Footer {variant} />}
@@ -106,6 +110,12 @@ const locale = Astro.currentLocale as Lang;
 		gsap.registerPlugin(ScrollTrigger);
 
 		ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+
+		if (isLangSwitch) {
+			isLangSwitch = false;
+			ScrollTrigger.refresh();
+			return;
+		}
 
 		gsap.utils.toArray('.section').forEach((section: any, index: number) => {
 			gsap.from(section, {
@@ -141,12 +151,16 @@ const locale = Astro.currentLocale as Lang;
 
 	// Preserve scroll position on language switch
 	let savedScroll: number | null = null;
+	let isLangSwitch = false;
 	document.addEventListener('astro:before-preparation', (e: any) => {
 		const from = new URL(e.from);
 		const to = new URL(e.to);
 		const stripLang = (p: string) => p.replace(/^\/(en|es|pt-br)/, '');
 		if (stripLang(from.pathname) === stripLang(to.pathname)) {
 			savedScroll = window.scrollY;
+			isLangSwitch = true;
+		} else {
+			isLangSwitch = false;
 		}
 	});
 	document.addEventListener('astro:after-swap', () => {
