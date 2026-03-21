@@ -10,7 +10,7 @@ const latestPost = posts.sort((a, b) => b.data.date.getTime() - a.data.date.getT
 ---
 
 {latestPost && (
-  <div class="latest-post-banner" id="latest-post-banner">
+  <div class="latest-post-banner" id="latest-post-banner" transition:animate="fade">
     <div class="banner-content">
       <span class="banner-label">
         {t({ en: '📝 Latest Post:', es: '📝 Última Publicación:', 'pt-br': '📝 Última Postagem:' })}
@@ -27,8 +27,12 @@ const latestPost = posts.sort((a, b) => b.data.date.getTime() - a.data.date.getT
   .latest-post-banner {
     width: 100%;
     background: linear-gradient(135deg, var(--first-color) 0%, var(--first-color-alt) 100%);
-    padding: 1rem 2rem;
+    padding: 0.65rem 2rem;
     text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: calc(var(--z-fixed) + 1);
   }
 
   .latest-post-banner.hidden {
@@ -90,24 +94,27 @@ const latestPost = posts.sort((a, b) => b.data.date.getTime() - a.data.date.getT
 </style>
 
 <script is:inline>
-  document.addEventListener('DOMContentLoaded', () => {
-    const banner = document.getElementById('latest-post-banner');
-    const closeBtn = document.getElementById('banner-close');
+  function setupBanner() {
+    var banner = document.getElementById('latest-post-banner');
+    var closeBtn = document.getElementById('banner-close');
+    if (!banner || !closeBtn) return;
 
-    if (banner && closeBtn) {
-      if (localStorage.getItem('bannerDismissed') === 'true') {
-        banner.classList.add('hidden');
-      } else if (window.innerWidth > 768) {
-        document.body.style.paddingTop = '72px';
-      }
+    var dismissed = localStorage.getItem('bannerDismissed') === 'true';
 
-      closeBtn.addEventListener('click', () => {
-        banner.classList.add('hidden');
-        if (window.innerWidth > 768) {
-          document.body.style.paddingTop = '0';
-        }
-        localStorage.setItem('bannerDismissed', 'true');
-      });
+    if (dismissed) {
+      banner.classList.add('hidden');
     }
-  });
+
+    var h = dismissed ? 0 : banner.offsetHeight;
+    document.documentElement.style.setProperty('--banner-height', h + 'px');
+
+    closeBtn.addEventListener('click', function() {
+      banner.classList.add('hidden');
+      document.documentElement.style.setProperty('--banner-height', '0px');
+      localStorage.setItem('bannerDismissed', 'true');
+    });
+  }
+
+  setupBanner();
+  document.addEventListener('astro:after-swap', setupBanner);
 </script>

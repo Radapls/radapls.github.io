@@ -1,5 +1,6 @@
 import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
+import critters from 'astro-critters';
 import { defineConfig } from 'astro/config';
 
 const isProd = import.meta.env.PROD;
@@ -20,6 +21,9 @@ if (isProd) {
  * More info: https://astro.build/config
  */
 export default defineConfig({
+	image: {
+		quality: 80,
+	},
 	site: BASE_URL,
 	server: {
 		port: SERVER_PORT,
@@ -28,7 +32,7 @@ export default defineConfig({
 	prefetch: {
 		prefetchAll: true,
 	},
-	integrations: [sitemap(), mdx()],
+	integrations: [sitemap(), mdx(), critters()],
 	i18n: {
 		defaultLocale: 'en',
 		locales: ['en', 'es', 'pt-br'],
