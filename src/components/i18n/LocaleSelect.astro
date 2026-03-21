@@ -28,36 +28,44 @@ import { getLocalePaths, LOCALES } from '../../i18n';
 	</select>
 </div>
 
-<script is:inline>
+<script>
+	import { navigate } from 'astro:transitions/client';
+
 	const setupLanguageSelect = () => {
 		const selects = document.querySelectorAll('[data-languageSelect]');
 		selects.forEach((select) => {
 			select.addEventListener('change', (event) => {
-				const lang = event.target?.selectedOptions[0]?.dataset.lang;
-				const url = event.target?.value;
+				const target = event.target as HTMLSelectElement;
+				const lang = target.selectedOptions[0]?.dataset.lang;
+				const url = target.value;
 				if (lang && url) {
 					localStorage.setItem('selectedLang', lang);
-					location.href = url;
+					const hash = window.location.hash;
+					navigate(url + hash, { history: 'replace' });
 				}
 			});
 		});
 	};
 
 	setupLanguageSelect();
-
-	// Re-run on Astro view transitions
 	document.addEventListener('astro:after-swap', setupLanguageSelect);
 </script>
 
 <style>
 	select {
 		font-family: 'Poppins';
-		border-radius: 4px; /* Bordes redondeados */
+		border-radius: 4px;
 		font-size: var(--small-font-size);
 		font-weight: var(--font-medium);
 		height: 30px;
-		padding: 0 15px;
+		padding: 0 28px 0 15px;
 		background-color: var(--body-color);
 		color: var(--title-color);
+		appearance: none;
+		-webkit-appearance: none;
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='gray' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+		background-repeat: no-repeat;
+		background-position: right 8px center;
+		cursor: pointer;
 	}
 </style>
