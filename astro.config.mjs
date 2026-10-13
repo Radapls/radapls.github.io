@@ -32,7 +32,12 @@ export default defineConfig({
 	prefetch: {
 		prefetchAll: true,
 	},
-	integrations: [sitemap(), mdx(), critters()],
+	integrations: [
+		// /blog pages are canonical on blog.radapls.com — keep them out of this sitemap
+		sitemap({ filter: (page) => !page.includes('/blog') }),
+		mdx(),
+		critters(),
+	],
 	i18n: {
 		defaultLocale: 'en',
 		locales: ['en', 'es', 'pt-br'],

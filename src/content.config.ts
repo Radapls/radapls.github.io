@@ -1,4 +1,5 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
+import { z } from 'astro/zod';
 import { glob } from 'astro/loaders';
 
 const experience = defineCollection({
@@ -19,4 +20,18 @@ const projects = defineCollection({
 	}),
 });
 
-export const collections = { experience, projects };
+const blog = defineCollection({
+	loader: glob({ pattern: '**/[^_]*.mdx', base: './src/content/blog' }),
+	schema: ({ image }) =>
+		z.object({
+			title: z.string(),
+			description: z.string(),
+			pubDate: z.coerce.date(),
+			cover: image().optional(),
+			type: z.enum(['post', 'poem']).optional(),
+			tags: z.array(z.string()).optional(),
+			lang: z.enum(['en', 'es', 'pt-br']).optional(),
+		}),
+});
+
+export const collections = { experience, projects, blog };
