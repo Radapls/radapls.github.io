@@ -1,8 +1,15 @@
 ---
+import { useTranslations, type Lang } from 'src/i18n';
 
+const t = useTranslations(Astro.currentLocale as Lang);
 ---
 
-<button class="scrollup" id="scroll-up" type="button" aria-label="Scroll to top">
+<button
+	class="scrollup"
+	id="scroll-up"
+	type="button"
+	aria-label={t({ en: 'Scroll to top', es: 'Volver arriba', 'pt-br': 'Voltar ao topo' })}
+>
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		width="24"

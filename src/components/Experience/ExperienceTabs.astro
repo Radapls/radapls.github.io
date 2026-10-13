@@ -19,12 +19,16 @@ const { tabTarget, icon, description, isActive } = Astro.props;
 	}
 </style>
 
+<!-- Roving tabindex: only the selected tab is in the tab order (WAI-ARIA tabs). -->
 <button
 	type="button"
 	role="tab"
+	id={`tab-${tabTarget.replace('#', '')}`}
 	class=`qualification__button button--flex ${isActive ? 'qualification__active' : ''}`
 	data-target={tabTarget}
+	aria-controls={tabTarget.replace('#', '')}
 	aria-selected={isActive ? 'true' : 'false'}
+	tabindex={isActive ? 0 : -1}
 >
 	<i class=`uil ${icon} qualification__icon` aria-hidden="true"></i>
 	<p>{description}</p>

@@ -31,7 +31,7 @@ const t = useTranslations(Astro.currentLocale as Lang);
 							})
 						}
 					</span>
-					<span id="waveElement" class="wave" role="img" aria-label="waving hand">👋🏼</span>
+					<span id="waveElement" class="wave" role="img" aria-label={t({ en: 'waving hand', es: 'saludo con la mano', 'pt-br': 'aceno com a mão' })}>👋🏼</span>
 				</h1>
 				<h2 class="home__eyebrow">
 					{
@@ -62,10 +62,10 @@ const t = useTranslations(Astro.currentLocale as Lang);
 						}
 					</a>
 					<div class="home__social">
-						<a href={LINKEDIN} target="_blank" class="home__social-icon" aria-label="LinkedIn profile">
+						<a href={LINKEDIN} target="_blank" class="home__social-icon" aria-label={t({ en: 'LinkedIn profile', es: 'Perfil de LinkedIn', 'pt-br': 'Perfil do LinkedIn' })}>
 							<i class="uil uil-linkedin" aria-hidden="true"></i>
 						</a>
-						<a href={GITHUB} target="_blank" class="home__social-icon" aria-label="GitHub profile">
+						<a href={GITHUB} target="_blank" class="home__social-icon" aria-label={t({ en: 'GitHub profile', es: 'Perfil de GitHub', 'pt-br': 'Perfil do GitHub' })}>
 							<i class="uil uil-github" aria-hidden="true"></i>
 						</a>
 					</div>
@@ -75,7 +75,11 @@ const t = useTranslations(Astro.currentLocale as Lang);
 			<div class="home__stage">
 				<Image
 					class="illustration-image floating"
-					alt="Ilustracion digitial Juan Felipe Rada"
+					alt={t({
+						en: 'Digital illustration of Juan Felipe Rada',
+						es: 'Ilustración digital de Juan Felipe Rada',
+						'pt-br': 'Ilustração digital de Juan Felipe Rada',
+					})}
 					src={Illustration}
 					widths={[352, 704, 1252]}
 					sizes="(max-width: 567px) 200px, (max-width: 768px) 300px, 352px"

@@ -18,7 +18,7 @@ import ExperienceContent from '@components/Experience/ExperienceContent.astro';
 		}
 	</h2>
 	<div class="qualification__container container">
-		<div class="qualification__tabs">
+		<div class="qualification__tabs" role="tablist" aria-label={t({ en: 'Experience', es: 'Experiencia', 'pt-br': 'Experiência' })}>
 			{
 				experienceTabs.map((tab, i) => (
 					<ExperienceTabs
@@ -55,7 +55,14 @@ import ExperienceContent from '@components/Experience/ExperienceContent.astro';
 				</svg>
 			</button>
 			<div class="qualification__sections">
-			<div class="qualification__content" data-content id="education">
+			<div
+				class="qualification__content"
+				data-content
+				id="education"
+				role="tabpanel"
+				aria-labelledby="tab-education"
+				tabindex="0"
+			>
 				{
 					educationData.map((item) => (
 						<ExperienceContent
@@ -75,7 +82,14 @@ import ExperienceContent from '@components/Experience/ExperienceContent.astro';
 					))
 				}
 			</div>
-			<div class="qualification__content qualification__active" data-content id="work">
+			<div
+				class="qualification__content qualification__active"
+				data-content
+				id="work"
+				role="tabpanel"
+				aria-labelledby="tab-work"
+				tabindex="0"
+			>
 				{/* Contact teaser: sits in the empty zone LEFT of the first
 				    card (most recent experience). Clickable, but never part
 				    of the highlightable timeline cards. */}
@@ -181,30 +195,42 @@ import ExperienceContent from '@components/Experience/ExperienceContent.astro';
 		const tabs = document.querySelectorAll<HTMLElement>('[data-target]');
 		const tabContents = document.querySelectorAll('[data-content]');
 
-		tabs.forEach((tab) => {
-			tab.addEventListener('click', () => {
-				const target = tab.dataset.target
-					? document.querySelector(tab.dataset.target)
-					: null;
-				if (!target) return;
+		const selectTab = (tab: HTMLElement) => {
+			const target = tab.dataset.target ? document.querySelector(tab.dataset.target) : null;
+			if (!target) return;
 
-				tabContents.forEach((tabContent) => {
-					tabContent.classList.remove('qualification__active');
-				});
-				target.classList.add('qualification__active');
+			tabContents.forEach((tabContent) => tabContent.classList.remove('qualification__active'));
+			target.classList.add('qualification__active');
 
-				tabs.forEach((other) => {
-					other.classList.remove('qualification__active');
-					other.setAttribute('aria-selected', 'false');
-				});
-				tab.classList.add('qualification__active');
-				tab.setAttribute('aria-selected', 'true');
-
-				// Back to the start (most recent) card of the new tab.
-				scroller.scrollLeft = 0;
-				highlightCenter();
-				updateArrows();
+			tabs.forEach((other) => {
+				other.classList.remove('qualification__active');
+				other.setAttribute('aria-selected', 'false');
+				other.tabIndex = -1;
 			});
+			tab.classList.add('qualification__active');
+			tab.setAttribute('aria-selected', 'true');
+			tab.tabIndex = 0;
+
+			// Back to the start (most recent) card of the new tab.
+			scroller.scrollLeft = 0;
+			highlightCenter();
+			updateArrows();
+		};
+
+		tabs.forEach((tab) => {
+			tab.addEventListener('click', () => selectTab(tab));
+		});
+
+		// Arrow keys move between tabs (WAI-ARIA tabs pattern).
+		const tablist = document.querySelector<HTMLElement>('.qualification__tabs');
+		tablist?.addEventListener('keydown', (e) => {
+			if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+			const list = [...tabs];
+			const current = list.findIndex((tab) => tab.getAttribute('aria-selected') === 'true');
+			const dir = e.key === 'ArrowRight' ? 1 : -1;
+			const nextTab = list[(current + dir + list.length) % list.length];
+			selectTab(nextTab);
+			nextTab.focus();
 		});
 
 		highlightCenter();

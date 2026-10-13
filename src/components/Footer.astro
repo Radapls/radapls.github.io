@@ -5,10 +5,13 @@ import CcBadge from '@assets/img/license-cc-by-sa.svg';
 import AgplBadge from '@assets/img/license-agpl.svg';
 import { Image } from 'astro:assets';
 import type { BrandType } from 'src/types/variants';
+import { useTranslations, type Lang } from 'src/i18n';
 
 interface Props {
 	variant?: BrandType;
 }
+
+const t = useTranslations(Astro.currentLocale as Lang);
 ---
 
 <footer class="footer__bg">
@@ -33,20 +36,32 @@ interface Props {
 	<div class="footer__badges">
 		<a
 			href="https://creativecommons.org/licenses/by-sa/4.0/"
-			aria-label="Posts licensed under CC BY-SA 4.0"
+			aria-label={t({
+				en: 'Posts licensed under CC BY-SA 4.0',
+				es: 'Publicaciones bajo licencia CC BY-SA 4.0',
+				'pt-br': 'Publicações sob licença CC BY-SA 4.0',
+			})}
 		>
 			<Image src={CcBadge} alt="CC BY-SA 4.0" width={88} height={31} loading="lazy" />
 		</a>
 		<a
 			href="https://github.com/Radapls/radapls.github.io/blob/main/LICENSE"
-			aria-label="Source code licensed under AGPL-3.0"
+			aria-label={t({
+				en: 'Source code licensed under AGPL-3.0',
+				es: 'Código fuente bajo licencia AGPL-3.0',
+				'pt-br': 'Código-fonte sob licença AGPL-3.0',
+			})}
 		>
 			<Image src={AgplBadge} alt="AGPL-3.0" width={94} height={31} loading="lazy" />
 		</a>
 		<a
 			href="https://www.w3.org/WAI/WCAG2AA-Conformance"
 			rel="noopener noreferrer"
-			aria-label="WCAG 2.1 Level AA conformance claim"
+			aria-label={t({
+				en: 'WCAG 2.1 Level AA conformance claim',
+				es: 'Declaración de conformidad WCAG 2.1 nivel AA',
+				'pt-br': 'Declaração de conformidade WCAG 2.1 nível AA',
+			})}
 		>
 			<Image src={WcagBadge} alt="WCAG 2.1 Level AA" width={88} height={31} loading="lazy" />
 		</a>

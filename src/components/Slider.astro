@@ -1,5 +1,8 @@
 ---
 import type { Slide } from '@data/slider';
+import { useTranslations, type Lang } from 'src/i18n';
+
+const t = useTranslations(Astro.currentLocale as Lang);
 
 type PageProperties = 'wibx' | 'birdi';
 interface ImageProps {
@@ -30,23 +33,51 @@ const loopData = format === 'image' ? Array.from({ length: SETS }, () => data).f
 
 {
 	format === 'image' ? (
-		<section class={`marquee ${type}`} aria-label="Project screenshots">
+		<section
+			class={`marquee ${type}`}
+			aria-label={t({ en: 'Project screenshots', es: 'Capturas del proyecto', 'pt-br': 'Capturas do projeto' })}
+		>
 			<ul class="marquee__track" style={`--set-count:${data.length}`}>
 				{(loopData as Slide[]).map((slide, i) => (
 					<li
 						class="marquee__card"
 						tabindex="0"
 						role="button"
-						aria-label={`Enlarge ${slide.description ?? `slide ${i + 1}`}`}
+						aria-label={t({
+							en: `Enlarge ${slide.description ?? `slide ${i + 1}`}`,
+							es: `Ampliar ${slide.description ?? `diapositiva ${i + 1}`}`,
+							'pt-br': `Ampliar ${slide.description ?? `slide ${i + 1}`}`,
+						})}
 					>
-						<img draggable="false" src={slide.src} alt={slide.description ?? `Slide ${i + 1}`} />
+						<img
+							draggable="false"
+							src={slide.src}
+							alt={t({
+								en: slide.description ?? `Slide ${i + 1}`,
+								es: slide.description ?? `Diapositiva ${i + 1}`,
+								'pt-br': slide.description ?? `Slide ${i + 1}`,
+							})}
+						/>
 					</li>
 				))}
 			</ul>
-			<dialog class="marquee__dialog" aria-label="Enlarged screenshot">
+			<dialog
+			class="marquee__dialog"
+			aria-label={t({ en: 'Enlarged screenshot', es: 'Captura ampliada', 'pt-br': 'Captura ampliada' })}
+		>
 				<img alt="" />
-				<button class="marquee__nav marquee__nav--prev" aria-label="Previous image">‹</button>
-				<button class="marquee__nav marquee__nav--next" aria-label="Next image">›</button>
+				<button
+					class="marquee__nav marquee__nav--prev"
+					aria-label={t({ en: 'Previous image', es: 'Imagen anterior', 'pt-br': 'Imagem anterior' })}
+				>
+					‹
+				</button>
+				<button
+					class="marquee__nav marquee__nav--next"
+					aria-label={t({ en: 'Next image', es: 'Imagen siguiente', 'pt-br': 'Próxima imagem' })}
+				>
+					›
+				</button>
 			</dialog>
 		</section>
 	) : (
