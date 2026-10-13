@@ -73,19 +73,27 @@ const t = useTranslations(Astro.currentLocale as Lang);
 		btn.addEventListener('click', handleToggleClick);
 	};
 
-	// Attach theme toggle logic on initial page load
-	if (document.readyState === 'loading') {
-		document.addEventListener('DOMContentLoaded', setupThemeToggleButton);
-	} else {
-		setupThemeToggleButton();
+	// This is:inline script re-executes on every view transition, but the
+	// header (and its button) persist via transition:persist. Registering the
+	// document listeners each run stacks them — N navigations meant the click
+	// handler fired N times, toggling the theme back on even taps (the "stuck
+	// color" bug). Guard so document-level wiring happens exactly once.
+	if (!window.__themeToggleInit) {
+		window.__themeToggleInit = true;
+
+		if (document.readyState === 'loading') {
+			document.addEventListener('DOMContentLoaded', setupThemeToggleButton);
+		} else {
+			setupThemeToggleButton();
+		}
+
+		// View Transition: reapply theme & reattach toggle after DOM is swapped
+		document.addEventListener('astro:after-swap', () => {
+			applyThemeFromLocalStorage();
+			setupThemeToggleButton();
+		});
+
+		// Optional: useful for certain components being delayed
+		document.addEventListener('astro:page-load', setupThemeToggleButton);
 	}
-
-	// View Transition: Reapply theme & reattach toggle after DOM is swapped
-	document.addEventListener('astro:after-swap', () => {
-		applyThemeFromLocalStorage();
-		setupThemeToggleButton();
-	});
-
-	// Optional: useful for certain components being delayed
-	document.addEventListener('astro:page-load', setupThemeToggleButton);
 </script>
