@@ -5,7 +5,6 @@ import Alcaldia from '@assets/img/brands/alcaldia-cali.svg';
 import IEI from '@assets/img/brands/iei.svg';
 import MOE from '@assets/img/brands/moe.svg';
 import Wibx from '@assets/img/brands/wibx.svg';
-import NT from '@assets/img/brands/nt.svg';
 import Birdi from '@assets/img/brands/birdi.svg';
 import EricssonSvg from '@assets/img/brands/ericsson.svg';
 
@@ -134,26 +133,6 @@ export const workData = [
 			'pt-br': 'Mai 2023 - Jan 2025',
 		},
 		link: '/experience/birdi',
-	},
-	{
-		image: {
-			svg: NT,
-			alt: 'NT Consult Logo',
-			height: 35,
-			width: 35,
-		},
-		lang: {
-			en: 'FrontEnd Developer',
-			es: 'Desarrollador FrontEnd',
-			'pt-br': 'Desenvolvedor Frontend',
-		},
-		organization: 'NT Consult',
-		relativeTime: {
-			en: 'Feb 2023 - Jan 2025',
-			es: 'Feb 2023 - Ene 2025',
-			'pt-br': 'Fev 2023 - Jan 2025',
-		},
-		link: '/experience/nt',
 	},
 	{
 		image: {

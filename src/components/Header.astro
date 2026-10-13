@@ -340,8 +340,8 @@ const coBrandClass = ['co-brand-logo', coBrand?.tone].filter(Boolean).join(' ');
 	:global(.dark) .co-brand-logo--birdi {
 		color: var(--marker-color-birdi);
 	}
-	/* Ericsson mark is monochrome (currentColor); brand blue reads in both themes. */
+	/* Ericsson mark is monochrome (currentColor): black in light, white in dark. */
 	.co-brand-logo--ericsson {
-		color: #0082f0;
+		color: var(--title-color);
 	}
 </style>

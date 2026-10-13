@@ -1,5 +1,4 @@
 ---
-import CurriculumVitae from '@assets/documents/CV_Juan_Felipe_Rada.pdf';
 import Flag from '@components/Flag.astro';
 
 import { useTranslations, type Lang } from 'src/i18n';
@@ -42,22 +41,11 @@ const t = useTranslations(Astro.currentLocale as Lang);
 						'pt-br': 'Às vezes no meu tempo livre gosto de escrever. Minhas opiniões são meramente pessoais, e de uma perspectiva muito íntima.',
 					})
 				}
-			</p>
-
-			<div class="about__buttons">
-				<a rel="nofollow" type="file" href={CurriculumVitae} class="button button--flex">
-					<p>
-						{
-							t({
-								en: 'Download CV',
-								es: 'Descargar CV',
-								'pt-br': 'Baixar CV',
-							})
-						}
-					</p>
-					<i class="uil uil-download-alt button__icon"></i>
+				<a rel="nofollow" href="/CV_Juan_Felipe_Rada.pdf" target="_blank" class="about__cv">
+					{t({ en: 'CV', es: 'CV', 'pt-br': 'CV' })}
+					<i class="uil uil-download-alt"></i>
 				</a>
-			</div>
+			</p>
 		</div>
 
 		<div class="about__shelf">
@@ -86,10 +74,22 @@ const t = useTranslations(Astro.currentLocale as Lang);
 		line-height: 1.7;
 		color: var(--text-color);
 	}
-	.about__buttons {
-		display: flex;
-		justify-content: center;
-		margin-top: 0.5rem;
+	.about__cv {
+		white-space: nowrap;
+		color: var(--first-color);
+		font-weight: var(--font-semi-bold);
+		text-decoration: underline;
+		text-decoration-color: color-mix(in srgb, var(--first-color) 40%, transparent);
+		text-underline-offset: 3px;
+		transition: text-decoration-color 200ms ease-in-out;
+	}
+	.about__cv:hover {
+		color: var(--first-color-alt);
+		text-decoration-color: currentColor;
+	}
+	.about__cv i {
+		font-size: 0.9em;
+		margin-left: 0.15rem;
 	}
 
 	/* Personal shelf: real objects from my room — flag now, poster later */
