@@ -3,7 +3,6 @@ import { getLocalePaths, LOCALES } from '../../i18n';
 ---
 
 <div class="language-select-container">
-	<label for="language-select"> </label>
 	<select
 		id="language-select"
 		name="language-select"
@@ -31,6 +30,8 @@ import { getLocalePaths, LOCALES } from '../../i18n';
 <script>
 	import { navigate } from 'astro:transitions/client';
 
+	let langSwitchScroll: number | null = null;
+
 	const setupLanguageSelect = () => {
 		const selects = document.querySelectorAll('[data-languageSelect]');
 		selects.forEach((select) => {
@@ -40,32 +41,51 @@ import { getLocalePaths, LOCALES } from '../../i18n';
 				const url = target.value;
 				if (lang && url) {
 					localStorage.setItem('selectedLang', lang);
-					const hash = window.location.hash;
-					navigate(url + hash, { history: 'replace' });
+					// Remember exact position; navigate WITHOUT the hash so the
+					// router doesn't scroll to an anchor or jump to top.
+					langSwitchScroll = window.scrollY;
+					navigate(url, { history: 'replace' });
 				}
 			});
 		});
 	};
 
+	// Single owner of scroll restoration for the language switch.
+	document.addEventListener('astro:after-swap', () => {
+		if (langSwitchScroll !== null) {
+			window.scrollTo({ top: langSwitchScroll, behavior: 'instant' as ScrollBehavior });
+			langSwitchScroll = null;
+		}
+		setupLanguageSelect();
+	});
+
 	setupLanguageSelect();
-	document.addEventListener('astro:after-swap', setupLanguageSelect);
 </script>
 
 <style>
+	/* Compact switcher: flag + code only, sized for cramped headers */
 	select {
 		font-family: 'Poppins';
 		border-radius: 4px;
-		font-size: var(--small-font-size);
+		font-size: var(--smaller-font-size);
 		font-weight: var(--font-medium);
-		height: 30px;
-		padding: 0 28px 0 15px;
+		height: 32px;
+		padding: 0 24px 0 10px;
 		background-color: var(--body-color);
 		color: var(--title-color);
 		appearance: none;
 		-webkit-appearance: none;
-		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='gray' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='gray' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
 		background-repeat: no-repeat;
-		background-position: right 8px center;
+		background-position: right 7px center;
 		cursor: pointer;
+	}
+	/* WCAG 2.4.7: visible focus for keyboard users. :focus (not only
+	   :focus-visible) because some browsers don't match :focus-visible
+	   on <select> reliably. */
+	select:focus,
+	select:focus-visible {
+		outline: 2px solid var(--first-color);
+		outline-offset: 2px;
 	}
 </style>

@@ -1,15 +1,12 @@
 import Javeriana from '@assets/img/brands/javeriana.webp';
 import Icesi from '@assets/img/brands/icesi.webp';
 
-import Alcaldia from '@assets/img/brands/alcaldia-cali.webp';
-import IEI from '@assets/img/brands/iei.webp';
-import MOE from '@assets/img/brands/moe.webp';
-import Wibx from '@assets/img/brands/wibx.webp';
-import NT from '@assets/img/brands/nt.webp';
-import Birdi from '@assets/img/brands/birdi.webp';
-import Ericsson from '@assets/img/brands/ericsson.webp';
-
-import Logo from '@assets/img/brands/logo.webp';
+import Alcaldia from '@assets/img/brands/alcaldia-cali.svg';
+import IEI from '@assets/img/brands/iei.svg';
+import MOE from '@assets/img/brands/moe.svg';
+import Wibx from '@assets/img/brands/wibx.svg';
+import Birdi from '@assets/img/brands/birdi.svg';
+import EricssonSvg from '@assets/img/brands/ericsson.svg';
 
 export const experienceTabs = [
 	{
@@ -35,25 +32,6 @@ export const experienceTabs = [
 export const educationData = [
 	{
 		image: {
-			src: Javeriana,
-			alt: 'Pontificia Universidad Javeriana Logo',
-			height: 35,
-			width: 35,
-		},
-		lang: {
-			en: 'Political Science',
-			es: 'Ciencia Política',
-			'pt-br': 'Ciência Política',
-		},
-		organization: 'Pontificia Universidad Javeriana',
-		relativeTime: {
-			en: '2014 - 2019',
-			es: '2014 - 2019',
-			'pt-br': '2014 - 2019',
-		},
-	},
-	{
-		image: {
 			src: Icesi,
 			alt: 'Universidad ICESI Logo',
 			height: 35,
@@ -71,108 +49,53 @@ export const educationData = [
 			'pt-br': '2021 - 2022',
 		},
 	},
+	{
+		image: {
+			src: Javeriana,
+			alt: 'Pontificia Universidad Javeriana Logo',
+			height: 35,
+			width: 35,
+		},
+		lang: {
+			en: 'Political Science',
+			es: 'Ciencia Política',
+			'pt-br': 'Ciência Política',
+		},
+		organization: 'Pontificia Universidad Javeriana',
+		relativeTime: {
+			en: '2014 - 2019',
+			es: '2014 - 2019',
+			'pt-br': '2014 - 2019',
+		},
+	},
 ];
 
 export const workData = [
+	// Most recent first: the timeline opens centered on the latest job and
+	// the user scrolls back through progressively older roles.
 	{
 		image: {
-			src: MOE,
-			alt: 'MOE | Misión de Observación Electoral Logo',
+			svg: EricssonSvg,
+			alt: 'Ericsson Logo',
 			height: 35,
 			width: 35,
 		},
 		lang: {
-			en: 'Research Assistant',
-			es: 'Asistente de investigación',
-			'pt-br': 'Assistente de Pesquisa',
+			en: 'UI/UX Developer',
+			es: 'Desarrollador UI/UX',
+			'pt-br': 'Desenvolvedor UI/UX',
 		},
-		organization: 'Misión de Observación Electoral (MOE)',
+		organization: 'Ericsson',
 		relativeTime: {
-			en: 'Jan 2018 - Jul 2018',
-			es: 'Ene 2018 - Jul 2018',
-			'pt-br': 'Jan 2018 - Jul 2018',
+			en: 'Oct 2025 - Present',
+			es: 'Oct 2025 - Presente',
+			'pt-br': 'Out 2025 - Presente',
 		},
+		link: '/experience/ericsson',
 	},
 	{
 		image: {
-			src: Alcaldia,
-			alt: 'Alcaldia de Cali Logo',
-			height: 35,
-			width: 25,
-		},
-		lang: {
-			en: 'Delivery Unit Member',
-			es: 'Enlace de seguimiento estratégico',
-			'pt-br': 'Ligação de Monitoramento Estratégico',
-		},
-		organization: 'Alcaldia de Cali',
-		relativeTime: {
-			en: 'Mar 2019 - Dec 2019',
-			es: 'Mar 2019 - Dic 2019',
-			'pt-br': 'Mar 2019 - Dez 2019',
-		},
-	},
-	{
-		image: {
-			src: IEI,
-			alt: 'IEI | Instituto de Estudios Interculturales Logo',
-			height: 35,
-			width: 35,
-		},
-		lang: {
-			en: 'Social Researcher',
-			es: 'Investigador Social',
-			'pt-br': 'Pesquisador Social',
-		},
-		organization: 'Instituto de Estudios Interculturales',
-		relativeTime: {
-			en: 'Jun 2020 - Dec 2021',
-			es: 'Jun 2020 - Dic 2021',
-			'pt-br': 'Jun 2020 - Dez 2021',
-		},
-	},
-	{
-		image: {
-			src: NT,
-			alt: 'NT Consult Logo',
-			height: 35,
-			width: 35,
-		},
-		lang: {
-			en: 'FrontEnd Developer',
-			es: 'Desarrollador FrontEnd',
-			'pt-br': 'Desenvolvedor Frontend',
-		},
-		organization: 'NT Consult',
-		relativeTime: {
-			en: 'Feb 2023 - Jan 2025',
-			es: 'Feb 2023 - Ene 2025',
-			'pt-br': 'Fev 2023 - Jan 2025',
-		},
-	},
-	{
-		image: {
-			src: Birdi,
-			alt: 'BirdiRx Logo',
-			height: 35,
-			width: 35,
-		},
-		lang: {
-			en: 'FrontEnd Developer',
-			es: 'Desarrollador FrontEnd',
-			'pt-br': 'Desenvolvedor Frontend',
-		},
-		organization: 'BirdiRx',
-		relativeTime: {
-			en: 'May 2023 - Jan 2025',
-			es: 'May 2023 - Ene 2025',
-			'pt-br': 'Mai 2023 - Jan 2025',
-		},
-		link: '/experience/birdi',
-	},
-	{
-		image: {
-			src: Wibx,
+			svg: Wibx,
 			alt: 'Wibx Company Logo',
 			height: 35,
 			width: 35,
@@ -192,41 +115,84 @@ export const workData = [
 	},
 	{
 		image: {
-			src: Ericsson,
-			alt: 'Ericsson Logo',
+			svg: Birdi,
+			tone: 'birdi',
+			alt: 'BirdiRx Logo',
 			height: 35,
 			width: 35,
 		},
 		lang: {
-			en: 'UX/UI Developer',
-			es: 'Desarrollador UX/UI',
-			'pt-br': 'Desenvolvedor UX/UI',
+			en: 'FrontEnd Developer',
+			es: 'Desarrollador FrontEnd',
+			'pt-br': 'Desenvolvedor Frontend',
 		},
-		organization: 'Ericsson',
+		organization: 'BirdiRx',
 		relativeTime: {
-			en: 'Oct 2025 - Present',
-			es: 'Oct 2025 - Presente',
-			'pt-br': 'Out 2025 - Presente',
+			en: 'May 2023 - Jan 2025',
+			es: 'May 2023 - Ene 2025',
+			'pt-br': 'Mai 2023 - Jan 2025',
 		},
+		link: '/experience/birdi',
 	},
 	{
 		image: {
-			src: Logo,
-			alt: 'Your company logo here',
-			height: 50,
-			width: 32,
+			svg: IEI,
+			tone: 'iei',
+			alt: 'IEI | Instituto de Estudios Interculturales Logo',
+			height: 35,
+			width: 35,
 		},
 		lang: {
-			en: 'Contact Me',
-			es: 'Contáctame',
-			'pt-br': 'Contato',
+			en: 'Social Researcher',
+			es: 'Investigador Social',
+			'pt-br': 'Pesquisador Social',
 		},
-		organization: 'Contact',
+		organization: 'Instituto de Estudios Interculturales',
 		relativeTime: {
-			en: 'Future?',
-			es: '¿Futuro?',
-			'pt-br': 'Futuro?',
+			en: 'Jun 2020 - Dec 2021',
+			es: 'Jun 2020 - Dic 2021',
+			'pt-br': 'Jun 2020 - Dez 2021',
 		},
-		link: '#Contact',
+		link: '/experience/iei',
+	},
+	{
+		image: {
+			src: Alcaldia,
+			alt: 'Alcaldia de Cali Logo',
+			height: 35,
+			width: 33,
+		},
+		lang: {
+			en: 'Delivery Unit Member',
+			es: 'Enlace de seguimiento estratégico',
+			'pt-br': 'Ligação de Monitoramento Estratégico',
+		},
+		organization: 'Alcaldia de Cali',
+		relativeTime: {
+			en: 'Mar 2019 - Dec 2019',
+			es: 'Mar 2019 - Dic 2019',
+			'pt-br': 'Mar 2019 - Dez 2019',
+		},
+		link: '/experience/alcaldia',
+	},
+	{
+		image: {
+			svg: MOE,
+			alt: 'MOE | Misión de Observación Electoral Logo',
+			height: 35,
+			width: 35,
+		},
+		lang: {
+			en: 'Research Assistant',
+			es: 'Asistente de investigación',
+			'pt-br': 'Assistente de Pesquisa',
+		},
+		organization: 'Misión de Observación Electoral (MOE)',
+		relativeTime: {
+			en: 'Jan 2018 - Jul 2018',
+			es: 'Ene 2018 - Jul 2018',
+			'pt-br': 'Jan 2018 - Jul 2018',
+		},
+		link: '/experience/moe',
 	},
 ];

@@ -1,40 +1,28 @@
 ---
-import Pokedex from '@assets/img/pokedex.webp';
-import World from '@assets/img/world.webp';
-import CasaNostra from '@assets/img/casa-nostra.webp';
 import SpaceInvaders from '@assets/img/space-invaders.webp';
 import Roulette from '@assets/img/roulette.webp';
 
 import Cunctae from '@assets/img/c.svg';
 
 import PortfolioCard from '@components/PortfolioCard.astro';
+import SparkAr from '@assets/img/face-mesh.svg';
 
 import { useTranslations, type Lang } from 'src/i18n';
 
 const t = useTranslations(Astro.currentLocale as Lang);
+const locale = Astro.currentLocale;
 ---
 
-<!--==================== PORTFOLIO ====================-->
 <section class="portfolio section" id="Portfolio" aria-labelledby="portfolio-title">
 	<h2 class="section__title" id="portfolio-title">
-		<span aria-hidden="true">📚</span>
 		{
 			t({
-				en: 'Portfolio',
-				es: 'Portafolio',
-				'pt-br': 'Portfólio',
+				en: 'Projects',
+				es: 'Proyectos',
+				'pt-br': 'Projetos',
 			})
 		}
 	</h2>
-	<span class="section__subtitle" aria-roledescription="doc-subtitle">
-		{
-			t({
-				en: 'Some recent work',
-				es: 'Algunos trabajos recientes',
-				'pt-br': 'Alguns trabalhos recentes',
-			})
-		}
-	</span>
 	<div class="portafolio__container container">
 		<div class="card-grid">
 			<PortfolioCard
@@ -67,21 +55,6 @@ const t = useTranslations(Astro.currentLocale as Lang);
 				link="https://cunctae.github.io/cunctum-ui/"
 			/>
 			<PortfolioCard
-				bgImage={CasaNostra}
-				title={t({
-					en: 'A casa nostra',
-					es: 'A casa nostra',
-					'pt-br': 'A casa nostra',
-				})}
-				description={t({
-					en: 'A real estate agency for the home of your dreams, built with React, Firebase and Tailwindcss',
-					es: 'Una agencia inmobiliaria para la casa de tus sueños, construida con React, Firebase y Tailwindcss',
-					'pt-br':
-						'Uma agência imobiliária para a casa dos seus sonhos, construída com React, Firebase e Tailwindcss',
-				})}
-				link="https://a-casa-nostra.vercel.app/"
-			/>
-			<PortfolioCard
 				bgImage={SpaceInvaders}
 				title={t({
 					en: 'Space Invaders',
@@ -96,18 +69,15 @@ const t = useTranslations(Astro.currentLocale as Lang);
 				link="https://radapls.github.io/space-invaders/"
 			/>
 			<PortfolioCard
-				bgImage={World}
-				title={t({
-					en: 'Country Wiki',
-					es: 'Wiki de Países',
-					'pt-br': 'Wiki de Países',
-				})}
+				bgImage={SparkAr}
+				title="Spark AR Filters"
 				description={t({
-					en: 'A country encyclopedia built with Angular 21, explore stats and details of every country',
-					es: 'Una enciclopedia de países construida con Angular 21, explora estadísticas y detalles de cada país',
-					'pt-br': 'Uma enciclopédia de países construída com Angular 21, explore estatísticas e detalhes de cada país',
+					en: 'Instagram filters built with Spark AR',
+					es: 'Filtros de Instagram construidos con Spark AR',
+					'pt-br': 'Filtros do Instagram construídos com o Spark AR',
 				})}
-				link="https://radapls.github.io/country-stats/"
+				link={`/${locale}/projects/spark-ar/`}
+				external={false}
 			/>
 		</div>
 	</div>
@@ -139,11 +109,10 @@ const t = useTranslations(Astro.currentLocale as Lang);
 		display: grid;
 		grid-column-gap: 24px;
 		grid-row-gap: 24px;
-		max-width: 1200px;
 		width: 100%;
 		grid-template-columns: 1fr 1fr;
 		justify-content: center;
-		justify-items: center;
+		justify-items: stretch;
 	}
 
 	@media screen and (max-width: 768px) {

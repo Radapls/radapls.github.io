@@ -21,9 +21,6 @@
 	.skills__title {
 		font-size: var(--normal-font-size);
 	}
-	.qualification__data {
-		gap: 0.5rem;
-	}
 	.services__container {
 		grid-template-columns: 1fr;
 		justify-content: center;
@@ -71,13 +68,10 @@
 		grid-column: initial;
 	}
 
-	.about__container,
 	.portafolio__content,
 	.project__container,
-	.contact__container,
 	.footer__container,
-	.wibx__container,
-	.qualification__sections {
+	.wibx__container {
 		display: grid;
 		justify-content: center;
 	}
@@ -99,10 +93,7 @@
 		padding-top: var(--banner-height, 0px);
 	}
 	.section {
-		padding: 6rem 0 2rem;
-	}
-	.section__subtitle {
-		margin-bottom: 4rem;
+		padding: max(4rem, 7vw) 0 max(3rem, 6vw);
 	}
 	.header {
 		top: var(--banner-height, 0px);
@@ -147,17 +138,6 @@
 	}
 	.home__scroll-button {
 		margin-left: 3rem;
-	}
-	.about__container {
-		column-gap: 5rem;
-	}
-
-	.about__description {
-		text-align: initial;
-	}
-	.about__info {
-		justify-content: space-between;
-		gap: 1rem;
 	}
 	.about__buttons {
 		justify-content: center;
@@ -223,11 +203,5 @@
 	}
 	.portafolio__content {
 		column-gap: 5rem;
-	}
-	.contact__form {
-		width: 460px;
-	}
-	.contact__inputs {
-		grid-template-columns: repeat(2, 1fr);
 	}
 }

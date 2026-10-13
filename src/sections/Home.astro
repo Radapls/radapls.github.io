@@ -1,6 +1,5 @@
 ---
 import Illustration from '@assets/img/illustration.webp';
-import Flag from '@components/Flag.astro';
 import { Image } from 'astro:assets';
 import { LINKEDIN, GITHUB } from 'src/consts';
 import { useTranslations, type Lang } from 'src/i18n';
@@ -8,33 +7,21 @@ import { useTranslations, type Lang } from 'src/i18n';
 const t = useTranslations(Astro.currentLocale as Lang);
 ---
 
-<!--==================== HOME ====================-->
 <section class="home section" id="Home">
-	<div class="home__container container grid">
-		<div class="home__content grid">
-			<div class="home__social">
-				<a href={LINKEDIN} target="_blank" class="home__social-icon" aria-label="LinkedIn profile">
-					<i class="uil uil-linkedin" aria-hidden="true"></i>
-				</a>
-				<a href={GITHUB} target="_blank" class="home__social-icon" aria-label="GitHub profile">
-					<i class="uil uil-github" aria-hidden="true"></i>
-				</a>
-			</div>
-			<Image
-				class="illustration-image floating"
-				alt="Ilustracion digitial Juan Felipe Rada"
-				src={Illustration}
-				widths={[352, 704, 1252]}
-				sizes="(max-width: 567px) 200px, (max-width: 768px) 300px, 352px"
-				draggable={false}
-				loading={'eager'}
-				decoding="async"
-				fetchpriority="high"
-			/>
-
+	<div class="home__container container">
+		<div class="home__content">
 			<div class="home__data">
-				<div style="display: flex; align-items: center; gap: 8px;">
-					<h1 class="home__title">
+				<p class="home__kicker">
+					{
+						t({
+							en: 'Software, Politics, Art',
+							es: 'Software, Política, Arte',
+							'pt-br': 'Software, Política, Arte',
+						})
+					}
+				</p>
+				<h1 class="home__title">
+					<span class="home__greeting">
 						{
 							t({
 								en: 'Hello!',
@@ -42,9 +29,18 @@ const t = useTranslations(Astro.currentLocale as Lang);
 								'pt-br': 'Ola!',
 							})
 						}
-					</h1>
-					<h1 id="waveElement" class="wave">👋🏼</h1>
-				</div>
+					</span>
+					<span
+						id="waveElement"
+						class="wave"
+						role="img"
+						aria-label={t({
+							en: 'waving hand',
+							es: 'saludo con la mano',
+							'pt-br': 'aceno com a mão',
+						})}>👋🏼</span
+					>
+				</h1>
 				<h2 class="home__eyebrow">
 					{
 						t({
@@ -54,15 +50,6 @@ const t = useTranslations(Astro.currentLocale as Lang);
 						})
 					}
 				</h2>
-				<h3 class="home__subtitle">
-					{
-						t({
-							en: 'Software, Politics, Art',
-							es: 'Software, Política, Arte',
-							'pt-br': 'Software, Política, Arte',
-						})
-					}
-				</h3>
 				<p class="home__description">
 					{
 						t({
@@ -72,32 +59,197 @@ const t = useTranslations(Astro.currentLocale as Lang);
 						})
 					}
 				</p>
-				<a href="#Contact" class="button button--flex heartbeat" id="contact-button">
-					{
-						t({
-							en: 'Contact Me',
-							es: 'Contáctame',
-							'pt-br': 'Contato',
-						})
-					}
-				</a>
+				<div class="home__actions">
+					<a href="#Contact" class="button button--flex heartbeat" id="contact-button">
+						{
+							t({
+								en: 'Contact Me',
+								es: 'Contáctame',
+								'pt-br': 'Contato',
+							})
+						}
+					</a>
+					<div class="home__social">
+						<a
+							href={LINKEDIN}
+							target="_blank"
+							class="home__social-icon"
+							aria-label={t({
+								en: 'LinkedIn profile',
+								es: 'Perfil de LinkedIn',
+								'pt-br': 'Perfil do LinkedIn',
+							})}
+						>
+							<i class="uil uil-linkedin" aria-hidden="true"></i>
+						</a>
+						<a
+							href={GITHUB}
+							target="_blank"
+							class="home__social-icon"
+							aria-label={t({
+								en: 'GitHub profile',
+								es: 'Perfil de GitHub',
+								'pt-br': 'Perfil do GitHub',
+							})}
+						>
+							<i class="uil uil-github" aria-hidden="true"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="home__stage">
+				<Image
+					class="illustration-image floating"
+					alt={t({
+						en: 'Digital illustration of Juan Felipe Rada',
+						es: 'Ilustración digital de Juan Felipe Rada',
+						'pt-br': 'Ilustração digital de Juan Felipe Rada',
+					})}
+					src={Illustration}
+					widths={[352, 704, 1252]}
+					sizes="(max-width: 567px) 200px, (max-width: 768px) 300px, 352px"
+					draggable={false}
+					loading={'eager'}
+					decoding="async"
+					fetchpriority="high"
+				/>
 			</div>
 		</div>
-		<Flag />
 	</div>
 </section>
 
 <style>
-	.illustration-image {
-		order: 1;
-		justify-self: center;
-		filter: drop-shadow(0 0 50px var(--first-color));
+	/* USWDS-inspired: wider canvas, left-aligned, token-based spacing.
+	   The hero is a composed group, not a full-bleed section: cap it so
+	   text + illustration stay together on wide screens. Section padding
+	   owns the vertical rhythm now. */
+	.home__container {
+		max-width: 1200px;
 	}
+	.home__content {
+		position: relative;
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: var(--mb-2-5);
+		align-items: center;
+	}
+	.home__data {
+		text-align: left;
+	}
+	.home__kicker {
+		display: inline-block;
+		font-family: var(--body-font);
+		font-size: var(--small-font-size);
+		font-weight: var(--font-semi-bold);
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--first-color);
+		margin-bottom: var(--mb-0-75);
+		border-left: 4px solid var(--first-color);
+		padding-left: var(--mb-0-75);
+	}
+	.home__title {
+		/* anatolyzenkov-style: display type scales with the viewport */
+		font-size: clamp(2.75rem, 6vw, 4.25rem);
+		margin-bottom: var(--mb-0-25);
+		display: flex;
+		align-items: center;
+		gap: var(--mb-0-5);
+	}
+	.home__eyebrow {
+		font-size: clamp(1.75rem, 4.5vw, 3rem);
+		color: var(--text-color);
+		margin-bottom: var(--mb-1);
+	}
+	.home__description {
+		max-width: 48ch;
+		font-size: var(--h3-font-size);
+		font-style: italic;
+		color: var(--text-color-light);
+		margin-bottom: var(--mb-2);
+	}
+	.home__actions {
+		display: flex;
+		align-items: center;
+		gap: var(--mb-2);
+		flex-wrap: wrap;
+	}
+	.home__social {
+		display: flex;
+		flex-direction: row;
+		gap: var(--mb-1-5);
+	}
+	.home__social-icon {
+		font-size: 1.5rem;
+		color: var(--first-color);
+		transition: color 0.2s;
+	}
+	.home__social-icon:hover {
+		color: var(--first-color-alt);
+	}
+
+	/* Illustration stage (glow is now a shared backdrop on .home__content) */
+	.home__stage {
+		order: 1;
+		position: relative;
+		display: grid;
+		place-items: center;
+	}
+	.illustration-image {
+		justify-self: center;
+		/* Lighter, more refined than the old heavy 50px drop-shadow */
+		filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.25));
+	}
+
+	/* Entrance: text block gently rises in on first load */
+	.home__data {
+		animation: home-rise 700ms ease-out both;
+	}
+
+	@keyframes home-rise {
+		from {
+			opacity: 0;
+			transform: translateY(16px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	/* Two-column editorial layout from tablet up */
+	@media screen and (min-width: 768px) {
+		.home__content {
+			grid-template-columns: 1.15fr 0.85fr;
+			gap: 0;
+		}
+		.home__data {
+			order: 0;
+			/* Text runs under the illustration's glow for a connected feel */
+			position: relative;
+			z-index: 1;
+			padding-right: var(--mb-2);
+		}
+		.home__stage {
+			order: 1;
+			/* Pull the illustration left so it overlaps the text column
+			   instead of sitting in a separate box */
+			margin-left: -3rem;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.home__data {
+			animation: none;
+		}
+	}
+
 	.wave {
 		display: inline-block;
 		animation: wave 3s;
 		transform-origin: 70% 70%;
-		font-size: 50px;
+		font-size: clamp(2.5rem, 5vw, 3.75rem);
 		cursor: pointer;
 	}
 
@@ -141,11 +293,21 @@ const t = useTranslations(Astro.currentLocale as Lang);
 		cursor: pointer;
 	}
 
+	/* WCAG 2.2.2: stop continuous motion for users who opt out of it. */
+	@media (prefers-reduced-motion: reduce) {
+		.floating {
+			animation: none;
+		}
+	}
+
 	@media screen and (max-width: 567px) {
 		#contact-button {
 			display: flex;
 			justify-content: center;
 			width: 100%;
+		}
+		.home__actions {
+			gap: var(--mb-1-5);
 		}
 	}
 
