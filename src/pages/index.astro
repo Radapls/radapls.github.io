@@ -7,7 +7,7 @@ import { DEFAULT_LOCALE, getLocalePaths, LOCALES, useTranslations, type Lang } f
 
 const t = useTranslations(Astro.currentLocale as Lang);
 const langs = Object.keys(LOCALES);
-const baseUrl = import.meta.env.PROD ? Astro.site : '/';
+const baseUrl = '/';
 const defaultLocale = DEFAULT_LOCALE;
 ---
 
