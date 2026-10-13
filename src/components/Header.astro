@@ -196,7 +196,12 @@ const headerKey = `header-${variant}-${hideLocaleSelect ? 'nolocale' : 'locale'}
 								</a>
 							</li>
 							<li class="nav__item">
-								<a href={import.meta.env.PROD ? BLOG_URL : '/blog/'} class="nav__link">
+								<a
+									href="/blog/"
+									data-blog-link
+									data-blog-url={BLOG_URL}
+									class="nav__link"
+								>
 									<svg
 										class="nav__icon"
 										width="20"
@@ -349,6 +354,16 @@ const headerKey = `header-${variant}-${hideLocaleSelect ? 'nolocale' : 'locale'}
 <script>
 	function setupHeader() {
 		const header = document.getElementById('header');
+
+		/* Blog lives on blog.radapls.com in production, but the link is
+		   rendered relative (/blog/) so dev and the *.workers.dev preview
+		   stay on-origin. Promote to the absolute subdomain URL only when
+		   actually on the production apex — never on preview/dev, which have
+		   no blog.* host and would bounce the user off the preview. */
+		const blogLink = document.querySelector<HTMLAnchorElement>('[data-blog-link]');
+		if (blogLink && location.hostname.replace(/^www\./, '') === 'radapls.com') {
+			blogLink.href = blogLink.dataset.blogUrl ?? blogLink.href;
+		}
 
 		/*==================== CHANGE BACKGROUND HEADER ====================*/
 		const onScroll = () => {

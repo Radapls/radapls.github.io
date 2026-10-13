@@ -5,6 +5,9 @@
 			"command": "npx",
 			"args": ["-y", "wcag-guidelines-mcp"],
 			"env": {}
+		},
+		"cloudflare-api": {
+			"url": "https://mcp.cloudflare.com/mcp"
 		}
 	}
 }
