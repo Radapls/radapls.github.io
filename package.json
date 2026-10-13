@@ -2,7 +2,7 @@
 	"name": "radapls",
 	"type": "module",
 	"version": "2.0.0",
-	"homepage": "https://radapls.github.io",
+	"homepage": "https://radapls.com",
 	"packageManager": "pnpm@10.25.0",
 	"engines": {
 		"node": ">=20"
