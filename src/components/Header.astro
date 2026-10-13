@@ -1,11 +1,14 @@
 ---
-import Logo from '@assets/img/JFR.webp';
+import Logo from '@assets/img/JFRA.svg';
 import type { BrandType } from 'src/types/variants';
 
 import Birdi from '@assets/img/brands/birdi.svg';
 import Wibx from '@assets/img/brands/wibx.svg';
 import Ericsson from '@assets/img/brands/ericsson.svg';
 import NT from '@assets/img/brands/nt.svg';
+import IEI from '@assets/img/brands/iei.svg';
+import Alcaldia from '@assets/img/brands/alcaldia-cali.svg';
+import MOE from '@assets/img/brands/moe.svg';
 import LocaleSelect from './i18n/LocaleSelect.astro';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import { DEFAULT_LOCALE, useTranslations, type Lang } from 'src/i18n';
@@ -30,13 +33,59 @@ const { variant, noLinks = false } = Astro.props;
  * `tone` is an optional modifier class for currentColor-based SVG marks.
  */
 const coBrands = {
-	wibx: { url: 'https://wibx.io/', label: 'Wibx Company', logo: Wibx, src: undefined, tone: undefined },
-	birdi: { url: 'https://www.birdirx.com/', label: 'BirdiRx', logo: Birdi, src: undefined, tone: 'co-brand-logo--birdi' },
-	ericsson: { url: 'https://www.ericsson.com/', label: 'Ericsson', logo: Ericsson, src: undefined, tone: 'co-brand-logo--ericsson' },
-	nt: { url: 'https://ntconsult.com.br/', label: 'NT Consult', logo: NT, src: undefined, tone: undefined },
+	wibx: {
+		url: 'https://wibx.io/',
+		label: 'Wibx Company',
+		logo: Wibx,
+		src: undefined,
+		tone: undefined,
+	},
+	birdi: {
+		url: 'https://www.birdirx.com/',
+		label: 'BirdiRx',
+		logo: Birdi,
+		src: undefined,
+		tone: 'co-brand-logo--birdi',
+	},
+	ericsson: {
+		url: 'https://www.ericsson.com/',
+		label: 'Ericsson',
+		logo: Ericsson,
+		src: undefined,
+		tone: 'co-brand-logo--ericsson',
+	},
+	nt: {
+		url: 'https://ntconsult.com.br/',
+		label: 'NT Consult',
+		logo: NT,
+		src: undefined,
+		tone: undefined,
+	},
+	iei: {
+		url: 'https://iei.javeriana.edu.co/',
+		label: 'Instituto de Estudios Interculturales',
+		logo: IEI,
+		src: undefined,
+		tone: 'co-brand-logo--multicolor',
+	},
+	alcaldia: {
+		url: 'https://www.cali.gov.co/',
+		label: 'Alcaldía de Santiago de Cali',
+		logo: Alcaldia,
+		src: undefined,
+		tone: 'co-brand-logo--multicolor',
+	},
+	moe: {
+		url: 'https://moe.org.co/',
+		label: 'Misión de Observación Electoral',
+		logo: MOE,
+		src: undefined,
+		tone: 'co-brand-logo--multicolor',
+	},
 } as const;
 
-const coBrand = variant && variant !== 'radapls' ? coBrands[variant as keyof typeof coBrands] : undefined;
+const coBrand =
+	variant && variant !== 'radapls' ? coBrands[variant as keyof typeof coBrands] : undefined;
 const CoBrandLogo = coBrand?.logo;
 const coBrandSrc = coBrand?.src;
 const coBrandClass = ['co-brand-logo', coBrand?.tone].filter(Boolean).join(' ');
@@ -47,11 +96,10 @@ const coBrandClass = ['co-brand-logo', coBrand?.tone].filter(Boolean).join(' ');
 		<header class="header" id="header" transition:persist={`header-${variant}`}>
 			<nav class="nav container">
 				<a href={getRelativeLocaleUrl(currentLocale, '/')} class="nav__logo">
-					<Image
+					<Logo
 						class="radapls-brand"
-						src={Logo}
-						draggable="false"
-						alt="Logo Juan Felipe Rada"
+						role="img"
+						aria-label="Logo Juan Felipe Rada"
 						width={40}
 						height={40}
 					/>
@@ -61,7 +109,7 @@ const coBrandClass = ['co-brand-logo', coBrand?.tone].filter(Boolean).join(' ');
 					<div class="nav__menu" id="nav-menu">
 						<ul class="nav__list grid">
 							<li class="nav__item">
-								<a href="#About" class="nav__link">
+								<a href={`${getRelativeLocaleUrl(currentLocale, '/')}#About`} class="nav__link">
 									<svg
 										class="nav__icon"
 										width="20"
@@ -87,7 +135,7 @@ const coBrandClass = ['co-brand-logo', coBrand?.tone].filter(Boolean).join(' ');
 								</a>
 							</li>
 							<li class="nav__item">
-								<a href="#Portfolio" class="nav__link">
+								<a href={`${getRelativeLocaleUrl(currentLocale, '/')}#Portfolio`} class="nav__link">
 									<svg
 										class="nav__icon"
 										width="20"
@@ -105,15 +153,15 @@ const coBrandClass = ['co-brand-logo', coBrand?.tone].filter(Boolean).join(' ');
 									</svg>
 									<p>
 										{t({
-											en: 'Portfolio',
-											es: 'Portafolio',
-											'pt-br': 'Portfólio',
+											en: 'Projects',
+											es: 'Proyectos',
+											'pt-br': 'Projetos',
 										})}
 									</p>
 								</a>
 							</li>
 							<li class="nav__item">
-								<a href="#Contact" class="nav__link">
+								<a href={`${getRelativeLocaleUrl(currentLocale, '/')}#Contact`} class="nav__link">
 									<svg
 										class="nav__icon"
 										width="20"
@@ -149,13 +197,19 @@ const coBrandClass = ['co-brand-logo', coBrand?.tone].filter(Boolean).join(' ');
 								'pt-br': 'Fechar menu',
 							})}
 						>
-							<svg width="20" height="20" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path
-								d="M11.7816 4.03157C12.0062 3.80702 12.0062 3.44295 11.7816 3.2184C11.5571 2.99385 11.193 2.99385 10.9685 3.2184L7.50005 6.68682L4.03164 3.2184C3.80708 2.99385 3.44301 2.99385 3.21846 3.2184C2.99391 3.44295 2.99391 3.80702 3.21846 4.03157L6.68688 7.49999L3.21846 10.9684C2.99391 11.193 2.99391 11.557 3.21846 11.7816C3.44301 12.0061 3.80708 12.0061 4.03164 11.7816L7.50005 8.31316L10.9685 11.7816C11.193 12.0061 11.5571 12.0061 11.7816 11.7816C12.0062 11.557 12.0062 11.193 11.7816 10.9684L8.31322 7.49999L11.7816 4.03157Z"
-								fill="currentColor"
-								fill-rule="evenodd"
-								clip-rule="evenodd"
-							/>
+							<svg
+								width="20"
+								height="20"
+								viewBox="0 0 15 15"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M11.7816 4.03157C12.0062 3.80702 12.0062 3.44295 11.7816 3.2184C11.5571 2.99385 11.193 2.99385 10.9685 3.2184L7.50005 6.68682L4.03164 3.2184C3.80708 2.99385 3.44301 2.99385 3.21846 3.2184C2.99391 3.44295 2.99391 3.80702 3.21846 4.03157L6.68688 7.49999L3.21846 10.9684C2.99391 11.193 2.99391 11.557 3.21846 11.7816C3.44301 12.0061 3.80708 12.0061 4.03164 11.7816L7.50005 8.31316L10.9685 11.7816C11.193 12.0061 11.5571 12.0061 11.7816 11.7816C12.0062 11.557 12.0062 11.193 11.7816 10.9684L8.31322 7.49999L11.7816 4.03157Z"
+									fill="currentColor"
+									fill-rule="evenodd"
+									clip-rule="evenodd"
+								/>
 							</svg>
 						</button>
 					</div>
@@ -176,7 +230,13 @@ const coBrandClass = ['co-brand-logo', coBrand?.tone].filter(Boolean).join(' ');
 							aria-expanded="false"
 							aria-controls="nav-menu"
 						>
-							<svg width="20" height="20" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<svg
+								width="20"
+								height="20"
+								viewBox="0 0 15 15"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
 								<path
 									d="M4.5 2C3.11929 2 2 3.11929 2 4.5C2 5.88072 3.11929 7 4.5 7C5.88072 7 7 5.88072 7 4.5C7 3.11929 5.88072 2 4.5 2ZM3 4.5C3 3.67157 3.67157 3 4.5 3C5.32843 3 6 3.67157 6 4.5C6 5.32843 5.32843 6 4.5 6C3.67157 6 3 5.32843 3 4.5ZM10.5 2C9.11929 2 8 3.11929 8 4.5C8 5.88072 9.11929 7 10.5 7C11.8807 7 13 5.88072 13 4.5C13 3.11929 11.8807 2 10.5 2ZM9 4.5C9 3.67157 9.67157 3 10.5 3C11.3284 3 12 3.67157 12 4.5C12 5.32843 11.3284 6 10.5 6C9.67157 6 9 5.32843 9 4.5ZM2 10.5C2 9.11929 3.11929 8 4.5 8C5.88072 8 7 9.11929 7 10.5C7 11.8807 5.88072 13 4.5 13C3.11929 13 2 11.8807 2 10.5ZM4.5 9C3.67157 9 3 9.67157 3 10.5C3 11.3284 3.67157 12 4.5 12C5.32843 12 6 11.3284 6 10.5C6 9.67157 5.32843 9 4.5 9ZM10.5 8C9.11929 8 8 9.11929 8 10.5C8 11.8807 9.11929 13 10.5 13C11.8807 13 13 11.8807 13 10.5C13 9.11929 11.8807 8 10.5 8ZM9 10.5C9 9.67157 9.67157 9 10.5 9C11.3284 9 12 9.67157 12 10.5C12 11.3284 11.3284 12 10.5 12C9.67157 12 9 11.3284 9 10.5Z"
 									fill="currentColor"
@@ -194,11 +254,10 @@ const coBrandClass = ['co-brand-logo', coBrand?.tone].filter(Boolean).join(' ');
 			<nav class="nav container">
 				<div class="co-brand">
 					<a href={getRelativeLocaleUrl(currentLocale, '/')}>
-						<Image
+						<Logo
 							class="radapls-brand"
-							src={Logo}
-							draggable="false"
-							alt="Logo Juan Felipe Rada"
+							role="img"
+							aria-label="Logo Juan Felipe Rada"
 							width={35}
 							height={35}
 						/>
@@ -218,10 +277,23 @@ const coBrandClass = ['co-brand-logo', coBrand?.tone].filter(Boolean).join(' ');
 					{coBrand && (
 						<a href={coBrand.url} class="nav__logo" target="_blank" rel="noopener noreferrer">
 							{coBrandSrc ? (
-								<Image class={coBrandClass} src={coBrandSrc} alt={coBrand.label} width={35} height={35} draggable="false" />
+								<Image
+									class={coBrandClass}
+									src={coBrandSrc}
+									alt={coBrand.label}
+									width={35}
+									height={35}
+									draggable="false"
+								/>
 							) : (
 								CoBrandLogo && (
-									<CoBrandLogo class={coBrandClass} role="img" aria-label={coBrand.label} width={35} height={35} />
+									<CoBrandLogo
+										class={coBrandClass}
+										role="img"
+										aria-label={coBrand.label}
+										width={35}
+										height={35}
+									/>
 								)
 							)}
 						</a>
@@ -343,5 +415,10 @@ const coBrandClass = ['co-brand-logo', coBrand?.tone].filter(Boolean).join(' ');
 	/* Ericsson mark is monochrome (currentColor): black in light, white in dark. */
 	.co-brand-logo--ericsson {
 		color: var(--title-color);
+	}
+	/* Multi-color marks (IEI, Alcaldía, MOE): as-is in light, solid white
+	   silhouette in dark so they stay legible against the dark page. */
+	:global(.dark) .co-brand-logo--multicolor {
+		filter: brightness(0) invert(1);
 	}
 </style>

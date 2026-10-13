@@ -44,6 +44,30 @@
 	font-display: swap;
 }
 
+/* Specimen-sheet faces (src/assets/fonts): Bayer Universal, Insignia
+   and OCR-A BT, only used on the About type poster */
+@font-face {
+	font-family: 'Bayer Universal';
+	src: url('../assets/fonts/BayerUniversal-Regular.woff') format('woff');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Insignia';
+	src: url('../assets/fonts/Insignia.woff') format('woff');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'OCR-A BT';
+	src: url('../assets/fonts/OCR-a___.woff') format('woff');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
 :root {
 	--header-height: 3rem;
 
@@ -209,17 +233,6 @@ html:has(.snap-page) footer.footer__bg {
 	justify-content: safe center;
 	box-sizing: border-box;
 }
-/* Hide the fixed header while the footer step is on screen */
-html:has(.snap-page) .header {
-	transition:
-		opacity 250ms ease,
-		visibility 250ms ease;
-}
-html.at-footer .header {
-	opacity: 0;
-	visibility: hidden;
-	pointer-events: none;
-}
 .snap-page .section {
 	min-height: 100svh;
 	scroll-snap-align: start;
@@ -230,7 +243,9 @@ html.at-footer .header {
 	justify-content: safe center; /* falls back to top-aligned */
 	box-sizing: border-box;
 }
-/* Reduced motion: keep plain scrolling, no forced steps */
+/* Reduced motion: keep plain scrolling, no forced steps. The footer
+   switch sets [data-reduce-motion] on <html>, so the manual toggle
+   gets the same treatment as the OS preference. */
 @media (prefers-reduced-motion: reduce) {
 	html:has(.snap-page) {
 		scroll-snap-type: none;
@@ -243,6 +258,21 @@ html.at-footer .header {
 		min-height: auto;
 		display: block;
 	}
+}
+html[data-reduce-motion] {
+	scroll-snap-type: none;
+}
+html[data-reduce-motion] .snap-page .section,
+html[data-reduce-motion] footer.footer__bg {
+	min-height: auto;
+	display: block;
+}
+html[data-reduce-motion] *,
+html[data-reduce-motion] *::before,
+html[data-reduce-motion] *::after {
+	animation-duration: 0.01ms !important;
+	animation-iteration-count: 1 !important;
+	transition-duration: 0.01ms !important;
 }
 /*==================== LAYOUT ====================*/
 .container {

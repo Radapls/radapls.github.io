@@ -1,1 +1,9 @@
-export type BrandType = 'radapls' | 'wibx' | 'birdi' | 'nt' | 'ericsson';
+export type BrandType =
+	| 'radapls'
+	| 'wibx'
+	| 'birdi'
+	| 'nt'
+	| 'ericsson'
+	| 'iei'
+	| 'alcaldia'
+	| 'moe';

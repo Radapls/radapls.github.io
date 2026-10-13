@@ -35,7 +35,11 @@ const loopData = format === 'image' ? Array.from({ length: SETS }, () => data).f
 	format === 'image' ? (
 		<section
 			class={`marquee ${type}`}
-			aria-label={t({ en: 'Project screenshots', es: 'Capturas del proyecto', 'pt-br': 'Capturas do projeto' })}
+			aria-label={t({
+				en: 'Project screenshots',
+				es: 'Capturas del proyecto',
+				'pt-br': 'Capturas do projeto',
+			})}
 		>
 			<ul class="marquee__track" style={`--set-count:${data.length}`}>
 				{(loopData as Slide[]).map((slide, i) => (
@@ -62,13 +66,21 @@ const loopData = format === 'image' ? Array.from({ length: SETS }, () => data).f
 				))}
 			</ul>
 			<dialog
-			class="marquee__dialog"
-			aria-label={t({ en: 'Enlarged screenshot', es: 'Captura ampliada', 'pt-br': 'Captura ampliada' })}
-		>
+				class="marquee__dialog"
+				aria-label={t({
+					en: 'Enlarged screenshot',
+					es: 'Captura ampliada',
+					'pt-br': 'Captura ampliada',
+				})}
+			>
 				<img alt="" />
 				<button
 					class="marquee__nav marquee__nav--prev"
-					aria-label={t({ en: 'Previous image', es: 'Imagen anterior', 'pt-br': 'Imagem anterior' })}
+					aria-label={t({
+						en: 'Previous image',
+						es: 'Imagen anterior',
+						'pt-br': 'Imagem anterior',
+					})}
 				>
 					‹
 				</button>

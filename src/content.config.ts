@@ -12,4 +12,11 @@ const experience = defineCollection({
 		}),
 });
 
-export const collections = { experience };
+const projects = defineCollection({
+	loader: glob({ pattern: '**/[^_]*.mdx', base: './src/content/projects' }),
+	schema: z.object({
+		title: z.string(),
+	}),
+});
+
+export const collections = { experience, projects };

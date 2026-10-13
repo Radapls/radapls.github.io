@@ -1,0 +1,96 @@
+---
+/**
+ * Race bibs — real objects from my room pinned to the About wall.
+ * One bib per race I've run; labels are shortened to fit the card.
+ */
+const bibs = [
+	{ number: '7476', race: 'Medellín 21K' },
+	{ number: '2473', race: 'Valle 21K' },
+	{ number: '8892', race: 'Cali' },
+	{ number: '6163', race: 'Cali 15K' },
+	{ number: '46697', race: 'Bogotá 10K' },
+	{ number: '3572', race: 'Pacífico 10K' },
+	{ number: '0636', race: 'Marriott 10K' },
+	{ number: '1043', race: 'La Caña 10K' },
+];
+---
+
+<ul class="bibs" aria-label="Race numbers">
+	{
+		bibs.map((bib, i) => (
+			<li class="bibs__item" style={`--bib-tilt: ${i % 2 === 0 ? 1.5 : -2}deg;`}>
+				<span class="bibs__pin" aria-hidden="true" />
+				<span class="bibs__card">
+					<span class="bibs__race">{bib.race}</span>
+					<span class="bibs__number">{bib.number}</span>
+				</span>
+			</li>
+		))
+	}
+</ul>
+
+<style>
+	.bibs {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		list-style: none;
+	}
+
+	.bibs__item {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		padding-top: 0.5rem; /* room for the pin */
+		transform: rotate(var(--bib-tilt, 0deg));
+		transition: transform 250ms ease-in-out;
+	}
+	.bibs__item:hover {
+		transform: rotate(0deg) scale(1.04);
+	}
+
+	/* the pin holding the bib on the wall */
+	.bibs__pin {
+		position: absolute;
+		top: 0;
+		left: 50%;
+		width: 5px;
+		height: 5px;
+		transform: translateX(-50%);
+		border-radius: 50%;
+		background: var(--title-color);
+		box-shadow: 0 1px 1px rgb(0 0 0 / 0.25);
+		z-index: 1;
+	}
+
+	.bibs__card {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.15rem;
+		width: 6.5rem;
+		padding: 0.45rem 0.5rem 0.55rem;
+		background: var(--container-color);
+		border: 1px solid color-mix(in srgb, var(--title-color) 30%, transparent);
+		border-radius: var(--radius-sm);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.bibs__race {
+		font-size: 0.5rem;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		white-space: nowrap;
+		color: var(--text-color);
+		border-block: 1px solid color-mix(in srgb, var(--title-color) 25%, transparent);
+		padding-block: 0.12rem;
+	}
+
+	.bibs__number {
+		font-family: var(--title-font);
+		font-size: 1.25rem;
+		font-weight: var(--font-bold);
+		line-height: 1.1;
+		color: var(--title-color);
+	}
+</style>

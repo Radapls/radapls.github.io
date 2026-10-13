@@ -66,13 +66,23 @@ const { title, alt, image } = Astro.props;
 		align-items: flex-end;
 		padding: 1.25rem;
 		/* Gradient scrim keeps the title legible over any image */
-		background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.25) 40%, rgba(0, 0, 0, 0) 70%);
+		background: linear-gradient(
+			to top,
+			rgba(0, 0, 0, 0.75) 0%,
+			rgba(0, 0, 0, 0.25) 40%,
+			rgba(0, 0, 0, 0) 70%
+		);
 		transition: background 250ms ease;
 	}
 
 	.hobby-card:hover .hobby-card__overlay,
 	.hobby-card:focus-within .hobby-card__overlay {
-		background: linear-gradient(to top, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.35) 55%, rgba(0, 0, 0, 0.05) 100%);
+		background: linear-gradient(
+			to top,
+			rgba(0, 0, 0, 0.82) 0%,
+			rgba(0, 0, 0, 0.35) 55%,
+			rgba(0, 0, 0, 0.05) 100%
+		);
 	}
 
 	.hobby-card__title {

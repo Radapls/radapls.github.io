@@ -1,11 +1,10 @@
 ---
 import { useTranslations, type Lang } from 'src/i18n';
-import { GLOBAL_EMAIL, WHATSAPP } from 'src/consts';
+import { GLOBAL_EMAIL, SITE_URL, WHATSAPP } from 'src/consts';
 
 const t = useTranslations(Astro.currentLocale as Lang);
 ---
 
-<!--==================== CONTACT ME ====================-->
 <section class="contact section" id="Contact">
 	<h2 class="section__title">
 		{
@@ -18,13 +17,7 @@ const t = useTranslations(Astro.currentLocale as Lang);
 	</h2>
 
 	<div class="contact__container container">
-		<!-- Retro email client: a compose window. The form still posts to
-		     FormSubmit with the same field names as before. -->
-		<form
-			action="https://formsubmit.co/radapls8@gmail.com"
-			method="POST"
-			class="mail"
-		>
+		<form action={`https://formsubmit.co/${GLOBAL_EMAIL}`} method="POST" class="mail">
 			<div class="mail__titlebar">
 				<span class="mail__dot" aria-hidden="true"></span>
 				<span class="mail__dot" aria-hidden="true"></span>
@@ -129,7 +122,7 @@ const t = useTranslations(Astro.currentLocale as Lang);
 				</button>
 			</div>
 
-			<input type="hidden" name="_next" value="https://radapls.github.io/thanks" />
+			<input type="hidden" name="_next" value={`${SITE_URL}/thanks`} />
 			<input type="hidden" name="_subject" value="Nuevo mensaje de Portafolio" />
 		</form>
 

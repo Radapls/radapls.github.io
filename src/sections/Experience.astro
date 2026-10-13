@@ -11,14 +11,18 @@ import ExperienceContent from '@components/Experience/ExperienceContent.astro';
 	<h2 class="section__title">
 		{
 			t({
-				en: 'Experience',
-				es: 'Experiencia',
-				'pt-br': 'Experiência',
+				en: 'Timeline',
+				es: 'Trayectoria',
+				'pt-br': 'Trajetória',
 			})
 		}
 	</h2>
 	<div class="qualification__container container">
-		<div class="qualification__tabs" role="tablist" aria-label={t({ en: 'Experience', es: 'Experiencia', 'pt-br': 'Experiência' })}>
+		<div
+			class="qualification__tabs"
+			role="tablist"
+			aria-label={t({ en: 'Timeline', es: 'Trayectoria', 'pt-br': 'Trajetória' })}
+		>
 			{
 				experienceTabs.map((tab, i) => (
 					<ExperienceTabs
@@ -39,95 +43,125 @@ import ExperienceContent from '@components/Experience/ExperienceContent.astro';
 			<button
 				class="qualification__arrow qualification__arrow--prev"
 				type="button"
-				aria-label={t({ en: 'Previous experience', es: 'Experiencia anterior', 'pt-br': 'Experiência anterior' })}
+				aria-label={t({
+					en: 'Previous experience',
+					es: 'Experiencia anterior',
+					'pt-br': 'Experiência anterior',
+				})}
 			>
-				<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-					<polyline points="15 18 9 12 15 6" />
+				<svg
+					viewBox="0 0 24 24"
+					width="20"
+					height="20"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2.5"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					aria-hidden="true"
+				>
+					<polyline points="15 18 9 12 15 6"></polyline>
 				</svg>
 			</button>
 			<button
 				class="qualification__arrow qualification__arrow--next"
 				type="button"
-				aria-label={t({ en: 'Next experience', es: 'Experiencia siguiente', 'pt-br': 'Próxima experiência' })}
+				aria-label={t({
+					en: 'Next experience',
+					es: 'Experiencia siguiente',
+					'pt-br': 'Próxima experiência',
+				})}
 			>
-				<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-					<polyline points="9 18 15 12 9 6" />
+				<svg
+					viewBox="0 0 24 24"
+					width="20"
+					height="20"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2.5"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					aria-hidden="true"
+				>
+					<polyline points="9 18 15 12 9 6"></polyline>
 				</svg>
 			</button>
 			<div class="qualification__sections">
-			<div
-				class="qualification__content"
-				data-content
-				id="education"
-				role="tabpanel"
-				aria-labelledby="tab-education"
-				tabindex="0"
-			>
-				{
-					educationData.map((item) => (
-						<ExperienceContent
-							image={item.image}
-							title={t({
-								en: item.lang.en,
-								es: item.lang.es,
-								'pt-br': item.lang['pt-br'],
-							})}
-							organization={item.organization}
-							relativeTime={t({
-								en: item.relativeTime.en,
-								es: item.relativeTime.es,
-								'pt-br': item.relativeTime['pt-br'],
-							})}
-						/>
-					))
-				}
-			</div>
-			<div
-				class="qualification__content qualification__active"
-				data-content
-				id="work"
-				role="tabpanel"
-				aria-labelledby="tab-work"
-				tabindex="0"
-			>
-				{/* Contact teaser: sits in the empty zone LEFT of the first
+				<div
+					class="qualification__content"
+					data-content
+					id="education"
+					role="tabpanel"
+					aria-labelledby="tab-education"
+					tabindex="0"
+				>
+					{
+						educationData.map((item) => (
+							<ExperienceContent
+								image={item.image}
+								title={t({
+									en: item.lang.en,
+									es: item.lang.es,
+									'pt-br': item.lang['pt-br'],
+								})}
+								organization={item.organization}
+								relativeTime={t({
+									en: item.relativeTime.en,
+									es: item.relativeTime.es,
+									'pt-br': item.relativeTime['pt-br'],
+								})}
+							/>
+						))
+					}
+				</div>
+				<div
+					class="qualification__content qualification__active"
+					data-content
+					id="work"
+					role="tabpanel"
+					aria-labelledby="tab-work"
+					tabindex="0"
+				>
+					{
+						/* Contact teaser: sits in the empty zone LEFT of the first
 				    card (most recent experience). Clickable, but never part
-				    of the highlightable timeline cards. */}
-				<a class="qualification__cta" href="#Contact">
-					<span class="qualification__cta-title">
-						{
-							t({
-								en: 'Want to be the next?',
-								es: '¿Quieres ser el próximo?',
-								'pt-br': 'Quer ser o próximo?',
-							})
-						}
-					</span>
-				</a>
-				{
-					workData.map((item) => (
-						<ExperienceContent
-							image={item.image}
-							title={t({
-								en: item.lang.en,
-								es: item.lang.es,
-								'pt-br': item.lang['pt-br'],
-							})}
-							organization={item.organization}
-							relativeTime={t({
-								en: item.relativeTime.en,
-								es: item.relativeTime.es,
-								'pt-br': item.relativeTime['pt-br'],
-							})}
-							link={item.link}
-						/>
-					))
-				}
-			</div>
+				    of the highlightable timeline cards. */
+					}
+					<a class="qualification__cta" href="#Contact">
+						<span class="qualification__cta-title">
+							{
+								t({
+									en: 'Want to be the next?',
+									es: '¿Quieres ser el próximo?',
+									'pt-br': 'Quer ser o próximo?',
+								})
+							}
+						</span>
+					</a>
+					{
+						workData.map((item) => (
+							<ExperienceContent
+								image={item.image}
+								title={t({
+									en: item.lang.en,
+									es: item.lang.es,
+									'pt-br': item.lang['pt-br'],
+								})}
+								organization={item.organization}
+								relativeTime={t({
+									en: item.relativeTime.en,
+									es: item.relativeTime.es,
+									'pt-br': item.relativeTime['pt-br'],
+								})}
+								link={item.link}
+							/>
+						))
+					}
+				</div>
 			</div>
 		</div>
-		</div>
-	</section>
+	</div>
+</section>
 
 <script>
 	// Horizontal timeline: the track is natively scrollable inside its
@@ -181,7 +215,9 @@ import ExperienceContent from '@components/Experience/ExperienceContent.astro';
 				prev.classList.toggle('is-hidden', atStart);
 				next.classList.toggle('is-hidden', atEnd);
 			};
-			prev.addEventListener('click', () => scroller.scrollBy({ left: -step(), behavior: 'smooth' }));
+			prev.addEventListener('click', () =>
+				scroller.scrollBy({ left: -step(), behavior: 'smooth' }),
+			);
 			next.addEventListener('click', () => scroller.scrollBy({ left: step(), behavior: 'smooth' }));
 			scroller.addEventListener('scroll', updateArrows, { passive: true });
 			window.addEventListener('resize', updateArrows);

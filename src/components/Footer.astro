@@ -1,5 +1,5 @@
 ---
-import Logo from '@assets/img/JFR.webp';
+import Logo from '@assets/img/JFRA.svg';
 import WcagBadge from '@assets/img/wcag21-aa-blue.svg';
 import CcBadge from '@assets/img/license-cc-by-sa.svg';
 import AgplBadge from '@assets/img/license-agpl.svg';
@@ -17,11 +17,10 @@ const t = useTranslations(Astro.currentLocale as Lang);
 <footer class="footer__bg">
 	<div class="footer__container">
 		<div class="footer__brand-container">
-			<Image
+			<Logo
 				class="brand-image"
-				src={Logo}
-				alt="Logo Juan Felipe Rada"
-				draggable="false"
+				role="img"
+				aria-label="Logo Juan Felipe Rada"
 				height={30}
 				width={30}
 			/>
@@ -32,6 +31,23 @@ const t = useTranslations(Astro.currentLocale as Lang);
 				Juan Felipe Rada
 			</p>
 		</div>
+	</div>
+	<div class="footer__a11y">
+		<label class="a11y-switch" for="reduce-motion">
+			<input type="checkbox" id="reduce-motion" class="a11y-switch__input" />
+			<span class="a11y-switch__track" aria-hidden="true">
+				<span class="a11y-switch__thumb"></span>
+			</span>
+			<span class="a11y-switch__label">
+				{
+					t({
+						en: 'Reduce animations',
+						es: 'Reducir animaciones',
+						'pt-br': 'Reduzir animações',
+					})
+				}
+			</span>
+		</label>
 	</div>
 	<div class="footer__badges">
 		<a
@@ -108,4 +124,88 @@ const t = useTranslations(Astro.currentLocale as Lang);
 	:global(.dark) .brand-image {
 		filter: grayscale(1) contrast(0.5) brightness(3.5);
 	}
+
+	/* a11y switch: real checkbox visually replaced by a track + thumb */
+	.footer__a11y {
+		display: flex;
+		justify-content: center;
+		margin-top: 1.5rem;
+	}
+	.a11y-switch {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.6rem;
+		cursor: pointer;
+		user-select: none;
+	}
+	.a11y-switch__input {
+		position: absolute;
+		opacity: 0;
+		width: 1px;
+		height: 1px;
+	}
+	.a11y-switch__track {
+		width: 2.75rem;
+		height: 1.5rem;
+		border-radius: var(--radius-pill);
+		background: color-mix(in srgb, var(--title-color) 25%, transparent);
+		padding: 0.1875rem;
+		display: flex;
+		align-items: center;
+		transition: background 200ms ease-in-out;
+	}
+	.a11y-switch__thumb {
+		width: 1.125rem;
+		height: 1.125rem;
+		border-radius: 50%;
+		background: var(--title-color);
+		transition: translate 200ms ease-in-out;
+	}
+	.a11y-switch__input:checked + .a11y-switch__track {
+		background: var(--first-color);
+	}
+	.a11y-switch__input:checked + .a11y-switch__track .a11y-switch__thumb {
+		translate: 1.25rem 0;
+	}
+	.a11y-switch__input:focus-visible + .a11y-switch__track {
+		outline: 2px solid var(--first-color);
+		outline-offset: 2px;
+	}
+	.a11y-switch__label {
+		font-size: var(--smaller-font-size);
+		color: var(--text-color);
+	}
 </style>
+
+<script>
+	// Reduce-motion switch (WCAG 2.2.2 Pause/Stop/Hide): pauses every
+	// autoplaying video and kills CSS animations/transitions. Defaults
+	// to the OS prefers-reduced-motion setting; an explicit choice is
+	// remembered in localStorage.
+	const KEY = 'reduce-motion';
+
+	function apply(on: boolean) {
+		document.documentElement.toggleAttribute('data-reduce-motion', on);
+		document.querySelectorAll('video').forEach((v) => {
+			if (on) v.pause();
+			else void v.play().catch(() => {});
+		});
+	}
+
+	function init() {
+		const box = document.getElementById('reduce-motion') as HTMLInputElement | null;
+		if (!box) return;
+		const saved = localStorage.getItem(KEY);
+		const on =
+			saved !== null ? saved === '1' : matchMedia('(prefers-reduced-motion: reduce)').matches;
+		box.checked = on;
+		apply(on);
+		box.addEventListener('change', () => {
+			localStorage.setItem(KEY, box.checked ? '1' : '0');
+			apply(box.checked);
+		});
+	}
+
+	document.addEventListener('astro:page-load', init);
+	init();
+</script>

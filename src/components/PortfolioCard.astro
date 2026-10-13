@@ -6,21 +6,21 @@ interface Props {
 	bgImage: any;
 	title: string;
 	description: string;
+	/** internal links open in the same tab */
+	external?: boolean;
 }
 
-const { link, bgImage, title, description } = Astro.props;
+const { link, bgImage, title, description, external = true } = Astro.props;
 ---
 
-<a class="card" href=`${link}` target="_blank" rel="noopener noreferrer">
+<a
+	class="card"
+	href=`${link}`
+	target={external ? '_blank' : undefined}
+	rel={external ? 'noopener noreferrer' : undefined}
+>
 	<span class="card__thumb">
-		<Image
-			class="card__image"
-			src={bgImage}
-			alt={title}
-			loading="lazy"
-			width={132}
-			height={132}
-		/>
+		<Image class="card__image" src={bgImage} alt={title} loading="lazy" width={132} height={132} />
 	</span>
 	<div class="card__content">
 		<h3 class="card__title" id={`title-${title}`}>

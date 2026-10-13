@@ -1,13 +1,10 @@
 {
-  "mcpServers": {
-    "wcag": {
-      "type": "stdio",
-      "command": "npx",
-      "args": [
-        "-y",
-        "wcag-guidelines-mcp"
-      ],
-      "env": {}
-    }
-  }
+	"mcpServers": {
+		"wcag": {
+			"type": "stdio",
+			"command": "npx",
+			"args": ["-y", "wcag-guidelines-mcp"],
+			"env": {}
+		}
+	}
 }

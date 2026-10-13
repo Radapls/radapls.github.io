@@ -70,12 +70,12 @@ const locale = Astro.currentLocale as Lang;
 			rel="stylesheet"
 			media="print"
 			onload={`this.media='all'`}
-			href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Allerta+Stencil&family=Limelight&family=Share+Tech+Mono&family=Poppins:wght@400;500;600&display=swap"
 		/>
 		<noscript>
 			<link
 				rel="stylesheet"
-				href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+				href="https://fonts.googleapis.com/css2?family=Allerta+Stencil&family=Limelight&family=Share+Tech+Mono&family=Poppins:wght@400;500;600&display=swap"
 			/>
 		</noscript>
 
@@ -111,7 +111,12 @@ const locale = Astro.currentLocale as Lang;
 	</head>
 	<body>
 		{withHeader && <Header {variant} noLinks={noLinks} />}
-		<main class:list={['main', { 'snap-page': snap }]} id="main" tabindex="-1" transition:animate="fade">
+		<main
+			class:list={['main', { 'snap-page': snap }]}
+			id="main"
+			tabindex="-1"
+			transition:animate="fade"
+		>
 			<slot />
 		</main>
 		{withFooter && <Footer {variant} />}
@@ -159,10 +164,14 @@ const locale = Astro.currentLocale as Lang;
 			hideTimer = setTimeout(() => bar.classList.remove('is-visible'), 900);
 		};
 
-		window.addEventListener('scroll', () => {
-			update();
-			show();
-		}, { passive: true });
+		window.addEventListener(
+			'scroll',
+			() => {
+				update();
+				show();
+			},
+			{ passive: true },
+		);
 		window.addEventListener('resize', update);
 		// Recalc for the new page's height after route/images/fonts settle.
 		document.addEventListener('astro:page-load', () => setTimeout(update, 200));

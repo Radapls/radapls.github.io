@@ -62,8 +62,7 @@ export const getStaticPaths = () =>
 			if (Math.abs(dist) < 2) return;
 			document.documentElement.classList.add('stepping');
 			const start = performance.now();
-			const ease = (t: number) =>
-				t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+			const ease = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
 			const frame = (now: number) => {
 				const t = Math.min((now - start) / duration, 1);
 				window.scrollTo({ top: startY + dist * ease(t), behavior: 'instant' });
@@ -90,16 +89,6 @@ export const getStaticPaths = () =>
 			if (next < 0 || next >= secs.length) return;
 			goTo(next);
 		};
-
-		// Hide the fixed header while the footer step fills the screen
-		const updateHeader = () => {
-			const footer = document.querySelector('footer.footer__bg');
-			document.documentElement.classList.toggle(
-				'at-footer',
-				!!footer && Math.abs(footer.getBoundingClientRect().top) < 10,
-			);
-		};
-		window.addEventListener('scroll', updateHeader, { passive: true });
 
 		// Wheel capture: native scrolling must NEVER run alongside the step
 		// animation (they fight and the transition stutters). Every wheel

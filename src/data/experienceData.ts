@@ -81,9 +81,9 @@ export const workData = [
 			width: 35,
 		},
 		lang: {
-			en: 'UX/UI Developer',
-			es: 'Desarrollador UX/UI',
-			'pt-br': 'Desenvolvedor UX/UI',
+			en: 'UI/UX Developer',
+			es: 'Desarrollador UI/UX',
+			'pt-br': 'Desenvolvedor UI/UX',
 		},
 		organization: 'Ericsson',
 		relativeTime: {
@@ -153,6 +153,7 @@ export const workData = [
 			es: 'Jun 2020 - Dic 2021',
 			'pt-br': 'Jun 2020 - Dez 2021',
 		},
+		link: '/experience/iei',
 	},
 	{
 		image: {
@@ -172,6 +173,7 @@ export const workData = [
 			es: 'Mar 2019 - Dic 2019',
 			'pt-br': 'Mar 2019 - Dez 2019',
 		},
+		link: '/experience/alcaldia',
 	},
 	{
 		image: {
@@ -191,5 +193,6 @@ export const workData = [
 			es: 'Ene 2018 - Jul 2018',
 			'pt-br': 'Jan 2018 - Jul 2018',
 		},
+		link: '/experience/moe',
 	},
 ];
