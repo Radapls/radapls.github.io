@@ -1,10 +1,10 @@
 ---
 import Logo from '@assets/img/JFR.webp';
+import WcagBadge from '@assets/img/wcag21-aa-blue.svg';
+import CcBadge from '@assets/img/license-cc-by-sa.svg';
+import AgplBadge from '@assets/img/license-agpl.svg';
 import { Image } from 'astro:assets';
 import type { BrandType } from 'src/types/variants';
-import { useTranslations, type Lang } from 'src/i18n';
-
-const t = useTranslations(Astro.currentLocale as Lang);
 
 interface Props {
 	variant?: BrandType;
@@ -22,39 +22,35 @@ interface Props {
 				height={30}
 				width={30}
 			/>
-			<h6 class="footer__title">
+			<p class="footer__title">
 				<span>
 					&copy; {new Date().getFullYear() + ' '}
 				</span>
 				Juan Felipe Rada
-			</h6>
+			</p>
 		</div>
 	</div>
-	<p class="licenses">
-		{
-			t({
-				en: 'Posts:',
-				es: 'Publicaciones:',
-				'pt-br': 'Publicações:',
-			})
-		}
-		<a href="https://creativecommons.org/licenses/by-sa/4.0/" aria-label="Posts license type link"
-			>CC-BY-SA</a
-		> |
-		{
-			t({
-				en: 'Source code:',
-				es: 'Código fuente:',
-				'pt-br': 'Código fonte:',
-			})
-		}
+	<div class="footer__badges">
+		<a
+			href="https://creativecommons.org/licenses/by-sa/4.0/"
+			aria-label="Posts licensed under CC BY-SA 4.0"
+		>
+			<Image src={CcBadge} alt="CC BY-SA 4.0" width={88} height={31} loading="lazy" />
+		</a>
 		<a
 			href="https://github.com/Radapls/radapls.github.io/blob/main/LICENSE"
-			aria-label="Source code license type link"
+			aria-label="Source code licensed under AGPL-3.0"
 		>
-			AGPL-3.0
+			<Image src={AgplBadge} alt="AGPL-3.0" width={94} height={31} loading="lazy" />
 		</a>
-	</p>
+		<a
+			href="https://www.w3.org/WAI/WCAG2AA-Conformance"
+			rel="noopener noreferrer"
+			aria-label="WCAG 2.1 Level AA conformance claim"
+		>
+			<Image src={WcagBadge} alt="WCAG 2.1 Level AA" width={88} height={31} loading="lazy" />
+		</a>
+	</div>
 </footer>
 
 <style>
@@ -85,9 +81,13 @@ interface Props {
 		gap: 0.5rem;
 	}
 
-	.licenses {
-		text-align: center;
-		font-size: var(--small-font-size);
+	.footer__badges {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+		margin-top: 1.5rem;
 	}
 
 	:global(.dark) .brand-image {

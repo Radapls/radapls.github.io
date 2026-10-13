@@ -2,8 +2,10 @@
 import Logo from '@assets/img/JFR.webp';
 import type { BrandType } from 'src/types/variants';
 
-import Birdi from '@assets/img/brands/birdi.webp';
-import Wibx from '@assets/img/brands/wibx.webp';
+import Birdi from '@assets/img/brands/birdi.svg';
+import Wibx from '@assets/img/brands/wibx.svg';
+import Ericsson from '@assets/img/brands/ericsson.svg';
+import NT from '@assets/img/brands/nt.svg';
 import LocaleSelect from './i18n/LocaleSelect.astro';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import { DEFAULT_LOCALE, useTranslations, type Lang } from 'src/i18n';
@@ -20,11 +22,29 @@ interface Props {
 }
 
 const { variant, noLinks = false } = Astro.props;
+
+/**
+ * Co-brand registry. Add a partner here and the header picks it up — no
+ * nested ternaries, no silent fallthrough to the wrong logo.
+ * Use `logo` for an inline SVG component or `src` for a raster image.
+ * `tone` is an optional modifier class for currentColor-based SVG marks.
+ */
+const coBrands = {
+	wibx: { url: 'https://wibx.io/', label: 'Wibx Company', logo: Wibx, src: undefined, tone: undefined },
+	birdi: { url: 'https://www.birdirx.com/', label: 'BirdiRx', logo: Birdi, src: undefined, tone: 'co-brand-logo--birdi' },
+	ericsson: { url: 'https://www.ericsson.com/', label: 'Ericsson', logo: Ericsson, src: undefined, tone: 'co-brand-logo--ericsson' },
+	nt: { url: 'https://ntconsult.com.br/', label: 'NT Consult', logo: NT, src: undefined, tone: undefined },
+} as const;
+
+const coBrand = variant && variant !== 'radapls' ? coBrands[variant as keyof typeof coBrands] : undefined;
+const CoBrandLogo = coBrand?.logo;
+const coBrandSrc = coBrand?.src;
+const coBrandClass = ['co-brand-logo', coBrand?.tone].filter(Boolean).join(' ');
 ---
 
 {
 	variant === 'radapls' ? (
-		<header class="header" id="header">
+		<header class="header" id="header" transition:persist={`header-${variant}`}>
 			<nav class="nav container">
 				<a href={getRelativeLocaleUrl(currentLocale, '/')} class="nav__logo">
 					<Image
@@ -62,32 +82,6 @@ const { variant, noLinks = false } = Astro.props;
 											en: 'About',
 											es: 'Acerca',
 											'pt-br': 'Acerca',
-										})}
-									</p>
-								</a>
-							</li>
-							<li class="nav__item">
-								<a href="#Skills" class="nav__link">
-									<svg
-										class="nav__icon"
-										width="20"
-										height="20"
-										viewBox="0 0 15 15"
-										fill="none"
-										xmlns="http://www.w3.org/2000/svg"
-									>
-										<path
-											d="M3 2.5C3 2.22386 3.22386 2 3.5 2H9.08579C9.21839 2 9.34557 2.05268 9.43934 2.14645L11.8536 4.56066C11.9473 4.65443 12 4.78161 12 4.91421V12.5C12 12.7761 11.7761 13 11.5 13H3.5C3.22386 13 3 12.7761 3 12.5V2.5ZM3.5 1C2.67157 1 2 1.67157 2 2.5V12.5C2 13.3284 2.67157 14 3.5 14H11.5C12.3284 14 13 13.3284 13 12.5V4.91421C13 4.51639 12.842 4.13486 12.5607 3.85355L10.1464 1.43934C9.86514 1.15804 9.48361 1 9.08579 1H3.5ZM4.5 4C4.22386 4 4 4.22386 4 4.5C4 4.77614 4.22386 5 4.5 5H7.5C7.77614 5 8 4.77614 8 4.5C8 4.22386 7.77614 4 7.5 4H4.5ZM4.5 7C4.22386 7 4 7.22386 4 7.5C4 7.77614 4.22386 8 4.5 8H10.5C10.7761 8 11 7.77614 11 7.5C11 7.22386 10.7761 7 10.5 7H4.5ZM4.5 10C4.22386 10 4 10.2239 4 10.5C4 10.7761 4.22386 11 4.5 11H10.5C10.7761 11 11 10.7761 11 10.5C11 10.2239 10.7761 10 10.5 10H4.5Z"
-											fill="currentColor"
-											fill-rule="evenodd"
-											clip-rule="evenodd"
-										/>
-									</svg>
-									<p>
-										{t({
-											en: 'Skills',
-											es: 'Habilidades',
-											'pt-br': 'Habilidades',
 										})}
 									</p>
 								</a>
@@ -144,74 +138,59 @@ const { variant, noLinks = false } = Astro.props;
 									</p>
 								</a>
 							</li>
-							<li class="nav__item">
-								<a href={getRelativeLocaleUrl(currentLocale, 'blog')} class="nav__link">
-									<svg
-										class="nav__icon"
-										width="20"
-										height="20"
-										viewBox="0 0 15 15"
-										fill="none"
-										xmlns="http://www.w3.org/2000/svg"
-									>
-										<path
-											d="M3 2.5C3 2.22386 3.22386 2 3.5 2H11.5C11.7761 2 12 2.22386 12 2.5V13.5C12 13.6818 11.9014 13.8492 11.7424 13.9373C11.5834 14.0254 11.3891 14.0203 11.235 13.924L7.5 11.5896L3.765 13.924C3.61087 14.0203 3.41659 14.0254 3.25762 13.9373C3.09864 13.8492 3 13.6818 3 13.5V2.5ZM4 3V12.5979L6.97 10.7416C7.29427 10.539 7.70573 10.539 8.03 10.7416L11 12.5979V3H4Z"
-											fill="currentColor"
-											fill-rule="evenodd"
-											clip-rule="evenodd"
-										/>
-									</svg>
-									<p>{t('Blog')}</p>
-								</a>
-							</li>
 						</ul>
-						<svg
+						<button
 							class="nav__close"
 							id="nav-close"
-							width="20"
-							height="20"
-							viewBox="0 0 15 15"
-							fill="none"
-							xmlns="http://www.w3.org/2000/svg"
+							type="button"
+							aria-label={t({
+								en: 'Close menu',
+								es: 'Cerrar menú',
+								'pt-br': 'Fechar menu',
+							})}
 						>
+							<svg width="20" height="20" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path
 								d="M11.7816 4.03157C12.0062 3.80702 12.0062 3.44295 11.7816 3.2184C11.5571 2.99385 11.193 2.99385 10.9685 3.2184L7.50005 6.68682L4.03164 3.2184C3.80708 2.99385 3.44301 2.99385 3.21846 3.2184C2.99391 3.44295 2.99391 3.80702 3.21846 4.03157L6.68688 7.49999L3.21846 10.9684C2.99391 11.193 2.99391 11.557 3.21846 11.7816C3.44301 12.0061 3.80708 12.0061 4.03164 11.7816L7.50005 8.31316L10.9685 11.7816C11.193 12.0061 11.5571 12.0061 11.7816 11.7816C12.0062 11.557 12.0062 11.193 11.7816 10.9684L8.31322 7.49999L11.7816 4.03157Z"
 								fill="currentColor"
 								fill-rule="evenodd"
 								clip-rule="evenodd"
 							/>
-						</svg>
+							</svg>
+						</button>
 					</div>
 				)}
 				<div class="nav__btns">
-					<div class="nav__btns">
-						<ThemeIcon />
-					</div>
+					<ThemeIcon />
+					<LocaleSelect />
 					{!noLinks && (
-						<svg
+						<button
 							class="nav__toggle"
 							id="nav-toggle"
-							width="20"
-							height="20"
-							viewBox="0 0 15 15"
-							fill="none"
-							xmlns="http://www.w3.org/2000/svg"
+							type="button"
+							aria-label={t({
+								en: 'Open menu',
+								es: 'Abrir menú',
+								'pt-br': 'Abrir menu',
+							})}
+							aria-expanded="false"
+							aria-controls="nav-menu"
 						>
-							<path
-								d="M4.5 2C3.11929 2 2 3.11929 2 4.5C2 5.88072 3.11929 7 4.5 7C5.88072 7 7 5.88072 7 4.5C7 3.11929 5.88072 2 4.5 2ZM3 4.5C3 3.67157 3.67157 3 4.5 3C5.32843 3 6 3.67157 6 4.5C6 5.32843 5.32843 6 4.5 6C3.67157 6 3 5.32843 3 4.5ZM10.5 2C9.11929 2 8 3.11929 8 4.5C8 5.88072 9.11929 7 10.5 7C11.8807 7 13 5.88072 13 4.5C13 3.11929 11.8807 2 10.5 2ZM9 4.5C9 3.67157 9.67157 3 10.5 3C11.3284 3 12 3.67157 12 4.5C12 5.32843 11.3284 6 10.5 6C9.67157 6 9 5.32843 9 4.5ZM2 10.5C2 9.11929 3.11929 8 4.5 8C5.88072 8 7 9.11929 7 10.5C7 11.8807 5.88072 13 4.5 13C3.11929 13 2 11.8807 2 10.5ZM4.5 9C3.67157 9 3 9.67157 3 10.5C3 11.3284 3.67157 12 4.5 12C5.32843 12 6 11.3284 6 10.5C6 9.67157 5.32843 9 4.5 9ZM10.5 8C9.11929 8 8 9.11929 8 10.5C8 11.8807 9.11929 13 10.5 13C11.8807 13 13 11.8807 13 10.5C13 9.11929 11.8807 8 10.5 8ZM9 10.5C9 9.67157 9.67157 9 10.5 9C11.3284 9 12 9.67157 12 10.5C12 11.3284 11.3284 12 10.5 12C9.67157 12 9 11.3284 9 10.5Z"
-								fill="currentColor"
-								fill-rule="evenodd"
-								clip-rule="evenodd"
-							/>
-						</svg>
+							<svg width="20" height="20" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M4.5 2C3.11929 2 2 3.11929 2 4.5C2 5.88072 3.11929 7 4.5 7C5.88072 7 7 5.88072 7 4.5C7 3.11929 5.88072 2 4.5 2ZM3 4.5C3 3.67157 3.67157 3 4.5 3C5.32843 3 6 3.67157 6 4.5C6 5.32843 5.32843 6 4.5 6C3.67157 6 3 5.32843 3 4.5ZM10.5 2C9.11929 2 8 3.11929 8 4.5C8 5.88072 9.11929 7 10.5 7C11.8807 7 13 5.88072 13 4.5C13 3.11929 11.8807 2 10.5 2ZM9 4.5C9 3.67157 9.67157 3 10.5 3C11.3284 3 12 3.67157 12 4.5C12 5.32843 11.3284 6 10.5 6C9.67157 6 9 5.32843 9 4.5ZM2 10.5C2 9.11929 3.11929 8 4.5 8C5.88072 8 7 9.11929 7 10.5C7 11.8807 5.88072 13 4.5 13C3.11929 13 2 11.8807 2 10.5ZM4.5 9C3.67157 9 3 9.67157 3 10.5C3 11.3284 3.67157 12 4.5 12C5.32843 12 6 11.3284 6 10.5C6 9.67157 5.32843 9 4.5 9ZM10.5 8C9.11929 8 8 9.11929 8 10.5C8 11.8807 9.11929 13 10.5 13C11.8807 13 13 11.8807 13 10.5C13 9.11929 11.8807 8 10.5 8ZM9 10.5C9 9.67157 9.67157 9 10.5 9C11.3284 9 12 9.67157 12 10.5C12 11.3284 11.3284 12 10.5 12C9.67157 12 9 11.3284 9 10.5Z"
+									fill="currentColor"
+									fill-rule="evenodd"
+									clip-rule="evenodd"
+								/>
+							</svg>
+						</button>
 					)}
 				</div>
-
-				<LocaleSelect />
 			</nav>
 		</header>
 	) : (
-		<header class="header" id="header">
+		<header class="header" id="header" transition:persist={`header-${variant}`}>
 			<nav class="nav container">
 				<div class="co-brand">
 					<a href={getRelativeLocaleUrl(currentLocale, '/')}>
@@ -236,23 +215,19 @@ const { variant, noLinks = false } = Astro.props;
 							/>
 						</g>
 					</svg>
-					{variant === 'wibx' ? (
-						<a href="https://wibx.io/" class="nav__logo">
-							<Image
-								src={Wibx}
-								draggable="false"
-								alt="Wibx Company"
-								width={35}
-								height={35}
-							/>
-						</a>
-					) : (
-						<a href="https://www.birdirx.com/" class="nav__logo">
-							<Image src={Birdi} draggable="false" alt="BirdiRx" width={35} height={35} />
+					{coBrand && (
+						<a href={coBrand.url} class="nav__logo" target="_blank" rel="noopener noreferrer">
+							{coBrandSrc ? (
+								<Image class={coBrandClass} src={coBrandSrc} alt={coBrand.label} width={35} height={35} draggable="false" />
+							) : (
+								CoBrandLogo && (
+									<CoBrandLogo class={coBrandClass} role="img" aria-label={coBrand.label} width={35} height={35} />
+								)
+							)}
 						</a>
 					)}
 				</div>
-				<div style="display: flex; align-items: center; justify-content: space-between; gap: 1rem">
+				<div class="nav__actions">
 					<div class="nav__btns">
 						<ThemeIcon />
 					</div>
@@ -265,43 +240,55 @@ const { variant, noLinks = false } = Astro.props;
 }
 
 <script>
-	/*==================== CHANGE BACKGROUND HEADER ====================*/
-	function scrollHeader() {
-		const nav = (document.getElementById('header') as HTMLElement) || null;
-		if (window.scrollY >= 80) nav.classList.add('scroll-header');
-		else nav.classList.remove('scroll-header');
-	}
-	window.addEventListener('scroll', scrollHeader);
+	function setupHeader() {
+		const header = document.getElementById('header');
 
-	/*==================== MENU SHOW Y HIDDEN ====================*/
-	const navMenu = document.getElementById('nav-menu') as HTMLElement,
-		navToggle = document.getElementById('nav-toggle'),
-		navClose = document.getElementById('nav-close');
+		/*==================== CHANGE BACKGROUND HEADER ====================*/
+		const onScroll = () => {
+			if (!header) return;
+			header.classList.toggle('scroll-header', window.scrollY >= 80);
+		};
+		// Replace any listener from a previous page to avoid stacking.
+		const w = window as any;
+		if (w.__headerScroll) window.removeEventListener('scroll', w.__headerScroll);
+		w.__headerScroll = onScroll;
+		window.addEventListener('scroll', onScroll);
+		onScroll();
 
-	/*===== MENU SHOW =====*/
-	/* Validate if constant exists */
-	if (navToggle) {
-		navToggle.addEventListener('click', () => {
-			navMenu.classList.add('show-menu');
+		/*==================== MOBILE MENU SHOW / HIDE ====================*/
+		const navMenu = document.getElementById('nav-menu');
+		const navToggle = document.getElementById('nav-toggle');
+		const navClose = document.getElementById('nav-close');
+
+		const openMenu = (open: boolean) => {
+			navMenu?.classList.toggle('show-menu', open);
+			navToggle?.setAttribute('aria-expanded', String(open));
+		};
+		navToggle?.addEventListener('click', () => openMenu(true));
+		navClose?.addEventListener('click', () => openMenu(false));
+
+		// Close the mobile menu after tapping a nav link.
+		document.querySelectorAll('.nav__link').forEach((link) => {
+			link.addEventListener('click', () => openMenu(false));
+		});
+
+		/* Don't re-navigate when the destination is the current page
+		   (e.g. tapping the logo while already at the top of the home
+		   page): the router swap re-decodes the logo and looks like a
+		   refresh. */
+		document.querySelectorAll('.nav__logo, .nav__link').forEach((link) => {
+			link.addEventListener('click', (e) => {
+				const href = link.getAttribute('href');
+				if (!href || href.startsWith('#')) return;
+				if (new URL(href, location.href).pathname === location.pathname) {
+					e.preventDefault();
+					window.scrollTo({ top: 0, behavior: 'smooth' });
+				}
+			});
 		});
 	}
 
-	/*===== MENU HIDDEN =====*/
-	if (navClose) {
-		navClose.addEventListener('click', () => {
-			navMenu.classList.remove('show-menu');
-		});
-	}
-
-	/*==================== REMOVE MENU MOBILE ====================*/
-	const navLink = document.querySelectorAll('.nav__link');
-
-	function linkAction() {
-		const navMenu = document.getElementById('nav-menu') as HTMLElement;
-		// When we click on each nav__link, we remove the show-menu class
-		navMenu.classList.remove('show-menu');
-	}
-	navLink.forEach((n) => n.addEventListener('click', linkAction));
+	document.addEventListener('astro:page-load', setupHeader);
 </script>
 
 <style>
@@ -311,6 +298,15 @@ const { variant, noLinks = false } = Astro.props;
 
 	.active-link {
 		color: var(--first-color);
+	}
+
+	/* Menu toggle/close are real <button>s now; strip native chrome.
+	   (No display rule here — media-queries.css hides them on desktop.) */
+	.nav__toggle,
+	.nav__close {
+		background: none;
+		border: 0;
+		padding: 0;
 	}
 
 	.radapls-brand {
@@ -327,5 +323,25 @@ const { variant, noLinks = false } = Astro.props;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+	}
+
+	/* Inline co-brand SVG logos render as-is (no wrapping container). Logos
+	   whose shield uses currentColor adapt their color to the theme. */
+	.co-brand-logo {
+		width: auto;
+		height: 35px;
+		display: block;
+	}
+	/* Birdi: navy shield in light mode, light tint in dark mode so it stays
+	   legible against the dark page (the inner "b" stays white in the SVG). */
+	.co-brand-logo--birdi {
+		color: #243746;
+	}
+	:global(.dark) .co-brand-logo--birdi {
+		color: var(--marker-color-birdi);
+	}
+	/* Ericsson mark is monochrome (currentColor); brand blue reads in both themes. */
+	.co-brand-logo--ericsson {
+		color: #0082f0;
 	}
 </style>

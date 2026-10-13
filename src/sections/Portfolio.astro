@@ -1,6 +1,4 @@
 ---
-import Pokedex from '@assets/img/pokedex.webp';
-import World from '@assets/img/world.webp';
 import CasaNostra from '@assets/img/casa-nostra.webp';
 import SpaceInvaders from '@assets/img/space-invaders.webp';
 import Roulette from '@assets/img/roulette.webp';
@@ -17,7 +15,6 @@ const t = useTranslations(Astro.currentLocale as Lang);
 <!--==================== PORTFOLIO ====================-->
 <section class="portfolio section" id="Portfolio" aria-labelledby="portfolio-title">
 	<h2 class="section__title" id="portfolio-title">
-		<span aria-hidden="true">📚</span>
 		{
 			t({
 				en: 'Portfolio',
@@ -26,15 +23,6 @@ const t = useTranslations(Astro.currentLocale as Lang);
 			})
 		}
 	</h2>
-	<span class="section__subtitle" aria-roledescription="doc-subtitle">
-		{
-			t({
-				en: 'Some recent work',
-				es: 'Algunos trabajos recientes',
-				'pt-br': 'Alguns trabalhos recentes',
-			})
-		}
-	</span>
 	<div class="portafolio__container container">
 		<div class="card-grid">
 			<PortfolioCard
@@ -95,20 +83,6 @@ const t = useTranslations(Astro.currentLocale as Lang);
 				})}
 				link="https://radapls.github.io/space-invaders/"
 			/>
-			<PortfolioCard
-				bgImage={World}
-				title={t({
-					en: 'Country Wiki',
-					es: 'Wiki de Países',
-					'pt-br': 'Wiki de Países',
-				})}
-				description={t({
-					en: 'A country encyclopedia built with Angular 21, explore stats and details of every country',
-					es: 'Una enciclopedia de países construida con Angular 21, explora estadísticas y detalles de cada país',
-					'pt-br': 'Uma enciclopédia de países construída com Angular 21, explore estatísticas e detalhes de cada país',
-				})}
-				link="https://radapls.github.io/country-stats/"
-			/>
 		</div>
 	</div>
 </section>
@@ -139,11 +113,10 @@ const t = useTranslations(Astro.currentLocale as Lang);
 		display: grid;
 		grid-column-gap: 24px;
 		grid-row-gap: 24px;
-		max-width: 1200px;
 		width: 100%;
 		grid-template-columns: 1fr 1fr;
 		justify-content: center;
-		justify-items: center;
+		justify-items: stretch;
 	}
 
 	@media screen and (max-width: 768px) {

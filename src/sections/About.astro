@@ -1,14 +1,15 @@
 ---
-import ProfilePic from '@assets/img/juan.webp';
 import CurriculumVitae from '@assets/documents/CV_Juan_Felipe_Rada.pdf';
+import Flag from '@components/Flag.astro';
 
 import { useTranslations, type Lang } from 'src/i18n';
-import { Image } from 'astro:assets';
 
 const t = useTranslations(Astro.currentLocale as Lang);
 ---
 
 <!--==================== ABOUT ====================-->
+<!-- Brief intro → personal objects (the flag from my room;
+     a poster slot can join the shelf later). -->
 <section class="about section" id="About">
 	<h2 class="section__title">
 		{
@@ -19,48 +20,28 @@ const t = useTranslations(Astro.currentLocale as Lang);
 			})
 		}
 	</h2>
-	<span class="section__subtitle"></span>
 
-	<div class="about__container container grid">
-		<div class="about__data">
-			<p class="about__description">
+	<div class="about__container container">
+		<div class="about__intro">
+			<p class="about__lead">
 				{
 					t({
 						en: 'My name is Juan Felipe Rada, currently working as a UX/UI developer in the telecommunications sector. I am curious about understanding the details of interfaces, seeing how those small touches make a big change in the user experience. I have worked in different technology sectors, always trying to bring a human touch to development.',
-						es: 'Mi nombre es Juan Felipe Rada, actualmente trabajo como desarrollador UX/UI en el sector de telecomunicaciones, me da curiosidad entender los detalles de las interfaces, ver como esos pequeños toques dan un gran cambio en la experiencia de los usuarios. He trabajado en diferentes sectores de tecnología, siempre intentando dar un toque humano al desarrollo.',
+						es: 'Mi nombre es Juan Felipe Rada, actualmente trabajo como desarrollador UX/UI en el sector de telecomunicaciones. Me da curiosidad entender los detalles de las interfaces, ver como esos pequeños toques dan un gran cambio en la experiencia de los usuarios. He trabajado en diferentes sectores de tecnología, siempre intentando dar un toque humano al desarrollo.',
 						'pt-br':
 							'Meu nome é Juan Felipe Rada, atualmente trabalho como desenvolvedor UX/UI no setor de telecomunicações. Tenho curiosidade em entender os detalhes das interfaces, ver como esses pequenos toques fazem uma grande mudança na experiência do usuário. Trabalhei em diferentes setores de tecnologia, sempre tentando trazer um toque humano ao desenvolvimento.',
 					})
 				}
 			</p>
 
-			<p class="about__description">
+			<p class="about__lead">
 				{
 					t({
-						en: 'Sometimes in my free time I like to write, more than calling it a blog, I would call it an idea board. My opinions are merely personal, and from a very intimate perspective. I usually do not use Artificial Intelligence with the aim of making mistakes, only by making mistakes do we learn. If you are interested you can see some posts',
-						es: 'A veces en mis tiempos libres me gusta escribir, más allá de llamarlo un blog, lo nombraría un tablero de ideas. Mis opiniones son meramente personales, y desde una mirada muy íntima. Suelo no usar Inteligencia artificial con el objetivo de equivocarme, solo equivocándonos aprendemos, si te interesa puedes ver algunas publicaciones',
-						'pt-br': 'Às vezes no meu tempo livre gosto de escrever, mais do que chamar de blog, eu chamaria de quadro de ideias. Minhas opiniões são meramente pessoais, e de uma perspectiva muito íntima. Costumo não usar Inteligência Artificial com o objetivo de cometer erros, só errando aprendemos. Se você estiver interessado pode ver algumas publicações',
+						en: 'Sometimes in my free time I like to write. My opinions are merely personal, and from a very intimate perspective.',
+						es: 'A veces en mis tiempos libres me gusta escribir. Mis opiniones son meramente personales, y desde una mirada muy íntima.',
+						'pt-br': 'Às vezes no meu tempo livre gosto de escrever. Minhas opiniões são meramente pessoais, e de uma perspectiva muito íntima.',
 					})
 				}
-				<a
-					data-astro-reload
-					class="about__description__link"
-					href="/blog"
-					role="link"
-					aria-roledescription={t({
-						en: 'Personal blog link',
-						es: 'Enlace al blog personal',
-						'pt-br': 'Link blog pessoal',
-					})}
-				>
-					{
-						t({
-							en: 'here',
-							es: 'acá',
-							'pt-br': 'aqui',
-						})
-					}
-				</a>
 			</p>
 
 			<div class="about__buttons">
@@ -78,58 +59,46 @@ const t = useTranslations(Astro.currentLocale as Lang);
 				</a>
 			</div>
 		</div>
+
+		<div class="about__shelf">
+			<Flag />
+		</div>
 	</div>
 </section>
 
 <style>
 	/*==================== ABOUT ====================*/
-	.about__img {
-		border-radius: 0.5rem;
-		justify-self: center;
-		align-self: center;
-	}
-	.about__description {
-		text-align: left;
-		margin-bottom: var(--mb-2-5);
-	}
-	.about__info {
+	.about__container {
 		display: flex;
-		justify-content: space-between;
-		margin-bottom: var(--mb-2-5);
-		gap: 1rem;
+		flex-direction: column;
+		align-items: center;
+		gap: 2.25rem;
 	}
-	.about__info-title {
-		font-size: var(--h2-font-size);
-		font-weight: var(--font-semi-bold);
-		color: var(--title-color);
+	/* Intro: one readable measure, left-aligned inside a centered column */
+	.about__intro {
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+		max-width: 62ch;
 	}
-	.about__info-name {
-		font-size: var(--smaller-font-size);
-	}
-	.about__info-title,
-	.about__info-name {
-		display: block;
-		text-align: center;
+	.about__lead {
+		text-align: left;
+		line-height: 1.7;
+		color: var(--text-color);
 	}
 	.about__buttons {
 		display: flex;
 		justify-content: center;
-	}
-	.about__description__link {
-		text-decoration: underline;
-		color: var(--first-color);
-		font-weight: 500;
-		transition: color 0.3s ease;
+		margin-top: 0.5rem;
 	}
 
-	.about__description__link:hover,
-	.about__description__link:focus {
-		color: var(--first-color-alt);
-		text-decoration-thickness: 2px;
-	}
-
-	.about__description__link:focus-visible {
-		outline: 2px solid var(--first-color);
-		outline-offset: 2px;
+	/* Personal shelf: real objects from my room — flag now, poster later */
+	.about__shelf {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		gap: 1.5rem;
+		width: 100%;
 	}
 </style>

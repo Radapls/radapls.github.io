@@ -2,7 +2,7 @@
 
 ---
 
-<div class="scrollup" id="scroll-up" aria-label="Scroll to top" role="button">
+<button class="scrollup" id="scroll-up" type="button" aria-label="Scroll to top">
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		width="24"
@@ -31,23 +31,33 @@
 		</g>
 		<path d="M0,0H18.256V18.256H0Z" fill="none"></path>
 	</svg>
-</div>
+</button>
 
 <script>
-	window.addEventListener('scroll', () => {
-		const scrollUp = document.getElementById('scroll-up') as HTMLDivElement | null;
+	function setupScrollUp() {
+		const scrollUp = document.getElementById('scroll-up') as HTMLButtonElement | null;
 		if (!scrollUp) return;
 
-		scrollUp.addEventListener('click', () => {
-			window.scrollTo({ top: 0 });
-		});
-
-		if (window.scrollY >= 200) {
-			scrollUp.classList.add('show-scroll');
-		} else {
-			scrollUp.classList.remove('show-scroll');
+		// Attach the click handler once (guard against re-init duplicates).
+		if (!scrollUp.dataset.bound) {
+			scrollUp.addEventListener('click', () => {
+				window.scrollTo({ top: 0 });
+			});
+			scrollUp.dataset.bound = 'true';
 		}
-	});
+
+		const onScroll = () => {
+			scrollUp.classList.toggle('show-scroll', window.scrollY >= 200);
+		};
+		// Replace any listener from a previous page to avoid stacking.
+		const w = window as any;
+		if (w.__scrollUpHandler) window.removeEventListener('scroll', w.__scrollUpHandler);
+		w.__scrollUpHandler = onScroll;
+		window.addEventListener('scroll', onScroll);
+		onScroll();
+	}
+
+	document.addEventListener('astro:page-load', setupScrollUp);
 </script>
 
 <style>
@@ -56,6 +66,7 @@
 		right: 1rem;
 		bottom: -20%;
 		background-color: var(--first-color);
+		border: 0;
 		opacity: 0;
 		padding: 0.5rem;
 		border-radius: 0.5rem;

@@ -11,6 +11,7 @@ const t = useTranslations(Astro.currentLocale as Lang);
 		es: 'Botón de cambio de color',
 		'pt-br': 'Botao de troca de cor',
 	})}
+	aria-pressed="false"
 >
 	<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 		<path
@@ -50,32 +51,17 @@ const t = useTranslations(Astro.currentLocale as Lang);
 <script is:inline>
 	const applyThemeFromLocalStorage = () => {
 		const theme = localStorage?.getItem('theme') ?? 'light';
-		if (theme === 'dark') {
-			document.documentElement.classList.add('dark');
-		} else {
-			document.documentElement.classList.remove('dark');
-		}
+		const isDark = theme === 'dark';
+		document.documentElement.classList.toggle('dark', isDark);
+		const btn = document.getElementById('themeToggle');
+		btn?.setAttribute('aria-pressed', String(isDark));
 	};
-
-	const getInitialTheme = () => {
-		const stored = localStorage?.getItem('theme') ?? '';
-		if (['dark', 'light'].includes(stored)) return stored;
-		return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-	};
-
-	// Initial theme application
-	const theme = getInitialTheme();
-	localStorage.setItem('theme', theme);
-	if (theme === 'dark') {
-		document.documentElement.classList.add('dark');
-	} else {
-		document.documentElement.classList.remove('dark');
-	}
 
 	const handleToggleClick = () => {
 		const html = document.documentElement;
 		const isDark = html.classList.toggle('dark');
 		localStorage.setItem('theme', isDark ? 'dark' : 'light');
+		document.getElementById('themeToggle')?.setAttribute('aria-pressed', String(isDark));
 	};
 
 	const setupThemeToggleButton = () => {

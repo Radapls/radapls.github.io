@@ -1,9 +1,11 @@
 ---
 import Layout from '@layouts/Layout.astro';
+import { getRelativeLocaleUrl } from 'astro:i18n';
 
-import { LOCALES, useTranslations, type Lang } from 'src/i18n';
+import { LOCALES, useTranslations, DEFAULT_LOCALE, type Lang } from 'src/i18n';
 
 const t = useTranslations(Astro.currentLocale as Lang);
+const locale = (Astro.currentLocale as Lang | undefined) ?? DEFAULT_LOCALE;
 
 export const getStaticPaths = () =>
 	Object.keys(LOCALES).map((lang) => ({
@@ -12,79 +14,219 @@ export const getStaticPaths = () =>
 ---
 
 <Layout title="Juan Felipe Rada | Thanks!" variant="radapls" withFooter={false} withHeader={false}>
-	<main class="thanks-page">
-		<section class="thanks-content">
-			<h1>
-				{
-					t({
-						en: 'Thank You!',
-						es: '¡Gracias!',
-						'pt-br': 'Obrigado!',
-					})
-				}
-			</h1>
-			<p>
-				{
-					t({
-						en: 'We appreciate your time in filling out the form. Your response has been successfully submitted.',
-						es: 'Agradecemos su tiempo para completar el formulario. Su respuesta ha sido enviada con éxito.',
-						'pt-br':
-							'Agradecemos o seu tempo em preencher o formulário. Sua resposta foi enviada com sucesso.',
-					})
-				}
-			</p>
-			<a href="/" class="thanks-button">
-				{
-					t({
-						en: 'Go Back to Home',
-						es: 'Volver al Inicio',
-						'pt-br': 'Voltar para a Página Inicial',
-					})
-				}
-			</a>
-		</section>
+	<!-- Matches the retro mail client: the compose window's "sent" dialog -->
+	<main class="thanks">
+		<div class="thanks__window">
+			<div class="thanks__titlebar">
+				<span class="thanks__dot" aria-hidden="true"></span>
+				<span class="thanks__dot" aria-hidden="true"></span>
+				<span class="thanks__dot" aria-hidden="true"></span>
+				<span class="thanks__title">
+					{
+						t({
+							en: 'Message Sent',
+							es: 'Mensaje enviado',
+							'pt-br': 'Mensagem enviada',
+						})
+					}
+				</span>
+			</div>
+
+			<div class="thanks__body">
+				<svg
+					class="thanks__icon"
+					viewBox="0 0 24 24"
+					width="48"
+					height="48"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="1.5"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					aria-hidden="true"
+				>
+					<rect x="2" y="4" width="20" height="16" rx="2"></rect>
+					<path d="m22 7-10 6L2 7"></path>
+				</svg>
+				<h1>
+					{
+						t({
+							en: 'Thank You!',
+							es: '¡Gracias!',
+							'pt-br': 'Obrigado!',
+						})
+					}
+				</h1>
+				<p>
+					{
+						t({
+							en: 'Your message is on its way. I usually reply within a couple of days.',
+							es: 'Tu mensaje va en camino. Normalmente respondo en un par de días.',
+							'pt-br': 'Sua mensagem está a caminho. Normalmente respondo em alguns dias.',
+						})
+					}
+				</p>
+				<a href={getRelativeLocaleUrl(locale, '/')} class="thanks__btn">
+					<svg
+						viewBox="0 0 24 24"
+						width="16"
+						height="16"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						aria-hidden="true"
+					>
+						<polyline points="15 18 9 12 15 6"></polyline>
+					</svg>
+					{
+						t({
+							en: 'Go Back to Home',
+							es: 'Volver al Inicio',
+							'pt-br': 'Voltar para a Página Inicial',
+						})
+					}
+				</a>
+			</div>
+		</div>
 	</main>
 
 	<style>
-		.thanks-page {
+		.thanks {
 			display: flex;
 			justify-content: center;
 			align-items: center;
 			min-height: 70vh;
 			padding: 2rem;
+		}
+
+		.thanks__window {
+			width: min(100%, 440px);
+			background-color: #d6d3ce;
+			border: 1px solid #000;
+			box-shadow: var(--shadow-lg);
+		}
+
+		/* Same title bar as the contact form's compose window */
+		.thanks__titlebar {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			padding: 0.5rem 0.75rem;
+			background: repeating-linear-gradient(
+				0deg,
+				#d6d3ce 0 2px,
+				#000 2px 3px,
+				#d6d3ce 3px 5px,
+				#fff 5px 6px
+			);
+			border-bottom: 1px solid #000;
+		}
+		.thanks__dot {
+			width: 11px;
+			height: 11px;
+			border-radius: 50%;
+			border: 1px solid #000;
+			background-color: #fff;
+			flex: none;
+		}
+		.thanks__title {
+			flex: 1;
 			text-align: center;
+			font-size: var(--small-font-size);
+			font-weight: var(--font-semi-bold);
+			color: #000;
+			padding: 0.1rem 0.4rem;
+			background-color: #d6d3ce;
+			border-radius: 4px;
+			margin-right: 3rem; /* balance the dots on the left */
 		}
 
-		.thanks-content {
-			max-width: 600px;
+		.thanks__body {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+			padding: 2rem 2rem 1.75rem;
 		}
-
-		h1 {
-			font-size: 2.5rem;
-			color: var(--title-color);
+		.thanks__icon {
+			color: var(--first-color);
 			margin-bottom: 1rem;
 		}
-
+		h1 {
+			font-family: var(--title-font);
+			font-size: 2rem;
+			color: var(--title-color);
+			margin-bottom: 0.75rem;
+		}
 		p {
-			font-size: 1.25rem;
+			font-size: var(--normal-font-size);
+			line-height: 1.6;
 			color: var(--text-color);
 			margin-bottom: 1.5rem;
 		}
 
-		.thanks-button {
-			display: inline-block;
-			background-color: var(--first-color);
-			color: #fff;
-			padding: 0.75rem 1.5rem;
-			border-radius: 5px;
+		/* Same beveled button as the compose window's Send */
+		.thanks__btn {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.5rem;
+			padding: 0.45rem 1.25rem;
+			font-size: var(--small-font-size);
+			font-weight: var(--font-semi-bold);
+			color: #000;
+			background-color: #d6d3ce;
+			border: 1px solid #000;
+			border-radius: 6px;
+			box-shadow:
+				inset 1px 1px 0 #fff,
+				inset -1px -1px 0 #9a9a9a;
 			text-decoration: none;
-			font-size: 1rem;
-			font-weight: 600;
-			transition: background-color 0.3s ease;
+		}
+		.thanks__btn:hover {
+			background-color: #e4e1dc;
+		}
+		.thanks__btn:active {
+			box-shadow:
+				inset 1px 1px 0 #9a9a9a,
+				inset -1px -1px 0 #fff;
 		}
 
-		.thanks-button:hover {
-			background-color: var(--first-color-second);
+		/* Dark theme: graphite window, like the contact form */
+		:global(.dark) .thanks__window {
+			background-color: #3f3f46;
+		}
+		:global(.dark) .thanks__titlebar {
+			background: repeating-linear-gradient(
+				0deg,
+				#3f3f46 0 2px,
+				#000 2px 3px,
+				#3f3f46 3px 5px,
+				#71717a 5px 6px
+			);
+		}
+		:global(.dark) .thanks__title {
+			color: #e4e4e7;
+			background-color: #3f3f46;
+		}
+		:global(.dark) .thanks__dot {
+			background-color: #71717a;
+		}
+		:global(.dark) .thanks__btn {
+			background-color: #52525b;
+			color: #e4e4e7;
+			box-shadow:
+				inset 1px 1px 0 #71717a,
+				inset -1px -1px 0 #27272a;
+		}
+		:global(.dark) .thanks__btn:hover {
+			background-color: #606068;
+		}
+		:global(.dark) .thanks__btn:active {
+			box-shadow:
+				inset 1px 1px 0 #27272a,
+				inset -1px -1px 0 #71717a;
 		}
 	</style>
 </Layout>
